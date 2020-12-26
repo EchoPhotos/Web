@@ -209,7 +209,7 @@ a:active {
   height: 130px;
   background: #FF0000;
   border-radius: 50%;
-  animation: loading 12s infinite reverse linear;
+  animation: loading 6s infinite reverse linear;
   position: relative;
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-weight: 900;
