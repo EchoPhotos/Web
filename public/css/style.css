@@ -109,6 +109,14 @@ a:active {
   line-height: 1.2;
 }
 
+*[id]:before { 
+  display: block; 
+  content: " "; 
+  margin-top: -75px; 
+  height: 75px; 
+  visibility: hidden; 
+}
+
 @media (max-width: 575px) {
   .font-size-60 {
     font-size: 40px;
