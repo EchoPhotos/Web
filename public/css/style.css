@@ -220,7 +220,7 @@ a:active {
   animation: loading 6s infinite reverse linear;
   position: relative;
   font-family: 'Helvetica', 'Arial', sans-serif;
-  font-weight: 900;
+  font-weight: 1000;
 }
 
 .pre-loader:before {
@@ -233,6 +233,7 @@ a:active {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   color: #fff;
+  /* padding-bottom: 20px; */
 }
 
 @-webkit-keyframes loading {
