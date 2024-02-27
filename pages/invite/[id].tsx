@@ -11,6 +11,7 @@ import Modal from "@/components/Modal";
 import { AlbumItem } from "../../utils/types";
 import GridImage from "@/components/GridImage";
 import AlbumCard from "@/components/AlbumCard";
+import UploadWidget from "../../components/UploadWidget";
 
 interface PropsData {
   albumImagePreviewURL: string;
@@ -170,6 +171,7 @@ export default function InvitePage(props: PropsData) {
           )}
           <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
             <AlbumCard albumName={props.albumName} inviteCode={inviteCode} qrCodeURL={qrUrl}/>
+            <UploadWidget/>
             {props.albumItems.map((albumItem) => (
               <GridImage
                 id={albumItem.image}
