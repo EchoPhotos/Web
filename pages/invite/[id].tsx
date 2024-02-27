@@ -17,6 +17,7 @@ import Bridge from "../../components/Icons/Bridge";
 import { useLastViewedPhoto } from "../../utils/useLastViewedPhoto";
 import Modal from "../../components/Modal";
 import { AlbumItem } from "../../utils/types";
+import UploadWidget from "../../components/UploadWidget";
 
 interface PropsData {
   albumImagePreviewURL: string;
@@ -234,6 +235,7 @@ export default function InvitePage(props: PropsData) {
             />
           )}
           <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
+            <UploadWidget/>
             {/*<div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-1 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
               <div className="absolute inset-0 flex items-center justify-center opacity-20">
                 <span className="flex max-h-full max-w-full items-center justify-center">
