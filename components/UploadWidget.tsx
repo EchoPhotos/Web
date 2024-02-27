@@ -29,19 +29,19 @@ const UploadWidget = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const handleFileChange = (e) => {
-    if (e.target.files[0]) {
-      const selectedFiles = Array.from(e.target.files)
-        .filter((file) => validFileTypes.includes(file.type))
-        .map((file) => ({
-          file,
-          progress: 0,
-        }));
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const selectedFiles = Array.from(e.target.files).filter((file: File) =>
+        validFileTypes.includes(file.type)
+      ).map((file: File) => ({
+        file,
+        progress: 0
+      }));
 
       if (selectedFiles.length !== e.target.files.length) {
-        setUploadError("Some files were not valid image types.");
+        setUploadError('Some files were not valid image types.');
       } else {
-        setUploadError("");
+        setUploadError('');
       }
 
       setFiles(selectedFiles);
