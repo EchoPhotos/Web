@@ -74,14 +74,14 @@ export const getServerSideProps: GetServerSideProps = async ({
         .filter((item) => {
           return !item.video;
         })
-        .sort((a, bg) => { 
+        .sort((a, bg) => {
           if (a.contentTimeStamp < bg.contentTimeStamp) {
             return 1;
           } else if (a.contentTimeStamp < bg.contentTimeStamp) {
             return -1;
           }
           return 0;
-         }),
+        }),
       inviteId: inviteId,
       ...(await serverSideTranslations(locale ?? "en", ["common", "invite"])),
     };
@@ -264,7 +264,7 @@ export default function InvitePage(props: PropsData) {
             </div> */}
             {props.albumItems.map((albumItem) => (
               <div
-                // key={imageId}
+                key={albumItem.image}
                 // href={`/?photoId=${imageId}`}
                 // as={`/p/${imageId}`}
                 // shallow
@@ -273,7 +273,11 @@ export default function InvitePage(props: PropsData) {
                 <Link
                   key={albumItem.image}
                   href={`${router.pathname}?id=${props.inviteId}&imageId=${albumItem.image}`}
-                  ref={albumItem.image === lastViewedPhoto ? lastViewedPhotoRef : null}
+                  ref={
+                    albumItem.image === lastViewedPhoto
+                      ? lastViewedPhotoRef
+                      : null
+                  }
                   shallow
                   className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
                 >
@@ -285,10 +289,10 @@ export default function InvitePage(props: PropsData) {
                     width={720}
                     height={480}
                     unoptimized={true}
-                  //   sizes="(max-width: 640px) 100vw,
-                  // (max-width: 1280px) 50vw,
-                  // (max-width: 1536px) 33vw,
-                  // 25vw"
+                    //   sizes="(max-width: 640px) 100vw,
+                    // (max-width: 1280px) 50vw,
+                    // (max-width: 1536px) 33vw,
+                    // 25vw"
                   />
                 </Link>
               </div>
