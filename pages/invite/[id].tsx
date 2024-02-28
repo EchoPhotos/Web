@@ -1,9 +1,9 @@
+import UploadWidget from "../../components/UploadWidget";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import QRCode from "react-qr-code";
 import { useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
-import admin from "firebase-admin";
 import Button from "../../components/Button";
 import GooglePlay from "../../components/Badges/GooglePlay";
 import AppStore from "../../components/Badges/AppStore";
@@ -17,7 +17,7 @@ import Bridge from "../../components/Icons/Bridge";
 import { useLastViewedPhoto } from "../../utils/useLastViewedPhoto";
 import Modal from "../../components/Modal";
 import { AlbumItem } from "../../utils/types";
-import UploadWidget from "../../components/UploadWidget";
+import admin from "../../utils/nodeApp";
 
 interface PropsData {
   albumImagePreviewURL: string;
@@ -46,9 +46,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
   locale,
 }) => {
-  if (admin.apps.length == 0) {
-    admin.initializeApp();
-  }
   const inviteId = params?.id as string;
   const host = req.headers.host;
   const projectId = admin.instanceId().app.options.projectId;
@@ -235,7 +232,7 @@ export default function InvitePage(props: PropsData) {
             />
           )}
           <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
-            <UploadWidget/>
+            <UploadWidget />
             {/*<div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-1 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
               <div className="absolute inset-0 flex items-center justify-center opacity-20">
                 <span className="flex max-h-full max-w-full items-center justify-center">

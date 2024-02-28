@@ -6,10 +6,17 @@ import {
   signInWithPhoneNumber,
   PhoneAuthProvider,
   signInWithCredential,
+  getAuth,
 } from "firebase/auth";
-import { storage, auth } from "../firebase-config";
+import { getFirebaseApp } from "../utils/clientApp";
+import { getStorage } from 'firebase/storage';
 
 const UploadWidget = () => {
+  const firebase = getFirebaseApp();
+  const storage = getStorage(firebase);
+  const auth = getAuth(firebase);
+
+  console.warn("Initializing UploadWidget...");
   const [files, setFiles] = useState([]);
   const [uploadError, setUploadError] = useState("");
   const [downloadURLs, setDownloadURLs] = useState([]);
@@ -31,17 +38,17 @@ const UploadWidget = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const selectedFiles = Array.from(e.target.files).filter((file: File) =>
-        validFileTypes.includes(file.type)
-      ).map((file: File) => ({
-        file,
-        progress: 0
-      }));
+      const selectedFiles = Array.from(e.target.files)
+        .filter((file: File) => validFileTypes.includes(file.type))
+        .map((file: File) => ({
+          file,
+          progress: 0,
+        }));
 
       if (selectedFiles.length !== e.target.files.length) {
-        setUploadError('Some files were not valid image types.');
+        setUploadError("Some files were not valid image types.");
       } else {
-        setUploadError('');
+        setUploadError("");
       }
 
       setFiles(selectedFiles);
