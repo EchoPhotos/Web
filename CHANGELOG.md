@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Set up clarity
 
 ## 2024-02-25
 - Disable Next.js image optimization

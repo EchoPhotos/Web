@@ -4,13 +4,20 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import styles from "./header.module.css";
+import { clarity } from "react-microsoft-clarity";
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const { t } = useTranslation();
 
-  useEffect(() => setIsOpen(false), [router.asPath]);
+  useEffect(() => {
+    const domain = window.location.hostname;
+    if (domain.includes('echophotos.io')) {
+      clarity.init("l9xrwqeki0");
+    }
+    setIsOpen(false);
+  }, [router.asPath]);
 
   const toggleOpen = useCallback(() => {
     setIsOpen(!isOpen);
