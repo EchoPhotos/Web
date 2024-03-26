@@ -2,6 +2,7 @@
 
 ## Unreleased
 - Set up clarity
+- Hide `private`, `deleted` and `hidden` items
 
 ## 2024-02-25
 - Disable Next.js image optimization

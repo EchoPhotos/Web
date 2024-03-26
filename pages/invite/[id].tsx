@@ -72,7 +72,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       albumImagePreviewURL: `${domain}/api/v1/invites/${invite.id}/image`,
       albumItems: items
         .filter((item) => {
-          return !item.video;
+          return !item.video && !item.deleted && !item.hidden && !item.private;
         })
         .sort((a, bg) => {
           if (a.contentTimeStamp < bg.contentTimeStamp) {
