@@ -20,8 +20,30 @@ export default function HomePage() {
   return (
     <>
       <FeatureSection
-        sectionId="desktop"
-        title={t("home:desktop.title")}
+        sectionId="mobile"
+        title="iOS + Android"
+        description="Native design on all mobile platforms."
+      >
+        <ContentBox
+          left={false}
+          imageURL="/images/macOS.jpg"
+          title="Tailored for the iPhone"
+        >
+          <p className="mb-4">A premium iPhone App</p>
+        </ContentBox>
+
+        <ContentBox
+          left={true}
+          imageURL="/images/browser.jpg"
+          title="A true Android app"
+        >
+          <p className="mb-4">{t("home:desktop.sections.0.description")}</p>
+        </ContentBox>
+      </FeatureSection>
+
+      <FeatureSection
+        sectionId="web"
+        title="Web"
         description={t("home:desktop.description")}
       >
         <ContentBox
@@ -31,7 +53,13 @@ export default function HomePage() {
         >
           <p className="mb-4">{t("home:desktop.sections.0.description")}</p>
         </ContentBox>
+      </FeatureSection>
 
+      <FeatureSection
+        sectionId="mac"
+        title="macOS"
+        description={t("home:desktop.description")}
+      >
         <ContentBox
           left={false}
           imageURL="/images/macOS.jpg"
