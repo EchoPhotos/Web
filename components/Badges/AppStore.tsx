@@ -19,7 +19,7 @@ export default function AppStore({ mac, appendix }: AppStoreProps) {
   }
 
   return (
-    <Link href={`https://apps.apple.com/us/app/id1499073049` + appendix ?? ''} target="_blank">
+    <Link href={`https://apps.apple.com/us/app/id1499073049` + (appendix ?? '')} target="_blank">
       <img
         src="/images/AppStore.svg"
         height="40"
