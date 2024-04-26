@@ -5,6 +5,7 @@
 - Hide `private`, `deleted` and `hidden` items
 - Fix app store link
 - Consider pinning in item sorting
+- Add album card to item grid
 
 ## 2024-02-25
 - Disable Next.js image optimization
