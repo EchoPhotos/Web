@@ -4,6 +4,7 @@
 - Set up clarity
 - Hide `private`, `deleted` and `hidden` items
 - Fix app store link
+- Consider pinning in item sorting
 
 ## 2024-02-25
 - Disable Next.js image optimization

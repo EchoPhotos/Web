@@ -20,6 +20,7 @@ export interface AlbumItem {
   likes?: string[];
   hidden?: boolean;
   private?: boolean;
+  pinned?: boolean;
   deleted?: boolean;
   hiddenFor?: string[];
   batch?: string;

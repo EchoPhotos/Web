@@ -74,13 +74,17 @@ export const getServerSideProps: GetServerSideProps = async ({
         .filter((item) => {
           return !item.video && !item.deleted && !item.hidden && !item.private;
         })
-        .sort((a, bg) => {
-          if (a.contentTimeStamp < bg.contentTimeStamp) {
-            return 1;
-          } else if (a.contentTimeStamp < bg.contentTimeStamp) {
-            return -1;
+        .sort((a, b) => {
+          if (a.pinned !== b.pinned) {
+            return a.pinned ? -1 : 1; // Pinned items come first
+          } else {
+            if (a.contentTimeStamp < b.contentTimeStamp) {
+              return -1; // Recent items first
+            } else if (a.contentTimeStamp > b.contentTimeStamp) {
+              return 1; // Older items next
+            }
+            return 0; // Equal timestamps retain relative order
           }
-          return 0;
         }),
       inviteId: inviteId,
       ...(await serverSideTranslations(locale ?? "en", ["common", "invite"])),
