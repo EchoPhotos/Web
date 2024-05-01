@@ -6,6 +6,7 @@
 - Fix app store link
 - Consider pinning in item sorting
 - Add album card to item grid
+- Gallery-only invite page
 
 ## 2024-02-25
 - Disable Next.js image optimization

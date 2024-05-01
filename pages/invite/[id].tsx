@@ -4,10 +4,6 @@ import QRCode from "react-qr-code";
 import { useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import admin from "firebase-admin";
-import Button from "../../components/Button";
-import GooglePlay from "../../components/Badges/GooglePlay";
-import AppStore from "../../components/Badges/AppStore";
-import WebApp from "../../components/Badges/WebApp";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useLastViewedPhoto } from "../../utils/useLastViewedPhoto";
@@ -132,11 +128,6 @@ export default function InvitePage(props: PropsData) {
 
   useEffect(() => setQrUrl(window.location.href), []);
 
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(inviteCode);
-    alert(t("invite:copied"));
-  };
-
   return (
     <>
       <Head>
@@ -164,60 +155,6 @@ export default function InvitePage(props: PropsData) {
           content={t("invite:social-preview.description") ?? "Join the album!"}
         />
       </Head>
-
-      <section>
-        <div className="container mx-auto max-w-6xl py-8 mt-16">
-          <div id="inviteInfo" className="flex mb-20 md:flex-row flex-col">
-            <div
-              className="md:w-1/2 flex justify-center items-center px-5"
-              id="qrcode"
-            >
-              <QRCode value={qrUrl} />
-            </div>
-
-            <div className="md:w-1/2 px-5 my-auto block text-center md:text-left">
-              <h4 className="font-bold mb-4 md:mt-0 mt-16" id="title">
-                {t("invite:title")}
-              </h4>
-
-              <p
-                id="inviteCode"
-                className="font-mono text-center py-2 px-5 md:mx-0 mx-auto bg-neutral-200 rounded-xl uppercase font-light text-5xl mb-2"
-              >
-                {inviteCode}
-              </p>
-
-              <p className="mb-6">{t("invite:description")}</p>
-
-              <Button onClick={copyToClipboard} className="mx-0">
-                {t("invite:copy-code")}
-              </Button>
-            </div>
-          </div>
-
-          <div className="flex md:flex-row flex-col text-center md:text-left">
-            <div className="md:w-1/2 px-5 my-auto">
-              <div className="block">
-                <h1 className="font-bold mb-6" id="title">
-                  {t("invite:download.title")}
-                </h1>
-
-                <p className="mb-6">{t("invite:download.description")}</p>
-
-                <div className="flex justify-center md:justify-start items-center">
-                  <AppStore />
-                  <GooglePlay />
-                  <WebApp inviteId="{fullInviteId}" />
-                </div>
-              </div>
-            </div>
-
-            <div className="md:w-1/2 px-5 flex items-center justify-center">
-              <img src="/images/AppIcon300.png" alt="Echo Photos" />
-            </div>
-          </div>
-        </div>
-      </section>
 
       <div className="bg-black">
         <section className="mx-auto max-w-[1960px] p-4">
