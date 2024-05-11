@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import useKeypress from "react-use-keypress";
 import SharedModal from "./SharedModal";
-import { AlbumItem } from "../utils/types";
+import { AlbumItem } from "@/utils/types";
 
 export default function Modal({
   items: albumItems,

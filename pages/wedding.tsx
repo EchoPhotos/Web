@@ -5,13 +5,13 @@ import { Montserrat } from "next/font/google";
 import { Quicksand } from "next/font/google";
 import { Josefin_Sans } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
-import AppStore from "../components/Badges/AppStore";
-import Featurette from "../components/Featurette";
-import GooglePlay from "../components/Badges/GooglePlay";
+import AppStore from "@/components/Badges/AppStore";
+import Featurette from "@/components/Featurette";
+import GooglePlay from "@/components/Badges/GooglePlay";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import ContentBox from "../components/ContentBox";
-import FullScreenSection from "../components/FullScreenSection";
+import ContentBox from "@/components/ContentBox";
+import FullScreenSection from "@/components/FullScreenSection";
 
 const cinzelFont = Cinzel({ subsets: ["latin"] });
 const quickSandFont = Quicksand({ subsets: ["latin"] });

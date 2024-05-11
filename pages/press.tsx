@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import Section from "../components/Section";
+import Section from "@/components/Section";
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {

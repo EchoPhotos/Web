@@ -3,7 +3,7 @@ import { GetStaticPropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import Button from "../components/Button";
+import Button from "@/components/Button";
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
