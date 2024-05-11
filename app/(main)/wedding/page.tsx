@@ -1,17 +1,14 @@
 import * as Icons from "react-icons/io5";
-import { GetStaticPropsContext } from "next";
 import { Cinzel } from "next/font/google";
 import { Montserrat } from "next/font/google";
 import { Quicksand } from "next/font/google";
 import { Josefin_Sans } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
-import AppStore from "../components/Badges/AppStore";
-import Featurette from "../components/Featurette";
-import GooglePlay from "../components/Badges/GooglePlay";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import ContentBox from "../components/ContentBox";
-import FullScreenSection from "../components/FullScreenSection";
+import AppStore from "@/components/Badges/AppStore";
+import Featurette from "@/components/Featurette";
+import GooglePlay from "@/components/Badges/GooglePlay";
+import ContentBox from "@/components/ContentBox";
+import FullScreenSection from "@/components/FullScreenSection";
 
 const cinzelFont = Cinzel({ subsets: ["latin"] });
 const quickSandFont = Quicksand({ subsets: ["latin"] });
@@ -21,26 +18,23 @@ const playfairFont = Playfair_Display({ subsets: ["latin"] });
 
 const titleFont = playfairFont;
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale ?? "en", ["common", "wedding"])),
-    },
-  };
-}
+const dictionary = () =>
+  import("../../../public/locales/en/wedding.json").then(
+    (module) => module.default
+  );
 
-export default function WeddingPage() {
-  const { t } = useTranslation();
+export default async function WeddingPage() {
+  const dict = await dictionary();
 
   return (
     <>
       <FullScreenSection className="bg-rose-50">
         <ContentBox left={false} imageURL="/images/weddingMain.png" title="">
           <h1 className={`${titleFont.className} font-bold mb-6`}>
-            {t("wedding:primarySection.title")}
+            {dict.primarySection.title}
           </h1>
 
-          <h4 className="my-4">{t("wedding:primarySection.subtitle")}</h4>
+          <h4 className="my-4">{dict.primarySection.subtitle}</h4>
 
           <div className="mt-7 flex flex-row items-center justify-center md:justify-start">
             <AppStore appendix="?ppid=018749c4-f51a-4659-874a-36ce62c57a24" />
@@ -48,7 +42,7 @@ export default function WeddingPage() {
             <GooglePlay />
           </div>
 
-          <p className="my-3">{t("wedding:primarySection.availableOn")}</p>
+          <p className="my-3">{dict.primarySection.availableOn}</p>
         </ContentBox>
       </FullScreenSection>
 
@@ -68,27 +62,27 @@ export default function WeddingPage() {
               big={true}
               titleClassName={`${titleFont.className}`}
               icon={<Icons.IoImages />}
-              title={t("wedding:features.0.title")}
+              title={dict.features[0].title}
             >
-              {t("wedding:features.0.text")}
+              {dict.features[0].text}
             </Featurette>
 
             <Featurette
               big={true}
               titleClassName={`${titleFont.className}`}
               icon={<Icons.IoSparkles />}
-              title={t("wedding:features.1.title")}
+              title={dict.features[1].title}
             >
-              {t("wedding:features.1.text")}
+              {dict.features[1].text}
             </Featurette>
 
             <Featurette
               big={true}
               titleClassName={`${titleFont.className}`}
               icon={<Icons.IoHeart />}
-              title={t("wedding:features.2.title")}
+              title={dict.features[2].title}
             >
-              {t("wedding:features.2.text")}
+              {dict.features[2].text}
             </Featurette>
 
             <div className="row-span-3 my-auto mx-auto">
@@ -99,27 +93,27 @@ export default function WeddingPage() {
               big={true}
               titleClassName={`${titleFont.className}`}
               icon={<Icons.IoQrCode />}
-              title={t("wedding:features.3.title")}
+              title={dict.features[3].title}
             >
-              {t("wedding:features.3.text")}
+              {dict.features[3].text}
             </Featurette>
 
             <Featurette
               big={true}
               titleClassName={`${titleFont.className}`}
               icon={<Icons.IoCloudDownload />}
-              title={t("wedding:features.4.title")}
+              title={dict.features[4].title}
             >
-              {t("wedding:features.4.text")}
+              {dict.features[4].text}
             </Featurette>
 
             <Featurette
               big={true}
               titleClassName={`${titleFont.className}`}
               icon={<Icons.IoLink />}
-              title={t("wedding:features.5.title")}
+              title={dict.features[5].title}
             >
-              {t("wedding:features.5.text")}
+              {dict.features[5].text}
             </Featurette>
           </div>
         </div>

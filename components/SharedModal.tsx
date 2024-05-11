@@ -2,10 +2,10 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import { variants } from "../utils/animationVariants";
-import downloadPhoto from "../utils/downloadPhoto";
-import { range } from "../utils/range";
-import type { AlbumItem, SharedModalProps } from "../utils/types";
+import { variants } from "../app/utils/animationVariants";
+import downloadPhoto from "../app/utils/downloadPhoto";
+import { range } from "../app/utils/range";
+import type { AlbumItem, SharedModalProps } from "../app/utils/types";
 import * as IoIcons from "react-icons/io5";
 
 export default function SharedModal({

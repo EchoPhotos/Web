@@ -1,10 +1,12 @@
+"use client";
+
 import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import useKeypress from "react-use-keypress";
 import SharedModal from "./SharedModal";
-import { AlbumItem } from "../utils/types";
+import { AlbumItem } from "../app/utils/types";
 
 export default function Modal({
   items: albumItems,
@@ -19,24 +21,17 @@ export default function Modal({
 }) {
   let overlayRef = useRef();
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const imageId = router.query.imageId as string;
-  let albumItem = albumItems.find((item) => item.image == imageId);
+  let albumItem = albumItems.find((item) => item.image == searchParams.get("imageId"));
   let index = albumItems.indexOf(albumItem);
 
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
 
   function handleClose() {
-    router.push(
-      {
-        query: {
-          id: inviteId,
-        },
-      },
-      undefined,
-      { shallow: true }
-    );
+    router.push(pathname);
     onClose();
   }
 
@@ -48,16 +43,7 @@ export default function Modal({
     }
     const newAlbumItem = albumItems[newVal];
     setCurIndex(newVal);
-    router.push(
-      {
-        query: {
-          imageId: newAlbumItem.image,
-          id: inviteId,
-        },
-      },
-      undefined,
-      { shallow: true }
-    );
+    router.push(`${pathname}?${searchParams.toString()}`);
   }
 
   useKeypress("ArrowRight", () => {

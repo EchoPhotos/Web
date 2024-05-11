@@ -1,23 +1,21 @@
+"use client"
+
 import { IoMenu, IoClose } from "react-icons/io5";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
-import { useTranslation } from "next-i18next";
+import { useCallback, useState } from "react";
 import styles from "./header.module.css";
-import { clarity } from "react-microsoft-clarity";
 
-export default () => {
+interface HeaderSection {
+  name: string;
+  href: string;
+}
+
+interface HeaderSections {
+  sections: HeaderSection[];
+}
+
+export default ({ sections }: HeaderSections) => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
-  const { t } = useTranslation();
-
-  useEffect(() => {
-    const domain = window.location.hostname;
-    if (domain.includes('echophotos.io')) {
-      clarity.init("l9xrwqeki0");
-    }
-    setIsOpen(false);
-  }, [router.asPath]);
 
   const toggleOpen = useCallback(() => {
     setIsOpen(!isOpen);
@@ -45,35 +43,13 @@ export default () => {
           } w-full md:p-0 md:w-auto md:mr-2 md:top-0 md:relative md:block`}
         >
           <ul className="flex justify-between flex-col w-full gap-3 md:flex-row md:gap-6">
-            <li>
-              <Link className={styles.navLink} href="/wedding">
-                {t("navbar.weddings")}
-              </Link>
-            </li>
-
-            <li>
-              <Link className={styles.navLink} href="/#features">
-                {t("navbar.features")}
-              </Link>
-            </li>
-
-            <li>
-              <Link className={styles.navLink} href="/#albums">
-                {t("navbar.albums")}
-              </Link>
-            </li>
-
-            <li>
-              <Link className={styles.navLink} href="/#desktop">
-                {t("navbar.desktop")}
-              </Link>
-            </li>
-
-            <li>
-              <Link className={styles.navLink} href="/">
-                {t("navbar.download")}
-              </Link>
-            </li>
+            {sections.map((section) => (
+              <li>
+                <Link className={styles.navLink} href={section.href}>
+                  {section.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
