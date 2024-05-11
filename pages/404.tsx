@@ -23,7 +23,7 @@ export default function ErrorPage() {
 
       <Button onClick={router.back} className="mt-4">
         <IoArrowBack />
-        {t("go-back")}
+        {t("404:go-back")}
       </Button>
     </div>
   );
