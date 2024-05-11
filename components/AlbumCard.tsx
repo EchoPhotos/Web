@@ -1,6 +1,6 @@
 import React from "react";
-import QRCode from "react-qr-code";
 import { t } from "i18next";
+import QRCode from "./QRCode";
 import AppStore from "./Badges/AppStore";
 import GooglePlay from "./Badges/GooglePlay";
 import WebApp from "./Badges/WebApp";
@@ -35,7 +35,7 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
 
       <div className="flex flex-col items-center space-y-2">
         <div className="p-3 bg-white rounded-lg" id="qrcode">
-          <QRCode value={qrCodeURL} size={120} />
+          <QRCode qrCodeURL={qrCodeURL} />
         </div>
 
         <button

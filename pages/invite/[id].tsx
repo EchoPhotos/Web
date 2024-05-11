@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import QRCode from "react-qr-code";
 import { useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import admin from "firebase-admin";
