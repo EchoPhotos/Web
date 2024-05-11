@@ -1,10 +1,10 @@
 import * as IoIcons from "react-icons/io5";
 import { GetStaticPropsContext } from "next";
-import AppStore from "../components/Badges/AppStore";
+import AppStore from "@/components/Badges/AppStore";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import ContentBox from "../components/ContentBox";
-import FeatureSection from "../components/FeatureSection";
+import ContentBox from "@/components/ContentBox";
+import FeatureSection from "@/components/FeatureSection";
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {

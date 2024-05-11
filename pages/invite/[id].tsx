@@ -7,10 +7,10 @@ import admin from "firebase-admin";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useLastViewedPhoto } from "../../utils/useLastViewedPhoto";
-import Modal from "../../components/Modal";
+import Modal from "@/components/Modal";
 import { AlbumItem } from "../../utils/types";
-import GridImage from "../../components/GridImage";
-import AlbumCard from "../../components/AlbumCard";
+import GridImage from "@/components/GridImage";
+import AlbumCard from "@/components/AlbumCard";
 
 interface PropsData {
   albumImagePreviewURL: string;

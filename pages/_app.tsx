@@ -1,9 +1,9 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/style.css";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "@/components/DefaultLayout";
 import { appWithTranslation } from "next-i18next";
-import NoHeaderLayout from "../components/NoHeaderLayout";
+import NoHeaderLayout from "@/components/NoHeaderLayout";
 
 function App({ Component, pageProps, router }: AppProps) {
   const Layout = router.pathname.includes("/invite")

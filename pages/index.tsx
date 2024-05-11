@@ -1,15 +1,15 @@
 import * as IoIcons from "react-icons/io5";
 import { GetStaticPropsContext } from "next";
 import Link from "next/link";
-import AppStore from "../components/Badges/AppStore";
-import Button from "../components/Button";
-import Featurette from "../components/Featurette";
-import GooglePlay from "../components/Badges/GooglePlay";
+import AppStore from "@/components/Badges/AppStore";
+import Button from "@/components/Button";
+import Featurette from "@/components/Featurette";
+import GooglePlay from "@/components/Badges/GooglePlay";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import ContentBox from "../components/ContentBox";
-import FeatureSection from "../components/FeatureSection";
-import FullScreenSection from "../components/FullScreenSection";
+import ContentBox from "@/components/ContentBox";
+import FeatureSection from "@/components/FeatureSection";
+import FullScreenSection from "@/components/FullScreenSection";
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
