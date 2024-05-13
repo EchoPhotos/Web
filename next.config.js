@@ -1,19 +1,10 @@
-const { i18n } = require('./next-i18next.config');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'echo-photos-dev.web.app',
-        port: '',
-        pathname: '/api/v1/**',
-      },
-    ],
+  pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
+  experimental: {
+    mdxRs: false,
   },
-  reactStrictMode: true,
-  i18n,
 };
 
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);

@@ -1,34 +1,25 @@
 import * as IoIcons from "react-icons/io5";
-import { GetStaticPropsContext } from "next";
 import Link from "next/link";
 import AppStore from "@/components/Badges/AppStore";
 import Button from "@/components/Button";
 import Featurette from "@/components/Featurette";
 import GooglePlay from "@/components/Badges/GooglePlay";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
 import ContentBox from "@/components/ContentBox";
 import FeatureSection from "@/components/FeatureSection";
 import FullScreenSection from "@/components/FullScreenSection";
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale ?? "en", ["common", "home"])),
-    },
-  };
-}
+const dictionary = async () => import("../../public/locales/en/home.json").then((module) => module.default);
 
-export default function HomePage() {
-  const { t } = useTranslation();
+export default async function HomePage() {
+  const dict = await dictionary();
 
   return (
     <>
-      <FullScreenSection>
+      <FullScreenSection className="-mt-16">
         <ContentBox left={true} imageURL="/images/title.png" title="">
-          <h1 className="font-bold mb-6">{t("home:title")}</h1>
+          <h1 className="font-bold mb-6">{dict.title}</h1>
 
-          <p className="mb-6">{t("home:subtitle")}</p>
+          <p className="mb-6">{dict.subtitle}</p>
 
           <div className="flex items-center justify-center md:justify-start">
             <AppStore />
@@ -43,29 +34,29 @@ export default function HomePage() {
           className={`flex flex-col items-center text-center md:text-left m-auto container max-w-6xl px-4`}
         >
           <h2 className="font-bold mb-10 md:mb-6">
-            {t("home:featureOverviewSection.title")}
+            {dict.featureOverviewSection.title}
           </h2>
 
           <div className="md:grid flex flex-col grid-rows-3 grid-cols-3 grid-flow-col gap-10 md:gap-y-4">
             <Featurette
               icon={<IoIcons.IoImages />}
-              title={t("home:featureOverviewSection.features.0.title")}
+              title={dict.featureOverviewSection.features[0].title}
             >
-              {t("home:featureOverviewSection.features.0.description")}
+              {dict.featureOverviewSection.features[0].description}
             </Featurette>
 
             <Featurette
               icon={<IoIcons.IoLockClosed />}
-              title={t("home:featureOverviewSection.features.1.title")}
+              title={dict.featureOverviewSection.features[1].title}
             >
-              {t("home:featureOverviewSection.features.1.description")}
+              {dict.featureOverviewSection.features[1].description}
             </Featurette>
 
             <Featurette
               icon={<IoIcons.IoStar />}
-              title={t("home:featureOverviewSection.features.2.title")}
+              title={dict.featureOverviewSection.features[2].title}
             >
-              {t("home:featureOverviewSection.features.2.description")}
+              {dict.featureOverviewSection.features[2].description}
             </Featurette>
 
             <div className="row-span-3 my-auto mx-auto">
@@ -74,23 +65,23 @@ export default function HomePage() {
 
             <Featurette
               icon={<IoIcons.IoRadioOutline />}
-              title={t("home:featureOverviewSection.features.3.title")}
+              title={dict.featureOverviewSection.features[3].title}
             >
-              {t("home:featureOverviewSection.features.3.description")}
+              {dict.featureOverviewSection.features[3].description}
             </Featurette>
 
             <Featurette
               icon={<IoIcons.IoSparkles />}
-              title={t("home:featureOverviewSection.features.4.title")}
+              title={dict.featureOverviewSection.features[4].title}
             >
-              {t("home:featureOverviewSection.features.4.description")}
+              {dict.featureOverviewSection.features[4].description}
             </Featurette>
 
             <Featurette
               icon={<IoIcons.IoPeople />}
-              title={t("home:featureOverviewSection.features.5.title")}
+              title={dict.featureOverviewSection.features[5].title}
             >
-              {t("home:featureOverviewSection.features.5.description")}
+              {dict.featureOverviewSection.features[5].description}
             </Featurette>
           </div>
         </div>
@@ -98,20 +89,20 @@ export default function HomePage() {
 
       <section className="bg-zinc-800 text-white py-20">
         <ContentBox left={true} imageURL="/images/groups.png" title="">
-          <h3 className="">{t("home:privacy.subtitle")}</h3>
+          <h3 className="">{dict.privacy.subtitle}</h3>
 
           <h2 className="font-bold mb-2.5 flex text-[2.25rem] gap-2 items-center justify-center md:justify-start">
-            {t("home:privacy.title")}
+            {dict.privacy.title}
             <IoIcons.IoLockClosed color="white" size={30} />
           </h2>
 
-          <p className="my-2">{t("home:privacy.paragraphs.0")}</p>
+          <p className="my-2">{dict.privacy.paragraphs[0]}</p>
 
-          <p className="my-2">{t("home:privacy.paragraphs.1")}</p>
+          <p className="my-2">{dict.privacy.paragraphs[1]}</p>
 
-          <p className="my-2">{t("home:privacy.paragraphs.2")}</p>
+          <p className="my-2">{dict.privacy.paragraphs[2]}</p>
 
-          <p className="my-2">{t("home:privacy.paragraphs.3")}</p>
+          <p className="my-2">{dict.privacy.paragraphs[3]}</p>
         </ContentBox>
       </section>
 
@@ -122,71 +113,79 @@ export default function HomePage() {
           title=""
         >
           <div className="text-right md:text-right">
-            <h3 className="text-green-700">{t("home:climate.subtitle")}</h3>
+            <h3 className="text-green-700">{dict.climate.subtitle}</h3>
 
             <h2 className="font-bold mb-4 flex items-center gap-2 text-[2.25rem] text-green-700 justify-center md:justify-end">
               <IoIcons.IoLeaf className="-scale-x-100 -z-10" size={32} />
-              {t("home:climate.title")}
+              {dict.climate.title}
             </h2>
 
-            <p className="mb-1">{t("home:climate.paragraphs.0")}</p>
+            <p className="mb-1">{dict.climate.paragraphs[0]}</p>
 
-            <p className="mb-4">{t("home:climate.paragraphs.1")}</p>
+            <p className="mb-4">{dict.climate.paragraphs[1]}</p>
           </div>
         </ContentBox>
       </section>
 
       <FeatureSection
         sectionId="albums"
-        title={t("home:albums.title")}
+        title={dict.albums.title}
         description=""
       >
         <ContentBox
           left={true}
           imageURL="/images/group.png"
-          title={t("home:albums.sections.0.title")}
+          title={dict.albums.sections[0].title}
         >
-          <p className="my-1">{t("home:albums.sections.0.paragraphs.0")}</p>
+          <p className="my-1">
+            {(dict.albums.sections[0].paragraphs as string[])[0]}
+          </p>
 
-          <p className="my-1">{t("home:albums.sections.0.paragraphs.1")}</p>
+          <p className="my-1">
+            {(dict.albums.sections[0].paragraphs as string[])[1]}
+          </p>
 
-          <p className="my-1">{t("home:albums.sections.0.paragraphs.2")}</p>
+          <p className="my-1">
+            {(dict.albums.sections[0].paragraphs as string[])[2]}
+          </p>
 
-          <p className="my-1">{t("home:albums.sections.0.paragraphs.3")}</p>
+          <p className="my-1">
+            {(dict.albums.sections[0].paragraphs as string[])[3]}
+          </p>
         </ContentBox>
 
         <ContentBox
           left={false}
           imageURL="/images/image.png"
-          title={t("home:albums.sections.1.title")}
+          title={dict.albums.sections[1].title}
         >
-          <p className="my-1">{t("home:albums.sections.1.description")}</p>
+          <p className="my-1">{dict.albums.sections[1].description}</p>
         </ContentBox>
       </FeatureSection>
 
       <FeatureSection
         sectionId="desktop"
-        title={t("home:desktop.title")}
-        description={t("home:desktop.description")}
+        title={dict.desktop.title}
+        description={dict.desktop.description}
       >
         <ContentBox
           left={true}
           imageURL="/images/browser.jpg"
-          title={t("home:desktop.sections.0.title")}
+          title={dict.desktop.sections[0].title}
         >
-          <p className="mb-4">{t("home:desktop.sections.0.description")}</p>
+          <p className="mb-4">{dict.desktop.sections[0].description}</p>
 
           <Link href="https://web.echophotos.io" target="_blank">
-            <Button>{t("home:desktop.sections.0.open-web-app")}</Button>
+            <Button>{dict.desktop.sections[0]["open-web-app"]}</Button>
           </Link>
         </ContentBox>
 
         <ContentBox
           left={false}
           imageURL="/images/macOS.jpg"
-          title={t("home:desktop.sections.1.title")}
+          title={dict.desktop.sections[1].title}
         >
-          <p className="mb-4">{t("home:desktop.sections.1.description")}</p>
+          <p className="mb-4">{dict.desktop.sections[1].description}</p>
 
           <AppStore mac />
         </ContentBox>
