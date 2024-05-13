@@ -8,6 +8,7 @@ import { AlbumItem, Invite } from "../../../../utils/types";
 
 import { useEffect, useRef } from "react";
 import { useLastViewedPhoto } from "../../../../utils/useLastViewedPhoto";
+import UploadWidget from "@/components/UploadWidget";
 
 export interface InvitePreviewData {
   invite: Invite;
@@ -60,6 +61,7 @@ export default function InvitePreview(props: { data: InvitePreviewData }) {
               inviteCode={inviteCode}
               qrCodeURL={data.qrUrl}
             />
+            <UploadWidget />
             {data.items.map((albumItem) => (
               <GridImage
                 id={albumItem.image}
