@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+## 2024-05-13
 - Set up clarity
 - Hide `private`, `deleted` and `hidden` items
 - Fix app store link
