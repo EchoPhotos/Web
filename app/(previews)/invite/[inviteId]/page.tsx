@@ -1,14 +1,27 @@
 import { Metadata, ResolvingMetadata } from "next";
 import InvitePreview, { InvitePreviewData } from "./InvitePreview";
-import admin from "firebase-admin";
 import { AlbumItem, Invite } from "../../../../utils/types";
 
+
 async function getData(inviteId: string): Promise<InvitePreviewData> {
+const { credential } = await import("firebase-admin");
+  const { initializeApp: initializeAdminApp, getApps: getAdminApps } =
+    await import("firebase-admin/app");
+
+  const adminAppName = "echo-photos-app";
+  const adminApp =
+    getAdminApps().find((it) => it.name === adminAppName) ||
+    initializeAdminApp(
+      {
+        credential: credential.applicationDefault(),
+      },
+      adminAppName
+    );
   if (admin.apps.length == 0) {
-    admin.initializeApp();
+    admin.initializeApp(undefined, "echo-photos")
   }
   const projectId =
-    admin.instanceId().app.options.projectId ?? "echo-photos-dev";
+    adminApp.instanceId().app.options.projectId ?? "echo-photos-dev";
   let domain = `https://${projectId}.web.app`;
 
   const itemsURL = `${domain}/api/v1/invites/${inviteId}/items`;
