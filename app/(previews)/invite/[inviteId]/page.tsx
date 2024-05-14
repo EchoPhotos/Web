@@ -4,7 +4,7 @@ import { AlbumItem, Invite } from "../../../../utils/types";
 
 
 async function getData(inviteId: string): Promise<InvitePreviewData> {
-const { credential } = await import("firebase-admin");
+const { credential, instanceId } = await import("firebase-admin");
   const { initializeApp: initializeAdminApp, getApps: getAdminApps } =
     await import("firebase-admin/app");
 
@@ -17,11 +17,11 @@ const { credential } = await import("firebase-admin");
       },
       adminAppName
     );
-  if (admin.apps.length == 0) {
-    admin.initializeApp(undefined, "echo-photos")
-  }
+  // if (admin.apps.length == 0) {
+  //   admin.initializeApp(undefined, "echo-photos")
+  // }
   const projectId =
-    adminApp.instanceId().app.options.projectId ?? "echo-photos-dev";
+    instanceId().app.options.projectId ?? "echo-photos-dev";
   let domain = `https://${projectId}.web.app`;
 
   const itemsURL = `${domain}/api/v1/invites/${inviteId}/items`;
