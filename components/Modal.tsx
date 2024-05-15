@@ -17,12 +17,15 @@ export default function Modal({
   inviteId: string;
   onClose?: () => void;
 }) {
-  let overlayRef = useRef();
+  let overlayRef: any = useRef();
   const router = useRouter();
 
   const imageId = router.query.imageId as string;
   let albumItem = albumItems.find((item) => item.image == imageId);
-  let index = albumItems.indexOf(albumItem);
+  let index = 0;
+  if (albumItem) {
+   index = albumItems.indexOf(albumItem);
+  }
 
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
@@ -37,7 +40,7 @@ export default function Modal({
       undefined,
       { shallow: true }
     );
-    onClose();
+    onClose?.();
   }
 
   function changePhotoId(newVal: number) {

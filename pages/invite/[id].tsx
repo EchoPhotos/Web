@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { Ref, useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import admin from "firebase-admin";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -111,12 +111,12 @@ export default function InvitePage(props: PropsData) {
   const inviteCode = fullInviteId.substring(0, 8);
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
 
-  const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null);
+  const lastViewedPhotoRef: Ref<HTMLAnchorElement> = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     if (lastViewedPhoto && !imageId) {
-      lastViewedPhotoRef.current.scrollIntoView({ block: "center" });
+      lastViewedPhotoRef.current?.scrollIntoView({ block: "center" });
       setLastViewedPhoto(null);
     }
   }, [imageId, lastViewedPhoto, setLastViewedPhoto]);

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MutableRefObject } from "react";
+import { Ref } from "react";
 
 interface GridImageProps {
   id: string;
   href: string;
   src: string;
-  ref?: MutableRefObject<HTMLAnchorElement>;
+  ref?: Ref<HTMLAnchorElement>;
 }
 
 export default function GridImage({id, href, src, ref}: GridImageProps) {
