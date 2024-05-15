@@ -13,7 +13,7 @@ export default function GridImage({id, href, src, ref}: GridImageProps) {
 
   return (
     <div
-      key="1"
+      key={id}
       // href={`/?photoId=${imageId}`}
       // as={`/p/${imageId}`}
       // shallow
