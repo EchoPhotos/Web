@@ -1,9 +1,6 @@
 import React from "react";
 import { t } from "i18next";
 import QRCode from "./QRCode";
-import AppStore from "./Badges/AppStore";
-import GooglePlay from "./Badges/GooglePlay";
-import WebApp from "./Badges/WebApp";
 
 interface AlbumCardProps {
   albumName: string;
@@ -16,6 +13,18 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(inviteCode);
     alert(t("album-card:copied") ?? "Copied!");
+  };
+  
+  const getApp = async () => {
+     if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+       window.open("https://play.google.com/store/apps/details?id=ch.echolabs.echo", "_blank");
+     } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
+       window.open("https://apps.apple.com/app/id1499073049", "_blank");
+     } else if (navigator.userAgent.toLowerCase().indexOf("macintosh") > -1) {
+       window.open("https://apps.apple.com/app/id1499073049", "_blank");
+     } else {
+       window.open(`https://web.echophotos.io/invite/${inviteCode}`, "_blank");
+     }
   };
 
   return (
@@ -47,13 +56,13 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
         </button>
 
         <div className="text-xs font-light">
-          {t("invite:enterCode") ??
+          {t("album-card:enterCode") ??
             "Enter the code or scan the QR-Code to join via app."}
         </div>
       </div>
 
       {/* <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch] text-sm">
-        {t("invite:description") ?? "test description"}
+        {t("album-card:description") ?? "test description"}
       </p> */}
 
       {/* <button
@@ -63,17 +72,16 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
         Upload Photos
       </button> */}
 
-      <div className="flex flex-col items-center text-xs ">
-        <div className="text-base font-bold">
-          {" "}
-          {t("invite:getFreeApp") ?? "Get the Free App"}
-        </div>
-        <div className="flex flex-row items-center space-x-4 my-2">
-          <AppStore />
-          <GooglePlay />
-          <WebApp inviteId="{fullInviteId}" />
-        </div>
-        {t("invite:getAppExplanation") ??
+      <div className="flex flex-col items-center text-xs">
+        <button
+          id="inviteCode"
+          onClick={getApp}
+          className="text-white text-center py-3.5 px-6 mb-2 bg-gradient-to-br from-blue-600 to-blue-900 hover:bg-gradient-to-tl hover:from-zinc-400 hover:to-gray-300 rounded-lg uppercase text-xl transition hover:text-black font-bold"
+        >
+          {t("album-card:app.installButton") ?? "Get the App"}
+        </button>
+
+        {t("album-card:app.description") ??
           "With the app, you can upload your photos and add likes and comments."}
       </div>
     </div>

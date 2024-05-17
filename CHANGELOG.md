@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Add app install button
 
 ## 2024-05-15
 - Fixed null errors
