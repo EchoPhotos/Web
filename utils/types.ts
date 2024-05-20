@@ -2,7 +2,7 @@
 export interface SharedModalProps {
   index: number;
   domain: string;
-  inviteId: string;
+  invite: Invite;
   albumItems: AlbumItem[];
   currentPhoto?: string;
   changePhotoId: (newVal: number) => void;
@@ -10,6 +10,19 @@ export interface SharedModalProps {
   direction?: number;
 }
 
+export interface Invite {
+  id: string;
+  group: string;
+  timestamp: number;
+  code?: string;
+  disabled?: boolean;
+  inviter?: string;
+  groupName?: string;
+  groupDescription?: string;
+  groupImage?: string;
+  members?: string[];
+  photoCount?: number;
+}
 
 export interface AlbumItem {
   uploader: string;

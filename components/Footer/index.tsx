@@ -1,60 +1,64 @@
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
 import styles from "./Footer.module.css";
 
-export default function Footer() {
-  const { t } = useTranslation();
+const dictionary = (lang: string) =>
+  import(`/locales//${lang}/common.json`).then(
+    (module) => module.default
+  );
+
+export default async function Footer({ lang }) {
+  const dict = await dictionary(lang);
 
   return (
     <footer className="bg-neutral-100 py-12 text-sm mt-auto">
       <div className="container mx-auto text-center flex flex-col items-center">
-        <Link href="/" className="hover:underline mb-4">
+        <Link href={`/${lang}/`} className="hover:underline mb-4">
           Echo Photos
         </Link>
 
         <ul className="flex gap-x-6 gap-y-3 mt-4 flex-wrap justify-center px-10">
-          <li>
-            <Link className={styles.footerLink} href="/">
-              {t("footer.home")}
+          <li key="home">
+            <Link className={styles.footerLink} href={`/${lang}/`}>
+              {dict.footer.home}
             </Link>
           </li>
 
-          <li>
+          <li key="webapp">
             <Link
               className={styles.footerLink}
               href="https://web.echophotos.io"
               target="_blank"
             >
-              {t("footer.webapp")}
+              {dict.footer.webapp}
             </Link>
           </li>
 
-          <li>
+          <li key="insta">
             <Link
               href="http://instagram.com/echophotos.io"
               target="_blank"
               rel="noreferrer noopener"
               className={styles.footerLink}
             >
-              {t("footer.instagram")}
+              {dict.footer.instagram}
             </Link>
           </li>
 
-          <li>
-            <Link className={styles.footerLink} href="/privacy">
-              {t("footer.privacy")}
+          <li key="privacy">
+            <Link className={styles.footerLink} href={`/${lang}/privacy`}>
+              {dict.footer.privacy}
             </Link>
           </li>
 
-          <li>
-            <Link className={styles.footerLink} href="/press">
-              {t("footer.press")}
+          <li key="press">
+            <Link className={styles.footerLink} href={`/${lang}/press`}>
+              {dict.footer.press}
             </Link>
           </li>
         </ul>
 
         <p className="text-neutral-500 font-light text-xs leading-5 mt-6 mb-8">
-          {t("footer.copyright.text-before")} &copy;{" "}
+          {dict.footer.copyright["text-before"]} &copy;{" "}
           <Link
             href="http://www.echolabs.ch"
             target="_blank"
@@ -63,10 +67,12 @@ export default function Footer() {
             {" "}
             Echo Labs AG
           </Link>{" "}
-          | {t("footer.copyright.rights")}
+          | {dict.footer.copyright.rights}
         </p>
 
-        <span className="text-neutral-500 mb-4">{t("footer.bottom-text")}</span>
+        <span className="text-neutral-500 mb-4">
+          {dict.footer["bottom-text"]}
+        </span>
       </div>
     </footer>
   );

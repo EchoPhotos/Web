@@ -1,29 +1,34 @@
+"use client";
+
 import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { MutableRefObject, useRef, useState } from "react";
 import useKeypress from "react-use-keypress";
 import SharedModal from "./SharedModal";
-import { AlbumItem } from "@/utils/types";
+import { AlbumItem, Invite } from "@/utils/types";
 
 export default function Modal({
   items: albumItems,
+  invite,
   domain,
-  inviteId,
   onClose,
 }: {
   items: AlbumItem[];
+  invite: Invite;
   domain: string;
-  inviteId: string;
   onClose?: () => void;
 }) {
   let overlayRef: any = useRef();
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const imageId = router.query.imageId as string;
-  let albumItem = albumItems.find((item) => item.image == imageId);
+  let albumItem = albumItems.find((item) => item.image == searchParams.get("imageId"));
+  
   let index = 0;
-  if (albumItem) {
+
+  if(albumItem) {
    index = albumItems.indexOf(albumItem);
   }
 
@@ -31,15 +36,7 @@ export default function Modal({
   const [curIndex, setCurIndex] = useState(index);
 
   function handleClose() {
-    router.push(
-      {
-        query: {
-          id: inviteId,
-        },
-      },
-      undefined,
-      { shallow: true }
-    );
+    router.push(pathname);
     onClose?.();
   }
 
@@ -51,16 +48,7 @@ export default function Modal({
     }
     const newAlbumItem = albumItems[newVal];
     setCurIndex(newVal);
-    router.push(
-      {
-        query: {
-          imageId: newAlbumItem.image,
-          id: inviteId,
-        },
-      },
-      undefined,
-      { shallow: true }
-    );
+    router.push(`${pathname}?${searchParams.toString()}`);
   }
 
   useKeypress("ArrowRight", () => {
@@ -94,7 +82,7 @@ export default function Modal({
       <SharedModal
         index={curIndex}
         domain={domain}
-        inviteId={inviteId}
+        invite={invite}
         direction={direction}
         albumItems={albumItems}
         changePhotoId={changePhotoId}
