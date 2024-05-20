@@ -2,6 +2,7 @@
 
 ## Unreleased
 - Add app install button
+- `AlbumCard` tweaks
 
 ## 2024-05-15
 - Fixed null errors
