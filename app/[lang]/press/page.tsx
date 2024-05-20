@@ -1,30 +1,23 @@
 import { IoArrowDownCircleOutline } from "react-icons/io5";
-import { GetStaticPropsContext } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Head from "next/head";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
 import Section from "@/components/Section";
+import { i18n } from "@/utils/i18n-config";
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale ?? "en", ["common", "press"])),
-    },
-  };
+const dictionary = async (lang) =>
+  import(`/locales/${lang}/press.json`).then((module) => module.default);
+
+export async function generateStaticParams() {
+  return i18n.locales.map((lang) => {
+    lang;
+  });
 }
-
-export default function PressPage() {
-  const { t } = useTranslation();
+export default async function PressPage({params}) {
+  const dict = await dictionary(params.lang);
 
   return (
     <>
-      <Head>
-        <title>{t("press:head.title")}</title>
-      </Head>
-
-      <Section title={t("press:title")}>
-        <p className="mb-4">{t("press:description")}</p>
+      <Section title={dict.title}>
+        <p className="mb-4">{dict.description}</p>
 
         <Link
           href="https://drive.google.com/file/d/1PBWO5sMAmvOZXWJRvTqc7jXGNEVen-vp/view?usp=sharing"
@@ -32,7 +25,7 @@ export default function PressPage() {
           target="_blank"
         >
           <IoArrowDownCircleOutline size={20} />
-          {t("press:kit")}
+          {dict.kit}
         </Link>
 
         <Link
@@ -41,7 +34,7 @@ export default function PressPage() {
           target="_blank"
         >
           <IoArrowDownCircleOutline size={20} />
-          {t("press:flyer")}
+          {dict.flyer}
         </Link>
       </Section>
     </>

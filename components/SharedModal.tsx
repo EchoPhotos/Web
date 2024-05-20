@@ -11,8 +11,8 @@ import * as IoIcons from "react-icons/io5";
 export default function SharedModal({
   index,
   domain,
-  inviteId,
   albumItems: albumItems,
+  invite: invite,
   changePhotoId,
   closeModal,
   currentPhoto,
@@ -65,7 +65,7 @@ export default function SharedModal({
                 className="absolute"
               >
                 <Image
-                  src={`${domain}/api/v1/invites/${inviteId}/images/${albumItems[index].image}/preview`}
+                  src={`${domain}/api/v1/invites/${invite.id}/images/${albumItems[index].image}/preview`}
                   width={1280}
                   height={853}
                   unoptimized={true}
@@ -105,7 +105,7 @@ export default function SharedModal({
               </>
               <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
                 <a
-                  href={`${domain}/api/v1/invites/${inviteId}/images/${albumItems[index].image}/original`}
+                  href={`${domain}/api/v1/invites/${invite.id}/images/${albumItems[index].image}/original`}
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                   target="_blank"
                   title="Open fullsize version"
@@ -116,8 +116,8 @@ export default function SharedModal({
                 <button
                   onClick={() =>
                     downloadPhoto(
-                      `${domain}/api/v1/invites/${inviteId}/images/${albumItems[index].image}/original`,
-                      `${albumItems[index]}.jpg`
+                      `${domain}/api/v1/invites/${invite.id}/images/${albumItems[index].image}/original`,
+                      `${(invite.groupName ?? "echo-photos") +"-"+ index}.jpg`
                     )
                   }
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
@@ -177,7 +177,7 @@ export default function SharedModal({
                             ? "brightness-110 hover:brightness-110"
                             : "brightness-50 contrast-125 hover:brightness-75"
                         } h-full transform object-cover transition`}
-                        src={`${domain}/api/v1/invites/${inviteId}/images/${albumItem.image}/thumbnail-squared`}
+                        src={`${domain}/api/v1/invites/${invite.id}/images/${albumItem.image}/thumbnail-squared`}
                       />
                     </motion.button>
                   );

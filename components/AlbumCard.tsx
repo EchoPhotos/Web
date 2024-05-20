@@ -1,18 +1,28 @@
 import React from "react";
-import { t } from "i18next";
+import AppStore from "./Badges/AppStore";
+import GooglePlay from "./Badges/GooglePlay";
+import WebApp from "./Badges/WebApp";
 import QRCode from "./QRCode";
 
 interface AlbumCardProps {
-  albumName: string;
+  albumName?: string;
   inviteCode: string;
   qrCodeURL: string;
+  lang: string;
 }
 
-export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardProps) {
+const dictionary = (lang) =>
+  import(`/locales/${lang}/album-card.json`).then(
+    (module) => module.default
+  );
+
+
+export default async function AlbumCard({albumName, inviteCode, qrCodeURL, lang}: AlbumCardProps) {
+  const dict = await dictionary(lang);
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(inviteCode);
-    alert(t("album-card:copied") ?? "Copied!");
+    alert(dict.copied ?? "Copied!");
   };
   
   const getApp = async () => {
@@ -38,7 +48,7 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
         <QRCode qrCodeURL={qrCodeURL} />
 
         <div className="text-xs font-light text-gray-700 text-center break-words w-44 max-w-1/2">
-          {t("album-card:enterCode") ??
+          {dict.enterCode ??
             "Enter the code or scan the QR-Code to join via app."}
         </div>
 
@@ -52,7 +62,7 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
       </div>
 
       {/* <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch] text-sm">
-        {t("album-card:description") ?? "test description"}
+        {dict.description ?? "test description"}
       </p> */}
 
       {/* <button
@@ -74,7 +84,7 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
       </div>
 
       <div className="flex flex-col items-center text-xs text-center w-52">
-        {t("album-card:app.description") ??
+        {dict.app.description ??
           "With the app, you can upload your photos and add likes and comments."}
 
         <button
@@ -82,7 +92,7 @@ export default function AlbumCard({albumName, inviteCode, qrCodeURL}: AlbumCardP
           onClick={getApp}
           className="text-white text-center py-3.5 px-6 mt-2 bg-blue-700 hover:bg-zinc-300 rounded-lg uppercase text-xl transition hover:text-black font-bold"
         >
-          {t("album-card:app.installButton") ?? "Get the App"}
+          {dict.app.installButton ?? "Get the App"}
         </button>
       </div>
     </div>
