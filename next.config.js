@@ -4,6 +4,14 @@ const nextConfig = {
   experimental: {
     mdxRs: false,
   },
+  rewrites: () => {
+    return [
+      {
+        source: '/:locale/invites/:path*',
+        destination: '/:locale/invite/:path*',
+      },
+    ]
+  }
 };
 
 const withMDX = require("@next/mdx")();
