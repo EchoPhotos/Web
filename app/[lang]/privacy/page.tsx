@@ -3,11 +3,7 @@ import Link from "next/link";
 
 import Section from "@/components/Section";
 import { i18n } from "@/utils/i18n-config";
-
-const dictionary = async (lang: string) =>
-  import(`/locales/${lang}/privacy.json`).then(
-    (module) => module.default
-  );
+import { getDictionary } from "@/utils/dictionary";
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -15,7 +11,8 @@ export async function generateStaticParams() {
   });
 }
 export default async function PrivacyPage({ params: { lang } }) {
-  const dict = await dictionary(lang);
+  const dicts = await getDictionary(lang);
+  const dict = dicts.privacy;
 
   return (
     <>

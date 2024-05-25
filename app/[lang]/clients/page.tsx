@@ -1,9 +1,8 @@
 import AppStore from "@/components/Badges/AppStore";
 import ContentBox from "@/components/ContentBox";
 import FeatureSection from "@/components/FeatureSection";
+import { getDictionary } from "@/utils/dictionary";
 import { i18n } from "@/utils/i18n-config";
-
-const dictionary = async (lang) => import(`/locales/${lang}/home.json`).then((module) => module.default);
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -11,7 +10,8 @@ export async function generateStaticParams() {
   });
 }
 export default async function HomePage({params}) {
-  const dict = await dictionary(params.lang);
+  const dicts = await getDictionary(params.lang);
+  const dict = dicts.home;
 
   return (
     <>

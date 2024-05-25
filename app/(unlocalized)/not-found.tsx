@@ -1,13 +1,10 @@
 import BackButton from "@/components/BackButton";
-
-const dictionary = async () =>
-  import("../../locales/en/404.json").then(
-    (module) => module.default
-  );
+import { getDictionary } from "@/utils/dictionary";
 
 
 export default async function ErrorPage() {
-  const dict = await dictionary();
+  const dicts = await getDictionary("en");
+  const dict = dicts.wedding;
 
   return (
       <>

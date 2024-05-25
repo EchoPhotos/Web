@@ -1,0 +1,228 @@
+{
+  "wedding": {
+    "primarySection": {
+      "title": "Feiern. Einfangen. Erinnern.",
+      "subtitle": "Der beste Weg, alle Fotos Ihrer Großveranstaltung zu sammeln.",
+      "availableOn": "Verfügbar auf iPhone, Android, Web, Mac und Apple TV"
+    },
+    "features": [
+      {
+        "title": "Ein Album für alle Gäste",
+        "text": "Fügen Sie alle Ihre Gäste in einem Album zusammen. Jeder hat ein paar besondere Schnappschüsse, die Sie nicht verpassen sollten!"
+      },
+      {
+        "title": "Der Klassenbeste",
+        "text": "Keine Werbung und eine App in Premiumqualität sorgt dafür, dass jeder sie gerne nutzt."
+      },
+      {
+        "title": "Erlebe die besten Momente noch einmal",
+        "text": "Bring den Moment zurück, indem du in den Kommentaren die beste Geschichte erzählst, die zum Schnappschuss geführt hat. Und vergiss nicht, deine Favoriten zu liken!"
+      },
+      {
+        "title": "QR-Code teilen",
+        "text": "Um alle mit einzubeziehen, verfügt jedes Album über einen QR-Code, den Gäste scannen können, um hineinzukommen."
+      },
+      {
+        "title": "Alle Fotos herunterladen",
+        "text": "Speichern Sie die Fotos in der Galerie Ihres Telefons oder erstellen Sie einen Download-Link – jeder erhält die Fotos, die er möchte."
+      },
+      {
+        "title": "Mit einem Link einladen",
+        "text": "Ein Album-Einladungslink ist alles, was Ihre Gäste brauchen, um ihre Fotos in das Album Ihrer Veranstaltung hochzuladen."
+      }
+    ]
+  },
+  "privacy": {
+    "head": {
+      "title": "Echo Photos - Datenschutz"
+    },
+    "title": "Datenschutzerklärung",
+    "sections": [
+      {
+        "paragraphs": [
+          "Echo Labs AG hat die Echo Photos-App als Freemium-App entwickelt. Dieser DIENST wird von Echo Labs AG kostenlos zur Verfügung gestellt und ist für die Nutzung im Ist-Zustand vorgesehen.",
+          "Diese Seite wird verwendet, um Besucher über unsere Richtlinien zur Erfassung, Verwendung und Offenlegung personenbezogener Daten zu informieren, falls sich jemand für die Nutzung unseres Dienstes entscheidet.",
+          "Wenn Sie sich für die Nutzung unseres Dienstes entscheiden, stimmen Sie der Erfassung und Nutzung von Informationen im Zusammenhang mit dieser Richtlinie zu. Die von uns erfassten personenbezogenen Daten werden zur Bereitstellung und Verbesserung des Dienstes verwendet. Wir werden Ihre Daten nicht verwenden oder an Dritte weitergeben außer wie in dieser Datenschutzrichtlinie beschrieben.",
+          "Die in dieser Datenschutzrichtlinie verwendeten Begriffe haben die gleiche Bedeutung wie in unseren Allgemeinen Geschäftsbedingungen, die bei Echo Photos verfügbar sind, sofern in dieser Datenschutzrichtlinie nichts anderes definiert ist."
+        ]
+      },
+      {
+        "title": "Erhebung und Nutzung von Informationen",
+        "description": "Personenbezogene Daten sind alle Daten, die auf Sie persönlich bedeutsam sind, z. B. Name, Adresse, Telefonnummer und Standort. Wir verarbeiten Ihre personenbezogenen Daten unter Beachtung der geltenden Datenschutzbestimmungen, insbesondere des Schweizerischen Datenschutzgesetzes alle sonstigen anwendbaren internationalen und nationalen Gesetze zur Verarbeitung personenbezogener Daten. Wir erheben nur Daten, die gesetzlich oder vertraglich erforderlich sind, für den Abschluss und die Abwicklung eines Vertrages erforderlich sind oder für die Erbringung unserer Leistungen erforderlich sind Zur Abwicklung von Verträgen. Freiwillige Angaben sind als solche gekennzeichnet. Eine Nichtbereitstellung dieser Daten hat keine negativen Folgen. Allerdings kann die Nichtbereitstellung der Daten im Einzelfall die Kommunikation mit Ihnen erschweren oder verzögern. Konkret erheben wir Ihre Foto- und Textdaten und laden diese hoch, wenn Sie posten es in einer Gruppe. Wenn Sie der App außerdem die Verwendung von Adressbuchdaten ermöglichen, werden begrenzte Informationen auf unseren Server hochgeladen, um die Kontakte des Benutzers zu identifizieren. Die dabei erhobenen Daten werden nicht zur Verfolgung des Nutzers oder zur Analyse seines Verhaltens verwendet und weder verkauft noch an Dritte weitergegeben."
+      },
+      {
+        "title": "Cookies",
+        "paragraphs": [
+          "Cookies sind Dateien mit einer kleinen Datenmenge, die üblicherweise als anonyme eindeutige Kennungen verwendet werden. Diese werden von den Websites, die Sie besuchen, an Ihren Browser gesendet und im internen Speicher Ihres Geräts gespeichert.",
+          "Dieser Dienst verwendet diese 'Cookies' nicht ausdrücklich. Die App kann jedoch Code und Bibliotheken von Drittanbietern verwenden, die 'Cookies' verwenden, um Informationen zu sammeln und ihre Dienste zu verbessern. Sie haben die Möglichkeit, diese Cookies entweder zu akzeptieren oder abzulehnen und zu erfahren, wann Es wird ein Cookie an Ihr Gerät gesendet. Wenn Sie unsere Cookies ablehnen, können Sie möglicherweise einige Teile dieses Dienstes nicht nutzen."
+        ]
+      },
+      {
+        "title": "Sicherheit",
+        "description": "Wir schätzen Ihr Vertrauen in die Bereitstellung Ihrer personenbezogenen Daten und sind daher bestrebt, kommerziell akzeptable Mittel zum Schutz dieser Daten einzusetzen. Denken Sie jedoch daran, dass keine Methode der Übertragung über das Internet oder Methode der elektronischen Speicherung zu 100 % sicher ist zuverlässig, und wir können seine absolute Sicherheit nicht garantieren."
+      },
+      {
+        "title": "Links zu anderen Websites",
+        "description": "Dieser Dienst kann Links zu anderen Websites enthalten. Wenn Sie auf einen Link eines Drittanbieters klicken, werden Sie zu dieser Website weitergeleitet. Beachten Sie, dass diese externen Websites nicht von uns betrieben werden. Wir empfehlen Ihnen daher dringend, dies zu tun Lesen Sie die Datenschutzrichtlinien dieser Websites. Wir haben keine Kontrolle über den Inhalt, die Datenschutzrichtlinien oder die Praktiken von Websites oder Diensten Dritter und übernehmen keine Verantwortung dafür."
+      },
+      {
+        "title": "Datenschutz von Kindern",
+        "description": "Diese Dienste richten sich nicht an Personen unter 13 Jahren. Wir erfassen wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren. Sollten wir feststellen, dass ein Kind unter 13 Jahren uns personenbezogene Daten zur Verfügung gestellt hat, löschen wir diese unverzüglich. Dies erfolgt von unseren Servern. Wenn Sie ein Elternteil oder Erziehungsberechtigter sind und wissen, dass Ihr Kind uns personenbezogene Daten zur Verfügung gestellt hat, kontaktieren Sie uns bitte, damit wir die erforderlichen Maßnahmen ergreifen können."
+      },
+      {
+        "title": "Änderungen dieser Datenschutzrichtlinie",
+        "paragraphs": [
+          "Wir können unsere Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir empfehlen Ihnen daher, diese Seite regelmäßig auf Änderungen zu überprüfen. Wir werden Sie über alle Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen.",
+          "Diese Richtlinie gilt ab dem 01.02.2021"
+        ]
+      },
+      {
+        "title": "Kontaktieren Sie uns",
+        "description": "Wenn Sie Fragen oder Anregungen zu unserer Datenschutzrichtlinie haben, zögern Sie nicht, uns unter zu kontaktieren."
+      }
+    ]
+  },
+  "press": {
+    "head": {
+      "title": "Echo Photos - Medien"
+    },
+    "title": "Medien",
+    "description": "Wir haben eine Bildersammlung in einer Pressemappe sowie einen Flyer mit den wichtigsten Daten von Echo Photos.",
+    "kit": "Pressemappe herunterladen",
+    "flyer": "Flyer herunterladen"
+  },
+  "invite": {
+    "social-preview": {
+      "description": "Albumeinladung"
+    },
+    "copied": "In die Ablage kopiert!",
+    "title": "Einladungs-Code für Album",
+    "albumInvite": "Album-Einladung",
+    "description": "Trete dem Album bei indem du den Code in der Echo Photos App eingibst. Du kannst auch den QR-code mit deinem Mobiltelefon scannen, falls du die App bereits installiert hast.",
+    "copy-code": "Code Kopieren",
+    "download": {
+      "title": "Hole dir Echo Photos",
+      "description": "Der Einladungslink den du zu Öffnen versuchst kann mit der Echo Photos App geöffnet werden."
+    }
+  },
+  "home": {
+    "title": "Full-Res. Einfach. Überlegene Fotoalben",
+    "subtitle": "Die beste Lösung zum Teilen von Fotos: Alben erstellen, Freunde hinzufügen, Bilder in voller Auflösung hochladen und Kommentare schreiben - schaffen Sie unvergessliche Erinnerungen!",
+    "featureOverviewSection": {
+      "title": "Grenzenlose Erinnerungen",
+      "features": [
+        {
+          "title": "Volle Auflösung",
+          "description": "Teilen Sie Ihre Fotos in voller Auflösung und in Originalqualität."
+        },
+        {
+          "title": "Premium-Datenschutz",
+          "description": "Keine Werbung, kein Tracking und sichere Speicherung: Die Vorteile eines unabhängigen Unternehmens kommen allen zugute."
+        },
+        {
+          "title": "Kostenlos im ersten Jahr",
+          "description": "Keine Abonnements, keine Speicherbeschränkung: Premium-Funktionen werden einmal bezahlt und bleiben für immer erhalten. Im ersten Nutzungsjahr sind alle Alben kostenlos Premium!"
+        },
+        {
+          "title": "AirDrop, aber für Gruppen",
+          "description": "Abgesehen von der Android-Unterstützung bietet Echo Photos im Vergleich zu AirDrop viele Vorteile. Mit intelligenten Download-Tools laden Sie Ihre Fotos nie wieder versehentlich herunter!"
+        },
+        {
+          "title": "Verfeinertes Design",
+          "description": "Eine sorgfältig gestaltete App: Einfach und dennoch funktionsreich, sodass Sie sich auf das konzentrieren können, was Sie tun möchten."
+        },
+        {
+          "title": "Social Sharing",
+          "description": "Kommentare und Likes für Ihre Gruppenbilder: Echo bietet ein privates soziales Netzwerkerlebnis. Nur für echte Freunde."
+        }
+      ]
+    },
+    "privacy": {
+      "subtitle": "Sag Nein zum Tracking!",
+      "title": "Premium-Datenschutz",
+      "paragraphs": [
+        "Echo Photos monetarisiert Ihre privaten Daten nicht. Wir verfolgen keine Benutzerdaten für Anzeigen oder deren Verkauf. Für uns sind Sie unser Kunde - Sie verdienen unseren besten Service!",
+        "Ihre Erinnerungen sind an einem sicheren Ort. Unter Verwendung der höchsten Sicherheitsstandards halten wir uns über die neuesten Sicherheitsfunktionen auf dem Laufenden.",
+        "Unsere Server laufen mit modernsten Sicherheitsfunktionen - wir riskieren nichts.",
+        "Datenschutz steht bei uns an erster Stelle. Alle Ihre Daten werden sicher in der Schweiz gespeichert 🇨🇭. Um den Schutz Ihrer Bilder sollte man sich keine Sorgen machen."
+      ]
+    },
+    "climate": {
+      "subtitle": "Sorge für das Klima",
+      "title": "CO2-Neutral",
+      "paragraphs": [
+        "Unsere Server laufen komplett CO2-neutral.",
+        "Ausserdem haben wir uns zum Ziel gesetzt, bis 2030 völlig kohlenstofffrei zu sein."
+      ]
+    },
+    "albums": {
+      "title": "Geteilte Alben",
+      "sections": [
+        {
+          "title": "Fotos teilen - für immer behalten",
+          "paragraphs": [
+            "Mit Echo Photos können Sie Fotos schnell, einfach und ewig teilen. Kein Abonnement erforderlich!",
+            "Echo Photos ist der beste Weg, Bilder eines unvergesslichen Tages mit Ihren Freunden zu teilen.",
+            "Speichern Sie Ihre Bilder sicher mit dem ewigen Speicher von Echo Photos.",
+            "Gefällt mir und kommentiere die Bilder deiner Freunde in deinen Alben."
+          ]
+        },
+        {
+          "title": "Premiumfotos für unvergessliche Momente",
+          "description": "Teilen Sie Bilder mit Hunderten von Gästen von Veranstaltungen wie Hochzeiten, Partys und anderen Festlichkeiten. 🥳"
+        }
+      ]
+    },
+    "desktop": {
+      "title": "Desktop",
+      "description": "Verwenden Sie Echo Photos, wo immer Sie wollen! Neben den wichtigsten iOS- und Android-Apps können Sie Ihre Alben auch auf macOS und im Browser ansehen!",
+      "sections": [
+        {
+          "title": "Echo-Fotos in Ihrem Browser",
+          "description": "Laden Sie die Fotos über das Echo Photos-Browser-Plugin direkt von Ihrem Computer hoch und laden Sie sie herunter.",
+          "open-web-app": "Web-App öffnen"
+        },
+        {
+          "title": "Client für MacOS",
+          "description": "Verwenden Sie Echo Photos über die macOS-App auf jedem Mac, der dasselbe iCloud-Konto wie Ihr iOS-Gerät verwendet. Derzeit ist die Anmeldung nur auf diese Weise möglich."
+        }
+      ]
+    }
+  },
+  "common": {
+    "navbar": {
+      "weddings": "Hochzeiten",
+      "features": "Funktionen",
+      "albums": "Alben",
+      "desktop": "Desktop",
+      "download": "Herunterladen"
+    },
+    "footer": {
+      "home": "Home",
+      "webapp": "Web App",
+      "instagram": "Instagram",
+      "privacy": "Datenschutz",
+      "press": "Medien",
+      "copyright": {
+        "text-before": "Copyright",
+        "rights": "All rights reserved."
+      },
+      "bottom-text": "Coded with ❤️ in 🇨🇭"
+    }
+  },
+  "albumCard": {
+    "copied": "In die Ablage kopiert!",
+    "enterCode": "Gib den Code ein oder scanne den QR-Code, um per App teilzunehmen.",
+    "getAppExplanation": "Mit der App kannst du deine Fotos hochladen und Likes und Kommentare hinzufügen.",
+    "getFreeApp": "Hol dir die kostenlose App",
+    "hostedOn": "Gehostet auf",
+    "app": {
+      "installButton": "Hol dir die App",
+      "description": "Mit der App können Sie Ihre Fotos hochladen und Likes und Kommentare hinzufügen."
+    }
+  },
+  "404": {
+    "error-message": "Fehler 404: Diese Seite existiert nicht.",
+    "go-back": "Zurück"
+  }
+}

@@ -2,22 +2,25 @@ import Clarity from "@/components/Clarity";
 import "@/styles/style.css";
 import DefaultLayout from "@/components/DefaultLayout";
 import { i18n } from "@/utils/i18n-config";
+import { getDictionary } from "@/utils/dictionary";
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
     lang;
   });
 }
-export default function Layout({
+export default async function Layout({
   children, params,
 }: {
   children: React.ReactNode;
   params: any;
 }) {
+  const dicts = await getDictionary(params.lang);
+  const dict = dicts.privacy;
   return (
     <html lang={params.lang}>
       <body>
-        <DefaultLayout lang={params.lang}>
+        <DefaultLayout lang={params.lang} dicts={dicts}>
           <Clarity />
           {children}
         </DefaultLayout>

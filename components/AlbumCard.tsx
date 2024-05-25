@@ -1,24 +1,16 @@
 import React from "react";
-import AppStore from "./Badges/AppStore";
-import GooglePlay from "./Badges/GooglePlay";
-import WebApp from "./Badges/WebApp";
 import QRCode from "./QRCode";
+import { getDictionary } from "@/utils/dictionary";
 
 interface AlbumCardProps {
   albumName?: string;
   inviteCode: string;
   qrCodeURL: string;
-  lang: string;
+  albumCardDict: any;
 }
 
-const dictionary = (lang) =>
-  import(`/locales/${lang}/album-card.json`).then(
-    (module) => module.default
-  );
-
-
-export default async function AlbumCard({albumName, inviteCode, qrCodeURL, lang}: AlbumCardProps) {
-  const dict = await dictionary(lang);
+export default async function AlbumCard({albumName, inviteCode, qrCodeURL, albumCardDict}: AlbumCardProps) {
+  const dict = albumCardDict;
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(inviteCode);
@@ -73,7 +65,7 @@ export default async function AlbumCard({albumName, inviteCode, qrCodeURL, lang}
       </button> */}
 
       <div className="flex flex-row items-center space-x-5">
-        Hosted on
+        {dict.hostedOn}
         <img
           src="/images/AppIcon300.png"
           height="50"

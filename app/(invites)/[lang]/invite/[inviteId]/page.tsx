@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import InvitePreview, { InvitePreviewData } from "./InvitePreview";
 import admin from "firebase-admin";
 import { AlbumItem, Invite } from "@/utils/types";
+import { getDictionary } from "@/utils/dictionary";
 
 async function getData(inviteId: string): Promise<InvitePreviewData> {
   if (admin.apps.length == 0) {
@@ -45,11 +46,13 @@ type Props = {
 
 export default async function Page(props: Props) {
   const fetchedData = await getData(props.params.inviteId);
+  const dicts = await getDictionary(props.params.lang);
   return (
     <InvitePreview
-      data={{ ...fetchedData, imageId: props.searchParams.imageId }}
+      data = {{ ...fetchedData, imageId: props.searchParams.imageId }}
+      albumCardDict = {dicts.albumCard}
       lang = {props.params.lang}
-    ></InvitePreview>
+    />
   );
 }
 

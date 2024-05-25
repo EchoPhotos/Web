@@ -18,7 +18,7 @@ export interface InvitePreviewData {
   albumPreviewImageUrl: string;
 }
 
-export default function InvitePreview(props: { data: InvitePreviewData, lang: string }) {
+export default function InvitePreview(props: { data: InvitePreviewData, albumCardDict: any, lang: string }) {
   const data = props.data;
   const fullInviteId = data.inviteId as string;
   const imageId = data.imageId;
@@ -58,7 +58,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, lang: st
               albumName={data.invite.groupName}
               inviteCode={inviteCode}
               qrCodeURL={data.qrUrl}
-              lang={props.lang}
+              albumCardDict={props.albumCardDict}
             />
             {data.items.map((albumItem) => (
               <GridImage

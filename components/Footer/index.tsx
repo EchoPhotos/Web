@@ -1,14 +1,7 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
 
-const dictionary = (lang: string) =>
-  import(`/locales//${lang}/common.json`).then(
-    (module) => module.default
-  );
-
-export default async function Footer({ lang }) {
-  const dict = await dictionary(lang);
-
+export default async function Footer({ lang, dict }) {
   return (
     <footer className="bg-neutral-100 py-12 text-sm mt-auto">
       <div className="container mx-auto text-center flex flex-col items-center">

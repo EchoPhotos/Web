@@ -1,0 +1,228 @@
+{
+  "wedding": {
+    "primarySection": {
+      "title": "Célébrer. Capturer. Revivre.",
+      "subtitle": "La meilleure façon de collecter toutes les photos de votre grand événement.",
+      "availableOn": "Disponible sur iPhone, Android, Web, Mac et Apple TV"
+    },
+    "features": [
+      {
+        "title": "Un album pour tous les invités",
+        "text": "Rassemblez tous vos invités dans un album. Chacun a des clichés spéciaux que vous ne voulez pas manquer !"
+      },
+      {
+        "title": "Le meilleur de sa catégorie",
+        "text": "Pas de publicités et une application de qualité premium que tout le monde adore utiliser."
+      },
+      {
+        "title": "Revivez les meilleurs moments",
+        "text": "Revivez le moment en racontant la meilleure histoire qui a mené au cliché dans les commentaires. Et n'oubliez pas d'aimer vos favoris !"
+      },
+      {
+        "title": "Partagez le QR Code",
+        "text": "Pour que tout le monde participe, chaque album a un QR Code que les invités peuvent scanner pour y accéder."
+      },
+      {
+        "title": "Téléchargez toutes les photos",
+        "text": "Enregistrez les photos dans la galerie de votre téléphone ou créez un lien de téléchargement - tout le monde obtiendra les photos qu'il souhaite."
+      },
+      {
+        "title": "Invitez avec un lien",
+        "text": "Un lien d'invitation à l'album est tout ce dont vos invités ont besoin pour télécharger leurs photos dans l'album de votre événement."
+      }
+    ]
+  },
+  "privacy": {
+    "head": {
+      "title": "Echo Photos - Confidentialité"
+    },
+    "title": "Politique de confidentialité",
+    "sections": [
+      {
+        "paragraphs": [
+          "Echo Labs AG a construit l'appli Echo Photos comme une application Freemium. Ce SERVICE est fourni par Echo Labs AG sans frais et est destiné à être utilisé tel quel.",
+          "Cette page est utilisée pour informer les visiteurs de nos politiques concernant la collecte, l'utilisation et la divulgation des Informations Personnelles si quelqu'un décide d'utiliser notre Service.",
+          "Si vous choisissez d'utiliser notre Service, vous acceptez alors la collecte et l'utilisation d'informations en relation avec cette politique. Les Informations Personnelles que nous collectons sont utilisées pour fournir et améliorer le Service. Nous n'utiliserons ni ne partagerons vos informations avec quiconque, sauf comme décrit dans cette Politique de Confidentialité.",
+          "Les termes utilisés dans cette Politique de Confidentialité ont les mêmes significations que dans nos Termes et Conditions, accessibles sur Echo Photos, sauf définition contraire dans cette Politique de Confidentialité."
+        ]
+      },
+      {
+        "title": "Collecte et utilisation des informations",
+        "description": "Les données personnelles incluent toutes les données qui vous concernent personnellement, par exemple nom, adresse, numéro de téléphone et localisation. Nous traitons vos données personnelles tout en respectant les réglementations de protection des données applicables, en particulier la Loi suisse sur la protection des données et toutes les autres lois internationales et nationales applicables au traitement des données personnelles. Nous ne collectons que les données qui sont légalement ou contractuellement requises, ou qui sont nécessaires pour la conclusion et la promotion d'un contrat ou nécessaires pour que nous puissions fournir nos services et traiter des contrats. Les informations volontaires sont marquées comme telles. Il n'y a aucune conséquence négative à ne pas fournir ces données. Cependant, ne pas fournir de données peut dans certains cas rendre la communication avec vous difficile ou retardée. Plus précisément, nous collectons et téléchargeons vos données photo et texte lorsque vous les publiez dans un groupe. De plus, lorsque vous permettez à l'appli d'utiliser les données du carnet d'adresses, des informations limitées sont téléchargées sur notre serveur pour identifier les contacts de l'utilisateur. Les données ainsi collectées ne sont pas utilisées pour suivre l'utilisateur, analyser son comportement et ne sont ni vendues ni partagées avec des services tiers."
+      },
+      {
+        "title": "Cookies",
+        "paragraphs": [
+          "Les cookies sont des fichiers contenant une petite quantité de données qui sont couramment utilisés comme identifiants uniques anonymes. Ceux-ci sont envoyés à votre navigateur à partir des sites Web que vous visitez et sont stockés dans la mémoire interne de votre appareil.",
+          "Ce Service n'utilise pas explicitement ces « cookies ». Cependant, l'appli peut utiliser du code et des bibliothèques tiers qui utilisent des « cookies » pour collecter des informations et améliorer leurs services. Vous avez la possibilité d'accepter ou de refuser ces cookies et de savoir quand un cookie est envoyé à votre appareil. Si vous choisissez de refuser nos cookies, il se peut que vous ne puissiez pas utiliser certaines parties de ce Service."
+        ]
+      },
+      {
+        "title": "Sécurité",
+        "description": "Nous apprécions votre confiance en nous fournissant vos Informations Personnelles, c'est pourquoi nous nous efforçons d'utiliser des moyens commercialement acceptables pour les protéger. Mais rappelez-vous qu'aucune méthode de transmission sur Internet, ni aucune méthode de stockage électronique n'est sûre et fiable à 100 %, et nous ne pouvons en garantir la sécurité absolue."
+      },
+      {
+        "title": "Liens vers d'autres sites",
+        "description": "Ce Service peut contenir des liens vers d'autres sites. Si vous cliquez sur un lien tiers, vous serez dirigé vers ce site. Notez que ces sites externes ne sont pas exploités par nous. Par conséquent, nous vous conseillons fortement de revoir la Politique de Confidentialité de ces sites Web. Nous n'avons aucun contrôle sur le contenu, les politiques de confidentialité ou les pratiques des sites ou services tiers, et n'assumons aucune responsabilité à cet égard."
+      },
+      {
+        "title": "Confidentialité des enfants",
+        "description": "Ces Services ne s'adressent à personne de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles identifiables auprès d'enfants de moins de 13 ans. Dans le cas où nous découvririons qu'un enfant de moins de 13 ans nous a fourni des informations personnelles, nous les supprimons immédiatement de nos serveurs. Si vous êtes parent ou tuteur et que vous êtes au courant que votre enfant nous a fourni des informations personnelles, veuillez nous contacter afin que nous puissions prendre les mesures nécessaires."
+      },
+      {
+        "title": "Modifications de cette Politique de Confidentialité",
+        "paragraphs": [
+          "Nous pouvons mettre à jour notre Politique de Confidentialité de temps en temps. Vous êtes donc conseillé de consulter périodiquement cette page pour tout changement. Nous vous informerons de tout changement en publiant la nouvelle Politique de Confidentialité sur cette page.",
+          "Cette politique est effective à partir du 01-02-2021"
+        ]
+      },
+      {
+        "title": "Contactez-nous",
+        "description": "Si vous avez des questions ou des suggestions concernant notre Politique de Confidentialité, n'hésitez pas à nous contacter à"
+      }
+    ]
+  },
+  "press": {
+    "head": {
+      "title": "Echo Photos - Presse"
+    },
+    "title": "Presse",
+    "description": "Nous avons une collection d'images dans un kit de presse ainsi qu'un flyer contenant les informations les plus importantes d'Echo Photos.",
+    "kit": "Télécharger le kit de presse",
+    "flyer": "Télécharger le flyer"
+  },
+  "invite": {
+    "social-preview": {
+      "description": "Invitation à l'album"
+    },
+    "copied": "Copié dans le presse-papier !",
+    "title": "Code d'invitation à l'album",
+    "albumInvite": "Invitation à l'album",
+    "description": "Rejoignez l'album en entrant le code dans l'appli Echo Photos. Vous pouvez également scanner le code QR avec votre téléphone si vous avez l'appli installée.",
+    "copy-code": "Copier le code",
+    "download": {
+      "title": "Obtenez Echo Photos",
+      "description": "Le lien d'invitation que vous essayez d'ouvrir peut être ouvert avec l'appli Echo Photos."
+    }
+  },
+  "home": {
+    "title": "Résolution complète. Simple. Albums photo suprêmes",
+    "subtitle": "La solution idéale pour partager des photos : créez des albums, ajoutez des amis, téléchargez des images en pleine résolution et écrivez des commentaires - créez des souvenirs éternels !",
+    "featureOverviewSection": {
+      "title": "Souvenirs illimités",
+      "features": [
+        {
+          "title": "Pleine résolution",
+          "description": "Partagez vos photos en pleine résolution dans leur qualité d'origine."
+        },
+        {
+          "title": "Confidentialité premium",
+          "description": "Pas de publicités, pas de suivi et un stockage sécurisé : les avantages d'une entreprise indépendante profitent à tous."
+        },
+        {
+          "title": "Gratuit pour la première année",
+          "description": "Pas d'abonnements, pas de limites de stockage : les fonctionnalités premium sont payées une fois et conservées pour toujours. Pendant la première année d'utilisation, tous les albums sont Premium gratuitement !"
+        },
+        {
+          "title": "AirDrop, mais pour les groupes",
+          "description": "En plus de la prise en charge d'Android, Echo Photos a de nombreux avantages par rapport à AirDrop. Avec des outils de téléchargement intelligents, ne téléchargez plus jamais accidentellement vos photos !"
+        },
+        {
+          "title": "Design raffiné",
+          "description": "Une application soigneusement conçue : simple et pourtant riche en fonctionnalités, vous permettant de vous concentrer sur ce que vous voulez faire."
+        },
+        {
+          "title": "Partage social",
+          "description": "Commentaires et likes pour vos images de groupe : Echo offre une expérience de réseau social privé. Pour de vrais amis uniquement."
+        }
+      ]
+    },
+    "privacy": {
+      "subtitle": "Dites non au suivi !",
+      "title": "Confidentialité Premium",
+      "paragraphs": [
+        "Echo Photos ne monétise pas vos données privées. Nous ne suivons pas les données des utilisateurs pour les publicités ou pour les vendre. Pour nous, vous êtes notre client - vous méritez notre meilleur service !",
+        "Vos souvenirs sont en lieu sûr. En utilisant les normes de sécurité les plus élevées, nous suivons les dernières fonctionnalités de sécurité.",
+        "Nos serveurs fonctionnent avec des fonctionnalités de sécurité de pointe - nous ne mettons rien en danger.",
+        "La confidentialité est notre principale préoccupation. Toutes vos données sont stockées en toute sécurité en Suisse 🇨🇭. On ne devrait jamais s'inquiéter de la protection de ses photos."
+      ]
+    },
+    "climate": {
+      "subtitle": "Soucieux du climat",
+      "title": "Neutre en carbone",
+      "paragraphs": [
+        "Nos serveurs fonctionnent entièrement de manière neutre en carbone.",
+        "De plus, nous nous engageons à être totalement neutres en carbone d'ici 2030."
+      ]
+    },
+    "albums": {
+      "title": "Albums partagés",
+      "sections": [
+        {
+          "title": "Partagez des photos - Gardez-les pour toujours",
+          "paragraphs": [
+            "Avec Echo Photos, vous bénéficierez d'un partage de photos rapide, simple et éternel. Pas besoin d'abonnement !",
+            "Echo Photos est le meilleur moyen de partager des photos d'une journée mémorable avec vos amis.",
+            "Stockez vos photos en toute sécurité avec le stockage éternel d'Echo Photos.",
+            "Aimez et commentez les photos de vos amis dans vos albums."
+          ]
+        },
+        {
+          "title": "Photos Premium pour des moments inoubliables",
+          "description": "Partagez des photos avec des centaines d'invités lors d'événements comme des mariages, des fêtes et d'autres festivités. 🥳"
+        }
+      ]
+    },
+    "desktop": {
+      "title": "Bureau",
+      "description": "Utilisez Echo Photos où vous voulez ! En plus des applications principales iOS et Android, vous pouvez également consulter vos albums sur macOS et dans le navigateur !",
+      "sections": [
+        {
+          "title": "Echo Photos dans votre navigateur",
+          "description": "Téléchargez et téléchargez directement les photos depuis votre ordinateur via le plugin de navigateur Echo Photos.",
+          "open-web-app": "Ouvrir l'appli Web"
+        },
+        {
+          "title": "Client pour macOS",
+          "description": "Utilisez Echo Photos via l'appli macOS sur n'importe quel Mac utilisant le même compte iCloud que votre appareil iOS. Actuellement, la connexion n'est possible que de cette manière."
+        }
+      ]
+    }
+  },
+  "common": {
+    "navbar": {
+      "weddings": "Mariages",
+      "features": "Fonctionnalités",
+      "albums": "Albums",
+      "desktop": "Bureau",
+      "download": "Télécharger"
+    },
+    "footer": {
+      "home": "Accueil",
+      "webapp": "Application Web",
+      "instagram": "Instagram",
+      "privacy": "Confidentialité",
+      "press": "Presse",
+      "copyright": {
+        "text-before": "Droits d'auteur",
+        "rights": "Tous droits réservés."
+      },
+      "bottom-text": "Codé avec ❤️ en 🇨🇭"
+    }
+  },
+  "albumCard": {
+    "copied": "Copié dans le presse-papier !",
+    "enterCode": "Entrez le code ou scannez le QR-Code pour rejoindre via l'appli.",
+    "getAppExplanation": "Avec l'appli, vous pouvez télécharger vos photos et ajouter des likes et des commentaires.",
+    "getFreeApp": "Obtenez l'appli gratuite",
+    "hostedOn": "Hébergé sur",
+    "app": {
+      "installButton": "Obtenir l'appli",
+      "description": "Avec l'appli, vous pouvez télécharger vos photos et ajouter des likes et des commentaires."
+    }
+  },
+  "404": {
+    "error-message": "Erreur 404 : Cette page n'existe pas.",
+    "go-back": "Retourner"
+  }
+}

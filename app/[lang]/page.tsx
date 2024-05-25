@@ -8,15 +8,15 @@ import ContentBox from "@/components/ContentBox";
 import FeatureSection from "@/components/FeatureSection";
 import FullScreenSection from "@/components/FullScreenSection";
 import { i18n } from "@/utils/i18n-config";
-
-const dictionary = async (lang: string) => import(`/locales/${lang}/home.json`).then((module) => module.default);
+import { getDictionary } from "@/utils/dictionary";
 
 export async function generateStaticParams() {
   return i18n.locales.map(lang => { lang });
 }
 
 export default async function HomePage({ params: { lang } }) {
-  const dict = await dictionary(lang);
+  const dicts = await getDictionary(lang);
+  const dict = dicts.home;
 
   return (
     <>

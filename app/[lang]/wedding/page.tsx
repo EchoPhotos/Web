@@ -10,6 +10,7 @@ import GooglePlay from "@/components/Badges/GooglePlay";
 import ContentBox from "@/components/ContentBox";
 import FullScreenSection from "@/components/FullScreenSection";
 import { i18n } from "@/utils/i18n-config";
+import { getDictionary } from "../../../utils/dictionary";
 
 const cinzelFont = Cinzel({ subsets: ["latin"] });
 const quickSandFont = Quicksand({ subsets: ["latin"] });
@@ -18,11 +19,6 @@ const josefinSansFont = Josefin_Sans({ subsets: ["latin"] });
 const playfairFont = Playfair_Display({ subsets: ["latin"] });
 
 const titleFont = playfairFont;
-
-const dictionary = (lang) =>
-  import(`/locales/${lang}/wedding.json`).then(
-    (module) => module.default
-  );
   
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -31,7 +27,8 @@ export async function generateStaticParams() {
 }
 
 export default async function WeddingPage({params}) {
-  const dict = await dictionary(params.lang);
+  const dicts = await getDictionary(params.lang);
+  const dict = dicts.wedding;
 
   return (
     <>

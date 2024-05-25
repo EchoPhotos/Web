@@ -2,9 +2,7 @@ import { IoArrowDownCircleOutline } from "react-icons/io5";
 import Link from "next/link";
 import Section from "@/components/Section";
 import { i18n } from "@/utils/i18n-config";
-
-const dictionary = async (lang) =>
-  import(`/locales/${lang}/press.json`).then((module) => module.default);
+import { getDictionary } from "@/utils/dictionary";
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -12,7 +10,8 @@ export async function generateStaticParams() {
   });
 }
 export default async function PressPage({params}) {
-  const dict = await dictionary(params.lang);
+  const dicts = await getDictionary(params.lang);
+  const dict = dicts.press;
 
   return (
     <>
