@@ -114,7 +114,7 @@ export default async function HomePage({ params: { lang } }) {
       <section className="py-24">
         <ContentBox
           left={false}
-          imageURL="https://source.unsplash.com/eluzJSfkNCk/400x600"
+          imageURL="/images/wallis.jpg"
           title=""
         >
           <div className="text-right md:text-right">
