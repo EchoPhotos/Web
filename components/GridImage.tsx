@@ -1,20 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Ref } from "react";
+import { AlbumItem } from "@/utils/types";
 
 interface GridImageProps {
-  id: string;
-  href: string;
-  src: string;
+  lang: string;
+  domain: string
+  inviteId: string;
   ref?: Ref<HTMLAnchorElement>;
+  albumItem: AlbumItem
 }
 
-export default function GridImage({ id, href, src, ref }: GridImageProps) {
+export default function GridImage(props: GridImageProps) {
   return (
     <Link
-      key={id}
-      href={href}
-      ref={ref}
+      key={props.albumItem.image}
+      href={`/${props.lang}/invite/${props.inviteId}?imageId=${props.albumItem.image}`}
+      ref={props.ref}
       shallow
       className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
     >
@@ -22,7 +24,7 @@ export default function GridImage({ id, href, src, ref }: GridImageProps) {
         alt="Album Image"
         className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
         style={{ transform: "translate3d(0, 0, 0)" }}
-        src={src}
+        src={`${props.domain}/api/v1/invites/${props.inviteId}/images/${props.albumItem.image}/preview`}
         width={720}
         height={480}
         unoptimized={true}

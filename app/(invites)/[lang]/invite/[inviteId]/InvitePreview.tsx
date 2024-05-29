@@ -62,14 +62,15 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
             />
             {data.items.map((albumItem) => (
               <GridImage
-                id={albumItem.image}
-                href={`/${props.lang}/invite/${data.inviteId}?imageId=${albumItem.image}`}
-                src={`${data.domain}/api/v1/invites/${data.inviteId}/images/${albumItem.image}/preview`}
+                lang={props.lang}
                 ref={
                   albumItem.image === lastViewedPhoto
                     ? lastViewedPhotoRef
                     : undefined
                 }
+                domain={data.domain}
+                inviteId={data.inviteId}
+                albumItem={albumItem}
               />
             ))}
           </div>
