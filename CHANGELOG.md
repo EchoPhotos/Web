@@ -5,6 +5,7 @@
 - Move prop logic into `GridImage`
 - Fix header spacing #2
 - Filter hidden items
+- Add video playback
 
 ## 2024-05-2X
 - Add app install button

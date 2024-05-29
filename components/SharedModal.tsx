@@ -24,6 +24,13 @@ export default function SharedModal({
     range(index - 15, index + 15).includes(albumItems.indexOf(img))
   );
 
+  if (albumItems.length <= index) {
+    return;
+  }
+
+  let item = albumItems[index];
+  let currentImage = albumItems ? item.image : currentPhoto;
+
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       if (index < albumItems?.length - 1) {
@@ -35,15 +42,8 @@ export default function SharedModal({
         changePhotoId(index - 1);
       }
     },
-    trackMouse: true,
+    trackMouse: true
   });
-
-  if (albumItems.length <= index) {
-    return;
-  }
-
-  let item = albumItems[index];
-  let currentImage = albumItems ? item.image : currentPhoto;
 
   return (
     <MotionConfig
@@ -69,15 +69,35 @@ export default function SharedModal({
                 exit="exit"
                 className="absolute"
               >
-                <Image
-                  src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/preview`}
-                  width={1280}
-                  height={853}
-                  unoptimized={true}
-                  priority
-                  alt=""
-                  onLoad={() => setLoaded(true)}
-                />
+                {(() => {
+                  if (item.video) {
+                    return (
+                      <video
+                        width="1280"
+                        height="853"
+                        controls
+                        autoPlay
+                        preload="auto"
+                        playsInline
+                        src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/video`}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    );
+                  } else {
+                    return (
+                      <Image
+                        src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/preview`}
+                        width={1280}
+                        height={853}
+                        unoptimized={true}
+                        priority
+                        alt=""
+                        onLoad={() => setLoaded(true)}
+                      />
+                    );
+                  }
+                })()}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -110,7 +130,9 @@ export default function SharedModal({
               </>
               <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
                 <a
-                  href={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/original`}
+                  href={`${domain}/api/v1/invites/${invite.id}/images/${
+                    item.image
+                  }/${item.video ? "video" : "original"}`}
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                   target="_blank"
                   title="Open fullsize version"
@@ -121,8 +143,12 @@ export default function SharedModal({
                 <button
                   onClick={() =>
                     downloadPhoto(
-                      `${domain}/api/v1/invites/${invite.id}/images/${item.image}/original`,
-                      `${(invite.groupName ?? "echo-photos") +"-"+ index}.jpg`
+                      `${domain}/api/v1/invites/${invite.id}/images/${
+                        item.image
+                      }/${item.video ? "video" : "original"}`,
+                      `${(invite.groupName ?? "echo-photos") + "-" + index}.${
+                        item.video ? "mp4" : "jpg"
+                      }`
                     )
                   }
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
