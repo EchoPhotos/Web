@@ -17,7 +17,7 @@ async function getData(inviteId: string): Promise<InvitePreviewData> {
   if (!itemsResponse.ok) {
     throw new Error("Failed to fetch items data");
   }
-  let items: [AlbumItem] = await itemsResponse.json();
+  let items: AlbumItem[] = await itemsResponse.json();
 
   const inviteURL = `${domain}/api/v1/invites/${inviteId}`;
   const inviteResponse: Response = await fetch(inviteURL);
@@ -38,6 +38,8 @@ async function getData(inviteId: string): Promise<InvitePreviewData> {
         return 0; // Equal timestamps retain relative order
       }
     });
+    
+  items = items.filter((item) => !item.hidden);
 
   return {
     invite: invite,
