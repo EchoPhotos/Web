@@ -31,7 +31,7 @@ export default async function DefaultLayout({ lang, dicts, children }) {
   return (
     <>
       <Header sections={headerItems} lang={lang} />
-      <main className="pt-20 h-auto">{children}</main>
+      <main className="pt-20 md:pt-0 h-auto">{children}</main>
       <Footer lang={lang} dict={dicts.common} />
     </>
   );

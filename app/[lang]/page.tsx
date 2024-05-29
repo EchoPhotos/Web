@@ -20,7 +20,7 @@ export default async function HomePage({ params: { lang } }) {
 
   return (
     <>
-      <FullScreenSection className="-mt-16">
+      <FullScreenSection>
         <ContentBox left={true} imageURL="/../images/title.png" title="">
           <h1 className="font-bold mb-6">{dict.title}</h1>
 
