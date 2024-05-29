@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+- Fix (pinned) item order
+
+## 2024-05-2X
 - Add app install button
 - `AlbumCard` tweaks
 

@@ -26,6 +26,19 @@ async function getData(inviteId: string): Promise<InvitePreviewData> {
   }
   let invite: Invite = await inviteResponse.json();
 
+  items = items.sort((a, b) => {
+      if (a.pinned !== b.pinned) {
+        return a.pinned ? -1 : 1; // Pinned items come first
+      } else {
+        if (a.contentTimeStamp < b.contentTimeStamp) {
+          return -1; // Recent items first
+        } else if (a.contentTimeStamp > b.contentTimeStamp) {
+          return 1; // Older items next
+        }
+        return 0; // Equal timestamps retain relative order
+      }
+    });
+
   return {
     invite: invite,
     items: items,
