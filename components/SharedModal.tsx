@@ -38,7 +38,12 @@ export default function SharedModal({
     trackMouse: true,
   });
 
-  let currentImage = albumItems ? albumItems[index].image : currentPhoto;
+  if (albumItems.length <= index) {
+    return;
+  }
+
+  let item = albumItems[index];
+  let currentImage = albumItems ? item.image : currentPhoto;
 
   return (
     <MotionConfig
@@ -65,12 +70,12 @@ export default function SharedModal({
                 className="absolute"
               >
                 <Image
-                  src={`${domain}/api/v1/invites/${invite.id}/images/${albumItems[index].image}/preview`}
+                  src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/preview`}
                   width={1280}
                   height={853}
                   unoptimized={true}
                   priority
-                  alt="Next.js Conf image"
+                  alt=""
                   onLoad={() => setLoaded(true)}
                 />
               </motion.div>
@@ -105,7 +110,7 @@ export default function SharedModal({
               </>
               <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
                 <a
-                  href={`${domain}/api/v1/invites/${invite.id}/images/${albumItems[index].image}/original`}
+                  href={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/original`}
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                   target="_blank"
                   title="Open fullsize version"
@@ -116,7 +121,7 @@ export default function SharedModal({
                 <button
                   onClick={() =>
                     downloadPhoto(
-                      `${domain}/api/v1/invites/${invite.id}/images/${albumItems[index].image}/original`,
+                      `${domain}/api/v1/invites/${invite.id}/images/${item.image}/original`,
                       `${(invite.groupName ?? "echo-photos") +"-"+ index}.jpg`
                     )
                   }
