@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+## 2024-05-29
 - Fix (pinned) item order
 - Move prop logic into `GridImage`
 - Fix header spacing #2
