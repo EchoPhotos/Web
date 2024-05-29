@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Fix #3 for header margins
 
 ## 2024-05-29
 - Fix (pinned) item order

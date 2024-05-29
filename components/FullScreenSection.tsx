@@ -14,7 +14,7 @@ export default function FullscreenSection({
   return (
     <section
       id={id}
-      className={`min-h-screen flex items-center justify-center md:pt-24 ${className}`}
+      className={`min-h-screen flex items-center justify-center ${className}`}
     >
       {children}
     </section>

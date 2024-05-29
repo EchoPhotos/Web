@@ -32,7 +32,7 @@ export default async function WeddingPage({params}) {
 
   return (
     <>
-      <FullScreenSection className="bg-rose-50">
+      <FullScreenSection className="bg-rose-50 -mt-20">
         <ContentBox left={false} imageURL="/images/weddingMain.png" title="">
           <h1 className={`${titleFont.className} font-bold mb-6`}>
             {dict.primarySection.title}

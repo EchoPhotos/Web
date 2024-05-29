@@ -20,7 +20,7 @@ export default async function HomePage({ params: { lang } }) {
 
   return (
     <>
-      <FullScreenSection>
+      <FullScreenSection className="-mt-20">
         <ContentBox left={true} imageURL="/../images/title.png" title="">
           <h1 className="font-bold mb-6">{dict.title}</h1>
 
@@ -112,11 +112,7 @@ export default async function HomePage({ params: { lang } }) {
       </section>
 
       <section className="py-24">
-        <ContentBox
-          left={false}
-          imageURL="/images/wallis.jpg"
-          title=""
-        >
+        <ContentBox left={false} imageURL="/images/wallis.jpg" title="">
           <div className="text-right md:text-right">
             <h3 className="text-green-700">{dict.climate.subtitle}</h3>
 
