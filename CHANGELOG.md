@@ -2,6 +2,7 @@
 
 ## Unreleased
 - Fix #3 for header margins
+- Grid item overlays
 
 ## 2024-05-29
 - Fix (pinned) item order

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Ref } from "react";
 import { AlbumItem } from "@/utils/types";
+import * as IoIcons from "react-icons/io5";
 
 interface GridImageProps {
   lang: string;
@@ -12,10 +13,11 @@ interface GridImageProps {
 }
 
 export default function GridImage(props: GridImageProps) {
+  const item = props.albumItem;
   return (
     <Link
-      key={props.albumItem.image}
-      href={`/${props.lang}/invite/${props.inviteId}?imageId=${props.albumItem.image}`}
+      key={item.image}
+      href={`/${props.lang}/invite/${props.inviteId}?imageId=${item.image}`}
       ref={props.ref}
       shallow
       className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
@@ -24,7 +26,7 @@ export default function GridImage(props: GridImageProps) {
         alt="Album Image"
         className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
         style={{ transform: "translate3d(0, 0, 0)" }}
-        src={`${props.domain}/api/v1/invites/${props.inviteId}/images/${props.albumItem.image}/preview`}
+        src={`${props.domain}/api/v1/invites/${props.inviteId}/images/${item.image}/preview`}
         width={720}
         height={480}
         unoptimized={true}
@@ -33,6 +35,17 @@ export default function GridImage(props: GridImageProps) {
         // (max-width: 1536px) 33vw,
         // 25vw"
       />
+      {item.video ? (
+        <div className="absolute inset-0 m-6 flex justify-center text-white drop-shadow-sm items-center">
+          <IoIcons.IoPlay size={33} />
+        </div>
+      ) : (
+        ""
+      )}
+      <div className="absolute inset-0 m-6 flex justify-leading text-white drop-shadow-sm items-left">
+        {item.pinned ? <IoIcons.IoRibbon size={14} className="mr-2" /> : ""}
+        {item.likes ? <IoIcons.IoHeart size={14} className="mr-2" /> : ""}
+      </div>
     </Link>
   );
 }
