@@ -20,7 +20,7 @@ export default function GridImage(props: GridImageProps) {
       href={`/${props.lang}/invite/${props.inviteId}?imageId=${item.image}`}
       ref={props.ref}
       shallow
-      className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+      className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight bg-stone-800"
     >
       <Image
         alt="Album Image"
