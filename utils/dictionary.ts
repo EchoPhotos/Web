@@ -8,6 +8,7 @@ interface Dictionary {
   common: any
   footer: any
   albumCard: any
+  downloadPreview: any
   "404": any
 }
 

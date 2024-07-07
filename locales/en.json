@@ -221,6 +221,15 @@
       "description": "With the app, you can upload your photos and add likes and comments."
     }
   },
+  "downloadPreview": {
+    "header": "Download Link",
+    "downloadButton": "Download",
+    "counts": "photos and videos",
+    "outdatedBanner": {
+      "title": "Link Outdated",
+      "message": "New items have been uploaded to the album since the download link was created. You can create a new link in the app!"
+    }
+  },
   "404": {
     "error-message": "Error 404: This page does not exist.",
     "go-back": "Go back"

@@ -1,6 +1,5 @@
 import React from "react";
 import QRCode from "./QRCode";
-import { getDictionary } from "@/utils/dictionary";
 
 interface AlbumCardProps {
   albumName?: string;
