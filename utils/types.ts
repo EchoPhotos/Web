@@ -24,6 +24,23 @@ export interface Invite {
   photoCount?: number;
 }
 
+export interface Download {
+  album: string;
+  creator?: string;
+  timestamp: number;
+  downloadCount?: number;
+  ready?: boolean; // If false it represents a failed download creation
+  isOutdated?: boolean;
+  isDisabled?: boolean;
+  byteSize?: number;
+  itemCount?: number;
+  albumData: { 
+    name: string,
+    image?: string,
+    itemNumber: number 
+  }
+}
+
 export interface AlbumItem {
   uploader: string;
   image: string;

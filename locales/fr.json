@@ -210,6 +210,15 @@
       "bottom-text": "Codé avec ❤️ en 🇨🇭"
     }
   },
+  "downloadPreview": {
+    "header": "Lien de téléchargement",
+    "downloadButton": "Télécharger",
+    "counts": "photos et vidéos",
+    "outdatedBanner": {
+      "title": "Lien obsolète",
+      "message": "De nouveaux éléments ont été téléchargés sur l'album depuis la création du lien de téléchargement. Vous pouvez créer un nouveau lien dans l'application !"
+    }
+  },
   "albumCard": {
     "copied": "Copié dans le presse-papier !",
     "enterCode": "Entrez le code ou scannez le QR-Code pour rejoindre via l'appli.",

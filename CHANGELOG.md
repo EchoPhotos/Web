@@ -5,6 +5,7 @@
 - Grid item overlays
 - Revalidate data fetch after 60s
 - Increase SSR memory limit
+- Download preview page
 
 ## 2024-05-29
 - Fix (pinned) item order
