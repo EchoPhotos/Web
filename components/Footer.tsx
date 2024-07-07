@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "./Footer.module.css";
 
 export default async function Footer({ lang, dict }) {
   return (
@@ -11,14 +10,14 @@ export default async function Footer({ lang, dict }) {
 
         <ul className="flex gap-x-6 gap-y-3 mt-4 flex-wrap justify-center px-10">
           <li key="home">
-            <Link className={styles.footerLink} href={`/${lang}/`}>
+            <Link className="hover:underline font-bold" href={`/${lang}/`}>
               {dict.footer.home}
             </Link>
           </li>
 
           <li key="webapp">
             <Link
-              className={styles.footerLink}
+              className="hover:underline font-bold"
               href="https://web.echophotos.io"
               target="_blank"
             >
@@ -31,20 +30,20 @@ export default async function Footer({ lang, dict }) {
               href="http://instagram.com/echophotos.io"
               target="_blank"
               rel="noreferrer noopener"
-              className={styles.footerLink}
+              className="hover:underline font-bold"
             >
               {dict.footer.instagram}
             </Link>
           </li>
 
           <li key="privacy">
-            <Link className={styles.footerLink} href={`/${lang}/privacy`}>
+            <Link className="hover:underline font-bold" href={`/${lang}/privacy`}>
               {dict.footer.privacy}
             </Link>
           </li>
 
           <li key="press">
-            <Link className={styles.footerLink} href={`/${lang}/press`}>
+            <Link className="hover:underline font-bold" href={`/${lang}/press`}>
               {dict.footer.press}
             </Link>
           </li>

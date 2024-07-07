@@ -3,7 +3,6 @@
 import { IoMenu, IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { useCallback, useState } from "react";
-import styles from "./header.module.css";
 
 interface HeaderSection {
   name: string;
@@ -25,7 +24,7 @@ export default ({ sections, lang }: HeaderSections) => {
   return (
     <header>
       <nav className="z-[1] h-20 py-3 px-4 flex items-center justify-between w-full fixed backdrop-blur-md bg-white/70">
-        <Link className="nav-brand" href="/">
+        <Link href="/">
           <img
             src="/images/logo125.png"
             height="50"
@@ -46,7 +45,10 @@ export default ({ sections, lang }: HeaderSections) => {
           <ul className="flex justify-between flex-col w-full gap-3 md:flex-row md:gap-6">
             {sections.map((section) => (
               <li key={section.name}>
-                <Link className={styles.navLink} href={`/${lang}/` + section.href}>
+                <Link
+                  className="hover:underline text-lg font-bold"
+                  href={`/${lang}/` + section.href}
+                >
                   {section.name}
                 </Link>
               </li>
