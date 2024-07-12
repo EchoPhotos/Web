@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+## 2024-07-12
 - Fix #3 for header margins
 - Grid item overlays
 - Revalidate data fetch after 60s
