@@ -6,9 +6,10 @@ interface AlbumCardProps {
   inviteCode: string;
   qrCodeURL: string;
   albumCardDict: any;
+  viewOnly?: boolean;
 }
 
-export default async function AlbumCard({albumName, inviteCode, qrCodeURL, albumCardDict}: AlbumCardProps) {
+export default async function AlbumCard({albumName, inviteCode, qrCodeURL, albumCardDict, viewOnly}: AlbumCardProps) {
   const dict = albumCardDict;
 
   const copyToClipboard = async () => {
@@ -32,7 +33,7 @@ export default async function AlbumCard({albumName, inviteCode, qrCodeURL, album
     <div className="flex flex-col items-center mb-5 p-5 rounded-lg break-inside-avoid bg-zinc-800 text-white space-y-5">
       <h1 className="text-4xl font-black text-center mt-2">{albumName}</h1>
 
-      <div
+      {!viewOnly && <div
         className="flex flex-col items-center space-y-2 p-3 bg-white rounded-lg"
         id="qrcode"
       >
@@ -50,7 +51,7 @@ export default async function AlbumCard({albumName, inviteCode, qrCodeURL, album
         >
           {inviteCode}
         </button>
-      </div>
+      </div>}
 
       {/* <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch] text-sm">
         {dict.description ?? "test description"}

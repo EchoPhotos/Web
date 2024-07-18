@@ -22,6 +22,7 @@ export interface Invite {
   groupImage?: string;
   members?: string[];
   photoCount?: number;
+  viewOnly?: boolean;
 }
 
 export interface Download {

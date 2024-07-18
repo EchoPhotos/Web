@@ -58,6 +58,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               inviteCode={inviteCode}
               qrCodeURL={data.qrUrl}
               albumCardDict={props.albumCardDict}
+              viewOnly={data.invite.viewOnly}
             />
             {data.items.map((albumItem) => {
               console.log(`current: ${albumItem.image}`);
