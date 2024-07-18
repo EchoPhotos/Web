@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Ref } from "react";
 import { AlbumItem } from "@/utils/types";
 import * as IoIcons from "react-icons/io5";
 
@@ -8,7 +7,6 @@ interface GridImageProps {
   lang: string;
   domain: string
   inviteId: string;
-  ref?: Ref<HTMLAnchorElement>;
   albumItem: AlbumItem
 }
 
@@ -18,7 +16,6 @@ export default function GridImage(props: GridImageProps) {
     <Link
       key={item.image}
       href={`/${props.lang}/invite/${props.inviteId}?imageId=${item.image}`}
-      ref={props.ref}
       shallow
       className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight bg-stone-800"
     >

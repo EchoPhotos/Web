@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Fixed scrolling on modal closing
 
 ## 2024-07-12
 - Fix #3 for header margins

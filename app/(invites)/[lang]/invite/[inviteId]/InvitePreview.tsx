@@ -26,15 +26,14 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
   
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
 
-  const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null);
+  const lastViewedPhotoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
-    // TODO: Should work without checking if lastViewedPhotoRef.current is not null
-    // TODO: seems to be broken
-    if (lastViewedPhoto && !imageId && lastViewedPhotoRef.current) {
-      lastViewedPhotoRef.current?.scrollIntoView({ block: "center" });
-      setLastViewedPhoto(null);
+    const currentRef = lastViewedPhotoRef.current;
+    if (lastViewedPhoto && !imageId && currentRef) {
+      currentRef.scrollIntoView({ block: "center" });
+      // setLastViewedPhoto(null);
     }
   }, [imageId, lastViewedPhoto, setLastViewedPhoto]);
 
@@ -48,8 +47,8 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               invite={data.invite}
               domain={data.domain}
               items={data.items}
-              onClose={() => {
-                setLastViewedPhoto(imageId);
+              onClose={(lastViewedImageId) => {
+                setLastViewedPhoto(lastViewedImageId);
               }}
             />
           )}
@@ -60,19 +59,22 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               qrCodeURL={data.qrUrl}
               albumCardDict={props.albumCardDict}
             />
-            {data.items.map((albumItem) => (
-              <GridImage
-                lang={props.lang}
-                ref={
-                  albumItem.image === lastViewedPhoto
-                    ? lastViewedPhotoRef
-                    : undefined
-                }
-                domain={data.domain}
-                inviteId={data.inviteId}
-                albumItem={albumItem}
-              />
-            ))}
+            {data.items.map((albumItem) => {
+              console.log(`current: ${albumItem.image}`);
+              console.log(`lastViewed: ${lastViewedPhoto}`);
+              const isLastViewedPhoto = albumItem.image === lastViewedPhoto;
+              return (
+                <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined}>
+                  <GridImage
+                    lang={props.lang}
+                    domain={data.domain}
+                    inviteId={data.inviteId}
+                    albumItem={albumItem}
+                  />
+                </div>
+              );
+            }
+            )}
           </div>
         </section>
       </div>

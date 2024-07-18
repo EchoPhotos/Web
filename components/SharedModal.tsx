@@ -29,7 +29,6 @@ export default function SharedModal({
   }
 
   let item = albumItems[index];
-  let currentImage = albumItems ? item.image : currentPhoto;
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {

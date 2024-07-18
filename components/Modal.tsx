@@ -3,7 +3,7 @@
 import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { MutableRefObject, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import useKeypress from "react-use-keypress";
 import SharedModal from "./SharedModal";
 import { AlbumItem, Invite } from "@/utils/types";
@@ -17,7 +17,7 @@ export default function Modal({
   items: AlbumItem[];
   invite: Invite;
   domain: string;
-  onClose?: () => void;
+  onClose: (string) => void;
 }) {
   let overlayRef: any = useRef();
   const router = useRouter();
@@ -37,7 +37,7 @@ export default function Modal({
 
   function handleClose() {
     router.push(pathname);
-    onClose?.();
+    onClose(albumItems[curIndex].image);
   }
 
   function changePhotoId(newVal: number) {
@@ -46,7 +46,6 @@ export default function Modal({
     } else {
       setDirection(-1);
     }
-    const newAlbumItem = albumItems[newVal];
     setCurIndex(newVal);
     router.push(`${pathname}?${searchParams.toString()}`);
   }
