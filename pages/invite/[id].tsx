@@ -8,11 +8,18 @@ interface PropsData {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  if (admin.apps.length == 0) {
-    admin.initializeApp();
-  }
+  const ADMIN_APP_NAME = "firebase-frameworks";
+  const adminApp =
+    admin.apps.find((app) => app?.name === ADMIN_APP_NAME) ||
+    admin.initializeApp(
+      {
+        credential: admin.credential.applicationDefault(),
+      },
+      ADMIN_APP_NAME
+    );
+
   const host = req.headers.host;
-  const projectId = admin.instanceId().app.options.projectId;
+  const projectId = admin.instanceId(adminApp).app.options.projectId;
 
   let domain = `https://${projectId}.web.app`;
   if (host?.includes("localhost") || host?.includes("127.0.0.1")) {
