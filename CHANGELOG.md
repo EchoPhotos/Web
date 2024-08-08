@@ -2,6 +2,7 @@
 
 ## Unreleased
 - Fixed scrolling on modal closing
+- Add `firebase` dependency
 
 ## 2024-07-12
 - Fix #3 for header margins

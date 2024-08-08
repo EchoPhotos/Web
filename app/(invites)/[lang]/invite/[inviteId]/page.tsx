@@ -5,12 +5,21 @@ import { AlbumItem, Invite } from "@/utils/types";
 import { getDictionary } from "@/utils/dictionary";
 
 async function getData(inviteId: string): Promise<InvitePreviewData> {
-  if (admin.apps.length == 0) {
-    admin.initializeApp();
-  }
-  const projectId =
-    admin.instanceId().app.options.projectId ?? "echo-photos-dev";
+  const ADMIN_APP_NAME = "firebase-frameworks";
+  const adminApp =
+  admin.apps.find((app) => app?.name === ADMIN_APP_NAME) ||
+  admin.initializeApp(
+    {
+      credential: admin.credential.applicationDefault(),
+    },
+    ADMIN_APP_NAME
+  );
+
+  const projectId = admin.instanceId(adminApp).app.options.projectId;
   let domain = `https://${projectId}.web.app`;
+  if (projectId === "echo-photos") {
+    domain = "https://www.echophotos.io";
+  }
 
   const itemsURL = `${domain}/api/v1/invites/${inviteId}/items`;
   const itemsResponse: Response = await fetch(itemsURL, {
