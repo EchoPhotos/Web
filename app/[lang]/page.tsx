@@ -30,6 +30,13 @@ export default async function HomePage({ params: { lang } }) {
             <AppStore />
 
             <GooglePlay />
+
+            <Link
+              className="bg-black hover:bg-slate-400 text-white rounded-md font-semibold px-4 p-2"
+              href={"https://buy.stripe.com/eVa3d0dOpgHj7dK8ww"}
+            >
+              {dict.donate}
+            </Link>
           </div>
         </ContentBox>
       </FullScreenSection>
