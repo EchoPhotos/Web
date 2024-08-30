@@ -7,6 +7,7 @@ import { AlbumItem, Invite } from "@/utils/types";
 
 import { useEffect, useRef } from "react";
 import { useLastViewedPhoto } from "@/utils/useLastViewedPhoto";
+import UploadWidget from "@/components/UploadWidget";
 
 export interface InvitePreviewData {
   invite: Invite;
@@ -59,6 +60,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               qrCodeURL={data.qrUrl}
               albumCardDict={props.albumCardDict}
             />
+            <UploadWidget></UploadWidget>
             {data.items.map((albumItem) => {
               console.log(`current: ${albumItem.image}`);
               console.log(`lastViewed: ${lastViewedPhoto}`);
@@ -73,8 +75,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
                   />
                 </div>
               );
-            }
-            )}
+            })}
           </div>
         </section>
       </div>
