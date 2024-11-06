@@ -1,8 +1,11 @@
 # Changelog
 
 ## Unreleased
+
+## 2024-11-06
 - Fixed scrolling on modal closing
 - Add `firebase` dependency
+- Fix firebase init for `/download`
 
 ## 2024-07-12
 - Fix #3 for header margins
