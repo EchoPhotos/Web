@@ -62,9 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.downloadId;
   const product = await getData(id);
   const title = (product.download.albumData.name ?? "Test") + " | Echo Photos";
-  const imageUrl =
-    product.domain + "/images/" + product.download.albumData.image ??
-    "https://www.echophotos.io/images/AppIcon300.png";
+  const imageUrl = product.domain + "/images/" + (product.download.albumData.image ?? "https://www.echophotos.io/images/AppIcon300.png");
 
   return {
     title: title,
