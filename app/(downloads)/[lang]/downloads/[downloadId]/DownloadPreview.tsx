@@ -30,14 +30,15 @@ export default function DownloadPreview(props: {
   if (props.data.download.isDisabled === true) {
     return (
       <>
-        <FullScreenSection className="bg-gray-100 md:-mt-20 text-white">
-          <div
-            className="flex flex-row items-center space-x-5 text-red-600 p-3 bg-red-200 rounded-lg mb-6"
-          >
-            <IoIcons.IoBan size={33} />
+        <FullScreenSection className="bg-gray-100 md:-mt-20">
+          <div className="flex flex-row items-center space-x-5 p-8 bg-white rounded-3xl mb-6 w-96">
+            <div className="text-red-400">
+              <IoIcons.IoBan size={55} />
+            </div>
+
             <div className="pr-2">
-              <h5 className="uppercase font-bold">Invalid Download Link</h5>
-              <p className="text-xs ">
+              <h5 className="font-semibold text-xl">Invalid Download Link</h5>
+              <p className="text-lg">
                 This download does either not exist or has been disabled.
               </p>
             </div>

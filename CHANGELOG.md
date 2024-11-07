@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Update invalid download page
 
 ## 2024-11-06
 - Fixed scrolling on modal closing
