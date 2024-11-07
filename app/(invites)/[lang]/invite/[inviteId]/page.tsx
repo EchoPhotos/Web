@@ -15,7 +15,8 @@ async function getData(inviteId: string): Promise<InvitePreviewData> {
       ADMIN_APP_NAME
     );
 
-  const projectId = admin.instanceId(adminApp).app.options.projectId;
+  const projectId =
+    admin.instanceId(adminApp).app.options.projectId ?? "echo-photos-dev";
   let domain = `https://${projectId}.web.app`;
   if (projectId === "echo-photos") {
     domain = "https://www.echophotos.io";
