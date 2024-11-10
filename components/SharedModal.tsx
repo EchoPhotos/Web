@@ -128,7 +128,7 @@ export default function SharedModal({
                 )}
               </>
               <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
-                <a
+                {!invite.viewOnly && <a
                   href={`${domain}/api/v1/invites/${invite.id}/images/${
                     item.image
                   }/${item.video ? "video" : "original"}`}
@@ -138,8 +138,8 @@ export default function SharedModal({
                   rel="noreferrer"
                 >
                   <IoIcons.IoShareOutline className="h-5 w-5" />
-                </a>
-                <button
+                </a>}
+                {!invite.viewOnly && <button
                   onClick={() =>
                     downloadPhoto(
                       `${domain}/api/v1/invites/${invite.id}/images/${
@@ -154,7 +154,7 @@ export default function SharedModal({
                   title="Download fullsize version"
                 >
                   <IoIcons.IoArrowDownCircleOutline className="h-5 w-5" />
-                </button>
+                </button>}
               </div>
               <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
                 <button

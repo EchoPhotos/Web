@@ -5,9 +5,10 @@ import * as IoIcons from "react-icons/io5";
 
 interface GridImageProps {
   lang: string;
-  domain: string
+  domain: string;
   inviteId: string;
-  albumItem: AlbumItem
+  showLikes: boolean;
+  albumItem: AlbumItem;
 }
 
 export default function GridImage(props: GridImageProps) {
@@ -41,7 +42,7 @@ export default function GridImage(props: GridImageProps) {
       )}
       <div className="absolute inset-0 m-6 flex justify-leading text-white drop-shadow-sm items-left">
         {item.pinned ? <IoIcons.IoRibbon size={14} className="mr-2" /> : ""}
-        {item.likes ? <IoIcons.IoHeart size={14} className="mr-2" /> : ""}
+        {(item.likes && props.showLikes) ? <IoIcons.IoHeart size={14} className="mr-2" /> : ""}
       </div>
     </Link>
   );

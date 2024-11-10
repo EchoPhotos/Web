@@ -53,12 +53,15 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
             />
           )}
           <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
-            <AlbumCard
-              albumName={data.invite.groupName}
-              inviteCode={inviteCode}
-              qrCodeURL={data.qrUrl}
-              albumCardDict={props.albumCardDict}
-            />
+            {!data.invite.viewOnly && (
+              <AlbumCard
+                albumName={data.invite.groupName}
+                inviteCode={inviteCode}
+                qrCodeURL={data.qrUrl}
+                albumCardDict={props.albumCardDict}
+              />
+            )}
+            {data.invite.viewOnly && <a className="bg-stone-800 rounded-lg text-white font-semibold text-3xl flex flex-row my-4 p-4 justify-center">{data.invite.groupName}</a>}
             {data.items.map((albumItem) => {
               console.log(`current: ${albumItem.image}`);
               console.log(`lastViewed: ${lastViewedPhoto}`);
@@ -69,12 +72,12 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
                     lang={props.lang}
                     domain={data.domain}
                     inviteId={data.inviteId}
+                    showLikes={!data.invite.viewOnly}
                     albumItem={albumItem}
                   />
                 </div>
               );
-            }
-            )}
+            })}
           </div>
         </section>
       </div>

@@ -6,10 +6,6 @@ const nextConfig = {
   },
   rewrites: () => {
     return [
-      {
-        source: '/:locale/invites/:path*',
-        destination: '/:locale/invite/:path*',
-      },
     ]
   }
 };
