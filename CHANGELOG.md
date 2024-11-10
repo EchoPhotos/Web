@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+## 2024-11-10
 - Update invalid download page
 - View only links/invites
 
