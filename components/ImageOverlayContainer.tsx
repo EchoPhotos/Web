@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import useKeypress from "react-use-keypress";
-import SharedModal from "./SharedModal";
+import ImageOverlay from "./ImageOverlay";
 import { AlbumItem, Invite } from "@/utils/types";
 
-export default function Modal({
+export default function ImageOverlayContainer({
   items: albumItems,
   invite,
   domain,
@@ -24,12 +24,14 @@ export default function Modal({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  let albumItem = albumItems.find((item) => item.image == searchParams.get("imageId"));
-  
+  let albumItem = albumItems.find(
+    (item) => item.image == searchParams.get("imageId")
+  );
+
   let index = 0;
 
-  if(albumItem) {
-   index = albumItems.indexOf(albumItem);
+  if (albumItem) {
+    index = albumItems.indexOf(albumItem);
   }
 
   const [direction, setDirection] = useState(0);
@@ -78,7 +80,7 @@ export default function Modal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
-      <SharedModal
+      <ImageOverlay
         index={curIndex}
         domain={domain}
         invite={invite}

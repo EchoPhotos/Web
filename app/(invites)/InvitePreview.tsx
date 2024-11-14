@@ -2,7 +2,7 @@
 
 import AlbumCard from "@/components/AlbumCard";
 import GridImage from "@/components/GridImage";
-import Modal from "@/components/Modal";
+import ImageOverlayContainer from "@/components/ImageOverlayContainer";
 import { AlbumItem, Invite } from "@/utils/types";
 
 import { useEffect, useRef } from "react";
@@ -48,7 +48,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
       <div className="bg-black">
         <section className="mx-auto max-w-[1960px] p-4">
           {imageId && (
-            <Modal
+            <ImageOverlayContainer
               invite={data.invite}
               domain={data.domain}
               items={data.items}

@@ -8,7 +8,7 @@ import { range } from "@/utils/range";
 import type { AlbumItem, SharedModalProps } from "@/utils/types";
 import * as IoIcons from "react-icons/io5";
 
-export default function SharedModal({
+export default function ImageOverlay({
   index,
   domain,
   albumItems: albumItems,
