@@ -63,8 +63,6 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
             )}
             {data.invite.viewOnly && <a className="bg-stone-800 rounded-lg text-white font-semibold text-3xl flex flex-row my-4 p-4 justify-center">{data.invite.groupName}</a>}
             {data.items.map((albumItem) => {
-              console.log(`current: ${albumItem.image}`);
-              console.log(`lastViewed: ${lastViewedPhoto}`);
               const isLastViewedPhoto = albumItem.image === lastViewedPhoto;
               return (
                 <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined}>
