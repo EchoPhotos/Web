@@ -65,7 +65,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
             {data.items.map((albumItem) => {
               const isLastViewedPhoto = albumItem.image === lastViewedPhoto;
               return (
-                <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined}>
+                <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined} key={albumItem.id}>
                   <GridImage
                     lang={props.lang}
                     domain={data.domain}

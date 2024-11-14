@@ -43,6 +43,7 @@ export interface Download {
 }
 
 export interface AlbumItem {
+  id: string;
   uploader: string;
   image: string;
   video?: boolean;
