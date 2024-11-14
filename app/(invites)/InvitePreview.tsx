@@ -16,16 +16,16 @@ export interface InvitePreviewData {
   items: AlbumItem[];
   inviteId: string;
   domain: string;
-  imageId?: string;
+  itemId?: string;
   qrUrl: string;
   albumPreviewImageUrl: string;
-  initialRegion?: CoordinateRegion
+  initialRegion?: CoordinateRegion;
 }
 
 export default function InvitePreview(props: { data: InvitePreviewData, albumCardDict: any, lang: string }) {
   const data = props.data;
   const fullInviteId = data.inviteId as string;
-  const imageId = data.imageId;
+  const itemId = data.itemId;
   const inviteCode = fullInviteId.substring(0, 8);
   
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
@@ -35,11 +35,11 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
   useEffect(() => {
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     const currentRef = lastViewedPhotoRef.current;
-    if (lastViewedPhoto && !imageId && currentRef) {
+    if (lastViewedPhoto && !itemId && currentRef) {
       currentRef.scrollIntoView({ block: "center" });
       // setLastViewedPhoto(null);
     }
-  }, [imageId, lastViewedPhoto, setLastViewedPhoto]);
+  }, [itemId, lastViewedPhoto, setLastViewedPhoto]);
 
   const router = useRouter();
 
@@ -47,13 +47,13 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
     <>
       <div className="bg-black">
         <section className="mx-auto max-w-[1960px] p-4">
-          {imageId && (
+          {itemId && (
             <ImageOverlayContainer
               invite={data.invite}
               domain={data.domain}
               items={data.items}
-              onClose={(lastViewedImageId) => {
-                setLastViewedPhoto(lastViewedImageId);
+              onClose={(lastViewedItemId) => {
+                setLastViewedPhoto(lastViewedItemId);
               }}
             />
           )}
@@ -73,7 +73,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
                   initialRegion={data.initialRegion}
                   onItemSelect={(item) => {
                     router.push(
-                      `/${props.lang}/invite/${data.inviteId}?imageId=${item.image}`
+                      `/${props.lang}/invite/${data.inviteId}?itemId=${item.id}`
                     );
                   }}
                 />
@@ -86,7 +86,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               </a>
             )}
             {data.items.map((albumItem) => {
-              const isLastViewedPhoto = albumItem.image === lastViewedPhoto;
+              const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
               return (
                 <div
                   ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined}

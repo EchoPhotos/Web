@@ -41,7 +41,7 @@ async function getData(downloadId: string): Promise<DownloadPreviewData> {
 type Props = {
   params: { downloadId: string; lang: string };
   searchParams: {
-    imageId: string | undefined;
+    itemId: string | undefined;
     [key: string]: string | string[] | undefined;
   };
 };

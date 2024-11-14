@@ -102,7 +102,7 @@ function calculateCoordinateRegion(items: AlbumItem[]): CoordinateRegion | undef
 export type InviteProps = {
   params: { inviteId: string; lang: string };
   searchParams: {
-    imageId: string | undefined;
+    itemId: string | undefined;
     [key: string]: string | string[] | undefined;
   };
 };

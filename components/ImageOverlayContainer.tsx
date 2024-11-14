@@ -25,7 +25,7 @@ export default function ImageOverlayContainer({
   const searchParams = useSearchParams();
 
   let albumItem = albumItems.find(
-    (item) => item.image == searchParams.get("imageId")
+    (item) => item.id == searchParams.get("itemId")
   );
 
   let index = 0;
@@ -39,7 +39,7 @@ export default function ImageOverlayContainer({
 
   function handleClose() {
     router.push(pathname);
-    onClose(albumItems[curIndex].image);
+    onClose(albumItems[curIndex].id);
   }
 
   function changePhotoId(newVal: number) {
@@ -48,8 +48,9 @@ export default function ImageOverlayContainer({
     } else {
       setDirection(-1);
     }
+
     setCurIndex(newVal);
-    router.push(`${pathname}?${searchParams.toString()}`);
+    router.push(`${pathname}?itemId=${albumItems[newVal].id}`);
   }
 
   useKeypress("ArrowRight", () => {

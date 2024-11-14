@@ -15,8 +15,8 @@ export default function GridImage(props: GridImageProps) {
   const item = props.albumItem;
   return (
     <Link
-      key={item.image}
-      href={`/${props.lang}/invite/${props.inviteId}?imageId=${item.image}`}
+      key={item.id}
+      href={`/${props.lang}/invite/${props.inviteId}?itemId=${item.id}`}
       shallow
       className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight bg-stone-800"
     >
@@ -42,7 +42,11 @@ export default function GridImage(props: GridImageProps) {
       )}
       <div className="absolute inset-0 m-6 flex justify-leading text-white drop-shadow-sm items-left">
         {item.pinned ? <IoIcons.IoRibbon size={14} className="mr-2" /> : ""}
-        {(item.likes && props.showLikes) ? <IoIcons.IoHeart size={14} className="mr-2" /> : ""}
+        {item.likes && props.showLikes ? (
+          <IoIcons.IoHeart size={14} className="mr-2" />
+        ) : (
+          ""
+        )}
       </div>
     </Link>
   );
