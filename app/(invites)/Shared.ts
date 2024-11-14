@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { InvitePreviewData } from "./InvitePreview";
 import admin from "firebase-admin";
 import { AlbumItem, Invite } from "@/utils/types";
+import { CoordinateRegion } from "mapkit-react";
+import ngeohash from "ngeohash";
 
 export async function getData(inviteId: string): Promise<InvitePreviewData> {
   const ADMIN_APP_NAME = "firebase-frameworks";
@@ -59,6 +61,41 @@ export async function getData(inviteId: string): Promise<InvitePreviewData> {
     qrUrl: `${domain}/invite/${inviteId}`,
     inviteId: inviteId,
     albumPreviewImageUrl: `${domain}/api/v1/invites/${invite.id}/image`,
+    initialRegion: calculateCoordinateRegion(items),
+  };
+}
+
+function calculateCoordinateRegion(items: AlbumItem[]): CoordinateRegion | undefined {
+  if (items.length === 0) {
+    return undefined;
+  }
+
+  const firstHash = items.find(item => item.contentLocationHash)?.contentLocationHash;
+  if (!firstHash) {
+    return undefined;
+  }
+  const { latitude, longitude } = ngeohash.decode(firstHash);
+  let minLat = latitude;
+  let maxLat = latitude;
+  let minLng = longitude;
+  let maxLng = longitude;
+
+  for (const item of items) {
+    if (!item.contentLocationHash) {
+      continue;
+    }
+    const { latitude, longitude } = ngeohash.decode(item.contentLocationHash);
+    if (latitude < minLat) minLat = latitude;
+    if (latitude > maxLat) maxLat = latitude;
+    if (longitude < minLng) minLng = longitude;
+    if (longitude > maxLng) maxLng = longitude;
+  };
+
+  return {
+    latitudeDelta: (maxLat == minLat) ? 0.1 : (maxLat - minLat) * 1.2,
+    longitudeDelta: (maxLat == minLat) ? 0.1 : (maxLng - minLng) * 1.2,
+    centerLatitude: (minLat + maxLat) / 2,
+    centerLongitude: (minLng + maxLng) / 2,
   };
 }
 

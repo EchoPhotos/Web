@@ -7,6 +7,9 @@ import { AlbumItem, Invite } from "@/utils/types";
 
 import { useEffect, useRef } from "react";
 import { useLastViewedPhoto } from "@/utils/useLastViewedPhoto";
+import ItemMap from "@/components/ItemMap";
+import { CoordinateRegion } from "mapkit-react";
+import { useRouter } from "next/navigation";
 
 export interface InvitePreviewData {
   invite: Invite;
@@ -16,6 +19,7 @@ export interface InvitePreviewData {
   imageId?: string;
   qrUrl: string;
   albumPreviewImageUrl: string;
+  initialRegion?: CoordinateRegion
 }
 
 export default function InvitePreview(props: { data: InvitePreviewData, albumCardDict: any, lang: string }) {
@@ -37,6 +41,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
     }
   }, [imageId, lastViewedPhoto, setLastViewedPhoto]);
 
+  const router = useRouter();
 
   return (
     <>
@@ -61,11 +66,32 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
                 albumCardDict={props.albumCardDict}
               />
             )}
-            {data.invite.viewOnly && <a className="bg-stone-800 rounded-lg text-white font-semibold text-3xl flex flex-row my-4 p-4 justify-center">{data.invite.groupName}</a>}
+            {data.initialRegion && (
+              <div className="h-48 w-full mb-5 rounded-lg overflow-clip">
+                <ItemMap
+                  items={data.items}
+                  initialRegion={data.initialRegion}
+                  onItemSelect={(item) => {
+                    router.push(
+                      `/${props.lang}/invite/${data.inviteId}?imageId=${item.image}`
+                    );
+                  }}
+                />
+              </div>
+            )}
+
+            {data.invite.viewOnly && (
+              <a className="bg-stone-800 rounded-lg text-white font-semibold text-3xl flex flex-row my-4 p-4 justify-center">
+                {data.invite.groupName}
+              </a>
+            )}
             {data.items.map((albumItem) => {
               const isLastViewedPhoto = albumItem.image === lastViewedPhoto;
               return (
-                <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined} key={albumItem.id}>
+                <div
+                  ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined}
+                  key={albumItem.id}
+                >
                   <GridImage
                     lang={props.lang}
                     domain={data.domain}
