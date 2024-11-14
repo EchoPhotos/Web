@@ -55,7 +55,6 @@ export default function SharedModal({
         className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
         {...handlers}
       >
-        {/* Main image */}
         <div className="w-full overflow-hidden">
           <div className="relative flex aspect-[3/2] items-center justify-center bg-black">
             <AnimatePresence initial={false} custom={direction}>
@@ -68,9 +67,7 @@ export default function SharedModal({
                 exit="exit"
                 className="absolute"
               >
-                {(() => {
-                  if (item.video) {
-                    return (
+                {item.video &&
                       <video
                         width="1280"
                         height="853"
@@ -82,9 +79,8 @@ export default function SharedModal({
                       >
                         Your browser does not support the video tag.
                       </video>
-                    );
-                  } else {
-                    return (
+                  }
+                  {!item.video &&
                       <Image
                         src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/preview`}
                         width={1280}
@@ -94,9 +90,7 @@ export default function SharedModal({
                         alt=""
                         onLoad={() => setLoaded(true)}
                       />
-                    );
                   }
-                })()}
               </motion.div>
             </AnimatePresence>
           </div>
