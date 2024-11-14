@@ -1,7 +1,8 @@
 # Changelog
 
 ## Unreleased
-- Item location
+- Item map in previews
+- Fixed social preview
 
 ## 2024-11-10
 - Update invalid download page
