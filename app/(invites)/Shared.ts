@@ -73,7 +73,7 @@ export type InviteProps = {
 export async function generateMetadata({ params }: InviteProps): Promise<Metadata> {
   const id = params.inviteId;
   const product = await getData(id);
-  const title = product.invite.groupName + " | Echo Photos";
+  const title = product.invite.groupName;
   const imageUrl =
     product.albumPreviewImageUrl ??
     "https://www.echophotos.io/images/AppIcon300.png";
