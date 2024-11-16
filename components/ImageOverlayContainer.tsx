@@ -53,17 +53,21 @@ export default function ImageOverlayContainer({
     router.push(`${pathname}?itemId=${albumItems[newVal].id}`);
   }
 
-  useKeypress("ArrowRight", () => {
+  function goToNext() {
     if (index + 1 < albumItems.length) {
       changePhotoId(index + 1);
     }
-  });
+  }
 
-  useKeypress("ArrowLeft", () => {
+  function goToPrevious() {
     if (index > 0) {
       changePhotoId(index - 1);
     }
-  });
+  }
+
+  useKeypress("ArrowRight", goToNext);
+
+  useKeypress("ArrowLeft", goToPrevious);
 
   return (
     <Dialog
@@ -87,8 +91,10 @@ export default function ImageOverlayContainer({
         invite={invite}
         direction={direction}
         albumItems={albumItems}
-        changePhotoId={changePhotoId}
+        goTo={changePhotoId}
         closeModal={handleClose}
+        goToNext={goToNext}
+        goToPrevious={goToPrevious}
       />
     </Dialog>
   );

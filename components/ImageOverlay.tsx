@@ -13,10 +13,11 @@ export default function ImageOverlay({
   domain,
   albumItems: albumItems,
   invite: invite,
-  changePhotoId,
+  goTo: goTo,
   closeModal,
-  currentPhoto,
   direction,
+  goToNext,
+  goToPrevious,
 }: SharedModalProps) {
   const [loaded, setLoaded] = useState(false);
 
@@ -31,17 +32,9 @@ export default function ImageOverlay({
   let item = albumItems[index];
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (index < albumItems?.length - 1) {
-        changePhotoId(index + 1);
-      }
-    },
-    onSwipedRight: () => {
-      if (index > 0) {
-        changePhotoId(index - 1);
-      }
-    },
-    trackMouse: true
+    onSwipedLeft: goToNext,
+    onSwipedRight: goToPrevious,
+    trackMouse: true,
   });
 
   return (
@@ -67,30 +60,30 @@ export default function ImageOverlay({
                 exit="exit"
                 className="absolute"
               >
-                {item.video &&
-                      <video
-                        width="1280"
-                        height="853"
-                        controls
-                        autoPlay
-                        preload="auto"
-                        playsInline
-                        src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/video`}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                  }
-                  {!item.video &&
-                      <Image
-                        src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/preview`}
-                        width={1280}
-                        height={853}
-                        unoptimized={true}
-                        priority
-                        alt=""
-                        onLoad={() => setLoaded(true)}
-                      />
-                  }
+                {item.video && (
+                  <video
+                    width="1280"
+                    height="853"
+                    controls
+                    autoPlay
+                    preload="auto"
+                    playsInline
+                    src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/video`}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+                {!item.video && (
+                  <Image
+                    src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/preview`}
+                    width={1280}
+                    height={853}
+                    unoptimized={true}
+                    priority
+                    alt=""
+                    onLoad={() => setLoaded(true)}
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -106,7 +99,7 @@ export default function ImageOverlay({
                   <button
                     className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
-                    onClick={() => changePhotoId(index - 1)}
+                    onClick={goToPrevious}
                   >
                     <IoIcons.IoChevronBack className="h-6 w-6" />
                   </button>
@@ -115,40 +108,44 @@ export default function ImageOverlay({
                   <button
                     className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
-                    onClick={() => changePhotoId(index + 1)}
+                    onClick={goToNext}
                   >
                     <IoIcons.IoChevronForward className="h-6 w-6" />
                   </button>
                 )}
               </>
               <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
-                {!invite.viewOnly && <a
-                  href={`${domain}/api/v1/invites/${invite.id}/images/${
-                    item.image
-                  }/${item.video ? "video" : "original"}`}
-                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-                  target="_blank"
-                  title="Open fullsize version"
-                  rel="noreferrer"
-                >
-                  <IoIcons.IoShareOutline className="h-5 w-5" />
-                </a>}
-                {!invite.viewOnly && <button
-                  onClick={() =>
-                    downloadPhoto(
-                      `${domain}/api/v1/invites/${invite.id}/images/${
-                        item.image
-                      }/${item.video ? "video" : "original"}`,
-                      `${(invite.groupName ?? "echo-photos") + "-" + index}.${
-                        item.video ? "mp4" : "jpg"
-                      }`
-                    )
-                  }
-                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-                  title="Download fullsize version"
-                >
-                  <IoIcons.IoArrowDownCircleOutline className="h-5 w-5" />
-                </button>}
+                {!invite.viewOnly && (
+                  <a
+                    href={`${domain}/api/v1/invites/${invite.id}/images/${
+                      item.image
+                    }/${item.video ? "video" : "original"}`}
+                    className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                    target="_blank"
+                    title="Open fullsize version"
+                    rel="noreferrer"
+                  >
+                    <IoIcons.IoShareOutline className="h-5 w-5" />
+                  </a>
+                )}
+                {!invite.viewOnly && (
+                  <button
+                    onClick={() =>
+                      downloadPhoto(
+                        `${domain}/api/v1/invites/${invite.id}/images/${
+                          item.image
+                        }/${item.video ? "video" : "original"}`,
+                        `${(invite.groupName ?? "echo-photos") + "-" + index}.${
+                          item.video ? "mp4" : "jpg"
+                        }`
+                      )
+                    }
+                    className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                    title="Download fullsize version"
+                  >
+                    <IoIcons.IoArrowDownCircleOutline className="h-5 w-5" />
+                  </button>
+                )}
               </div>
               <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
                 <button
@@ -167,8 +164,8 @@ export default function ImageOverlay({
               className="mx-auto mt-6 mb-6 flex aspect-[1/1] h-14"
             >
               <AnimatePresence initial={false}>
-                {filteredAlbumItems.map((albumItem) => {
-                  let id = albumItems.indexOf(albumItem);
+                {filteredAlbumItems.map((thumbnailItem) => {
+                  let thumbnailIndex = albumItems.indexOf(thumbnailItem);
                   return (
                     <motion.button
                       initial={{
@@ -176,19 +173,21 @@ export default function ImageOverlay({
                         x: `${Math.max((index - 1) * -100, 15 * -100)}%`,
                       }}
                       animate={{
-                        scale: id === index ? 1.25 : 1,
+                        scale: thumbnailIndex === index ? 1.25 : 1,
                         width: "100%",
                         x: `${Math.max(index * -100, 15 * -100)}%`,
                       }}
                       exit={{ width: "0%" }}
-                      onClick={() => changePhotoId(id)}
-                      key={id}
+                      onClick={() => goTo(thumbnailIndex)}
+                      key={thumbnailItem.id}
                       className={`${
-                        id === index
+                        thumbnailIndex === index
                           ? "z-20 rounded-md shadow shadow-black/50"
                           : "z-10"
-                      } ${id === 0 ? "rounded-l-md" : ""} ${
-                        id === albumItems.length - 1 ? "rounded-r-md" : ""
+                      } ${thumbnailIndex === 0 ? "rounded-l-md" : ""} ${
+                        thumbnailIndex === albumItems.length - 1
+                          ? "rounded-r-md"
+                          : ""
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
                     >
                       <Image
@@ -197,11 +196,11 @@ export default function ImageOverlay({
                         height={200}
                         unoptimized={true}
                         className={`${
-                          id === index
+                          thumbnailIndex === index
                             ? "brightness-110 hover:brightness-110"
                             : "brightness-50 contrast-125 hover:brightness-75"
                         } h-full transform object-cover transition`}
-                        src={`${domain}/api/v1/invites/${invite.id}/images/${albumItem.image}/thumbnail-squared`}
+                        src={`${domain}/api/v1/invites/${invite.id}/images/${thumbnailItem.image}/thumbnail-squared`}
                       />
                     </motion.button>
                   );

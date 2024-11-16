@@ -5,9 +5,11 @@ export interface SharedModalProps {
   invite: Invite;
   albumItems: AlbumItem[];
   currentPhoto?: string;
-  changePhotoId: (newVal: number) => void;
+  goTo: (itemIdx: number) => void;
   closeModal: () => void;
   direction?: number;
+  goToNext: () => void;
+  goToPrevious: () => void;
 }
 
 export interface Invite {
