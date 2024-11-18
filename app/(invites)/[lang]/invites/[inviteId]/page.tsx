@@ -7,7 +7,7 @@ export default async function Page(props: InviteProps) {
   const dicts = await getDictionary(props.params.lang);
   return (
     <InvitePreview
-      data={{ ...fetchedData, itemId: props.searchParams.itemId }}
+      data={{ ...fetchedData, selectedItemId: props.searchParams.itemId }}
       albumCardDict={dicts.albumCard}
       lang={props.params.lang}
     />

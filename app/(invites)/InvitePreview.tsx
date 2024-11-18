@@ -14,18 +14,15 @@ import { useRouter } from "next/navigation";
 export interface InvitePreviewData {
   invite: Invite;
   items: AlbumItem[];
-  inviteId: string;
   domain: string;
-  itemId?: string;
-  qrUrl: string;
-  albumPreviewImageUrl: string;
-  initialRegion?: CoordinateRegion;
+  selectedItemId?: string;
+  albumMapRegion?: CoordinateRegion;
 }
 
 export default function InvitePreview(props: { data: InvitePreviewData, albumCardDict: any, lang: string }) {
   const data = props.data;
-  const fullInviteId = data.inviteId as string;
-  const itemId = data.itemId;
+  const fullInviteId = data.invite.id;
+  const itemId = data.selectedItemId;
   const inviteCode = fullInviteId.substring(0, 8);
   
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
@@ -62,18 +59,18 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               <AlbumCard
                 albumName={data.invite.groupName}
                 inviteCode={inviteCode}
-                qrCodeURL={data.qrUrl}
+                qrCodeURL={`${data.domain}/invite/${data.invite.id}`}
                 albumCardDict={props.albumCardDict}
               />
             )}
-            {data.initialRegion && (
+            {data.albumMapRegion && (
               <div className="h-48 w-full mb-5 rounded-lg overflow-clip">
                 <ItemMap
                   items={data.items}
-                  initialRegion={data.initialRegion}
+                  initialRegion={data.albumMapRegion}
                   onItemSelect={(item) => {
                     router.push(
-                      `/${props.lang}/invite/${data.inviteId}?itemId=${item.id}`
+                      `/${props.lang}/invite/${data.invite.id}?itemId=${item.id}`
                     );
                   }}
                 />
@@ -95,7 +92,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
                   <GridImage
                     lang={props.lang}
                     domain={data.domain}
-                    inviteId={data.inviteId}
+                    inviteId={data.invite.id}
                     showLikes={!data.invite.viewOnly}
                     albumItem={albumItem}
                   />
