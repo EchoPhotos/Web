@@ -5,11 +5,12 @@ import GridImage from "@/components/GridImage";
 import ImageOverlayContainer from "@/components/ImageOverlayContainer";
 import { AlbumItem, Invite } from "@/utils/types";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLastViewedPhoto } from "@/utils/useLastViewedPhoto";
 import ItemMap from "@/components/ItemMap";
 import { CoordinateRegion } from "mapkit-react";
 import { useRouter } from "next/navigation";
+import { Toggle } from "@/components/Toggle";
 
 export interface InvitePreviewData {
   invite: Invite;
@@ -24,8 +25,17 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
   const fullInviteId = data.invite.id;
   const itemId = data.selectedItemId;
   const inviteCode = fullInviteId.substring(0, 8);
+
+  const countLiked = data.items.filter(
+    (item) => item.likes?.length ?? 0 > 1
+  ).length;
+  const countItems = data.items.length;
+  const startWithFilter =
+    data.invite.previewOnlyLiked ??
+    !(countLiked > 0.2 * countItems && countItems > 20);
   
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
+  const [likedOnly, setLikedOnly] = useState<boolean>(startWithFilter);
 
   const lastViewedPhotoRef = useRef<HTMLDivElement>(null);
 
@@ -39,6 +49,10 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
   }, [itemId, lastViewedPhoto, setLastViewedPhoto]);
 
   const router = useRouter();
+
+  function toggleLikedOnly(value: boolean) {
+    setLikedOnly(value);
+  }
 
   return (
     <>
@@ -63,6 +77,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
                 albumCardDict={props.albumCardDict}
               />
             )}
+            <Toggle onChange={toggleLikedOnly} enable={startWithFilter} />
             {data.albumMapRegion && (
               <div className="h-48 w-full mb-5 rounded-lg overflow-clip">
                 <ItemMap
@@ -83,6 +98,9 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               </a>
             )}
             {data.items.map((albumItem) => {
+              if ((albumItem.likes?.length ?? 0) < 1 && likedOnly) {
+                return <></>;
+              }
               const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
               return (
                 <div
@@ -93,7 +111,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
                     lang={props.lang}
                     domain={data.domain}
                     inviteId={data.invite.id}
-                    showLikes={!data.invite.viewOnly}
+                    showLikes={!likedOnly && !data.invite.viewOnly}
                     albumItem={albumItem}
                   />
                 </div>

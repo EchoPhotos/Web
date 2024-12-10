@@ -25,6 +25,7 @@ export interface Invite {
   members?: string[];
   photoCount?: number;
   viewOnly?: boolean;
+  previewOnlyLiked?: boolean;
 }
 
 export interface Download {
