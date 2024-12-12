@@ -190,6 +190,9 @@
       ]
     }
   },
+  "general": {
+    "createNewAlbumButton": "Neues Album erstellen"
+  },
   "common": {
     "navbar": {
       "weddings": "Hochzeiten",

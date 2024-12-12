@@ -11,6 +11,8 @@ import ContentBox from "@/components/ContentBox";
 import FullScreenSection from "@/components/FullScreenSection";
 import { i18n } from "@/utils/i18n-config";
 import { getDictionary } from "../../../utils/dictionary";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 const cinzelFont = Cinzel({ subsets: ["latin"] });
 const quickSandFont = Quicksand({ subsets: ["latin"] });
@@ -47,6 +49,13 @@ export default async function WeddingPage({params}) {
           </div>
 
           <p className="my-3">{dict.primarySection.availableOn}</p>
+
+          <Link
+            href="https://app.echophotos.io/albums/new"
+            className="flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md bg-red-400  px-1 py-1 text-sm font-semibold text-white shadow-md shadow-red-500/40 hover:bg-red-600 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
+          >
+            {dicts.general.createNewAlbumButton}
+          </Link>
         </ContentBox>
       </FullScreenSection>
 

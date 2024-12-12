@@ -190,6 +190,9 @@
       ]
     }
   },
+  "general": {
+    "createNewAlbumButton": "Create new album"
+  },
   "common": {
     "navbar": {
       "weddings": "Weddings",
