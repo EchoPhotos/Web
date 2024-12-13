@@ -57,6 +57,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
           <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
             {!data.invite.viewOnly && (
               <AlbumCard
+                albumId={data.invite.group}
                 albumName={data.invite.groupName}
                 inviteCode={inviteCode}
                 qrCodeURL={`${data.domain}/invite/${data.invite.id}`}

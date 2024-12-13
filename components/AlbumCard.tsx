@@ -1,10 +1,12 @@
 import React from "react";
 import QRCode from "./QRCode";
+import Link from "next/link";
 
 interface AlbumCardProps {
   albumName?: string;
   inviteCode: string;
   qrCodeURL: string;
+  albumId: string;
   albumCardDict: any;
 }
 
@@ -12,6 +14,7 @@ export default async function AlbumCard({
   albumName,
   inviteCode,
   qrCodeURL,
+  albumId,
   albumCardDict,
 }: AlbumCardProps) {
   const dict = albumCardDict;
@@ -63,13 +66,6 @@ export default async function AlbumCard({
         {dict.description ?? "test description"}
       </p> */}
 
-      {/* <button
-        className="pointer z-10 mt-6 rounded-lg border border-white bg-white px-3 py-2 text-sm font-semibold text-black transition hover:bg-white/10 hover:text-white md:mt-4"
-        onClick={copyToClipboard}
-      >
-        Upload Photos
-      </button> */}
-
       <div className="flex flex-row items-center space-x-5">
         {dict.hostedOn}
         <img
@@ -81,17 +77,27 @@ export default async function AlbumCard({
         Echo Photos
       </div>
 
-      <div className="flex flex-col items-center text-xs text-center w-52">
-        {dict.app.description ??
-          "With the app, you can upload your photos and add likes and comments."}
+      <div className="flex flex-col items-center text-xs text-center">
+        <div className="w-52">
+          {dict.app.description ??
+            "With the app, you can upload your photos and add likes and comments."}
+        </div>
 
         <button
           id="inviteCode"
           onClick={getApp}
-          className="text-white text-center py-3.5 px-6 mt-2 bg-blue-700 hover:bg-zinc-300 rounded-lg uppercase text-xl transition hover:text-black font-bold"
+          className="text-white text-center py-3.5 px-6 mt-2 bg-blue-600 hover:bg-zinc-100 rounded-lg text-xl transition hover:text-blue-500 font-bold"
         >
           {dict.app.installButton ?? "Get the App"}
         </button>
+
+        <Link
+          id="upload"
+          href={`https://app.echophotos.io/albums/${albumId}/upload`}
+          className="text-blue-500 text-center py-2 px-5 mt-2 bg-zinc-300 hover:bg-blue-400 rounded-lg text-lg transition hover:text-white font-bold"
+        >
+          {dict.uploadPhotosButton ?? "Upload photos"}
+        </Link>
       </div>
     </div>
   );

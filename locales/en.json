@@ -223,7 +223,8 @@
     "app": {
       "installButton": "Get the App",
       "description": "With the app, you can upload your photos and add likes and comments."
-    }
+    },
+    "uploadPhotosButton": "Upload photos"
   },
   "downloadPreview": {
     "header": "Download Link",

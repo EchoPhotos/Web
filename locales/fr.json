@@ -232,7 +232,8 @@
     "app": {
       "installButton": "Obtenir l'appli",
       "description": "Avec l'appli, vous pouvez télécharger vos photos et ajouter des likes et des commentaires."
-    }
+    },
+    "uploadPhotosButton": "Télécharger photos"
   },
   "404": {
     "error-message": "Erreur 404 : Cette page n'existe pas.",
