@@ -8,24 +8,31 @@ interface AlbumCardProps {
   albumCardDict: any;
 }
 
-export default async function AlbumCard({albumName, inviteCode, qrCodeURL, albumCardDict}: AlbumCardProps) {
+export default async function AlbumCard({
+  albumName,
+  inviteCode,
+  qrCodeURL,
+  albumCardDict,
+}: AlbumCardProps) {
   const dict = albumCardDict;
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(inviteCode);
     alert(dict.copied ?? "Copied!");
   };
-  
+
   const getApp = async () => {
-     if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-       window.open("https://play.google.com/store/apps/details?id=ch.echolabs.echo");
-     } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
-       window.open("https://apps.apple.com/app/id1499073049");
-     } else if (navigator.userAgent.toLowerCase().indexOf("macintosh") > -1) {
-       window.open("https://apps.apple.com/app/id1499073049");
-     } else {
-       window.open(`https://web.echophotos.io/invite/${inviteCode}`, "_blank");
-     }
+    if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+      window.open(
+        "https://play.google.com/store/apps/details?id=ch.echolabs.echo"
+      );
+    } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
+      window.open("https://apps.apple.com/app/id1499073049");
+    } else if (navigator.userAgent.toLowerCase().indexOf("macintosh") > -1) {
+      window.open("https://apps.apple.com/app/id1499073049");
+    } else {
+      window.open(`https://web.echophotos.io/invite/${inviteCode}`, "_blank");
+    }
   };
 
   return (
@@ -88,4 +95,4 @@ export default async function AlbumCard({albumName, inviteCode, qrCodeURL, album
       </div>
     </div>
   );
-};
+}
