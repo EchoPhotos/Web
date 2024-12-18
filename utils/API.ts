@@ -1,19 +1,11 @@
 import { AlbumItem, Invite } from "./types";
-import admin from "firebase-admin";
 
 export async function getDomain() {
-  const ADMIN_APP_NAME = "firebase-frameworks";
-  const adminApp =
-    admin.apps.find((app) => app?.name === ADMIN_APP_NAME) ||
-    admin.initializeApp(
-      {
-        credential: admin.credential.applicationDefault(),
-      },
-      ADMIN_APP_NAME
-    );
-
-  const projectId =
-    admin.instanceId(adminApp).app.options.projectId ?? "echo-photos-dev";
+  const config = process.env.FIREBASE_CONFIG;
+  if (!config) {
+    throw Error(config);
+  }
+  const projectId = JSON.parse(config).projectId;
   let domain = `https://${projectId}.web.app`;
   if (projectId === "echo-photos") {
     domain = "https://www.echophotos.io";

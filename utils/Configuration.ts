@@ -15,14 +15,6 @@ const prod: Configuration = {
 };
 
 function currentConfig() {
-  // if (process.env.CONFIG === 'dev') {
-  //   return dev;
-  // } else if (process.env.CONFIG === 'local') {
-  //   return local;
-  // } else if (process.env.CONFIG === 'prod') {
-  //   return prod;
-  // }
-  // throw Error('env.CONFIG not found.')
   if (process.env.NODE_ENV === "development") {
     return local;
   }

@@ -16,7 +16,6 @@
     "date-fns": "^3.6.0",
     "eslint-config-next": "^14.1.0",
     "firebase": "^10.12.5",
-    "firebase-admin": "^12.1.0",
     "framer-motion": "^7.6.4",
     "mapkit-react": "^1.15.2",
     "negotiator": "^0.6.3",

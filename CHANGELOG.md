@@ -3,6 +3,7 @@
 ## Unreleased
 - Item map in previews
 - Fixed social preview
+- Drop `firebase-admin`
 
 ## 2024-11-10
 - Update invalid download page

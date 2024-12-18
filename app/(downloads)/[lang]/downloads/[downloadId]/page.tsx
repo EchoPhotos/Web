@@ -1,21 +1,15 @@
 import { Metadata } from "next";
 import DownloadPreview, { DownloadPreviewData } from "./DownloadPreview";
-import admin from "firebase-admin";
 import { Download } from "@/utils/types";
 import { getDictionary } from "@/utils/dictionary";
 
 async function getData(downloadId: string): Promise<DownloadPreviewData> {
-  const ADMIN_APP_NAME = "firebase-frameworks";
-  const adminApp =
-    admin.apps.find((app) => app?.name === ADMIN_APP_NAME) ||
-    admin.initializeApp(
-      {
-        credential: admin.credential.applicationDefault(),
-      },
-      ADMIN_APP_NAME
-    );
+  const config = process.env.FIREBASE_CONFIG;
+  if (!config) {
+    throw Error(config);
+  }
+  const projectId = JSON.parse(config).projectId;
 
-  const projectId = admin.instanceId(adminApp).app.options.projectId ?? 'echo-photos-dev';
   let domain = `https://${projectId}.web.app`;
   if (projectId === "echo-photos") {
     domain = "https://www.echophotos.io";
