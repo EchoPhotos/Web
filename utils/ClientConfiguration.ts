@@ -1,9 +1,11 @@
+'use client'
+
 interface Configuration {
   appleMapsToken: string
 }
 
 const local: Configuration = {
-  appleMapsToken: 'eyJraWQiOiJZNEo4SllaM1k2IiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJMVlM0VDZQUFo0IiwiaWF0IjoxNzMxNjEwMDE4LCJleHAiOjE3MzIyNjIzOTl9.KPJakkGjaXpN3MkiwODM4R24P4ZiJpLNPf9TZFOfui7I-sCRHuOGUKjFENitVPORvbSs2cyvKnJ-J4Uhel2xiQ',
+  appleMapsToken: 'eyJraWQiOiI5NlpSOVBCODlCIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJMVlM0VDZQUFo0IiwiaWF0IjoxNzM0NjQ2Mzc4LCJleHAiOjE3MzUyODYzOTl9.eesKCZgG_8aFhDBdXn6q3p3GmOjTgKD-8K0R82rs3uIxkW8D_aF8l3NwMEboACdkjJiD130qxYHT2FkGfRLwbQ',
 };
 
 const dev: Configuration = {
@@ -17,8 +19,9 @@ const prod: Configuration = {
 function currentConfig() {
   if (process.env.NODE_ENV === "development") {
     return local;
+  } else {
+    return prod;
   }
-  return prod;
 }
 
 const current = currentConfig();
