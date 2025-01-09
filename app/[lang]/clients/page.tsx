@@ -1,15 +1,15 @@
-import AppStore from "@old-components/Badges/AppStore";
-import ContentBox from "@old-components/ContentBox";
-import FeatureSection from "@old-components/FeatureSection";
-import { getDictionary } from "@old-utils/dictionary";
-import { i18n } from "@old-utils/i18n-config";
+import AppStore from '@old-components/Badges/AppStore';
+import ContentBox from '@old-components/ContentBox';
+import FeatureSection from '@old-components/FeatureSection';
+import { getDictionary } from '@old-utils/dictionary';
+import { i18n } from '@old-utils/i18n-config';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
     lang;
   });
 }
-export default async function HomePage({params}) {
+export default async function HomePage({ params }) {
   const dicts = await getDictionary(params.lang);
   const dict = dicts.home;
 

@@ -1,6 +1,6 @@
-import InvitePreview from "../../../InvitePreview";
-import { InviteProps, getData } from "../../../Shared";
-import { getDictionary } from "@old-utils/dictionary";
+import InvitePreview from '../../../InvitePreview';
+import { InviteProps, getData } from '../../../Shared';
+import { getDictionary } from '@old-utils/dictionary';
 
 export default async function Page(props: InviteProps) {
   const fetchedData = await getData(props.params.inviteId);
@@ -14,4 +14,4 @@ export default async function Page(props: InviteProps) {
   );
 }
 
-export { generateMetadata } from "../../../Shared";
+export { generateMetadata } from '../../../Shared';

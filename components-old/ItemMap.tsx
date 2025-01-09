@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from "react";
-import ngeohash from "ngeohash";
-import { AlbumItem } from "@old-utils/types";
-import { Marker, Map, CoordinateRegion } from "mapkit-react";
-import { current } from "@old-utils/ClientConfiguration";
+import { useEffect, useState } from 'react';
+import ngeohash from 'ngeohash';
+import { AlbumItem } from '@old-utils/types';
+import { Marker, Map, CoordinateRegion } from 'mapkit-react';
+import { current } from '@old-utils/ClientConfiguration';
 
 type Annotation = {
   latitude: number;
@@ -12,8 +12,15 @@ type Annotation = {
   item: AlbumItem;
 };
 
-
-function ItemMap({ items, initialRegion, onItemSelect }: { items: AlbumItem[], initialRegion: CoordinateRegion, onItemSelect?: (item: AlbumItem) => void}) {
+function ItemMap({
+  items,
+  initialRegion,
+  onItemSelect,
+}: {
+  items: AlbumItem[];
+  initialRegion: CoordinateRegion;
+  onItemSelect?: (item: AlbumItem) => void;
+}) {
   const [annotations, setAnnotations] = useState<Annotation[]>([]);
 
   // const mapRef = useRef<mapkit.Map>(null);
@@ -48,7 +55,7 @@ function ItemMap({ items, initialRegion, onItemSelect }: { items: AlbumItem[], i
           key={index}
           latitude={annotation.latitude}
           longitude={annotation.longitude}
-          glyphText={"📸"}
+          glyphText={'📸'}
           color="#555"
           onSelect={() => {
             onItemSelect?.(annotation.item);
@@ -60,4 +67,4 @@ function ItemMap({ items, initialRegion, onItemSelect }: { items: AlbumItem[], i
 }
 
 export default ItemMap;
-import { useRef } from "react";
+import { useRef } from 'react';

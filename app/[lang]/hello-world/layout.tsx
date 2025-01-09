@@ -1,5 +1,5 @@
-import Section from "@old-components/Section";
-import { i18n } from "@old-utils/i18n-config";
+import Section from '@old-components/Section';
+import { i18n } from '@old-utils/i18n-config';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {

@@ -1,9 +1,9 @@
-import { Metadata } from "next";
-import { InvitePreviewData } from "./InvitePreview";
-import { AlbumItem } from "@old-utils/types";
-import { CoordinateRegion } from "mapkit-react";
-import ngeohash from "ngeohash";
-import * as API from "@old-utils/API";
+import { Metadata } from 'next';
+import { InvitePreviewData } from './InvitePreview';
+import { AlbumItem } from '@old-utils/types';
+import { CoordinateRegion } from 'mapkit-react';
+import ngeohash from 'ngeohash';
+import * as API from '@old-utils/API';
 
 export async function getData(inviteId: string): Promise<InvitePreviewData> {
   const invite = await API.fetchInvite(inviteId);
@@ -38,7 +38,7 @@ function calculateCoordinateRegion(items: AlbumItem[]): CoordinateRegion | undef
     return undefined;
   }
 
-  const firstHash = items.find(item => item.contentLocationHash)?.contentLocationHash;
+  const firstHash = items.find((item) => item.contentLocationHash)?.contentLocationHash;
   if (!firstHash) {
     return undefined;
   }
@@ -57,11 +57,11 @@ function calculateCoordinateRegion(items: AlbumItem[]): CoordinateRegion | undef
     if (latitude > maxLat) maxLat = latitude;
     if (longitude < minLng) minLng = longitude;
     if (longitude > maxLng) maxLng = longitude;
-  };
+  }
 
   return {
-    latitudeDelta: (maxLat == minLat) ? 0.1 : (maxLat - minLat) * 1.2,
-    longitudeDelta: (maxLat == minLat) ? 0.1 : (maxLng - minLng) * 1.2,
+    latitudeDelta: maxLat == minLat ? 0.1 : (maxLat - minLat) * 1.2,
+    longitudeDelta: maxLat == minLat ? 0.1 : (maxLng - minLng) * 1.2,
     centerLatitude: (minLat + maxLat) / 2,
     centerLongitude: (minLng + maxLng) / 2,
   };
@@ -79,8 +79,7 @@ export async function generateMetadata({ params }: InviteProps): Promise<Metadat
   const id = params.inviteId;
   const product = await getData(id);
   const title = product.invite.groupName;
-  const imageUrl =
-    `${product.domain}/api/v1/invites/${id}/image`;
+  const imageUrl = `${product.domain}/api/v1/invites/${id}/image`;
 
   return {
     title: title,
@@ -91,8 +90,8 @@ export async function generateMetadata({ params }: InviteProps): Promise<Metadat
     openGraph: {
       title: title,
       images: imageUrl,
-      siteName: "Echo Photos",
-      type: "website",
+      siteName: 'Echo Photos',
+      type: 'website',
     },
   };
 }

@@ -1,13 +1,10 @@
 import { PropsWithChildren } from 'react';
 
-export default function Section({
-  children,
-  title,
-}: PropsWithChildren<{ title: string }>) {
+export default function Section({ children, title }: PropsWithChildren<{ title: string }>) {
   return (
     <section>
-      <div className="container max-w-6xl mx-auto py-10 px-4">
-        <h1 className="font-bold mb-4">{title}</h1>
+      <div className="container mx-auto max-w-6xl px-4 py-10">
+        <h1 className="mb-4 font-bold">{title}</h1>
         {children}
       </div>
     </section>

@@ -1,9 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 
-import Section from "@old-components/Section";
-import { i18n } from "@old-utils/i18n-config";
-import { getDictionary } from "@old-utils/dictionary";
+import Section from '@old-components/Section';
+import { i18n } from '@old-utils/i18n-config';
+import { getDictionary } from '@old-utils/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -29,34 +29,31 @@ export default async function PrivacyPage({ params: { lang } }) {
 
         <p className="mb-4">{dict.sections[0].paragraphs?.[3]}</p>
 
-        <h3 className="font-bold mb-2">{dict.sections[1].title}</h3>
+        <h3 className="mb-2 font-bold">{dict.sections[1].title}</h3>
         <p className="mb-4">{dict.sections[1].description}</p>
 
-        <h3 className="font-bold mb-2">{dict.sections[2].title}</h3>
+        <h3 className="mb-2 font-bold">{dict.sections[2].title}</h3>
         <p className="mb-4">{dict.sections[2].paragraphs?.[0]}</p>
 
         <p className="mb-4">{dict.sections[2].paragraphs?.[1]}</p>
 
-        <h3 className="font-bold mb-2">{dict.sections[3].title}</h3>
+        <h3 className="mb-2 font-bold">{dict.sections[3].title}</h3>
         <p className="mb-4">{dict.sections[3].description}</p>
 
-        <h3 className="font-bold mb-2">{dict.sections[4].title}</h3>
+        <h3 className="mb-2 font-bold">{dict.sections[4].title}</h3>
         <p className="mb-4">{dict.sections[4].description}</p>
 
-        <h3 className="font-bold mb-2">{dict.sections[5].title}</h3>
+        <h3 className="mb-2 font-bold">{dict.sections[5].title}</h3>
         <p className="mb-4">{dict.sections[5].description}</p>
 
-        <h3 className="font-bold mb-2">{dict.sections[6].title}</h3>
+        <h3 className="mb-2 font-bold">{dict.sections[6].title}</h3>
         <p className="mb-4">{dict.sections[6].paragraphs?.[0]}</p>
         <p className="mb-4">{dict.sections[6].paragraphs?.[1]}</p>
 
-        <h3 className="font-bold mb-2">{dict.sections[7].title}</h3>
+        <h3 className="mb-2 font-bold">{dict.sections[7].title}</h3>
         <p className="mb-4">
-          {dict.sections[7].description}{" "}
-          <Link
-            href="mailto:info@echolabs.ch"
-            className="underline hover:text-blue-500"
-          >
+          {dict.sections[7].description}{' '}
+          <Link href="mailto:info@echolabs.ch" className="underline hover:text-blue-500">
             info@echolabs.ch
           </Link>
           .

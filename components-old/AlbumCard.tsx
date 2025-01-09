@@ -93,7 +93,7 @@ export default async function AlbumCard({
 
         <Link
           id="upload"
-          href={`https://app.echophotos.io/albums/${albumId}/upload`}
+          href={`https://www.echophotos.io/albums/${albumId}/upload`}
           className="text-blue-500 text-center py-2 px-5 mt-2 bg-zinc-300 hover:bg-blue-400 rounded-lg text-lg transition hover:text-white font-bold"
         >
           {dict.uploadPhotosButton ?? "Upload photos"}

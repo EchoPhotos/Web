@@ -1,15 +1,15 @@
-"use client"
+'use client';
 
-import AlbumCard from "@old-components/AlbumCard";
-import GridImage from "@old-components/GridImage";
-import ImageOverlayContainer from "@old-components/ImageOverlayContainer";
-import { AlbumItem, Invite } from "@old-utils/types";
+import AlbumCard from '@old-components/AlbumCard';
+import GridImage from '@old-components/GridImage';
+import ImageOverlayContainer from '@old-components/ImageOverlayContainer';
+import { AlbumItem, Invite } from '@old-utils/types';
 
-import { useEffect, useRef } from "react";
-import { useLastViewedPhoto } from "@old-utils/useLastViewedPhoto";
-import ItemMap from "@old-components/ItemMap";
-import { CoordinateRegion } from "mapkit-react";
-import { useRouter } from "next/navigation";
+import { useEffect, useRef } from 'react';
+import { useLastViewedPhoto } from '@old-utils/useLastViewedPhoto';
+import ItemMap from '@old-components/ItemMap';
+import { CoordinateRegion } from 'mapkit-react';
+import { useRouter } from 'next/navigation';
 
 export interface InvitePreviewData {
   invite: Invite;
@@ -19,12 +19,16 @@ export interface InvitePreviewData {
   albumMapRegion?: CoordinateRegion;
 }
 
-export default function InvitePreview(props: { data: InvitePreviewData, albumCardDict: any, lang: string }) {
+export default function InvitePreview(props: {
+  data: InvitePreviewData;
+  albumCardDict: any;
+  lang: string;
+}) {
   const data = props.data;
   const fullInviteId = data.invite.id;
   const itemId = data.selectedItemId;
   const inviteCode = fullInviteId.substring(0, 8);
-  
+
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
 
   const lastViewedPhotoRef = useRef<HTMLDivElement>(null);
@@ -33,7 +37,7 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     const currentRef = lastViewedPhotoRef.current;
     if (lastViewedPhoto && !itemId && currentRef) {
-      currentRef.scrollIntoView({ block: "center" });
+      currentRef.scrollIntoView({ block: 'center' });
       // setLastViewedPhoto(null);
     }
   }, [itemId, lastViewedPhoto, setLastViewedPhoto]);
@@ -65,31 +69,26 @@ export default function InvitePreview(props: { data: InvitePreviewData, albumCar
               />
             )}
             {data.albumMapRegion && (
-              <div className="h-48 w-full mb-5 rounded-lg overflow-clip">
+              <div className="mb-5 h-48 w-full overflow-clip rounded-lg">
                 <ItemMap
                   items={data.items}
                   initialRegion={data.albumMapRegion}
                   onItemSelect={(item) => {
-                    router.push(
-                      `/${props.lang}/invite/${data.invite.id}?itemId=${item.id}`
-                    );
+                    router.push(`/${props.lang}/invite/${data.invite.id}?itemId=${item.id}`);
                   }}
                 />
               </div>
             )}
 
             {data.invite.viewOnly && (
-              <a className="bg-stone-800 rounded-lg text-white font-semibold text-3xl flex flex-row my-4 p-4 justify-center">
+              <a className="my-4 flex flex-row justify-center rounded-lg bg-stone-800 p-4 text-3xl font-semibold text-white">
                 {data.invite.groupName}
               </a>
             )}
             {data.items.map((albumItem) => {
               const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
               return (
-                <div
-                  ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined}
-                  key={albumItem.id}
-                >
+                <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined} key={albumItem.id}>
                   <GridImage
                     lang={props.lang}
                     domain={data.domain}

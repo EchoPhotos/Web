@@ -1,10 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
-import * as ReactQRCode from "react-qr-code";
+'use client';
+import { useEffect, useState } from 'react';
+import * as ReactQRCode from 'react-qr-code';
 
-export default function QRCode({
-  qrCodeURL,
-}) {
+export default function QRCode({ qrCodeURL }) {
   const [qrUrl, setQrUrl] = useState(qrCodeURL);
 
   useEffect(() => {
@@ -12,7 +10,7 @@ export default function QRCode({
   }, []);
 
   return (
-    <div className="p-3 bg-white rounded-lg" id="qrcode">
+    <div className="rounded-lg bg-white p-3" id="qrcode">
       <ReactQRCode.default value={qrCodeURL} size={120} />
     </div>
   );

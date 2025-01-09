@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -25,15 +21,11 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@old-components/*": [
-        "components-old/*"
-      ],
-      "@old-utils/*": [
-        "utils-old/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ]
+      "@old-components/*": ["components-old/*"],
+      "@old-utils/*": ["utils-old/*"],
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@/styles/*": ["styles/*"]
     },
     "strictNullChecks": true
   },

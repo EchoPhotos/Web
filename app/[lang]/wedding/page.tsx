@@ -1,44 +1,42 @@
-import * as Icons from "react-icons/io5";
-import { Cinzel } from "next/font/google";
-import { Montserrat } from "next/font/google";
-import { Quicksand } from "next/font/google";
-import { Josefin_Sans } from "next/font/google";
-import { Playfair_Display } from "next/font/google";
-import AppStore from "@old-components/Badges/AppStore";
-import Featurette from "@old-components/Featurette";
-import GooglePlay from "@old-components/Badges/GooglePlay";
-import ContentBox from "@old-components/ContentBox";
-import FullScreenSection from "@old-components/FullScreenSection";
-import { i18n } from "@old-utils/i18n-config";
-import { getDictionary } from "../../../utils-old/dictionary";
-import Button from "@old-components/Button";
-import Link from "next/link";
+import * as Icons from 'react-icons/io5';
+import { Cinzel } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
+import { Quicksand } from 'next/font/google';
+import { Josefin_Sans } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
+import AppStore from '@old-components/Badges/AppStore';
+import Featurette from '@old-components/Featurette';
+import GooglePlay from '@old-components/Badges/GooglePlay';
+import ContentBox from '@old-components/ContentBox';
+import FullScreenSection from '@old-components/FullScreenSection';
+import { i18n } from '@old-utils/i18n-config';
+import { getDictionary } from '../../../utils-old/dictionary';
+import Button from '@old-components/Button';
+import Link from 'next/link';
 
-const cinzelFont = Cinzel({ subsets: ["latin"] });
-const quickSandFont = Quicksand({ subsets: ["latin"] });
-const montserratSandFont = Montserrat({ subsets: ["latin"] });
-const josefinSansFont = Josefin_Sans({ subsets: ["latin"] });
-const playfairFont = Playfair_Display({ subsets: ["latin"] });
+const cinzelFont = Cinzel({ subsets: ['latin'] });
+const quickSandFont = Quicksand({ subsets: ['latin'] });
+const montserratSandFont = Montserrat({ subsets: ['latin'] });
+const josefinSansFont = Josefin_Sans({ subsets: ['latin'] });
+const playfairFont = Playfair_Display({ subsets: ['latin'] });
 
 const titleFont = playfairFont;
-  
+
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
     lang;
   });
 }
 
-export default async function WeddingPage({params}) {
+export default async function WeddingPage({ params }) {
   const dicts = await getDictionary(params.lang);
   const dict = dicts.wedding;
 
   return (
     <>
-      <FullScreenSection className="bg-rose-50 -mt-20">
+      <FullScreenSection className="-mt-20 bg-rose-50">
         <ContentBox left={false} imageURL="/images/weddingMain.png" title="">
-          <h1 className={`${titleFont.className} font-bold mb-6`}>
-            {dict.primarySection.title}
-          </h1>
+          <h1 className={`${titleFont.className} mb-6 font-bold`}>{dict.primarySection.title}</h1>
 
           <h4 className="my-4">{dict.primarySection.subtitle}</h4>
 
@@ -51,26 +49,21 @@ export default async function WeddingPage({params}) {
           <p className="my-3">{dict.primarySection.availableOn}</p>
 
           <Link
-            href="https://app.echophotos.io/albums/new"
-            className="flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md bg-red-400  px-1 py-1 text-sm font-semibold text-white shadow-md shadow-red-500/40 hover:bg-red-600 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
+            href="https://www.echophotos.io/albums/new"
+            className="flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md bg-red-400 px-1 py-1 text-sm font-semibold text-white shadow-md shadow-red-500/40 hover:bg-red-600 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
           >
             {dicts.general.createNewAlbumButton}
           </Link>
         </ContentBox>
       </FullScreenSection>
 
-      <section
-        className="pt-10 pb-10 md:pt-24 md:pb-40 bg-red-300"
-        id="features"
-      >
+      <section className="bg-red-300 pb-10 pt-10 md:pb-40 md:pt-24" id="features">
         <div
-          className={`flex flex-col text-stone-50 items-center text-center md:text-left m-auto container max-w-6xl px-4`}
+          className={`container m-auto flex max-w-6xl flex-col items-center px-4 text-center text-stone-50 md:text-left`}
         >
-          <h2 className={`${titleFont.className} font-bold mb-10 md:mb-6`}>
-            The App
-          </h2>
+          <h2 className={`${titleFont.className} mb-10 font-bold md:mb-6`}>The App</h2>
 
-          <div className="md:grid flex flex-col grid-rows-3 grid-cols-3 grid-flow-col gap-10 md:gap-y-4">
+          <div className="flex grid-flow-col grid-cols-3 grid-rows-3 flex-col gap-10 md:grid md:gap-y-4">
             <Featurette
               big={true}
               titleClassName={`${titleFont.className}`}
@@ -98,7 +91,7 @@ export default async function WeddingPage({params}) {
               {dict.features[2].text}
             </Featurette>
 
-            <div className="row-span-3 my-auto mx-auto">
+            <div className="row-span-3 mx-auto my-auto">
               <img src="/images/weddingSecondary.png" />
             </div>
 

@@ -41,6 +41,18 @@ export function middleware(request: NextRequest) {
     return;
   }
 
+  if (pathname.startsWith('/albums')) {
+    return;
+  }
+
+  if (pathname.startsWith('/invites')) {
+    return;
+  }
+
+  if (pathname.startsWith('/downloads')) {
+    return;
+  }
+
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) =>

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { Dialog } from "@headlessui/react";
-import { motion } from "framer-motion";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useRef, useState } from "react";
-import useKeypress from "react-use-keypress";
-import ImageOverlay from "./ImageOverlay";
-import { AlbumItem, Invite } from "@old-utils/types";
+import { Dialog } from '@headlessui/react';
+import { motion } from 'framer-motion';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useRef, useState } from 'react';
+import useKeypress from 'react-use-keypress';
+import ImageOverlay from './ImageOverlay';
+import { AlbumItem, Invite } from '@old-utils/types';
 
 export default function ImageOverlayContainer({
   items: albumItems,
@@ -24,9 +24,7 @@ export default function ImageOverlayContainer({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  let albumItem = albumItems.find(
-    (item) => item.id == searchParams.get("itemId")
-  );
+  let albumItem = albumItems.find((item) => item.id == searchParams.get('itemId'));
 
   let index = 0;
 
@@ -65,9 +63,9 @@ export default function ImageOverlayContainer({
     }
   }
 
-  useKeypress("ArrowRight", goToNext);
+  useKeypress('ArrowRight', goToNext);
 
-  useKeypress("ArrowLeft", goToPrevious);
+  useKeypress('ArrowLeft', goToPrevious);
 
   return (
     <Dialog
@@ -77,9 +75,8 @@ export default function ImageOverlayContainer({
       initialFocus={overlayRef}
       className="fixed inset-0 z-10 flex items-center justify-center"
     >
-      <Dialog.Overlay
+      <motion.div
         ref={overlayRef}
-        as={motion.div}
         key="backdrop"
         className="fixed inset-0 z-30 bg-black/70 backdrop-blur-2xl"
         initial={{ opacity: 0 }}

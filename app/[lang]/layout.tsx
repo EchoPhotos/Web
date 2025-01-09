@@ -1,8 +1,8 @@
-import Clarity from "@old-components/Clarity";
-import "@/styles/style.css";
-import DefaultLayout from "@old-components/DefaultLayout";
-import { i18n } from "@old-utils/i18n-config";
-import { getDictionary } from "@old-utils/dictionary";
+import Clarity from '@old-components/Clarity';
+import '@/styles/style.css';
+import DefaultLayout from '@old-components/DefaultLayout';
+import { i18n } from '@old-utils/i18n-config';
+import { getDictionary } from '@old-utils/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -10,7 +10,8 @@ export async function generateStaticParams() {
   });
 }
 export default async function Layout({
-  children, params,
+  children,
+  params,
 }: {
   children: React.ReactNode;
   params: any;
@@ -30,6 +31,6 @@ export default async function Layout({
 }
 
 export const metadata = {
-  title: "Echo Photos",
-  description: "Supreme Photo Sharing",
+  title: 'Echo Photos',
+  description: 'Supreme Photo Sharing',
 };
