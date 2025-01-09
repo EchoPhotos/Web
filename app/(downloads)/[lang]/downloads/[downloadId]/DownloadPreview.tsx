@@ -1,11 +1,11 @@
 "use client"
 
-import FullScreenSection from "@/components/FullScreenSection";
-import { Download } from "@/utils/types";
+import FullScreenSection from "@old-components/FullScreenSection";
+import { Download } from "@old-utils/types";
 import Link from "next/link";
 import Image from "next/image";
 import * as IoIcons from "react-icons/io5";
-import { formatBytes } from "@/utils/formatBytes";
+import { formatBytes } from "@old-utils/formatBytes";
 
 export interface DownloadPreviewData {
   download: Download;

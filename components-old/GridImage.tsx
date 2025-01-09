@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { AlbumItem } from "@/utils/types";
+import { AlbumItem } from "@old-utils/types";
 import * as IoIcons from "react-icons/io5";
 
 interface GridImageProps {

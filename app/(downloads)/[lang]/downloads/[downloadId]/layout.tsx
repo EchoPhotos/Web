@@ -1,6 +1,6 @@
-import Footer from "@/components/Footer";
+import Footer from "@old-components/Footer";
 import "@/styles/style.css";
-import { getDictionary } from "@/utils/dictionary";
+import { getDictionary } from "@old-utils/dictionary";
 import Link from "next/link";
 
 export default async function RootLayout({

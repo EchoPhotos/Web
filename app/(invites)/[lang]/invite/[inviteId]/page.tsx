@@ -1,6 +1,6 @@
 import InvitePreview from "../../../InvitePreview";
 import { InviteProps, getData } from "../../../Shared";
-import { getDictionary } from "@/utils/dictionary";
+import { getDictionary } from "@old-utils/dictionary";
 
 export default async function Page(props: InviteProps) {
   const fetchedData = await getData(props.params.inviteId);

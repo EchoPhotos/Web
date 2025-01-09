@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { InvitePreviewData } from "./InvitePreview";
-import { AlbumItem } from "@/utils/types";
+import { AlbumItem } from "@old-utils/types";
 import { CoordinateRegion } from "mapkit-react";
 import ngeohash from "ngeohash";
-import * as API from "@/utils/API";
+import * as API from "@old-utils/API";
 
 export async function getData(inviteId: string): Promise<InvitePreviewData> {
   const invite = await API.fetchInvite(inviteId);

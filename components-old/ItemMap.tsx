@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import ngeohash from "ngeohash";
-import { AlbumItem } from "@/utils/types";
+import { AlbumItem } from "@old-utils/types";
 import { Marker, Map, CoordinateRegion } from "mapkit-react";
-import { current } from "@/utils/ClientConfiguration";
+import { current } from "@old-utils/ClientConfiguration";
 
 type Annotation = {
   latitude: number;

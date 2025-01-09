@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import DownloadPreview, { DownloadPreviewData } from "./DownloadPreview";
-import { Download } from "@/utils/types";
-import { getDictionary } from "@/utils/dictionary";
+import { Download } from "@old-utils/types";
+import { getDictionary } from "@old-utils/dictionary";
 
 async function getData(downloadId: string): Promise<DownloadPreviewData> {
   const config = process.env.FIREBASE_CONFIG;

@@ -1,7 +1,7 @@
-import Clarity from "@/components/Clarity";
+import Clarity from "@old-components/Clarity";
 import "@/styles/style.css";
-import DefaultLayout from "@/components/DefaultLayout";
-import { getDictionary } from "@/utils/dictionary";
+import DefaultLayout from "@old-components/DefaultLayout";
+import { getDictionary } from "@old-utils/dictionary";
 
 
 export default async function Layout({
