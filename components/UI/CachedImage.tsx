@@ -3,6 +3,7 @@ import { getToken } from '@utils/Auth';
 import { ImageFormat, useImageCache } from '@utils/ImageCache';
 import { useEffect } from 'react';
 import Spinner from './Spinner';
+import { IoImage } from 'react-icons/io5';
 
 export default function CachedImage({
   imageId,
@@ -31,6 +32,14 @@ export default function CachedImage({
         });
     });
   }, [imageUrl]);
+
+  if (!imageId) {
+    return (
+      <div className="h-full w-full content-center bg-slate-700 text-slate-500">
+        <IoImage className="m-auto" size={33} />
+      </div>
+    );
+  }
 
   if (imageBlob) {
     const objectURL = URL.createObjectURL(imageBlob);
