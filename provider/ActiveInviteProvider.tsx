@@ -11,7 +11,7 @@ import { IdInvite } from '@utils/Models';
 
 export default function ActiveInviteProvider({ children }) {
   const params = useParams();
-  const albumId: string = typeof params.albumId === 'string' ? params.albumId : params.albumId[0];
+  const albumId: string = params.albumId as string;
 
   const [invite, setInvite] = useState<IdInvite | undefined>(undefined);
   const [error, setError] = useState<Error | undefined>(undefined);

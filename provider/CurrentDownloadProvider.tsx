@@ -11,7 +11,7 @@ import { AlbumContext } from './AlbumProvider';
 
 export default function CurrentDownloadProvider({ children }) {
   const params = useParams();
-  const albumId: string = typeof params.albumId === 'string' ? params.albumId : params.albumId[0];
+  const albumId: string = params.albumId as string;
 
   const [download, setDownload] = useState<IdDownload | undefined>();
   const [loading, setLoading] = useState(true);

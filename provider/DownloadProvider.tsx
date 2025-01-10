@@ -16,8 +16,7 @@ export const DownloadContext = React.createContext<IdDownloadWithAlbum | undefin
 
 export default function DownloadProvider({ children }: { children: React.ReactNode }) {
   const params = useParams();
-  const downloadId: string =
-    typeof params.downloadId === 'string' ? params.downloadId : params.downloadId[0];
+  const downloadId: string = params.downloadId as string;
 
   const [error, setError] = useState<Error | undefined>(undefined);
   const [download, setDownload] = useState<IdDownloadWithAlbum | undefined>(undefined);

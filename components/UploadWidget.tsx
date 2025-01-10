@@ -39,12 +39,10 @@ export default function UploadWidget() {
 
   function getAlbumId() {
     if (params.albumId) {
-      const albumId: string =
-        typeof params.albumId === 'string' ? params.albumId : params.albumId[0];
+      const albumId: string = params.albumId as string;
       setAlbumId(albumId);
     } else if (params.inviteId) {
-      const inviteId: string =
-        typeof params.inviteId === 'string' ? params.inviteId : params.inviteId[0];
+      const inviteId: string = params.inviteId as string;
       getInvite(inviteId).then((invite) => {
         setAlbumId(invite.group);
       });

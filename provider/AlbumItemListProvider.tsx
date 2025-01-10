@@ -11,7 +11,7 @@ export const AlbumItemListContext = React.createContext<IdAlbumItem[] | undefine
 
 export default function AlbumItemListProvider({ children }) {
   const params = useParams();
-  const albumId: string = typeof params.albumId === 'string' ? params.albumId : params.albumId[0];
+  const albumId: string = params.albumId as string;
   const [albums, setAlbums] = useState<IdAlbumItem[] | undefined>(undefined);
   useEffect(() => {
     getAlbumItems(albumId).then((albums) => {

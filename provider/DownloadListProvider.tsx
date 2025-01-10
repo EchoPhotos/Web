@@ -12,7 +12,7 @@ export const DownloadListContext = React.createContext<IdDownload[] | undefined>
 
 export default function DownloadListProvider({ children }) {
   const params = useParams();
-  const albumId: string = typeof params.albumId === 'string' ? params.albumId : params.albumId[0];
+  const albumId: string = params.albumId as string;
 
   const [downloads, setDownloads] = useState<IdDownload[] | undefined>();
 

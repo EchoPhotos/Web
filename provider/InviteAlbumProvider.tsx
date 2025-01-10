@@ -10,8 +10,7 @@ import { AlbumContext } from './AlbumProvider';
 
 export default function InviteAlbumProvider({ children }) {
   const params = useParams();
-  const inviteId: string =
-    typeof params.inviteId === 'string' ? params.inviteId : params.inviteId[0];
+  const inviteId: string = params.inviteId as string;
 
   const [album, setAlbum] = useState<IdAlbum | undefined>(undefined);
   const [error, setError] = useState<Error | undefined>(undefined);
