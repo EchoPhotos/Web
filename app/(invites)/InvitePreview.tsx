@@ -9,13 +9,12 @@ import { useEffect, useRef } from 'react';
 import { useLastViewedPhoto } from '@old-utils/useLastViewedPhoto';
 import ItemMap from '@old-components/ItemMap';
 import { CoordinateRegion } from 'mapkit-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export interface InvitePreviewData {
   invite: Invite;
   items: AlbumItem[];
   domain: string;
-  selectedItemId?: string;
   albumMapRegion?: CoordinateRegion;
 }
 
@@ -24,9 +23,11 @@ export default function InvitePreview(props: {
   albumCardDict: any;
   lang: string;
 }) {
+  const searchParams = useSearchParams();
+  const selectedItemId = searchParams.get('itemId');
   const data = props.data;
   const fullInviteId = data.invite.id;
-  const itemId = data.selectedItemId;
+  const itemId = selectedItemId;
   const inviteCode = fullInviteId.substring(0, 8);
 
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
