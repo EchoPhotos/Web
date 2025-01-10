@@ -11,7 +11,6 @@ import ContentBox from '@old-components/ContentBox';
 import FullScreenSection from '@old-components/FullScreenSection';
 import { i18n } from '@old-utils/i18n-config';
 import { getDictionary } from '../../../utils-old/dictionary';
-import Button from '@old-components/Button';
 import Link from 'next/link';
 
 const cinzelFont = Cinzel({ subsets: ['latin'] });

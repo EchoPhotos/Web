@@ -1,7 +1,6 @@
 import * as IoIcons from 'react-icons/io5';
 import Link from 'next/link';
 import AppStore from '@old-components/Badges/AppStore';
-import Button from '@old-components/Button';
 import Featurette from '@old-components/Featurette';
 import GooglePlay from '@old-components/Badges/GooglePlay';
 import ContentBox from '@old-components/ContentBox';
@@ -9,6 +8,7 @@ import FeatureSection from '@old-components/FeatureSection';
 import FullScreenSection from '@old-components/FullScreenSection';
 import { i18n } from '@old-utils/i18n-config';
 import { getDictionary } from '@old-utils/dictionary';
+import { ActionStyle } from '@components/UI/ButtonStyles';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -179,7 +179,7 @@ export default async function HomePage({ params: { lang } }) {
           <p className="mb-4">{dict.desktop.sections[0].description}</p>
 
           <Link href="https://web.echophotos.io" target="_blank">
-            <Button>{dict.desktop.sections[0]['open-web-app']}</Button>
+            <ActionStyle>{dict.desktop.sections[0]['open-web-app']}</ActionStyle>
           </Link>
         </ContentBox>
 
