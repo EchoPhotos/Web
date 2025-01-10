@@ -10,7 +10,7 @@ interface FeatureProps {
 
 export default function Featurette({ icon, title, children, big, titleClassName }: FeatureProps) {
   return big ? (
-    <div className="flex items-center md:justify-start justify-center gap-4 p-6">
+    <div className="flex items-center justify-center gap-4 p-6 md:justify-start">
       <h3>{icon}</h3>
       <div>
         <h5 className={`font-semibold ${titleClassName}`}>{title}</h5>
@@ -20,7 +20,7 @@ export default function Featurette({ icon, title, children, big, titleClassName 
   ) : (
     <div>
       <h5
-        className={`flex font-semibold items-center md:justify-start justify-center gap-2  ${titleClassName}`}
+        className={`flex items-center justify-center gap-2 font-semibold md:justify-start ${titleClassName}`}
       >
         <div className="text-2xl">{icon}</div>
 

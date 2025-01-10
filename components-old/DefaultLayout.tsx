@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from './Header';
+import Footer from './Footer';
 
 export default async function DefaultLayout({ lang, dicts, children }) {
   const dict = dicts.common;
@@ -31,7 +31,7 @@ export default async function DefaultLayout({ lang, dicts, children }) {
   return (
     <>
       <Header sections={headerItems} lang={lang} />
-      <main className="pt-20 h-auto">{children}</main>
+      <main className="h-auto pt-20">{children}</main>
       <Footer lang={lang} dict={dicts.common} />
     </>
   );

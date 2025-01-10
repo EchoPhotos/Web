@@ -31,7 +31,7 @@
       {
         "pixels": 512,
         "outputFilenameOverride": "android-chrome-512x512"
-      },
+      }
     ]
   },
   {
@@ -40,8 +40,8 @@
     "outputFilename": "AppIcon",
     "scaledResolutions": [
       {
-        "pixels": 300,
-      },
+        "pixels": 300
+      }
     ]
   },
   {
@@ -50,8 +50,8 @@
     "outputFilename": "logo",
     "scaledResolutions": [
       {
-        "pixels": 125,
-      },
+        "pixels": 125
+      }
     ]
-  },
+  }
 ]

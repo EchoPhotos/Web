@@ -6,18 +6,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-export default function Button({
-  icon,
-  children,
-  className,
-  ...other
-}: ButtonProps) {
+export default function Button({ icon, children, className, ...other }: ButtonProps) {
   return (
     <button
-      className={`
-      text-white rounded-lg font-bold py-3 px-4 uppercase
-      flex gap-2 items-center bg-[#0071e3] hover:bg-[#0077ED]
-      focus:bg-[#0077ED] ${className}`}
+      className={`flex items-center gap-2 rounded-lg bg-[#0071e3] px-4 py-3 font-bold uppercase text-white hover:bg-[#0077ED] focus:bg-[#0077ED] ${className}`}
       {...other}
     >
       {icon ?? null}

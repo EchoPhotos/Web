@@ -1,6 +1,6 @@
 export function formatBytes(bytes: number): string {
   if (bytes < 0) {
-    throw new Error("Bytes cannot be negative");
+    throw new Error('Bytes cannot be negative');
   }
 
   const MB = 1024 * 1024;

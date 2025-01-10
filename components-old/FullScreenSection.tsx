@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface FullscreenSectionProps {
   id?: string;
@@ -6,16 +6,9 @@ interface FullscreenSectionProps {
   className?: string;
 }
 
-export default function FullscreenSection({
-  id,
-  children,
-  className,
-}: FullscreenSectionProps) {
+export default function FullscreenSection({ id, children, className }: FullscreenSectionProps) {
   return (
-    <section
-      id={id}
-      className={`min-h-screen flex items-center justify-center ${className}`}
-    >
+    <section id={id} className={`flex min-h-screen items-center justify-center ${className}`}>
       {children}
     </section>
   );

@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import { IoMenu, IoClose } from "react-icons/io5";
-import Link from "next/link";
-import { useCallback, useState } from "react";
+import { IoMenu, IoClose } from 'react-icons/io5';
+import Link from 'next/link';
+import { useCallback, useState } from 'react';
 
 interface HeaderSection {
   name: string;
@@ -23,14 +23,9 @@ export default ({ sections, lang }: HeaderSections) => {
 
   return (
     <header>
-      <nav className="z-[1] h-20 py-3 px-4 flex items-center justify-between w-full fixed backdrop-blur-md bg-white/70">
+      <nav className="fixed z-[1] flex h-20 w-full items-center justify-between bg-white/70 px-4 py-3 backdrop-blur-md">
         <Link href="/">
-          <img
-            src="/images/logo125.png"
-            height="50"
-            width="125"
-            alt="EchoPhotos logo"
-          />
+          <img src="/images/logo125.png" height="50" width="125" alt="EchoPhotos logo" />
         </Link>
 
         <button className="md:hidden" onClick={toggleOpen}>
@@ -38,15 +33,15 @@ export default ({ sections, lang }: HeaderSections) => {
         </button>
 
         <div
-          className={`absolute top-20 left-0 px-6 pb-3 ${
-            isOpen ? "bg-white/70 backdrop-blur-md" : "hidden"
-          } w-full md:p-0 md:w-auto md:mr-2 md:top-0 md:relative md:block`}
+          className={`absolute left-0 top-20 px-6 pb-3 ${
+            isOpen ? 'bg-white/70 backdrop-blur-md' : 'hidden'
+          } w-full md:relative md:top-0 md:mr-2 md:block md:w-auto md:p-0`}
         >
-          <ul className="flex justify-between flex-col w-full gap-3 md:flex-row md:gap-6">
+          <ul className="flex w-full flex-col justify-between gap-3 md:flex-row md:gap-6">
             {sections.map((section) => (
               <li key={section.name}>
                 <Link
-                  className="hover:underline text-lg font-bold"
+                  className="text-lg font-bold hover:underline"
                   href={`/${lang}/` + section.href}
                 >
                   {section.name}

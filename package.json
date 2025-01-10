@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "format": "npx prettier . --write"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
@@ -15,7 +15,7 @@
     "@mdx-js/react": "^3.0.1",
     "axios": "^1.7.9",
     "date-fns": "^3.6.0",
-    "eslint-config-next": "^14.1.0",
+    "eslint-config-next": "^15.1.4",
     "firebase": "^10.12.5",
     "framer-motion": "^7.6.4",
     "image-js": "^0.35.6",
@@ -41,11 +41,16 @@
     "@types/apple-mapkit-js-browser": "^5.78.1",
     "@types/mdx": "^2.0.3",
     "@types/negotiator": "^0.6.3",
-    "@types/node": "18.11.9",
-    "@types/react": "^18.2.8",
+    "@types/node": "20.10.8",
+    "@types/react": "18.2.47",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.13",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.7"
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.3.3"
   }
 }

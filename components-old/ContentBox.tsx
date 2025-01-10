@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface ContentBoxProps {
   left: boolean;
@@ -7,24 +7,19 @@ interface ContentBoxProps {
   children: ReactNode;
 }
 
-export default function ContentBox({
-  left,
-  imageURL,
-  title,
-  children,
-}: ContentBoxProps) {
+export default function ContentBox({ left, imageURL, title, children }: ContentBoxProps) {
   return (
     <div
       className={`flex ${
-        left ? "md:flex-row-reverse" : "md:flex-row"
-      } flex-col justify-center items-center mb-6 md:mb-0 `}
+        left ? 'md:flex-row-reverse' : 'md:flex-row'
+      } mb-6 flex-col items-center justify-center md:mb-0`}
     >
-      <div className="p-6 md:p-10 max-w-lg md:block">
+      <div className="max-w-lg p-6 md:block md:p-10">
         <h4 className="font-semibold">{title}</h4>
         {children}
       </div>
 
-      <div className="p-6 max-w-lg">
+      <div className="max-w-lg p-6">
         <img src={imageURL} />
       </div>
     </div>

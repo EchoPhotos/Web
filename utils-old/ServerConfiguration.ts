@@ -1,4 +1,4 @@
-import "server-only";
+import 'server-only';
 
 export function getProjectId(): string {
   const config = process.env.FIREBASE_CONFIG;

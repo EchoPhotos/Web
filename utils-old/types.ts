@@ -37,11 +37,11 @@ export interface Download {
   isDisabled?: boolean;
   byteSize?: number;
   itemCount?: number;
-  albumData: { 
-    name: string,
-    image?: string,
-    itemNumber: number 
-  }
+  albumData: {
+    name: string;
+    image?: string;
+    itemNumber: number;
+  };
 }
 
 export interface AlbumItem {

@@ -7,19 +7,22 @@ interface FeatureSectionProps {
   children: ReactNode;
 }
 
-export default function FeatureSection({ title, description, sectionId, children }: FeatureSectionProps) {  
+export default function FeatureSection({
+  title,
+  description,
+  sectionId,
+  children,
+}: FeatureSectionProps) {
   return (
-      <section id={sectionId} className="py-24">
-        <div className="m-auto container max-w-6xl lg:p-0 md:px-16">
-          <div className="text-center pb-10">
-            <h2 className="font-bold mb-4">{title}</h2>
+    <section id={sectionId} className="py-24">
+      <div className="container m-auto max-w-6xl md:px-16 lg:p-0">
+        <div className="pb-10 text-center">
+          <h2 className="mb-4 font-bold">{title}</h2>
 
-            <p className="text-neutral-500 px-6">
-              {description}
-            </p>
-          </div>
-          {children}
+          <p className="px-6 text-neutral-500">{description}</p>
         </div>
-      </section>
+        {children}
+      </div>
+    </section>
   );
 }
