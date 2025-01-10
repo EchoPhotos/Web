@@ -21,7 +21,6 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@old-components/*": ["components-old/*"],
       "@old-utils/*": ["utils-old/*"],
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],

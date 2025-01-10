@@ -1,4 +1,4 @@
-import BackButton from '@old-components/BackButton';
+import BackButton from '@components/Homepage/BackButton';
 import { getDictionary } from '@old-utils/dictionary';
 
 export default async function ErrorPage() {

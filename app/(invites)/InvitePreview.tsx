@@ -1,13 +1,13 @@
 'use client';
 
-import AlbumCard from '@old-components/AlbumCard';
-import GridImage from '@old-components/GridImage';
-import ImageOverlayContainer from '@old-components/ImageOverlayContainer';
+import AlbumCard from '@components/Homepage/AlbumCard';
+import GridImage from '@components/Homepage/GridImage';
+import ImageOverlayContainer from '@components/Homepage/ImageOverlayContainer';
 import { AlbumItem, Invite } from '@old-utils/types';
 
 import { useEffect, useRef } from 'react';
 import { useLastViewedPhoto } from '@old-utils/useLastViewedPhoto';
-import ItemMap from '@old-components/ItemMap';
+import ItemMap from '@components/Homepage/ItemMap';
 import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 

@@ -1,6 +1,6 @@
-import AppStore from '@old-components/Badges/AppStore';
-import ContentBox from '@old-components/ContentBox';
-import FeatureSection from '@old-components/FeatureSection';
+import AppStore from '@components/Homepage/Badges/AppStore';
+import ContentBox from '@components/Homepage/ContentBox';
+import FeatureSection from '@components/Homepage/FeatureSection';
 import { getDictionary } from '@old-utils/dictionary';
 import { i18n } from '@old-utils/i18n-config';
 

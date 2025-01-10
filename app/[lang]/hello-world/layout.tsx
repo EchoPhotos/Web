@@ -1,4 +1,4 @@
-import Section from '@old-components/Section';
+import Section from '@components/Homepage/Section';
 import { i18n } from '@old-utils/i18n-config';
 
 export async function generateStaticParams() {

@@ -1,11 +1,11 @@
 import * as IoIcons from 'react-icons/io5';
 import Link from 'next/link';
-import AppStore from '@old-components/Badges/AppStore';
-import Featurette from '@old-components/Featurette';
-import GooglePlay from '@old-components/Badges/GooglePlay';
-import ContentBox from '@old-components/ContentBox';
-import FeatureSection from '@old-components/FeatureSection';
-import FullScreenSection from '@old-components/FullScreenSection';
+import AppStore from '@components/Homepage/Badges/AppStore';
+import Featurette from '@components/Homepage/Featurette';
+import GooglePlay from '@components/Homepage/Badges/GooglePlay';
+import ContentBox from '@components/Homepage/ContentBox';
+import FeatureSection from '@components/Homepage/FeatureSection';
+import FullScreenSection from '@components/Homepage/FullScreenSection';
 import { i18n } from '@old-utils/i18n-config';
 import { getDictionary } from '@old-utils/dictionary';
 import { ActionStyle } from '@components/UI/ButtonStyles';

@@ -1,4 +1,4 @@
-import NoHeaderLayout from '@old-components/NoHeaderLayout';
+import NoHeaderLayout from '@components/Homepage/NoHeaderLayout';
 import '@/styles/style.css';
 import { getDictionary } from '@old-utils/dictionary';
 

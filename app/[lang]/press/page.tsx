@@ -1,6 +1,6 @@
 import { IoArrowDownCircleOutline } from 'react-icons/io5';
 import Link from 'next/link';
-import Section from '@old-components/Section';
+import Section from '@components/Homepage/Section';
 import { i18n } from '@old-utils/i18n-config';
 import { getDictionary } from '@old-utils/dictionary';
 

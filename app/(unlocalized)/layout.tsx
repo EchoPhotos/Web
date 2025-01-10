@@ -1,6 +1,6 @@
-import Clarity from '@old-components/Clarity';
+import Clarity from '@components/Homepage/Clarity';
 import '@/styles/style.css';
-import DefaultLayout from '@old-components/DefaultLayout';
+import DefaultLayout from '@components/Homepage/DefaultLayout';
 import { getDictionary } from '@old-utils/dictionary';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
