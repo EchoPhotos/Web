@@ -18,22 +18,20 @@ export function PremiumButton({ album }: { album: IdAlbum }) {
 
   if (!album.premium) {
     return (
-      <ActionStyle>
-        <Button
-          onClick={async () => {
-            setLoading(true);
-            const checkoutURL = await getCheckoutURL(album.id, promoCode, pathname);
-            router.push(checkoutURL);
-          }}
-        >
-          {loading && (
-            <div className="h-4">
-              <Spinner />
-            </div>
-          )}
-          {!loading && <>Upgrade now</>}
-        </Button>
-      </ActionStyle>
+      <Button
+        onClick={async () => {
+          setLoading(true);
+          const checkoutURL = await getCheckoutURL(album.id, promoCode, pathname);
+          router.push(checkoutURL);
+        }}
+      >
+        {loading && (
+          <div className="h-4">
+            <Spinner />
+          </div>
+        )}
+        {!loading && <ActionStyle>Upgrade now</ActionStyle>}
+      </Button>
     );
   }
 }

@@ -135,9 +135,9 @@ const RegisterActionButton = ({
         {state !== State.VerificationSent && state !== State.Error && (
           <div>
             <div className="mt-4 flex w-full justify-center">
-              <ActionStyle>
-                <Button onClick={triggerAction}>{children}</Button>
-              </ActionStyle>
+              <Button onClick={triggerAction}>
+                <ActionStyle>{children}</ActionStyle>
+              </Button>
             </div>
           </div>
         )}
