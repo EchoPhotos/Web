@@ -25,12 +25,14 @@ export function PremiumButton({ album }: { album: IdAlbum }) {
           router.push(checkoutURL);
         }}
       >
-        {loading && (
-          <div className="h-4">
-            <Spinner />
-          </div>
-        )}
-        {!loading && <ActionStyle>Upgrade now</ActionStyle>}
+        <ActionStyle>
+          {loading && (
+            <div className="h-4">
+              <Spinner />
+            </div>
+          )}
+          {!loading && <>Upgrade now</>}
+        </ActionStyle>
       </Button>
     );
   }
