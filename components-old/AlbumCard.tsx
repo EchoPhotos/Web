@@ -10,7 +10,7 @@ interface AlbumCardProps {
   albumCardDict: any;
 }
 
-export default async function AlbumCard({
+export default function AlbumCard({
   albumName,
   inviteCode,
   qrCodeURL,
