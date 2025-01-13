@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import ngeohash from 'ngeohash';
 import { AlbumItem } from '@utils/old/types';
 import { Marker, Map, CoordinateRegion } from 'mapkit-react';
-import { current } from '@utils/old/ClientConfiguration';
+import { current } from '@utils/ClientConfiguration';
 
 type Annotation = {
   latitude: number;

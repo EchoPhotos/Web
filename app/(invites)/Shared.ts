@@ -3,7 +3,7 @@ import { InvitePreviewData } from './InvitePreview';
 import { AlbumItem } from '@utils/old/types';
 import { CoordinateRegion } from 'mapkit-react';
 import ngeohash from 'ngeohash';
-import * as API from '@utils/old/API';
+import * as API from '@utils/API';
 
 export async function getData(inviteId: string): Promise<InvitePreviewData> {
   const invite = await API.fetchInvite(inviteId);
