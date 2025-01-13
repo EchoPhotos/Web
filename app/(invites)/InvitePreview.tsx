@@ -3,10 +3,10 @@
 import AlbumCard from '@components/Homepage/AlbumCard';
 import GridImage from '@components/Homepage/GridImage';
 import ImageOverlayContainer from '@components/Homepage/ImageOverlayContainer';
-import { AlbumItem, Invite } from '@old-utils/types';
+import { AlbumItem, Invite } from '@utils/old/types';
 
 import { useEffect, useRef } from 'react';
-import { useLastViewedPhoto } from '@old-utils/useLastViewedPhoto';
+import { useLastViewedPhoto } from '@utils/old/useLastViewedPhoto';
 import ItemMap from '@components/Homepage/ItemMap';
 import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';

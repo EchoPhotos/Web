@@ -9,8 +9,8 @@ import Featurette from '@components/Homepage/Featurette';
 import GooglePlay from '@components/Homepage/Badges/GooglePlay';
 import ContentBox from '@components/Homepage/ContentBox';
 import FullScreenSection from '@components/Homepage/FullScreenSection';
-import { i18n } from '@old-utils/i18n-config';
-import { getDictionary } from '../../../utils-old/dictionary';
+import { i18n } from '@utils/old/i18n-config';
+import { getDictionary } from '@utils/old/dictionary';
 import Link from 'next/link';
 
 const cinzelFont = Cinzel({ subsets: ['latin'] });

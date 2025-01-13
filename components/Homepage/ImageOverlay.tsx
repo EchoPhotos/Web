@@ -2,10 +2,10 @@ import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
-import { variants } from '@old-utils/animationVariants';
-import downloadPhoto from '@old-utils/downloadPhoto';
-import { range } from '@old-utils/range';
-import type { AlbumItem, SharedModalProps } from '@old-utils/types';
+import { variants } from '@utils/old/animationVariants';
+import downloadPhoto from '@utils/old/downloadPhoto';
+import { range } from '@utils/old/range';
+import type { AlbumItem, SharedModalProps } from '@utils/old/types';
 import * as IoIcons from 'react-icons/io5';
 
 export default function ImageOverlay({

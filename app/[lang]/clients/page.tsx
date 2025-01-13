@@ -1,8 +1,8 @@
 import AppStore from '@components/Homepage/Badges/AppStore';
 import ContentBox from '@components/Homepage/ContentBox';
 import FeatureSection from '@components/Homepage/FeatureSection';
-import { getDictionary } from '@old-utils/dictionary';
-import { i18n } from '@old-utils/i18n-config';
+import { getDictionary } from '@utils/old/dictionary';
+import { i18n } from '@utils/old/i18n-config';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {

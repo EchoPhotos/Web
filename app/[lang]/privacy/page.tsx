@@ -2,8 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import Section from '@components/Homepage/Section';
-import { i18n } from '@old-utils/i18n-config';
-import { getDictionary } from '@old-utils/dictionary';
+import { i18n } from '@utils/old/i18n-config';
+import { getDictionary } from '@utils/old/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {

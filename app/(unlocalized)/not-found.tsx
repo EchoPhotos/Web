@@ -1,5 +1,5 @@
 import BackButton from '@components/Homepage/BackButton';
-import { getDictionary } from '@old-utils/dictionary';
+import { getDictionary } from '@utils/old/dictionary';
 
 export default async function ErrorPage() {
   const dicts = await getDictionary('en');
