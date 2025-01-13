@@ -29,16 +29,6 @@ export async function fetchItemsForInvite(inviteId: string): Promise<AlbumItem[]
 
 export async function fetchInvite(inviteId: string): Promise<Invite> {
   const domain = await getDomain();
-
-  const itemsURL = `${domain}/api/v1/invites/${inviteId}/items`;
-  const itemsResponse: Response = await fetch(itemsURL, {
-    next: { revalidate: 60 },
-  });
-  if (!itemsResponse.ok) {
-    throw new Error('Failed to fetch items data');
-  }
-  let items: AlbumItem[] = await itemsResponse.json();
-
   const inviteURL = `${domain}/api/v1/invites/${inviteId}`;
   const inviteResponse: Response = await fetch(inviteURL, { next: { revalidate: 60 } });
   if (!inviteResponse.ok) {
