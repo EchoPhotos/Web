@@ -1,7 +1,7 @@
 import AppStore from '@components/Homepage/Badges/AppStore';
 import ContentBox from '@components/Homepage/ContentBox';
 import FeatureSection from '@components/Homepage/FeatureSection';
-import { getDictionary } from '@utils/old/dictionary';
+import { getDictionary } from '@utils//dictionary';
 import { i18n } from '@utils/old/i18n-config';
 
 export async function generateStaticParams() {

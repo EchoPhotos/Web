@@ -7,7 +7,7 @@ import ContentBox from '@components/Homepage/ContentBox';
 import FeatureSection from '@components/Homepage/FeatureSection';
 import FullScreenSection from '@components/Homepage/FullScreenSection';
 import { i18n } from '@utils/old/i18n-config';
-import { getDictionary } from '@utils/old/dictionary';
+import { getDictionary } from '@utils//dictionary';
 import { ActionStyle } from '@components/UI/ButtonStyles';
 
 export async function generateStaticParams() {

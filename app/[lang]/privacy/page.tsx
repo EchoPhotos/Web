@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import Section from '@components/Homepage/Section';
 import { i18n } from '@utils/old/i18n-config';
-import { getDictionary } from '@utils/old/dictionary';
+import { getDictionary } from '@utils//dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {

@@ -1,7 +1,7 @@
 import Clarity from '@components/Homepage/Clarity';
 import '@/styles/style.css';
 import DefaultLayout from '@components/Homepage/DefaultLayout';
-import { getDictionary } from '@utils/old/dictionary';
+import { getDictionary } from '@utils//dictionary';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const dict = await getDictionary('en');
