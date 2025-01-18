@@ -22,9 +22,7 @@ export default function AlbumOverview() {
       return;
     }
     getViewOnlyInvite(album.id).then((invite) => {
-      const api = getAPIHost();
-      const url = new URL(api);
-      const link = url.host + `/links/${invite.code ?? invite.id}`;
+      const link = `/links/${invite.code ?? invite.id}`;
 
       setTimeout(() => {
         router.push(link);
