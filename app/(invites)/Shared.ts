@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { InvitePreviewData } from './InvitePreview';
-import { AlbumItem } from '@utils/old/types';
 import { CoordinateRegion } from 'mapkit-react';
 import ngeohash from 'ngeohash';
 import * as API from '@utils/API';
+import { IdAlbumItem } from '@utils/Models';
 
 export async function getData(inviteId: string): Promise<InvitePreviewData> {
   const invite = await API.fetchInvite(inviteId);
@@ -11,18 +11,6 @@ export async function getData(inviteId: string): Promise<InvitePreviewData> {
   const domain = await API.getDomain();
 
   const sortedItems = items
-    .sort((a, b) => {
-      if (a.pinned !== b.pinned) {
-        return a.pinned ? -1 : 1;
-      } else {
-        if (a.contentTimeStamp < b.contentTimeStamp) {
-          return -1;
-        } else if (a.contentTimeStamp > b.contentTimeStamp) {
-          return 1;
-        }
-        return 0;
-      }
-    })
     .filter((item) => !item.hidden);
 
   return {
@@ -33,7 +21,7 @@ export async function getData(inviteId: string): Promise<InvitePreviewData> {
   };
 }
 
-function calculateCoordinateRegion(items: AlbumItem[]): CoordinateRegion | undefined {
+function calculateCoordinateRegion(items: IdAlbumItem[]): CoordinateRegion | undefined {
   if (items.length === 0) {
     return undefined;
   }
