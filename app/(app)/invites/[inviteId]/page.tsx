@@ -55,9 +55,6 @@ function InviteDetails() {
   var invite = useContext(InviteContext);
 
   function onLikedOnlyPreviewChanged(checked: boolean) {
-    if (!invite) {
-      return;
-    }
     if (checked) {
       enableLikedOnlyPreview(invite.id);
     } else {
@@ -66,17 +63,11 @@ function InviteDetails() {
   }
 
   function onViewOnlyChanged(checked: boolean) {
-    if (!invite) {
-      return;
-    }
     if (checked) {
       enableViewOnly(invite.id);
     } else {
       disableViewOnly(invite.id);
     }
-  }
-  if (!invite) {
-    return;
   }
 
   return (

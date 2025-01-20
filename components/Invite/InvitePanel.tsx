@@ -12,10 +12,6 @@ export default function InvitePanel() {
   const pathname = usePathname();
   var invite = useContext(InviteContext);
 
-  if (!invite) {
-    return;
-  }
-
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',

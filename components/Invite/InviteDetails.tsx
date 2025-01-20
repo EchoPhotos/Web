@@ -11,9 +11,6 @@ import * as ReactQRCode from 'react-qr-code';
 
 export default function InviteDetails() {
   var invite = useContext(InviteContext);
-  if (!invite) {
-    return;
-  }
   const inviteLink = getInviteURL(invite.id);
 
   return (

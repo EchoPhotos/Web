@@ -9,7 +9,7 @@ import { useParams } from 'next/navigation';
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-export const InviteContext = React.createContext<IdInvite | undefined>(undefined);
+export const InviteContext = React.createContext<IdInvite>({} as IdInvite);
 
 export default function InviteProvider({ children }) {
   const params = useParams();
@@ -19,18 +19,13 @@ export default function InviteProvider({ children }) {
   const [error, setError] = useState<Error | undefined>(undefined);
 
   useEffect(() => {
-    fetchInvite().catch(setError);
+    getInvite(inviteId).then(setInvite).catch(setError);
   }, []);
 
-  const fetchInvite = async () => {
-    const invite = await getInvite(inviteId);
-    setInvite(invite);
-  };
-
-  if (error) {
-    return <ErrorBox error={error}/>;
-  } else if (invite) {
+  if (invite) {
     return <InviteContext.Provider value={invite}>{children}</InviteContext.Provider>;
+  } else if (error) {
+    return <ErrorBox error={error}/>;
   } else {
     return <Spinner />;
   }
