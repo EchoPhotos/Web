@@ -6,7 +6,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
 import useKeypress from 'react-use-keypress';
 import ImageOverlay from './ImageOverlay';
-import { AlbumItem, Invite } from '@utils/old/types';
+import { IdAlbumItem, IdInvite } from '@utils/Models';
 
 export default function ImageOverlayContainer({
   items: albumItems,
@@ -14,8 +14,8 @@ export default function ImageOverlayContainer({
   domain,
   onClose,
 }: {
-  items: AlbumItem[];
-  invite: Invite;
+  items: IdAlbumItem[];
+  invite: IdInvite;
   domain: string;
   onClose: (string) => void;
 }) {

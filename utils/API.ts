@@ -27,7 +27,7 @@ export async function getDomain() {
   return domain;
 }
 
-export async function fetchItemsForInvite(inviteId: string): Promise<AlbumItem[]> {
+export async function fetchItemsForInvite(inviteId: string): Promise<IdAlbumItem[]> {
   const domain = await getDomain();
 
   const itemsURL = `${domain}/api/v1/invites/${inviteId}/items`;
@@ -37,11 +37,11 @@ export async function fetchItemsForInvite(inviteId: string): Promise<AlbumItem[]
   if (!itemsResponse.ok) {
     throw new Error('Failed to fetch items data');
   }
-  let items: AlbumItem[] = await itemsResponse.json();
+  let items: IdAlbumItem[] = await itemsResponse.json();
   return items;
 }
 
-export async function fetchInvite(inviteId: string): Promise<Invite> {
+export async function fetchInvite(inviteId: string): Promise<IdInvite> {
   const domain = await getDomain();
   const inviteURL = `${domain}/api/v1/invites/${inviteId}`;
   const inviteResponse: Response = await fetch(inviteURL, { next: { revalidate: 60 } });

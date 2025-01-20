@@ -5,15 +5,29 @@ import { useSwipeable } from 'react-swipeable';
 import { variants } from '@utils/old/animationVariants';
 import downloadPhoto from '@utils/old/downloadPhoto';
 import { range } from '@utils/old/range';
-import type { AlbumItem, SharedModalProps } from '@utils/old/types';
 import * as IoIcons from 'react-icons/io5';
+import { IdAlbumItem, IdInvite } from '@utils/Models';
+
+/* eslint-disable no-unused-vars */
+export interface SharedModalProps {
+  index: number;
+  domain: string;
+  invite: IdInvite;
+  albumItems: IdAlbumItem[];
+  currentPhoto?: string;
+  goTo: (itemIdx: number) => void;
+  closeModal: () => void;
+  direction?: number;
+  goToNext: () => void;
+  goToPrevious: () => void;
+}
 
 export default function ImageOverlay({
   index,
   domain,
-  albumItems: albumItems,
-  invite: invite,
-  goTo: goTo,
+  albumItems,
+  invite,
+  goTo,
   closeModal,
   direction,
   goToNext,
@@ -21,7 +35,7 @@ export default function ImageOverlay({
 }: SharedModalProps) {
   const [loaded, setLoaded] = useState(false);
 
-  let filteredAlbumItems = albumItems.filter((img: AlbumItem) =>
+  let filteredAlbumItems = albumItems.filter((img: IdAlbumItem) =>
     range(index - 15, index + 15).includes(albumItems.indexOf(img)),
   );
 

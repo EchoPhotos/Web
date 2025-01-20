@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { AlbumItem } from '@utils/old/types';
 import * as IoIcons from 'react-icons/io5';
+import { IdAlbumItem } from '@utils/Models';
 
 interface GridImageProps {
   lang: string;
   domain: string;
   inviteId: string;
   showLikes: boolean;
-  albumItem: AlbumItem;
+  albumItem: IdAlbumItem;
 }
 
 export default function GridImage(props: GridImageProps) {
