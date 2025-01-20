@@ -16,9 +16,7 @@ import { useContext } from 'react';
 
 export default function DownloadLinkPanel() {
   const download = useContext(DownloadContext);
-  if (!download) {
-    return;
-  }
+
   const disabledDownload = (
     <Banner
       icon={<IoBan size={66} />}

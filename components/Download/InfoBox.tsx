@@ -13,9 +13,7 @@ import { useContext } from 'react';
 
 export default function InfoBox() {
   var download = useContext(DownloadContext);
-  if (!download) {
-    return;
-  }
+
   return (
     <VCenter>
       <div className="rounded-3xl bg-gray-200 px-16 py-6">

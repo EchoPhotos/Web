@@ -2,39 +2,28 @@
 
 import Spinner from '@components/UI/Spinner';
 import { getCurrentAlbumDownload } from '@utils/API';
-import { IdDownload, IdDownloadWithAlbum } from '@utils/Models';
-
+import { IdDownload } from '@utils/Models';
 import { useParams } from 'next/navigation';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DownloadContext } from './DownloadProvider';
-import { AlbumContext } from './AlbumProvider';
+import ErrorBox from '@components/UI/ErrorBox';
 
 export default function CurrentDownloadProvider({ children }) {
   const params = useParams();
   const albumId: string = params.albumId as string;
 
   const [download, setDownload] = useState<IdDownload | undefined>();
-  const [loading, setLoading] = useState(true);
-  const album = useContext(AlbumContext);
+  const [error, setError] = useState<Error | undefined>(undefined);
 
   useEffect(() => {
-    getCurrentAlbumDownload(albumId).then((download) => {
-      let currentDownload = download as IdDownloadWithAlbum;
-      const disabled = currentDownload?.isDisabled;
-      if (!disabled) {
-        if (download) {
-          currentDownload.albumData = album;
-        }
-        setDownload(currentDownload);
-      }
-      setLoading(false);
-    });
+    getCurrentAlbumDownload(albumId).then(setDownload).catch(setError);
   }, []);
-
-  return (
-    <>
-      {!loading && <DownloadContext.Provider value={download}>{children}</DownloadContext.Provider>}
-      {loading && <Spinner />}
-    </>
-  );
+    
+  if (download) {
+    return <DownloadContext.Provider value={download}>{children}</DownloadContext.Provider>;
+  } else if (error) {
+    return <ErrorBox error={error} />;
+  } else {
+    return <Spinner />;
+  }
 }

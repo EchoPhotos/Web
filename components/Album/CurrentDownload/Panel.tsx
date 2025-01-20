@@ -20,12 +20,13 @@ import { DownloadContext } from 'provider/DownloadProvider';
 import { useContext } from 'react';
 
 export default function Panel() {
-  const link = getAPIHost() + '/downloads/' + download?.id;
-  var download = useContext(DownloadContext);
+  const download = useContext(DownloadContext);
   const album = useContext(AlbumContext);
 
+  const link = getAPIHost() + '/downloads/' + download.id;
+
   function shareLink() {
-    const linkPage = window.location.origin + '/downloads/' + download?.id;
+    const linkPage = window.location.origin + '/downloads/' + download.id;
     navigator.share({
       title: `Download link for ${album.name}`,
       url: linkPage,
@@ -33,7 +34,7 @@ export default function Panel() {
   }
 
   function copyLink() {
-    const linkPage = window.location.origin + '/downloads/' + download?.id;
+    const linkPage = window.location.origin + '/downloads/' + download.id;
     navigator.clipboard.writeText(linkPage);
     alert('Copied to clipboard!');
   }

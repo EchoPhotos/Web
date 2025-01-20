@@ -18,9 +18,7 @@ export default function InviteAlbumProvider({ children }) {
   useEffect(() => {
     getInvite(inviteId)
       .then((invite) => {
-        getAlbum(invite.group).then((album) => {
-          setAlbum(album);
-        });
+        getAlbum(invite.group).then(setAlbum);
       })
       .catch(setError);
   }, []);
