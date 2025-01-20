@@ -10,8 +10,7 @@ export async function getData(inviteId: string): Promise<InvitePreviewData> {
   const items = await API.fetchItemsForInvite(inviteId);
   const domain = await API.getDomain();
 
-  const sortedItems = items
-    .filter((item) => !item.hidden);
+  const sortedItems = items.filter((item) => !item.hidden);
 
   return {
     invite: invite,

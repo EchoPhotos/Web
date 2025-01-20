@@ -12,7 +12,7 @@ import {
   UploadMetadata,
   User,
 } from './Models';
-import { ImageFormat } from './ImageCache'; 
+import { ImageFormat } from './ImageCache';
 
 export async function getDomain() {
   const config = process.env.FIREBASE_CONFIG;

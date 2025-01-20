@@ -61,9 +61,7 @@ export function getUsersNotifiedOnItemUpload(album: Album, eventAuthor: string) 
   const members = album.members;
   const muted = album.muted ?? [];
   return members.filter((member: string) => {
-    return eventAuthor !== member
-      && !muted.includes(member)
-      && !album.mutedUploads;
+    return eventAuthor !== member && !muted.includes(member) && !album.mutedUploads;
   });
 }
 

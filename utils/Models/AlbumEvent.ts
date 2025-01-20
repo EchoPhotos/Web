@@ -44,7 +44,7 @@ export class NewCommentEvent implements AlbumEvent {
     public commentedItem?: string,
     public replyOf?: string,
   ) {
-    this.timeStamp = (new Date()).getTime();
+    this.timeStamp = new Date().getTime();
     this.type = AlbumEventType.newComment;
   }
 }
@@ -59,7 +59,7 @@ export class NewImagesEvent implements AlbumEvent {
     public batch: string,
     public batchImages: string[],
   ) {
-    this.timeStamp = (new Date()).getTime();
+    this.timeStamp = new Date().getTime();
     this.type = AlbumEventType.newImages;
   }
 }
@@ -73,7 +73,7 @@ export class NewMessageEvent implements AlbumEvent {
     public group: string,
     public user: string,
   ) {
-    this.timeStamp = (new Date()).getTime();
+    this.timeStamp = new Date().getTime();
     this.type = AlbumEventType.message;
   }
 }
@@ -86,7 +86,7 @@ export class NewMembersEvent implements AlbumEvent {
     public group: string,
     public newMembers: string[],
   ) {
-    this.timeStamp = (new Date()).getTime();
+    this.timeStamp = new Date().getTime();
     this.type = AlbumEventType.newMembers;
   }
 }
