@@ -14,7 +14,7 @@ interface HeaderSections {
   lang: string;
 }
 
-export default ({ sections, lang }: HeaderSections) => {
+export default function HomepageHeader({ sections, lang }: HeaderSections) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -53,4 +53,4 @@ export default ({ sections, lang }: HeaderSections) => {
       </nav>
     </header>
   );
-};
+}
