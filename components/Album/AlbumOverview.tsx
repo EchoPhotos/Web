@@ -7,23 +7,30 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import MemberLimitReachedView from './MemberLimitReachedView';
 import { AlbumContext } from 'provider/AlbumProvider';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import InviteDetails from '@components/Invite/InviteDetails';
 import { SecondaryStyle } from '@components/UI/ButtonStyles';
 import { HStack, VStack } from '@components/UI/Components';
+import Spinner from '@components/UI/Spinner';
 
 export default function AlbumOverview() {
   var album = useContext(AlbumContext);
   const router = useRouter();
   const pathname = usePathname();
 
+  const [creatingLink, setCrreatingLink] = useState(false);
+
   const openPublicLink = () => {
+    setCrreatingLink(true);
     getViewOnlyInvite(album.id).then((invite) => {
       const link = `/links/${invite.code ?? invite.id}`;
 
       setTimeout(() => {
         router.push(link);
+        setCrreatingLink(false);
       }, 0);
+    }).catch(()=>{
+      setCrreatingLink(false);
     });
   };
 
@@ -53,7 +60,10 @@ export default function AlbumOverview() {
             )}
 
             <Button onClick={openPublicLink}>
-              <SecondaryStyle>Public page</SecondaryStyle>
+              <SecondaryStyle>
+                {!creatingLink && <>Public page</>}
+                {creatingLink && <Spinner className='scale-50 h-2'/>}
+              </SecondaryStyle>
             </Button>
           </HStack>
         </VStack>
