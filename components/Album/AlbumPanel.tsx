@@ -16,10 +16,6 @@ import { ImageFormat } from '@utils/ImageCache';
 export default function AlbumPanel() {
   var album = useContext(AlbumContext);
 
-  if (!album) {
-    return;
-  }
-
   return (
     <SizeAdapted
       className="h-full w-full"

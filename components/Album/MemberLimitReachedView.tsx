@@ -9,10 +9,6 @@ import { AlbumContext } from 'provider/AlbumProvider';
 export default function MemberLimitReachedView() {
   var album = useContext(AlbumContext);
 
-  if (!album) {
-    return;
-  }
-
   return (
     <VStack className="h-full items-center justify-center p-4 text-center">
       <VStack className="items-center justify-between space-y-2 p-8">

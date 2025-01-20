@@ -18,9 +18,6 @@ export default function AlbumOverview() {
   const pathname = usePathname();
 
   const openPublicLink = () => {
-    if (!album) {
-      return;
-    }
     getViewOnlyInvite(album.id).then((invite) => {
       const link = `/links/${invite.code ?? invite.id}`;
 
@@ -29,10 +26,6 @@ export default function AlbumOverview() {
       }, 0);
     });
   };
-
-  if (!album) {
-    return;
-  }
 
   if ((album.memberLimit ?? 400) <= album.members.length) {
     return <MemberLimitReachedView />;

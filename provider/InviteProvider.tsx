@@ -1,5 +1,6 @@
 'use client';
 
+import ErrorBox from '@components/UI/ErrorBox';
 import Spinner from '@components/UI/Spinner';
 import { getInvite } from '@utils/API';
 import { IdInvite } from '@utils/Models';
@@ -27,7 +28,7 @@ export default function InviteProvider({ children }) {
   };
 
   if (error) {
-    return <div className="flex h-full flex-col items-center justify-center">{error.message}</div>;
+    return <ErrorBox error={error}/>;
   } else if (invite) {
     return <InviteContext.Provider value={invite}>{children}</InviteContext.Provider>;
   } else {

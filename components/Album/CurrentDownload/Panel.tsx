@@ -25,9 +25,6 @@ export default function Panel() {
   const album = useContext(AlbumContext);
 
   function shareLink() {
-    if (!album) {
-      return;
-    }
     const linkPage = window.location.origin + '/downloads/' + download?.id;
     navigator.share({
       title: `Download link for ${album.name}`,
@@ -102,8 +99,5 @@ export default function Panel() {
     );
   }
 
-  if (!album) {
-    return;
-  }
   return <NoLink album={album} />;
 }
