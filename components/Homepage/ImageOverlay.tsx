@@ -39,17 +39,17 @@ export default function ImageOverlay({
     range(index - 15, index + 15).includes(albumItems.indexOf(img)),
   );
 
-  if (albumItems.length <= index) {
-    return;
-  }
-
-  let item = albumItems[index];
-
   const handlers = useSwipeable({
     onSwipedLeft: goToNext,
     onSwipedRight: goToPrevious,
     trackMouse: true,
   });
+
+  if (albumItems.length <= index) {
+    return;
+  }
+
+  let item = albumItems[index];
 
   return (
     <MotionConfig
