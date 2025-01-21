@@ -18,7 +18,7 @@ export default function CurrentDownloadProvider({ children }) {
   useEffect(() => {
     getCurrentAlbumDownload(albumId).then(setDownload).catch(setError);
   }, []);
-    
+
   if (download) {
     return <DownloadContext.Provider value={download}>{children}</DownloadContext.Provider>;
   } else if (error) {

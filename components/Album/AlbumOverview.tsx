@@ -22,16 +22,18 @@ export default function AlbumOverview() {
 
   const openPublicLink = () => {
     setCrreatingLink(true);
-    getViewOnlyInvite(album.id).then((invite) => {
-      const link = `/links/${invite.code ?? invite.id}`;
+    getViewOnlyInvite(album.id)
+      .then((invite) => {
+        const link = `/links/${invite.code ?? invite.id}`;
 
-      setTimeout(() => {
-        router.push(link);
+        setTimeout(() => {
+          router.push(link);
+          setCrreatingLink(false);
+        }, 0);
+      })
+      .catch(() => {
         setCrreatingLink(false);
-      }, 0);
-    }).catch(()=>{
-      setCrreatingLink(false);
-    });
+      });
   };
 
   if ((album.memberLimit ?? 400) <= album.members.length) {
@@ -62,7 +64,7 @@ export default function AlbumOverview() {
             <Button onClick={openPublicLink}>
               <SecondaryStyle>
                 {!creatingLink && <>Public page</>}
-                {creatingLink && <Spinner className='scale-50 h-2'/>}
+                {creatingLink && <Spinner className="h-2 scale-50" />}
               </SecondaryStyle>
             </Button>
           </HStack>

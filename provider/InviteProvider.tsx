@@ -25,7 +25,7 @@ export default function InviteProvider({ children }) {
   if (invite) {
     return <InviteContext.Provider value={invite}>{children}</InviteContext.Provider>;
   } else if (error) {
-    return <ErrorBox error={error}/>;
+    return <ErrorBox error={error} />;
   } else {
     return <Spinner />;
   }

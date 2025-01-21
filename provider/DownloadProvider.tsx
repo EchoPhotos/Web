@@ -36,7 +36,7 @@ export default function DownloadProvider({ children }: { children: React.ReactNo
   useEffect(() => {
     getDownload(downloadId).then(handleDownload).catch(setError);
   }, []);
-  
+
   if (download) {
     return <DownloadContext.Provider value={download}>{children}</DownloadContext.Provider>;
   } else if (error) {

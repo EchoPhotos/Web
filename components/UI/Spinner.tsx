@@ -3,9 +3,9 @@ import './Spinner.css';
 export function HStack({ children, className = '' }) {
   return <div className={`flex flex-row ${className}`}>{children}</div>;
 }
-export default function Spinner({className = '' }) {
+export default function Spinner({ className = '' }) {
   return (
-    <div className={`flex h-full w-full items-center justify-center  ${className}`}>
+    <div className={`flex h-full w-full items-center justify-center ${className}`}>
       <div className="spinner">
         <div className="bar1"></div>
         <div className="bar2"></div>

@@ -74,7 +74,7 @@ export default function CachedImage({
   } else {
     return (
       <div ref={containerRef} className="h-full w-full content-center bg-slate-700 text-slate-500">
-        {isVisible ? <Spinner /> : <div/>}
+        {isVisible ? <Spinner /> : <div />}
       </div>
     );
   }

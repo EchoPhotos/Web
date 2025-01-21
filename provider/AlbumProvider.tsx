@@ -25,7 +25,7 @@ export default function AlbumProvider({ children }: { children: React.ReactNode 
   if (album) {
     return <AlbumContext.Provider value={album}>{children}</AlbumContext.Provider>;
   } else if (error) {
-    return <ErrorBox error={error}/>;
+    return <ErrorBox error={error} />;
   } else {
     return <Spinner />;
   }
