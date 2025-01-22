@@ -1,6 +1,7 @@
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage } from '@utils/FirebaseConfig';
-import { Image } from 'image-js';
+import { Image, InterpolationType, decode, encodeJpeg } from 'image-js';
+import { convert } from 'heic-convert';
 
 export interface FileUpload {
   file: File;
@@ -36,22 +37,33 @@ export async function uploadFileWithPreview(
   try {
     // Read the uploaded file as a buffer
     const arrayBuffer = await upload.file.arrayBuffer();
+    const arrayBufferView = new Uint8Array(arrayBuffer);
 
-    const image = await Image.load(arrayBuffer);
+    let image = await decode(arrayBufferView);
 
-    const interpolation = 'bilinear' as 'nearestNeighbor';
+    if (upload.file.type === 'heic') {
+      image = await convert({
+        buffer: image, // the HEIC file buffer
+        format: 'JPEG', // output format
+        quality: 0.9, // the jpeg compression quality, between 0 and 1
+      });
+    }
+
     // Generate thumbnail (200x200)
-    const thumbnailBuffer = image
-      .resize({ width: 200, height: 200, preserveAspectRatio: false, interpolation: interpolation })
-      .toBuffer({ format: 'jpg' });
+    const thumbnail = image.resize({
+      width: 200,
+      height: 200,
+      preserveAspectRatio: false,
+      interpolationType: InterpolationType.BILINEAR,
+    });
+    const thumbnailBuffer = encodeJpeg(thumbnail);
 
-    const previewBuffer = image
-      .resize(
-        image.width < image.height
-          ? { width: 720, preserveAspectRatio: true, interpolation: interpolation }
-          : { height: 720, preserveAspectRatio: true, interpolation: interpolation },
-      )
-      .toBuffer({ format: 'jpg' });
+    const preview = image.resize(
+      image.width < image.height
+        ? { width: 720, preserveAspectRatio: true, interpolationType: InterpolationType.BILINEAR }
+        : { height: 720, preserveAspectRatio: true, interpolationType: InterpolationType.BILINEAR },
+    );
+    const previewBuffer = encodeJpeg(preview);
 
     // Upload original file
     const originalRef = ref(storage, `uploads/${upload.uploadId}/original.jpg`);

@@ -20,7 +20,7 @@ enum State {
 }
 
 const strings = {
-  uploadButton: 'Upload',
+  finishButton: 'Finish',
   uploadSuccessfulMessage: 'Images have been uploaded!',
   phoneNumberExplanation: 'Verification phone number',
   uploaderName: 'Uploader name',
@@ -109,7 +109,7 @@ export default function UploadWidget() {
         await uploadFileWithPreview(upload, (progress) => {
           const newFiles = [...pickedFiles];
           newFiles[index].progress = progress;
-          const allComplete = newFiles.find((upload) => upload.progress < 100);
+          const allComplete = newFiles.find((upload) => upload.progress >= 100);
           if (allComplete) {
             setState(State.AllUploaded);
           }
@@ -120,7 +120,7 @@ export default function UploadWidget() {
   }
 
   const fileList = pickedFiles.length > 0 && (
-    <div className="mt-5 h-52 w-72 overflow-x-hidden overflow-y-scroll rounded-xl">
+    <div className="h-52 w-full overflow-x-hidden overflow-y-scroll rounded-xl">
       {pickedFiles.map((fileObj, index) => (
         <div key={index}>
           <ProgressView progress={fileObj.progress} title={fileObj.file.name} />
@@ -130,22 +130,29 @@ export default function UploadWidget() {
   );
 
   const uploadView = (
-    <div className="flex h-full flex-col items-start justify-center p-6">
+    <VStack className="h-full items-start justify-center p-6">
       <NoVideoUploadAvailable />
 
       <p className="py-5 text-3xl font-semibold">Upload photos</p>
+
       {pickedFiles.length == 0 && <ImagePicker onFilePicked={onFilePicked} />}
-      {fileList}
-      {pickedFiles.length > 0 && (
-        <button onClick={reset} className="rounded-sm text-sm text-slate-500">
-          Reset
-        </button>
-      )}
+
+      <VStack className="w-full items-end justify-center">
+        {pickedFiles.length > 0 && (
+          <button onClick={reset} className="rounded-sm text-sm text-slate-500 underline">
+            Remove all
+          </button>
+        )}
+        {fileList}
+      </VStack>
+
       {state == State.Uploading && (
-        <div className="rounded-lg bg-slate-500">
+        <HStack className="my-4 items-center rounded-lg bg-slate-500 p-2 px-4 text-white">
           <Spinner />
-        </div>
+          Uploading..
+        </HStack>
       )}
+
       {!authState.userId && state != State.Idle && (
         <div className="my-3 flex flex-col">
           <p className="mt-3 text-xs font-semibold text-slate-600">{strings.uploaderName}</p>
@@ -169,7 +176,7 @@ export default function UploadWidget() {
       )}
       {state == State.AllUploaded && (
         <RegisterActionButton name={userName} phoneNumber={userPhone} action={completeUpload}>
-          {strings.uploadButton}
+          {strings.finishButton}
         </RegisterActionButton>
       )}
       {state == State.UploadCompleted && (
@@ -179,7 +186,7 @@ export default function UploadWidget() {
           </div>
         </div>
       )}
-    </div>
+    </VStack>
   );
 
   if (state == State.UploadCompleted) {
@@ -199,6 +206,8 @@ export default function UploadWidget() {
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { IoChevronDown, IoInformationCircleOutline } from 'react-icons/io5';
+import { ActionStyle } from './UI/ButtonStyles';
+import { HStack, VStack } from './UI/Components';
 
 function NoVideoUploadAvailable() {
   return (
