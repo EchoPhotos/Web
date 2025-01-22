@@ -1,8 +1,5 @@
 import './Spinner.css';
 
-export function HStack({ children, className = '' }) {
-  return <div className={`flex flex-row ${className}`}>{children}</div>;
-}
 export default function Spinner({ className = '' }) {
   return (
     <div className={`flex h-full w-full items-center justify-center ${className}`}>
