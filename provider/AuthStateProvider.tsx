@@ -24,7 +24,6 @@ export default function AuthStateProvider({ children }: { children: React.ReactN
   }, []);
 
   const [authState, setAuthState] = useState<AuthState>({ userId: undefined, loading: true });
-  useEffect(() => {}, []);
 
   return <AuthStateContext.Provider value={authState}>{children}</AuthStateContext.Provider>;
 }
