@@ -2,12 +2,10 @@ import axios from 'axios';
 import { getToken } from './Auth';
 import { getAPIHost } from './Environment';
 import {
-  AlbumItem,
   IdAlbum,
   IdAlbumItem,
   IdDownload,
   IdInvite,
-  Invite,
   NewAlbum,
   UploadMetadata,
   User,
@@ -266,8 +264,8 @@ export async function getAlbumItems(albumId: string): Promise<IdAlbumItem[]> {
   return getAuthorized<IdAlbumItem[]>(`/albums/${albumId}/items`);
 }
 
-export async function getAlbums(): Promise<IdAlbum[]> {
-  const albums = await getAuthorized<IdAlbum[]>('/albums');
+export async function getAlbums(limit: number | undefined = undefined): Promise<IdAlbum[]> {
+  const albums = await getAuthorized<IdAlbum[]>('/albums', limit ? { limit: limit } : undefined);
 
   return albums.sort((a, b) => {
     if (a.lastChange < b.lastChange) {
