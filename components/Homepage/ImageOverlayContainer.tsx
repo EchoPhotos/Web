@@ -6,7 +6,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
 import useKeypress from 'react-use-keypress';
 import ImageOverlay from './ImageOverlay';
-import { IdAlbumItem, IdInvite } from '@utils/Models';
+import { IdAlbumItem, IdInvite } from '@Shared/Models';
 
 export default function ImageOverlayContainer({
   items: albumItems,

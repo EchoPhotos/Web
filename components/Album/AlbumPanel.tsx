@@ -1,7 +1,7 @@
 'use client';
 
 import { thumbnailUrlForId } from '@utils/API';
-import { IdAlbum } from '@utils/Models';
+import { IdAlbum } from '@Shared/Models';
 import { IoCreate, IoImage, IoImages, IoPersonCircle } from 'react-icons/io5';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

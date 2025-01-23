@@ -1,7 +1,7 @@
 'use client';
 
 import { getAlbumItems } from '@utils/API';
-import { IdAlbumItem } from '@utils/Models';
+import { IdAlbumItem } from '@Shared/Models';
 
 import { useParams } from 'next/navigation';
 import React from 'react';

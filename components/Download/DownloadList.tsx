@@ -1,6 +1,6 @@
 'use client';
 
-import { IdDownload } from '@utils/Models';
+import { IdDownload } from '@Shared/Models';
 import DownloadRow from './DownloadRow';
 import Link from 'next/link';
 

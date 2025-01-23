@@ -11,7 +11,7 @@ import {
   NewAlbum,
   UploadMetadata,
   User,
-} from './Models';
+} from '@Shared/Models';
 import { ImageFormat } from './ImageCache';
 
 export async function getDomain() {

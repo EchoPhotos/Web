@@ -67,4 +67,4 @@ function ItemMap({
 
 export default ItemMap;
 import { useRef } from 'react';
-import { AlbumItem, IdAlbumItem } from '@utils/Models';
+import { AlbumItem, IdAlbumItem } from '@Shared/Models';

@@ -2,7 +2,7 @@
 
 import Spinner from '@components/UI/Spinner';
 import { getAlbum, getInvite } from '@utils/API';
-import { IdAlbum } from '@utils/Models';
+import { IdAlbum } from '@Shared/Models';
 
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';

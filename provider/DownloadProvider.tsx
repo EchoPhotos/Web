@@ -3,7 +3,7 @@
 import ErrorBox from '@components/UI/ErrorBox';
 import Spinner from '@components/UI/Spinner';
 import { getDownload } from '@utils/API';
-import { IdDownload, IdDownloadWithAlbum } from '@utils/Models';
+import { IdDownload, IdDownloadWithAlbum } from '@Shared/Models';
 
 import { useParams } from 'next/navigation';
 import React from 'react';

@@ -3,7 +3,7 @@
 import { ActionStyle } from '@components/UI/ButtonStyles';
 import { getAPIHost } from '@utils/Environment';
 import { dateString, formatAsBytes } from '@utils/Formatting';
-import { IdDownload } from '@utils/Models';
+import { IdDownload } from '@Shared/Models';
 import Link from 'next/link';
 import { IoArrowDownCircle, IoBan, IoWarning } from 'react-icons/io5';
 import Image from 'next/image';

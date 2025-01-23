@@ -2,7 +2,7 @@
 
 import Spinner from '@components/UI/Spinner';
 import { getCheckoutURL } from '@utils/API';
-import { IdAlbum } from '@utils/Models';
+import { IdAlbum } from '@Shared/Models';
 import { Button } from '@headlessui/react';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';

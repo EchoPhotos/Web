@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import * as IoIcons from 'react-icons/io5';
-import { IdAlbumItem } from '@utils/Models';
+import { IdAlbumItem } from '@Shared/Models';
 
 interface GridImageProps {
   lang: string;

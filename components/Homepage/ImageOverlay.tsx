@@ -6,7 +6,7 @@ import { variants } from '@utils/old/animationVariants';
 import downloadPhoto from '@utils/old/downloadPhoto';
 import { range } from '@utils/old/range';
 import * as IoIcons from 'react-icons/io5';
-import { IdAlbumItem, IdInvite } from '@utils/Models';
+import { IdAlbumItem, IdInvite } from '@Shared/Models';
 
 /* eslint-disable no-unused-vars */
 export interface SharedModalProps {

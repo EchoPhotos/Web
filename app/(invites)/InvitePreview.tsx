@@ -9,7 +9,7 @@ import { useLastViewedPhoto } from '@utils/old/useLastViewedPhoto';
 import ItemMap from '@components/Homepage/ItemMap';
 import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { IdAlbumItem, IdInvite } from '@utils/Models';
+import { IdAlbumItem, IdInvite } from '@Shared/Models';
 
 export interface InvitePreviewData {
   invite: IdInvite;
