@@ -9,9 +9,16 @@ export const AlbumListContext = React.createContext<IdAlbum[] | undefined>(undef
 
 export default function AlbumListProvider({ children }) {
   const [albums, setAlbums] = useState<IdAlbum[] | undefined>(undefined);
+
   useEffect(() => {
-    getAlbums().then((albums) => {
+    const cachedAlbumsString = localStorage.getItem('cached-albums');
+    if (cachedAlbumsString) {
+      const cachedAlbums = JSON.parse(cachedAlbumsString) as IdAlbum[];
+      setAlbums(cachedAlbums);
+    }
+    getAlbums(20).then((albums) => {
       setAlbums(albums);
+      localStorage.setItem('cached-albums', JSON.stringify(albums));
     });
   }, []);
 
