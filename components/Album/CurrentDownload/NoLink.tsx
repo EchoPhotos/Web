@@ -4,8 +4,8 @@ import { createDownloadLink } from '@utils/API';
 import { IdAlbum } from '@Shared/Models';
 import { IoArrowDownCircleOutline } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
-import DownloadLimitWarning from './DownloadLimitWarning';
-import NoLinksAvailableWarning from './NoLinksAvailableWarning';
+import DownloadLimit from '../../Warnings/DownloadLimit';
+import NoLinksAvailable from '../../Warnings/NoLinksAvailable';
 import { ActionStyle } from '@components/UI/ButtonStyles';
 import { Button } from '@headlessui/react';
 import { SizeAdapted, VStack } from '@components/UI/Components';
@@ -29,10 +29,7 @@ export default function NnpoLink({ album }: { album: IdAlbum }) {
       {!album.premium &&
         album.downloadLinkLimit &&
         album.downloadLinkLimit !== album.createdDownloadLinkCount && (
-          <DownloadLimitWarning
-            limit={album.downloadLinkLimit}
-            used={album.createdDownloadLinkCount}
-          />
+          <DownloadLimit limit={album.downloadLinkLimit} used={album.createdDownloadLinkCount} />
         )}
 
       <VStack className="items-center justify-between space-y-2">
@@ -57,7 +54,7 @@ export default function NnpoLink({ album }: { album: IdAlbum }) {
         </ActionStyle>
       )}
       {!album.premium && !linkAvailable && <PremiumButton album={album} />}
-      {!album.premium && !linkAvailable && <NoLinksAvailableWarning />}
+      {!album.premium && !linkAvailable && <NoLinksAvailable />}
     </div>
   );
 }
