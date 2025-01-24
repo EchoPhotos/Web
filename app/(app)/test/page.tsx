@@ -50,7 +50,10 @@ export default () => {
       <InviteContext.Provider value={invite}>
         <PanelView panelConent={<AlbumPanel />}>
           <div className="flex h-full w-full flex-col md:flex-row">
-            <div className="h-full w-24 flex items-center bg-green-400"> Env is: "{process.env.MESSAGE}"</div>
+            <div className="flex h-full w-24 items-center bg-green-400">
+              {' '}
+              Env is: "{process.env.MESSAGE}"
+            </div>
             <div className="h-full w-full">{<AlbumOverview />}</div>
           </div>
         </PanelView>
