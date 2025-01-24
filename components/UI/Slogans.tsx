@@ -1,6 +1,6 @@
 export function SloganResolution() {
   return (
-    <div className="p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
+    <div className="max-w-80 p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
       Share{' '}
       <span className="inline-block bg-gradient-to-b from-[#49fbfe] to-[#1811f3] bg-clip-text text-transparent">
         full&nbsp;resolution
@@ -12,7 +12,7 @@ export function SloganResolution() {
 
 export function SloganPrivacy() {
   return (
-    <div className="p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
+    <div className="max-w-80 p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
       No ads, no data swoop&nbsp;-{' '}
       <span className="inline-block bg-gradient-to-b from-[#49fbfe] to-[#1811f3] bg-clip-text text-transparent">
         Max&nbsp;privacy
@@ -24,7 +24,7 @@ export function SloganPrivacy() {
 
 export function SloganLink() {
   return (
-    <div className="p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
+    <div className="max-w-80 p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
       Send{' '}
       <span className="inline-block bg-gradient-to-b from-[#49fbfe] to-[#1811f3] bg-clip-text text-transparent">
         a link
@@ -36,7 +36,7 @@ export function SloganLink() {
 
 export function SloganMemories() {
   return (
-    <div className="p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
+    <div className="max-w-80 p-8 text-2xl font-semibold tracking-tight md:p-12 md:text-5xl">
       The{' '}
       <span className="inline-block bg-gradient-to-b from-[#49fbfe] to-[#1811f3] bg-clip-text text-transparent">
         easiest&nbsp;way

@@ -63,7 +63,7 @@ export default function DownloadLinkPanel() {
 
   const readyLink = (
     <div className="mb-6 flex flex-col items-center justify-center md:mb-0 md:flex-row">
-      <div className="max-w-lg p-6 md:block md:p-10">
+      <div className="max-w-sm p-6 md:block md:p-3">
         {download.albumData?.image && (
           <Image
             alt="Album Image"
