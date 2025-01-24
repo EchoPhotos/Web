@@ -3,7 +3,7 @@ import { IoChevronDown } from 'react-icons/io5';
 
 export default function Discolosure({ title, children }) {
   return (
-    <Disclosure as="div" className="w-80 rounded-xl bg-slate-200 p-2">
+    <Disclosure as="div" className="w-full max-w-64 rounded-xl bg-slate-200 p-2">
       <DisclosureButton className="group flex w-full items-center justify-between text-gray-800 hover:text-gray-600">
         {title}
 

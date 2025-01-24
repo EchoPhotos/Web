@@ -19,7 +19,7 @@ export default function Page() {
       >
         <div className="flex h-full w-full flex-row">
           <AlbumItemColumn />
-          <div className="h-full w-2/3">
+          <div className="h-full w-3/4">
             <UploadWidget />
           </div>
         </div>
