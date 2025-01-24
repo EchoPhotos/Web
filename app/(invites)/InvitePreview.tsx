@@ -10,6 +10,7 @@ import ItemMap from '@components/Homepage/ItemMap';
 import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { IdAlbumItem, IdInvite } from '@Shared/Models';
+import AuthStateProvider from 'provider/AuthStateProvider';
 
 export interface InvitePreviewData {
   invite: IdInvite;
@@ -46,7 +47,7 @@ export default function InvitePreview(props: {
   const router = useRouter();
 
   return (
-    <>
+    <AuthStateProvider>
       <div className="bg-black">
         <section className="mx-auto max-w-[1960px] p-4">
           {itemId && (
@@ -103,6 +104,6 @@ export default function InvitePreview(props: {
           </div>
         </section>
       </div>
-    </>
+    </AuthStateProvider>
   );
 }
