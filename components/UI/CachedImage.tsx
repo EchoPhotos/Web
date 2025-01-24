@@ -7,14 +7,18 @@ import { IoImage } from 'react-icons/io5';
 
 export default function CachedImage({
   imageId,
+  inviteId,
   format,
+  onLoad,
 }: {
   imageId?: string;
+  inviteId?: string;
   format: ImageFormat;
+  onLoad?: () => void;
 }) {
   const [imageBlob, setImageBlob] = useImageCache(imageId, format, undefined);
   const [isVisible, setIsVisible] = useState(false);
-  const imageUrl = imageURL(imageId, format);
+  const imageUrl = imageURL(imageId, format, inviteId);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -55,16 +59,19 @@ export default function CachedImage({
 
   if (!imageId) {
     return (
-      <div ref={containerRef} className="h-full w-full content-center bg-slate-700 text-slate-500">
+      <div ref={containerRef} className="h-full w-full content-center text-slate-500">
         <IoImage className="m-auto" size={33} />
       </div>
     );
   }
 
   if (imageBlob) {
+    if (onLoad) {
+      onLoad();
+    }
     const objectURL = URL.createObjectURL(imageBlob);
     return (
-      <div ref={containerRef} className="h-full w-full content-center bg-slate-700 text-slate-500">
+      <div ref={containerRef} className="h-full w-full content-center text-slate-500">
         <img
           src={objectURL}
           className="relative inset-0 h-full w-full object-cover object-center"
@@ -73,7 +80,7 @@ export default function CachedImage({
     );
   } else {
     return (
-      <div ref={containerRef} className="h-full w-full content-center bg-slate-700 text-slate-500">
+      <div ref={containerRef} className="h-full w-full content-center text-slate-500">
         {isVisible ? <Spinner /> : <div />}
       </div>
     );

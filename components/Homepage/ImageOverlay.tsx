@@ -7,6 +7,8 @@ import downloadPhoto from '@utils/old/downloadPhoto';
 import { range } from '@utils/old/range';
 import * as IoIcons from 'react-icons/io5';
 import { IdAlbumItem, IdInvite } from '@Shared/Models';
+import CachedImage from '@components/UI/CachedImage';
+import { ImageFormat } from '@utils/ImageCache';
 
 /* eslint-disable no-unused-vars */
 export interface SharedModalProps {
@@ -88,13 +90,10 @@ export default function ImageOverlay({
                   </video>
                 )}
                 {!item.video && (
-                  <Image
-                    src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/preview`}
-                    width={1280}
-                    height={853}
-                    unoptimized={true}
-                    priority
-                    alt=""
+                  <CachedImage
+                    imageId={item.image}
+                    inviteId={invite.id}
+                    format={ImageFormat.Preview}
                     onLoad={() => setLoaded(true)}
                   />
                 )}
@@ -128,6 +127,7 @@ export default function ImageOverlay({
                   </button>
                 )}
               </>
+
               <div className="absolute right-0 top-0 flex items-center gap-2 p-3 text-white">
                 {!invite.viewOnly && (
                   <a
@@ -161,6 +161,7 @@ export default function ImageOverlay({
                   </button>
                 )}
               </div>
+
               <div className="absolute left-0 top-0 flex items-center gap-2 p-3 text-white">
                 <button
                   onClick={() => closeModal()}
@@ -197,18 +198,19 @@ export default function ImageOverlay({
                         thumbnailIndex === albumItems.length - 1 ? 'rounded-r-md' : ''
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
                     >
-                      <Image
-                        alt="small photos on the bottom"
-                        width={200}
-                        height={200}
-                        unoptimized={true}
+                      <div
                         className={`${
                           thumbnailIndex === index
                             ? 'brightness-110 hover:brightness-110'
                             : 'brightness-50 contrast-125 hover:brightness-75'
                         } h-full transform object-cover transition`}
-                        src={`${domain}/api/v1/invites/${invite.id}/images/${thumbnailItem.image}/thumbnail-squared`}
-                      />
+                      >
+                        <CachedImage
+                          imageId={thumbnailItem.image}
+                          inviteId={invite.id}
+                          format={ImageFormat.Thumbnail}
+                        />
+                      </div>
                     </motion.button>
                   );
                 })}

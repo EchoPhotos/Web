@@ -145,14 +145,19 @@ export async function getUser(): Promise<User | undefined> {
   return response.data as User;
 }
 
-export function imageURL(id: string | undefined, format: ImageFormat): string {
+export function imageURL(
+  id: string | undefined,
+  format: ImageFormat,
+  inviteId: string | undefined,
+): string {
+  const invitePath = inviteId ? `/invites/${inviteId}` : '';
   switch (format) {
     case ImageFormat.Preview:
-      return getAPIHost() + `/images/${id}/preview`;
+      return getAPIHost() + `${invitePath}/images/${id}/preview`;
     case ImageFormat.Thumbnail:
-      return getAPIHost() + `/images/${id}/thumbnail-squared`;
+      return getAPIHost() + `${invitePath}/images/${id}/thumbnail-squared`;
     case ImageFormat.Original:
-      return getAPIHost() + `/images/${id}/original`;
+      return getAPIHost() + `${invitePath}/images/${id}/original`;
   }
 }
 
