@@ -1,8 +1,7 @@
 'use client';
 
-import { thumbnailUrlForId } from '@utils/API';
 import { IdAlbum } from '@Shared/Models';
-import { IoCreate, IoImage, IoImages, IoPersonCircle } from 'react-icons/io5';
+import { IoCreate, IoImages, IoPersonCircle } from 'react-icons/io5';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PremiumButton } from './PremiumButton';
@@ -25,13 +24,14 @@ export default function AlbumPanel() {
   );
 }
 
+const options: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
+
 export function MobileAlbumHeader({ album }: { album: IdAlbum }) {
   const pathname = usePathname();
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
   return (
     <div className="w-screen p-4">
       <VStack>
@@ -91,11 +91,6 @@ export function MobileAlbumHeader({ album }: { album: IdAlbum }) {
 
 export function DesktopAlbumPanel({ album }: { album: IdAlbum }) {
   const pathname = usePathname();
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-3 px-12 pt-12 md:items-end">
       {pathname.includes('albums') && (
