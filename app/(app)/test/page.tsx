@@ -6,6 +6,8 @@ import AlbumPanel from '@components/Album/AlbumPanel';
 import AlbumOverview from '@components/Album/AlbumOverview';
 import { AlbumContext } from 'provider/AlbumProvider';
 import { InviteContext } from 'provider/InviteProvider';
+import Panel from '@components/Album/CurrentDownload/Panel';
+import NoLink from '@components/Album/CurrentDownload/NoLink';
 
 export default () => {
   const download = {
@@ -49,13 +51,14 @@ export default () => {
     <AlbumContext.Provider value={album}>
       <InviteContext.Provider value={invite}>
         <PanelView panelConent={<AlbumPanel />}>
-          <div className="flex h-full w-full flex-col md:flex-row">
+          {/* <div className="flex h-full w-full flex-col md:flex-row">
             <div className="flex h-full w-24 items-center bg-green-400">
               {' '}
               Env is: "{process.env.MESSAGE}"
             </div>
             <div className="h-full w-full">{<AlbumOverview />}</div>
-          </div>
+          </div> */}
+          <NoLink album={album} />
         </PanelView>
       </InviteContext.Provider>
     </AlbumContext.Provider>

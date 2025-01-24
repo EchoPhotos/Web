@@ -11,7 +11,6 @@ import { ActionStyle, SecondaryStyle } from '@components/UI/ButtonStyles';
 import { Button } from '@headlessui/react';
 import { HStack, VStack } from '@components/UI/Components';
 import { getAPIHost } from '@utils/Environment';
-import NoLink from './NoLink';
 import Banner from '@components/Banner';
 import InfoBox from '@components/Download/InfoBox';
 import Spinner from '@components/UI/Spinner';
@@ -39,66 +38,62 @@ export default function Panel() {
     alert('Copied to clipboard!');
   }
 
-  if (download) {
-    return (
-      <div className="flex h-full w-full flex-col items-center justify-center space-y-3 overflow-scroll px-2 py-16">
-        {download.isOutdated && (
-          <Banner
-            icon={<IoWarning size={66} />}
-            title="Outdated Link"
-            text="New items have been uploaded to the album since the download link was created. Use the
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center space-y-3 overflow-scroll px-2 py-16">
+      {download.isOutdated && (
+        <Banner
+          icon={<IoWarning size={66} />}
+          title="Outdated Link"
+          text="New items have been uploaded to the album since the download link was created. Use the
         app to create a new link."
-          />
-        )}
+        />
+      )}
 
-        {/* {stringify(download)} */}
-        <InfoBox />
+      {/* {stringify(download)} */}
+      <InfoBox />
 
-        {!download.ready && (
-          <div className={'rounded-lg bg-slate-100 p-5 text-slate-600'}>
-            <VStack className="items-center justify-between space-y-2">
-              <Spinner />
-              <h5 className="text-lg font-bold">Creating link..</h5>
-              <Button
-                onClick={() => {
-                  location.reload();
-                }}
-              >
-                Check again
-              </Button>
-            </VStack>
-          </div>
-        )}
+      {!download.ready && (
+        <div className={'rounded-lg bg-slate-100 p-5 text-slate-600'}>
+          <VStack className="items-center justify-between space-y-2">
+            <Spinner />
+            <h5 className="text-lg font-bold">Creating link..</h5>
+            <Button
+              onClick={() => {
+                location.reload();
+              }}
+            >
+              Check again
+            </Button>
+          </VStack>
+        </div>
+      )}
 
-        {download.ready && (
-          <div className="w-5/6">
-            <HStack className="items-center justify-between space-x-2">
-              <Button onClick={shareLink}>
-                <SecondaryStyle>
-                  <IoShareOutline size={22} />
-                  <p className="pr-3">Share</p>
-                </SecondaryStyle>
-              </Button>
+      {download.ready && (
+        <div className="w-5/6">
+          <HStack className="items-center justify-between space-x-2">
+            <Button onClick={shareLink}>
+              <SecondaryStyle>
+                <IoShareOutline size={22} />
+                <p className="pr-3">Share</p>
+              </SecondaryStyle>
+            </Button>
 
-              <Button onClick={copyLink}>
-                <SecondaryStyle>
-                  <IoCopyOutline size={22} />
-                  <p className="pr-3">Copy</p>
-                </SecondaryStyle>
-              </Button>
+            <Button onClick={copyLink}>
+              <SecondaryStyle>
+                <IoCopyOutline size={22} />
+                <p className="pr-3">Copy</p>
+              </SecondaryStyle>
+            </Button>
 
-              <Link href={link}>
-                <ActionStyle>
-                  <IoArrowDownCircleOutline size={33} />
-                  <p className="pr-3">Download</p>
-                </ActionStyle>
-              </Link>
-            </HStack>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  return <NoLink album={album} />;
+            <Link href={link}>
+              <ActionStyle>
+                <IoArrowDownCircleOutline size={33} />
+                <p className="pr-3">Download</p>
+              </ActionStyle>
+            </Link>
+          </HStack>
+        </div>
+      )}
+    </div>
+  );
 }

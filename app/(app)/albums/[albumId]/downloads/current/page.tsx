@@ -11,13 +11,11 @@ export default function Page() {
   return (
     <RequireAuthentication>
       <AlbumProvider>
-        <CurrentDownloadProvider>
-          <PanelView panelConent={<AlbumPanel />}>
-            <div className="flex h-full w-full flex-row">
-              <Panel />
-            </div>
-          </PanelView>
-        </CurrentDownloadProvider>
+        <PanelView panelConent={<AlbumPanel />}>
+          <CurrentDownloadProvider>
+            <Panel />
+          </CurrentDownloadProvider>
+        </PanelView>
       </AlbumProvider>
     </RequireAuthentication>
   );

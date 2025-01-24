@@ -11,7 +11,7 @@ import { Button } from '@headlessui/react';
 import { SizeAdapted, VStack } from '@components/UI/Components';
 import { PremiumButton } from '../PremiumButton';
 
-export default function NnpoLink({ album }: { album: IdAlbum }) {
+export default function NoLink({ album }: { album: IdAlbum }) {
   const router = useRouter();
 
   async function createLink(albumId: string) {
