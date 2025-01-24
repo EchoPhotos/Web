@@ -43,6 +43,10 @@ export function middleware(request: NextRequest) {
     return;
   }
 
+  if (pathname.startsWith('/test')) {
+    return;
+  }
+
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
