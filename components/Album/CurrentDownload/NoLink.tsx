@@ -38,8 +38,10 @@ export default function NoLink({ album }: { album: IdAlbum }) {
           desktop={<IoArrowDownCircleOutline size={166} className="w-full text-slate-400" />}
           mobile={<IoArrowDownCircleOutline size={44} className="w-full text-slate-400" />}
         />
+        
         <h1 className="text-2xl font-semibold">Download Link</h1>
-        This album has no download link.
+        
+        This album has no up-to-date download link.
       </VStack>
 
       {linkAvailable && (
