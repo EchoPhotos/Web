@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     mdxRs: false,
   },
+  images: {
+    minimumCacheTTL: 60 * 60 * 24 * 365 * 20, // 20 year in seconds
+  },
   rewrites: () => {
     return [];
   },
