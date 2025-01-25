@@ -1,6 +1,4 @@
-import AuthenticationStateSwitch from '@components/Authentication/AuthenticationStateSwitch';
 import './globals.css';
-import SignOutButton from '@components/Authentication/SignOutButton';
 import { Suspense } from 'react';
 import { VCenter } from '@components/UI/Components';
 import { SuccessfullPurchaseDialog } from '@components/UI/SuccessfullPurchaseDialog';
@@ -12,8 +10,8 @@ export default function RootLayout({ children }) {
     <html lang="en" className="h-screen w-screen bg-slate-100 md:overscroll-none">
       <body>
         <AuthStateProvider>
-          <div className="justify-top flex h-full flex-col items-center md:h-screen md:justify-center">
-            <div className="h-full w-full md:h-3/4 md:w-3/4">
+          <div className="justify-top flex h-screen flex-col items-center md:justify-center">
+            <div className="min-h-3/4 w-full md:h-3/4 md:w-3/4">
               <div className="h-full w-full bg-white pb-7 shadow-md md:rounded-3xl md:pb-0">
                 <Suspense fallback={<VCenter>Loading...</VCenter>}>{children}</Suspense>
               </div>
