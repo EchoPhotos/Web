@@ -75,9 +75,7 @@ export function MobileAlbumHeader({ album }: { album: IdAlbum }) {
       </HStack>
 
       <HStack className="mt-2 space-x-2">
-        <HStack className="overflow-scroll">
-          <PremiumButton album={album} />
-        </HStack>
+        <PremiumButton album={album} />
       </HStack>
     </VStack>
   );
