@@ -20,7 +20,7 @@ export default function CachedImage({
   className?: string;
   nobackground?: boolean;
 }) {
-  const [imageBlob, setImageBlob] = useImageCache(imageId, format, undefined);
+  const [imageBlob, setImageBlob] = useImageCache(imageId, format);
   const [isVisible, setIsVisible] = useState(false);
   const imageUrl = imageURL(imageId, format, inviteId);
   const containerRef = useRef<HTMLDivElement | null>(null);

@@ -1,65 +1,67 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export enum ImageFormat {
   Thumbnail,
   Preview,
   Original,
 }
+
 // Key generator function for consistent storage keys
 const generateKey = (imageId: string, format: ImageFormat) =>
   `image_${imageId}_${ImageFormat[format]}`;
+
+// Cache name for the Cache API
+const CACHE_NAME = 'image-cache';
 
 // Properly typed hook with error handling and validation
 export function useImageCache(
   imageId: string | undefined,
   format: ImageFormat,
-  initialValue: Blob | undefined,
 ): [Blob | undefined, (value: Blob) => Promise<void>] {
-  const [storedValue, setStoredValue] = useState<Blob | undefined>(() => {
+  const [storedValue, setStoredValue] = useState<Blob | undefined>(undefined);
+
+  useEffect(() => {
     if (!imageId) {
       console.warn('imageId is required for useImageCache');
-      return initialValue;
+      return;
     }
 
-    try {
-      const item = localStorage.getItem(generateKey(imageId, format));
-      if (!item) return initialValue;
+    const fetchCachedImage = async () => {
+      try {
+        const cache = await caches.open(CACHE_NAME);
+        const cacheKey = generateKey(imageId, format);
 
-      const byteCharacters = atob(item);
-      // Add a sanity check for decoding
-      if (byteCharacters.length === 0) throw new Error('Decoded Base64 string is empty');
-
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
+        // Check if the image is already cached
+        const cachedResponse = await cache.match(cacheKey);
+        if (cachedResponse) {
+          const blob = await cachedResponse.blob();
+          setStoredValue(blob);
+        }
+      } catch (error) {
+        console.error('Error fetching cached image:', error);
       }
+    };
 
-      const byteArray = new Uint8Array(byteNumbers);
-      return new Blob([byteArray], { type: 'image/jpeg' });
-    } catch (error) {
-      console.error('Error decoding Base64 data from localStorage:', error);
-      return initialValue;
-    }
-  });
+    fetchCachedImage();
+  }, [imageId, format]);
 
-  // Update localStorage when state changes
+  // Update Cache API when state changes
   async function setValue(value: Blob) {
     if (!imageId) {
       return;
     }
-    try {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64data = (reader.result as string).split(',')[1];
-        localStorage.setItem(generateKey(imageId, format), base64data);
-      };
-      reader.readAsDataURL(value);
 
+    try {
+      const cache = await caches.open(CACHE_NAME);
+      const cacheKey = generateKey(imageId, format);
+
+      // Store the new Blob in the Cache API
+      await cache.put(cacheKey, new Response(value));
       setStoredValue(value);
     } catch (error) {
-      console.error('Error setting value in localStorage:', error);
+      console.error('Error setting value in Cache API:', error);
       throw error;
     }
   }
