@@ -1,7 +1,7 @@
 'use client';
 
 import { IdAlbum } from '@Shared/Models';
-import { IoCreate, IoImages, IoPersonCircle } from 'react-icons/io5';
+import { IoCalendar, IoCreate, IoImages, IoPersonCircle } from 'react-icons/io5';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PremiumButton } from './PremiumButton';
@@ -115,6 +115,24 @@ export function DesktopAlbumPanel({ album }: { album: IdAlbum }) {
           {new Date(album.created).toLocaleString(undefined, options)}
           <IoCreate className="w-8" />
         </div>
+
+        {(album.eventStart && album.eventEnd) ||
+          (album.cachedEarliestTimestamp && album.cachedLatestTimestamp) && (
+            <div className="flex items-center text-xs">
+              <VStack>
+                <p>
+                  {new Date(
+                    album.eventStart ?? album.cachedEarliestTimestamp ?? album.created,
+                  ).toLocaleString(undefined, options)}{' '}
+                  -
+                </p>
+                {new Date(
+                  album.eventEnd ?? album.cachedLatestTimestamp ?? album.created,
+                ).toLocaleString(undefined, options)}
+              </VStack>
+              <IoCalendar className="w-8" />
+            </div>
+          )}
       </div>
 
       <PremiumButton album={album} />
