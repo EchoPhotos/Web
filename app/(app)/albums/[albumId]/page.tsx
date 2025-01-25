@@ -11,8 +11,8 @@ import AlbumProvider from 'provider/AlbumProvider';
 export default function Page() {
   return (
     <RequireAuthentication>
-      <ActiveInviteProvider>
-        <AlbumProvider>
+      <AlbumProvider>
+        <ActiveInviteProvider>
           <PanelView panelConent={<AlbumPanel />}>
             <div className="flex h-full w-full flex-col md:flex-row">
               <AlbumItemColumn />
@@ -21,8 +21,8 @@ export default function Page() {
               </div>
             </div>
           </PanelView>
-        </AlbumProvider>
-      </ActiveInviteProvider>
+        </ActiveInviteProvider>
+      </AlbumProvider>
     </RequireAuthentication>
   );
 }
