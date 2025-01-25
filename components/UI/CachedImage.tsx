@@ -10,11 +10,15 @@ export default function CachedImage({
   inviteId,
   format,
   onLoad,
+  className,
+  nobackground,
 }: {
   imageId?: string;
   inviteId?: string;
   format: ImageFormat;
   onLoad?: () => void;
+  className?: string;
+  nobackground?: boolean;
 }) {
   const [imageBlob, setImageBlob] = useImageCache(imageId, format, undefined);
   const [isVisible, setIsVisible] = useState(false);
@@ -57,32 +61,33 @@ export default function CachedImage({
     };
   }, []);
 
-  if (!imageId) {
-    return (
-      <div ref={containerRef} className="h-full w-full content-center text-slate-500">
-        <IoImage className="m-auto" size={33} />
-      </div>
-    );
-  }
-
-  if (imageBlob) {
-    if (onLoad) {
-      onLoad();
+  function content() {
+    if (!imageId) {
+      return <IoImage className="m-auto" size={33} />;
     }
-    const objectURL = URL.createObjectURL(imageBlob);
-    return (
-      <div ref={containerRef} className="h-full w-full content-center text-slate-500">
+
+    if (imageBlob) {
+      if (onLoad) {
+        onLoad();
+      }
+      const objectURL = URL.createObjectURL(imageBlob);
+      return (
         <img
           src={objectURL}
-          className="relative inset-0 h-full w-full object-cover object-center"
+          className={`relative inset-0 h-full w-full object-cover object-center ${className}`}
         />
-      </div>
-    );
-  } else {
-    return (
-      <div ref={containerRef} className="h-full w-full content-center text-slate-500">
-        {isVisible ? <Spinner /> : <div />}
-      </div>
-    );
+      );
+    } else {
+      return isVisible ? <Spinner /> : <div />;
+    }
   }
+
+  return (
+    <div
+      ref={containerRef}
+      className={`flex flex-row ${className ?? ''} h-full w-full content-center ${nobackground ? '' : 'bg-slate-700'} text-slate-500`}
+    >
+      {content()}
+    </div>
+  );
 }
