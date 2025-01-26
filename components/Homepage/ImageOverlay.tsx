@@ -95,6 +95,7 @@ export default function ImageOverlay({
                     inviteId={invite.id}
                     format={ImageFormat.Preview}
                     onLoad={() => setLoaded(true)}
+                    nobackground={true}
                   />
                 )}
               </motion.div>
@@ -209,6 +210,7 @@ export default function ImageOverlay({
                           imageId={thumbnailItem.image}
                           inviteId={invite.id}
                           format={ImageFormat.Thumbnail}
+                          nobackground={true}
                         />
                       </div>
                     </motion.button>
