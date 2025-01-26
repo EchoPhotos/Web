@@ -65,7 +65,7 @@ export default function ImageOverlay({
         {...handlers}
       >
         <div className="w-full overflow-hidden">
-          <div className="relative flex aspect-[3/2] items-center justify-center bg-black">
+          <div className="flex items-center justify-center bg-black">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={index}
@@ -77,17 +77,20 @@ export default function ImageOverlay({
                 className="absolute"
               >
                 {item.video && (
-                  <video
-                    width="1280"
-                    height="853"
-                    controls
-                    autoPlay
-                    preload="auto"
-                    playsInline
-                    src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/video`}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                  <div className='flex items-center justify-center h-screen w-screen'>
+                    <video
+                      className="h-4/5"
+                      width="800"
+                      height="500"
+                      controls
+                      autoPlay
+                      preload="auto"
+                      playsInline
+                      src={`${domain}/api/v1/invites/${invite.id}/images/${item.image}/video`}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 )}
                 {!item.video && (
                   <CachedImage
