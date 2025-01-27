@@ -9,7 +9,7 @@ import { InviteContext } from 'provider/InviteProvider';
 import Panel from '@components/Album/CurrentDownload/Panel';
 import NoLink from '@components/Album/CurrentDownload/NoLink';
 
-export default () => {
+export default function TestPage() {
   const download = {
     id: 'testdownload',
     album: 'Test Album',
@@ -63,4 +63,4 @@ export default () => {
       </InviteContext.Provider>
     </AlbumContext.Provider>
   );
-};
+}
