@@ -74,7 +74,7 @@ export default function CachedImage({
       return (
         <img
           src={objectURL}
-          className={`relative inset-0 h-full w-full object-cover object-center ${className}`}
+          className={`relative inset-0 h-full w-full object-contain object-center ${className}`}
         />
       );
     } else {

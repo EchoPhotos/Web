@@ -74,7 +74,7 @@ export default function ImageOverlay({
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="absolute"
+                className="absolute h-full w-full "
               >
                 {item.video && (
                   <div className="flex h-screen w-screen items-center justify-center">
@@ -99,6 +99,7 @@ export default function ImageOverlay({
                     format={ImageFormat.Preview}
                     onLoad={() => setLoaded(true)}
                     nobackground
+                    className="h-full w-full"
                   />
                 )}
               </motion.div>
@@ -207,7 +208,7 @@ export default function ImageOverlay({
                           thumbnailIndex === index
                             ? 'brightness-110 hover:brightness-110'
                             : 'brightness-50 contrast-125 hover:brightness-75'
-                        } h-full transform object-cover transition`}
+                        } h-full w-full transform object-cover transition`}
                       >
                         <CachedImage
                           imageId={thumbnailItem.image}
