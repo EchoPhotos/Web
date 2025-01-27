@@ -61,7 +61,7 @@ export default function ImageOverlay({
       }}
     >
       <div
-        className="wide:h-full xl:taller-than-854:h-auto relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center"
+        className="wide:h-full xl:taller-than-854:h-auto relative z-50 flex aspect-[3/5] w-full max-w-7xl items-center bg-black/30 md:aspect-[3/2]"
         {...handlers}
       >
         <div className="w-full overflow-hidden">
@@ -111,7 +111,7 @@ export default function ImageOverlay({
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
           {/* Buttons */}
           {loaded && (
-            <div className="relative aspect-[3/2] max-h-full w-full">
+            <div className="relative aspect-[3/5] max-h-full w-full md:aspect-[3/2]">
               <>
                 {index > 0 && (
                   <button

@@ -63,9 +63,9 @@ export default function InvitePreview(props: {
             }}
           />
         )}
-        <div className="grid grid-flow-row grid-cols-4 justify-start gap-1 md:grid-cols-5 lg:grid-cols-7">
+        <div className="grid grid-flow-row grid-cols-3 justify-start gap-1 md:px-12 md:py-4 md:grid-cols-5 lg:px-48 xl:grid-cols-7">
           {!data.invite.viewOnly && (
-            <div className="col-span-2 row-span-3">
+            <div className="col-span-3 row-span-3 md:col-span-2">
               <AlbumCard
                 albumId={data.invite.group}
                 albumName={data.invite.groupName}
@@ -76,7 +76,7 @@ export default function InvitePreview(props: {
             </div>
           )}
           {data.invite.viewOnly && (
-            <HStack className="col-span-2 aspect-[2] items-center justify-center rounded-lg bg-zinc-800 text-4xl font-semibold text-white">
+            <HStack className="col-span-3 aspect-[2] items-center justify-center rounded-lg bg-zinc-800 text-4xl font-semibold text-white md:col-span-2">
               {data.invite.groupName}
             </HStack>
           )}

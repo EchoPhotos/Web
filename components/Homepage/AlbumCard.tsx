@@ -42,7 +42,7 @@ export default function AlbumCard({
     <VStack className="h-full break-inside-avoid items-center justify-evenly space-y-5 rounded-lg bg-zinc-800 p-5 text-white">
       <h1 className="mt-2 text-center text-4xl font-black">{albumName}</h1>
 
-      <HStack className="items-center space-x-2 overflow-clip rounded-lg bg-white p-2">
+      <HStack className="max-w-72 items-center space-x-2 overflow-clip rounded-lg bg-white p-2">
         <QRCode qrCodeURL={qrCodeURL} />
 
         <VStack className="space-y-2 p-1">
@@ -69,7 +69,7 @@ export default function AlbumCard({
             'With the app, you can upload your photos and add likes and comments.'}
         </div>
 
-        <HStack className="space-x-2">
+        <VStack className="space-y-2">
           <button onClick={getApp}>
             <ActionStyle>{dict.app.installButton ?? 'Get the App'}</ActionStyle>
           </button>
@@ -79,7 +79,7 @@ export default function AlbumCard({
               {dict.uploadPhotosButton ?? 'Upload photos'}
             </SecondaryActionStyle>
           </Link>
-        </HStack>
+        </VStack>
 
         <div className="flex flex-row items-center space-x-5">
           {dict.hostedOn}
