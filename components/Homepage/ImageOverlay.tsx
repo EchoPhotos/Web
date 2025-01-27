@@ -1,5 +1,4 @@
 import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
-import Image from 'next/image';
 import { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { variants } from '@utils/old/animationVariants';
@@ -74,7 +73,7 @@ export default function ImageOverlay({
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="absolute h-full w-full "
+                className="absolute h-full w-full"
               >
                 {item.video && (
                   <div className="flex h-screen w-screen items-center justify-center">

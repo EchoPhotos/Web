@@ -11,10 +11,7 @@ import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { IdAlbumItem, IdInvite } from '@Shared/Models';
 import AuthStateProvider from 'provider/AuthStateProvider';
-import CachedImage from '@components/UI/CachedImage';
-import { ImageFormat } from '@utils/ImageCache';
-import { HStack, VStack, VStackSmallHStackWide } from '@components/UI/Components';
-import QRCode from '@components/Homepage/QRCode';
+import { HStack } from '@components/UI/Components';
 
 export interface InvitePreviewData {
   invite: IdInvite;
@@ -63,7 +60,8 @@ export default function InvitePreview(props: {
             }}
           />
         )}
-        <div className="grid grid-flow-row grid-cols-3 justify-start gap-1 md:px-12 md:py-4 md:grid-cols-5 lg:px-48 xl:grid-cols-7">
+
+        <div className="grid grid-flow-row grid-cols-3 justify-start gap-1 md:grid-cols-5 md:px-12 md:py-4 lg:px-48 xl:grid-cols-7">
           {!data.invite.viewOnly && (
             <div className="col-span-3 row-span-3 md:col-span-2">
               <AlbumCard
@@ -75,14 +73,13 @@ export default function InvitePreview(props: {
               />
             </div>
           )}
+
           {data.invite.viewOnly && (
             <HStack className="col-span-3 aspect-[2] items-center justify-center rounded-lg bg-zinc-800 text-4xl font-semibold text-white md:col-span-2">
               {data.invite.groupName}
             </HStack>
           )}
-          {/* <div className="flex flex-col items-center space-y-2 rounded-lg bg-white p-3" id="qrcode">
-            
-          </div> */}
+
           {data.albumMapRegion && (
             <div className="col-span-2 aspect-[2] h-full w-full overflow-clip rounded-lg">
               <ItemMap
@@ -94,6 +91,7 @@ export default function InvitePreview(props: {
               />
             </div>
           )}
+
           {data.items.map((albumItem) => {
             const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
             return (
