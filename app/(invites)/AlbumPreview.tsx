@@ -13,15 +13,15 @@ import { IdAlbumItem, IdInvite } from '@Shared/Models';
 import AuthStateProvider from 'provider/AuthStateProvider';
 import { HStack } from '@components/UI/Components';
 
-export interface InvitePreviewData {
+export interface AlbumPreviewData {
   invite: IdInvite;
   items: IdAlbumItem[];
   domain: string;
   albumMapRegion?: CoordinateRegion;
 }
 
-export default function InvitePreview(props: {
-  data: InvitePreviewData;
+export default function AlbumPreview(props: {
+  data: AlbumPreviewData;
   albumCardDict: any;
   lang: string;
 }) {

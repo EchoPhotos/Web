@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
-import { InvitePreviewData } from './InvitePreview';
+import { AlbumPreviewData } from './AlbumPreview';
 import { CoordinateRegion } from 'mapkit-react';
 import ngeohash from 'ngeohash';
 import * as API from '@utils/API';
 import { IdAlbumItem } from '@Shared/Models';
 
-export async function getData(inviteId: string): Promise<InvitePreviewData> {
+export async function getData(inviteId: string): Promise<AlbumPreviewData> {
   const invite = await API.fetchInvite(inviteId);
   const items = await API.fetchItemsForInvite(inviteId);
   const domain = await API.getDomain();
