@@ -52,6 +52,10 @@ export default function ImageOverlay({
 
   let item = albumItems[index];
 
+  if (item.video) {
+    setLoaded(true);
+  }
+  
   return (
     <MotionConfig
       transition={{
@@ -76,7 +80,7 @@ export default function ImageOverlay({
                 className="absolute h-full w-full"
               >
                 {item.video && (
-                  <div className="flex h-screen w-screen items-center justify-center">
+                  <div className="flex h-full w-full items-center justify-center">
                     <video
                       className="h-4/5"
                       width="800"
