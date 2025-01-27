@@ -117,7 +117,7 @@ export function DesktopAlbumPanel({ album }: { album: IdAlbum }) {
         </div>
 
         {(album.eventStart && album.eventEnd) ||
-          (album.cachedEarliestTimestamp && album.cachedLatestTimestamp) && (
+          (album.cachedEarliestTimestamp && album.cachedLatestTimestamp && (
             <div className="flex items-center text-xs">
               <VStack>
                 <p>
@@ -132,7 +132,7 @@ export function DesktopAlbumPanel({ album }: { album: IdAlbum }) {
               </VStack>
               <IoCalendar className="w-8" />
             </div>
-          )}
+          ))}
       </div>
 
       <PremiumButton album={album} />

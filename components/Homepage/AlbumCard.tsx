@@ -1,6 +1,8 @@
 import React from 'react';
 import QRCode from './QRCode';
 import Link from 'next/link';
+import { HStack, VStack } from '@components/UI/Components';
+import { ActionStyle, SecondaryActionStyle } from '@components/UI/ButtonStyles';
 
 interface AlbumCardProps {
   albumName?: string;
@@ -37,57 +39,54 @@ export default function AlbumCard({
   };
 
   return (
-    <div className="mb-5 flex break-inside-avoid flex-col items-center space-y-5 rounded-lg bg-zinc-800 p-5 text-white">
+    <VStack className="h-full break-inside-avoid items-center justify-evenly space-y-5 rounded-lg bg-zinc-800 p-5 text-white">
       <h1 className="mt-2 text-center text-4xl font-black">{albumName}</h1>
 
-      <div className="flex flex-col items-center space-y-2 rounded-lg bg-white p-3" id="qrcode">
+      <HStack className="items-center space-x-2 overflow-clip rounded-lg bg-white p-2">
         <QRCode qrCodeURL={qrCodeURL} />
 
-        <div className="max-w-1/2 w-44 break-words text-center text-xs font-light text-gray-700">
-          {dict.enterCode ?? 'Enter the code or scan the QR-Code to join via app.'}
-        </div>
+        <VStack className="space-y-2 p-1">
+          <div className="break-words text-center text-xs font-light text-gray-700">
+            {dict.enterCode ?? 'Enter the code or scan the QR-Code to join via app.'}
+          </div>
 
-        <button
-          id="inviteCode"
-          onClick={copyToClipboard}
-          className="rounded-lg bg-zinc-200 px-5 py-2 text-center font-mono text-xl uppercase text-slate-700 transition hover:bg-slate-600 hover:font-bold hover:text-white"
-        >
-          {inviteCode}
-        </button>
-      </div>
+          <button
+            onClick={copyToClipboard}
+            className="rounded-lg bg-zinc-200 px-5 py-2 text-center font-mono text-lg uppercase text-slate-700 transition hover:bg-slate-600 hover:font-bold hover:text-white"
+          >
+            {inviteCode}
+          </button>
+        </VStack>
+      </HStack>
 
       {/* <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch] text-sm">
         {dict.description ?? "test description"}
       </p> */}
 
-      <div className="flex flex-row items-center space-x-5">
-        {dict.hostedOn}
-        <img src="/images/AppIcon300.png" height="50" width="50" alt="EchoPhotos logo" />
-        Echo Photos
-      </div>
-
-      <div className="flex flex-col items-center text-center text-xs">
+      <VStack className="items-center space-y-2 text-center text-xs">
         <div className="w-52">
           {dict.app.description ??
             'With the app, you can upload your photos and add likes and comments.'}
         </div>
 
-        <button
-          id="inviteCode"
-          onClick={getApp}
-          className="mt-2 rounded-lg bg-blue-600 px-6 py-3.5 text-center text-xl font-bold text-white transition hover:bg-zinc-100 hover:text-blue-500"
-        >
-          {dict.app.installButton ?? 'Get the App'}
-        </button>
+        <HStack className="space-x-2">
+          <button onClick={getApp}>
+            <ActionStyle>{dict.app.installButton ?? 'Get the App'}</ActionStyle>
+          </button>
 
-        <Link
-          id="upload"
-          href={`https://www.echophotos.io/albums/${albumId}/upload`}
-          className="mt-2 rounded-lg bg-zinc-300 px-5 py-2 text-center text-lg font-bold text-blue-500 transition hover:bg-blue-400 hover:text-white"
-        >
-          {dict.uploadPhotosButton ?? 'Upload photos'}
-        </Link>
-      </div>
-    </div>
+          <Link href={`https://www.echophotos.io/albums/${albumId}/upload`}>
+            <SecondaryActionStyle>
+              {dict.uploadPhotosButton ?? 'Upload photos'}
+            </SecondaryActionStyle>
+          </Link>
+        </HStack>
+
+        <div className="flex flex-row items-center space-x-5">
+          {dict.hostedOn}
+          <img src="/images/AppIcon300.png" height="50" width="50" alt="EchoPhotos logo" />
+          Echo Photos
+        </div>
+      </VStack>
+    </VStack>
   );
 }

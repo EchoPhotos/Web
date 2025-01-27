@@ -77,7 +77,7 @@ export default function ImageOverlay({
                 className="absolute"
               >
                 {item.video && (
-                  <div className='flex items-center justify-center h-screen w-screen'>
+                  <div className="flex h-screen w-screen items-center justify-center">
                     <video
                       className="h-4/5"
                       width="800"

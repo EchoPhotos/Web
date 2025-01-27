@@ -10,8 +10,8 @@ export default function QRCode({ qrCodeURL }) {
   }, []);
 
   return (
-    <div className="rounded-lg bg-white p-3" id="qrcode">
-      <ReactQRCode.default value={qrCodeURL} size={120} />
+    <div className="rounded-lg bg-white p-1" id="qrcode">
+      <ReactQRCode.default value={qrCodeURL} size={100} />
     </div>
   );
 }

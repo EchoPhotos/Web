@@ -11,6 +11,10 @@ import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { IdAlbumItem, IdInvite } from '@Shared/Models';
 import AuthStateProvider from 'provider/AuthStateProvider';
+import CachedImage from '@components/UI/CachedImage';
+import { ImageFormat } from '@utils/ImageCache';
+import { HStack, VStack, VStackSmallHStackWide } from '@components/UI/Components';
+import QRCode from '@components/Homepage/QRCode';
 
 export interface InvitePreviewData {
   invite: IdInvite;
@@ -48,20 +52,20 @@ export default function InvitePreview(props: {
 
   return (
     <AuthStateProvider>
-      <div className="bg-black">
-        <section className="mx-auto max-w-[1960px] p-4">
-          {itemId && (
-            <ImageOverlayContainer
-              invite={data.invite}
-              domain={data.domain}
-              items={data.items}
-              onClose={(lastViewedItemId) => {
-                setLastViewedPhoto(lastViewedItemId);
-              }}
-            />
-          )}
-          <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
-            {!data.invite.viewOnly && (
+      <div className="bg-black p-1">
+        {itemId && (
+          <ImageOverlayContainer
+            invite={data.invite}
+            domain={data.domain}
+            items={data.items}
+            onClose={(lastViewedItemId) => {
+              setLastViewedPhoto(lastViewedItemId);
+            }}
+          />
+        )}
+        <div className="grid grid-flow-row grid-cols-4 justify-start gap-1 md:grid-cols-5 lg:grid-cols-7">
+          {!data.invite.viewOnly && (
+            <div className="col-span-2 row-span-3">
               <AlbumCard
                 albumId={data.invite.group}
                 albumName={data.invite.groupName}
@@ -69,40 +73,42 @@ export default function InvitePreview(props: {
                 qrCodeURL={`${data.domain}/invite/${data.invite.id}`}
                 albumCardDict={props.albumCardDict}
               />
-            )}
-            {data.albumMapRegion && (
-              <div className="mb-5 h-48 w-full overflow-clip rounded-lg">
-                <ItemMap
-                  items={data.items}
-                  initialRegion={data.albumMapRegion}
-                  onItemSelect={(item) => {
-                    router.push(`/${props.lang}/invite/${data.invite.id}?itemId=${item.id}`);
-                  }}
+            </div>
+          )}
+          {data.invite.viewOnly && (
+            <HStack className="col-span-2 aspect-[2] items-center justify-center rounded-lg bg-zinc-800 text-4xl font-semibold text-white">
+              {data.invite.groupName}
+            </HStack>
+          )}
+          {/* <div className="flex flex-col items-center space-y-2 rounded-lg bg-white p-3" id="qrcode">
+            
+          </div> */}
+          {data.albumMapRegion && (
+            <div className="col-span-2 aspect-[2] h-full w-full overflow-clip rounded-lg">
+              <ItemMap
+                items={data.items}
+                initialRegion={data.albumMapRegion}
+                onItemSelect={(item) => {
+                  router.push(`/${props.lang}/invite/${data.invite.id}?itemId=${item.id}`);
+                }}
+              />
+            </div>
+          )}
+          {data.items.map((albumItem) => {
+            const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
+            return (
+              <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined} key={albumItem.id}>
+                <GridImage
+                  lang={props.lang}
+                  domain={data.domain}
+                  inviteId={data.invite.id}
+                  showLikes={!data.invite.viewOnly}
+                  albumItem={albumItem}
                 />
               </div>
-            )}
-
-            {data.invite.viewOnly && (
-              <a className="my-4 flex flex-row justify-center rounded-lg bg-stone-800 p-4 text-3xl font-semibold text-white">
-                {data.invite.groupName}
-              </a>
-            )}
-            {data.items.map((albumItem) => {
-              const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
-              return (
-                <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined} key={albumItem.id}>
-                  <GridImage
-                    lang={props.lang}
-                    domain={data.domain}
-                    inviteId={data.invite.id}
-                    showLikes={!data.invite.viewOnly}
-                    albumItem={albumItem}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </section>
+            );
+          })}
+        </div>
       </div>
     </AuthStateProvider>
   );
