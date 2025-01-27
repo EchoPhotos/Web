@@ -65,7 +65,7 @@ export default function AlbumPreview(props: {
           {!data.invite.viewOnly && (
             <div className="col-span-3 row-span-3 md:col-span-2">
               <AlbumCard
-                albumId={data.invite.group}
+                inviteId={data.invite.id}
                 albumName={data.invite.groupName}
                 inviteCode={inviteCode}
                 qrCodeURL={`${data.domain}/invite/${data.invite.id}`}

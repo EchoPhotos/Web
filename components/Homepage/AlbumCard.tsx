@@ -8,7 +8,7 @@ interface AlbumCardProps {
   albumName?: string;
   inviteCode: string;
   qrCodeURL: string;
-  albumId: string;
+  inviteId: string;
   albumCardDict: any;
 }
 
@@ -16,7 +16,7 @@ export default function AlbumCard({
   albumName,
   inviteCode,
   qrCodeURL,
-  albumId,
+  inviteId,
   albumCardDict,
 }: AlbumCardProps) {
   const dict = albumCardDict;
@@ -74,7 +74,7 @@ export default function AlbumCard({
             <ActionStyle>{dict.app.installButton ?? 'Get the App'}</ActionStyle>
           </button>
 
-          <Link href={`https://www.echophotos.io/albums/${albumId}/upload`}>
+          <Link href={`/invites/${inviteId}/upload`}>
             <SecondaryActionStyle>
               {dict.uploadPhotosButton ?? 'Upload photos'}
             </SecondaryActionStyle>

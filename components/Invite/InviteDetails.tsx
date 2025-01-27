@@ -5,6 +5,7 @@ import Code from '@components/UI/Code';
 import { VStack } from '@components/UI/Components';
 import { Button } from '@headlessui/react';
 import { getInviteURL } from '@utils/Environment';
+import Link from 'next/link';
 import { InviteContext } from 'provider/InviteProvider';
 import { useContext } from 'react';
 import * as ReactQRCode from 'react-qr-code';
@@ -23,9 +24,9 @@ export default function InviteDetails() {
       </p>
 
       <VStack className="items-center space-y-3">
-        <div className="rounded-lg bg-white p-4">
+        <Link className="rounded-lg bg-white p-4" href={`/invite/${invite.code ?? invite.id}`}>
           <ReactQRCode.default value={inviteLink} size={120} />
-        </div>
+        </Link>
 
         <VStack className="items-center">
           <p className="p-0 text-xs text-gray-500">Invite code</p>
