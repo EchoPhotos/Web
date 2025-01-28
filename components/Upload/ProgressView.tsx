@@ -4,7 +4,7 @@ import { IoCheckmarkCircle } from 'react-icons/io5';
 export default function ProgressView({ title, progress }: { title: string; progress: number }) {
   return (
     <HStack className="my-2 h-10 items-center justify-between space-x-4 rounded bg-slate-100 p-3">
-      <p className="text-sm font-semibold text-slate-400 w-1/2 overflow-scroll">{title}</p>
+      <p className="w-1/2 overflow-scroll text-sm font-semibold text-slate-400">{title}</p>
       {progress === 100 && <IoCheckmarkCircle className="text-xl text-green-500" />}
       {progress !== 100 && <progress className="w-1/2" value={progress} max="100" />}
       {/* <Button onClick={onDelete}>

@@ -5,7 +5,7 @@ export default function Logo() {
         <img src="/images/AppIcon300.png" height="50" width="75" alt="Echo Photos" />
       </div>
       <div
-        className="text-xs font-extralight md:text-2xl md:leading-6 text-start"
+        className="text-start text-xs font-extralight md:text-2xl md:leading-6"
         style={{ fontFamily: 'helvetica, sans' }}
       >
         <p>Echo</p>

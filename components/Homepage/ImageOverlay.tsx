@@ -55,7 +55,7 @@ export default function ImageOverlay({
   if (item.video) {
     setLoaded(true);
   }
-  
+
   return (
     <MotionConfig
       transition={{
