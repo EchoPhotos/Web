@@ -137,11 +137,6 @@ export async function getUser(): Promise<User | undefined> {
       Authorization: `Bearer ${token}`,
     },
   });
-  if (response.status === 404) {
-    throw Error('Creating user failed');
-  } else if (response.status > 299) {
-    throw Error('Failed to fetch User');
-  }
   return response.data as User;
 }
 
@@ -175,9 +170,11 @@ export function invitePreviewUrlForId(id: string): string {
 
 async function get<T>(path: string): Promise<T> {
   const response = await axios.get(getAPIHost() + path);
-  if (response.status !== 200) {
-    throw Error('Fetching failed');
-  }
+  return response.data as T;
+}
+
+async function post<T>(path: string): Promise<T> {
+  const response = await axios.post(getAPIHost() + path);
   return response.data as T;
 }
 
@@ -190,10 +187,6 @@ async function getAuthorized<T>(path: string, params?: any): Promise<T> {
     },
     params: params,
   });
-  if (response.status > 299) {
-    console.error(path);
-    throw Error('Fetching failed');
-  }
   return response.data as T;
 }
 
@@ -204,10 +197,6 @@ async function putAuthorized<T>(path: string): Promise<T> {
       Authorization: `Bearer ${token}`,
     },
   });
-  if (response.status > 299) {
-    console.error(path);
-    throw Error('Putting failed');
-  }
   return response.data as T;
 }
 
