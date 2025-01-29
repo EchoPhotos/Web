@@ -40,7 +40,7 @@ export default function AlbumCard({
 
   return (
     <VStack className="h-full break-inside-avoid items-center justify-evenly space-y-5 rounded-lg bg-zinc-800 p-5 text-white">
-      <h1 className="mt-2 text-center text-4xl font-black">{albumName}</h1>
+      <h1 className="mt-2 text-center text-4xl font-black py-8">{albumName}</h1>
 
       <HStack className="max-w-72 items-center space-x-2 overflow-clip rounded-lg bg-white p-2">
         <QRCode qrCodeURL={qrCodeURL} />
