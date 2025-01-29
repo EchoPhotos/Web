@@ -95,24 +95,8 @@ export async function addUploadToAlbum(
   metadata: UploadMetadata,
   albumId: string,
 ): Promise<IdAlbumItem> {
-  const token = await getToken();
-  if (!token) {
-    console.warn('User not authenticated');
-  }
-  try {
-    const response = await axios.post(getAPIHost() + `/albums/${albumId}/items`, metadata, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    if (response.status > 299) {
-      throw Error('Creating Album failed');
-    }
-    return response.data as IdAlbumItem;
-  } catch (error) {
-    console.error('Failed to fetch current user!', error);
-    throw error;
-  }
+  const item: IdAlbumItem = await postAuthorized(getAPIHost() + `/albums/${albumId}/items`, metadata);
+  return item;
 }
 
 export async function createDownloadLink(albumId: string): Promise<IdDownload> {
@@ -178,9 +162,15 @@ async function get<T>(path: string): Promise<T> {
   return response.data as T;
 }
 
-async function post<T>(path: string): Promise<T> {
-  const response = await axios.post(getAPIHost() + path);
-  return response.data as T;
+async function postAuthorized<R, D>(path: string, data: D, params?: any): Promise<R> {
+  const token = await getToken();
+  const response = await axios.post(getAPIHost() + path, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    params: params,
+  });
+  return response.data as R;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -285,7 +275,7 @@ export async function getTokenForCode(code: string): Promise<string> {
 }
 
 export async function joinAlbum(inviteId: string): Promise<IdAlbum> {
-  return post(`/invites/${inviteId}/join`);
+  return postAuthorized(`/invites/${inviteId}/join`, undefined);
 }
 
 export async function getActiveAlbumInvite(id: string): Promise<IdInvite> {
