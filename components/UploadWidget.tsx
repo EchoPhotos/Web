@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ProgressView from '@components/Upload/ProgressView';
 import { uploadFileWithPreview, FileUpload } from '@utils/Upload';
 import RegisterActionButton from '@components/Authentication/RegisterActionButton';
-import { addUploadToAlbum, getInvite } from '@utils/API';
+import { addUploadToAlbum, getInvite, joinAlbum } from '@utils/API';
 import ImagePicker from '@components/Upload/ImagePicker';
 import Spinner from '@components/UI/Spinner';
 import { Button } from '@headlessui/react';
@@ -80,6 +80,13 @@ export default function UploadWidget() {
       return;
     }
     const last = pickedFiles[pickedFiles.length - 1];
+    
+    const inviteId: string = params.inviteId as string;
+    
+    if (inviteId) {
+      await joinAlbum(inviteId);
+    }
+
     pickedFiles.forEach(async (upload) => {
       let item = await addUploadToAlbum(
         {

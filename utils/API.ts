@@ -276,6 +276,10 @@ export async function getTokenForCode(code: string): Promise<string> {
   return body.token;
 }
 
+export async function joinAlbum(inviteId: string): Promise<IdAlbum> {
+  return post(`/invites/${inviteId}/join`);
+}
+
 export async function getActiveAlbumInvite(id: string): Promise<IdInvite> {
   return getAuthorized<IdInvite>(`/albums/${id}/invites/active`);
 }
