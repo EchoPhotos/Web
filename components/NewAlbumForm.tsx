@@ -51,7 +51,7 @@ export default function NewAlbumForm() {
           Create new album
         </div>
         <div>
-          <p className="mb-1 mt-3 text-xs font-semibold text-slate-600">Album name</p>
+          <p className="mt-3 mb-1 text-xs font-semibold text-slate-600">Album name</p>
           <input
             type="text"
             name="albumName"

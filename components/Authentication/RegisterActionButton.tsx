@@ -48,7 +48,7 @@ export default function RegisterActionButton({
   const triggerAction = async () => {
     if (profile) {
       action();
-    } else if (authState.userId !== undefined ) {
+    } else if (authState.userId !== undefined) {
       await getOrRegisterUser(name);
       action();
     } else {
@@ -146,14 +146,11 @@ export default function RegisterActionButton({
                 autoFocus
                 autoComplete="one-time-code"
                 placeholder="123456"
-                className="m-2 w-1/4 rounded-md p-2 text-center text-xl bg-white"
+                className="m-2 w-1/4 rounded-md bg-white p-2 text-center text-xl"
                 onChange={handleOtpChange}
               />
               <div className="mt-4">
-                <Button
-                  className="btn btn-secondary"
-                  onClick={verifyOTP}
-                >
+                <Button className="btn btn-secondary" onClick={verifyOTP}>
                   Verify
                 </Button>
               </div>
@@ -163,4 +160,4 @@ export default function RegisterActionButton({
       </Dialog>
     </div>
   );
-};
+}

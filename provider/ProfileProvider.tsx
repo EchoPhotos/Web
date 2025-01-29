@@ -73,7 +73,7 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
 
               <DialogPanel
                 transition
-                className="data-[closed]:transform-[scale(95%)] flex h-full max-h-96 w-full max-w-xl flex-col items-center rounded-xl bg-white bg-opacity-70 p-6 text-center backdrop-blur-2xl duration-300 ease-out data-[closed]:opacity-0"
+                className="bg-opacity-70 flex h-full max-h-96 w-full max-w-xl flex-col items-center rounded-xl bg-white p-6 text-center backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
               >
                 <VStack className="h-full w-full items-center justify-center space-y-2">
                   <Logo />
@@ -85,7 +85,7 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
                   </p>
                   <Input
                     placeholder="Name"
-                    className="min-w-36 max-w-64 rounded-lg p-1 text-center ring-1 md:min-h-10 md:min-w-48 md:p-2"
+                    className="max-w-64 min-w-36 rounded-lg p-1 text-center ring-1 md:min-h-10 md:min-w-48 md:p-2"
                     onChange={handleNameChange}
                   />
                   <Button onClick={registerName} className="btn btn-primary">

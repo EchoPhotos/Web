@@ -40,19 +40,19 @@ export default function AlbumCard({
 
   return (
     <VStack className="h-full break-inside-avoid items-center justify-evenly space-y-5 rounded-lg bg-zinc-800 p-5 text-white">
-      <h1 className="mt-2 text-center text-4xl font-black py-8">{albumName}</h1>
+      <h1 className="mt-2 py-8 text-center text-4xl font-black">{albumName}</h1>
 
       <HStack className="max-w-72 items-center space-x-2 overflow-clip rounded-lg bg-white p-2">
         <QRCode qrCodeURL={qrCodeURL} />
 
         <VStack className="space-y-2 p-1">
-          <div className="break-words text-center text-xs font-light text-gray-700">
+          <div className="text-center text-xs font-light break-words text-gray-700">
             {dict.enterCode ?? 'Enter the code or scan the QR-Code to join via app.'}
           </div>
 
           <button
             onClick={copyToClipboard}
-            className="rounded-lg bg-zinc-200 px-5 py-2 text-center font-mono text-lg uppercase text-slate-700 transition hover:bg-slate-600 hover:font-bold hover:text-white"
+            className="rounded-lg bg-zinc-200 px-5 py-2 text-center font-mono text-lg text-slate-700 uppercase transition hover:bg-slate-600 hover:font-bold hover:text-white"
           >
             {inviteCode}
           </button>

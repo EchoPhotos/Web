@@ -118,7 +118,7 @@ export default function ImageOverlay({
               <>
                 {index > 0 && (
                   <button
-                    className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-hidden"
+                    className="absolute top-[calc(50%-16px)] left-3 rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-hidden"
                     style={{ transform: 'translate3d(0, 0, 0)' }}
                     onClick={goToPrevious}
                   >
@@ -127,7 +127,7 @@ export default function ImageOverlay({
                 )}
                 {index + 1 < albumItems.length && (
                   <button
-                    className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-hidden"
+                    className="absolute top-[calc(50%-16px)] right-3 rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-hidden"
                     style={{ transform: 'translate3d(0, 0, 0)' }}
                     onClick={goToNext}
                   >
@@ -136,7 +136,7 @@ export default function ImageOverlay({
                 )}
               </>
 
-              <div className="absolute right-0 top-0 flex items-center gap-2 p-3 text-white">
+              <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
                 {!invite.viewOnly && (
                   <a
                     href={`${domain}/api/v1/invites/${invite.id}/images/${
@@ -170,7 +170,7 @@ export default function ImageOverlay({
                 )}
               </div>
 
-              <div className="absolute left-0 top-0 flex items-center gap-2 p-3 text-white">
+              <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
                 <button
                   onClick={() => closeModal()}
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
@@ -182,7 +182,7 @@ export default function ImageOverlay({
           )}
           {/* Bottom Nav bar */}
           <div className="fixed inset-x-0 bottom-0 z-40 overflow-hidden bg-linear-to-b from-black/0 to-black/60">
-            <motion.div initial={false} className="mx-auto mb-6 mt-6 flex aspect-1/1 h-14">
+            <motion.div initial={false} className="mx-auto mt-6 mb-6 flex aspect-1/1 h-14">
               <AnimatePresence initial={false}>
                 {filteredAlbumItems.map((thumbnailItem) => {
                   let thumbnailIndex = albumItems.indexOf(thumbnailItem);
@@ -201,7 +201,9 @@ export default function ImageOverlay({
                       onClick={() => goTo(thumbnailIndex)}
                       key={thumbnailItem.id}
                       className={`${
-                        thumbnailIndex === index ? 'z-20 rounded-md shadow-xs shadow-black/50' : 'z-10'
+                        thumbnailIndex === index
+                          ? 'z-20 rounded-md shadow-xs shadow-black/50'
+                          : 'z-10'
                       } ${thumbnailIndex === 0 ? 'rounded-l-md' : ''} ${
                         thumbnailIndex === albumItems.length - 1 ? 'rounded-r-md' : ''
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-hidden`}

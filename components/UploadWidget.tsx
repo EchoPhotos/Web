@@ -80,9 +80,9 @@ export default function UploadWidget() {
       return;
     }
     const last = pickedFiles[pickedFiles.length - 1];
-    
+
     const inviteId: string = params.inviteId as string;
-    
+
     if (inviteId) {
       await joinAlbum(inviteId);
     }

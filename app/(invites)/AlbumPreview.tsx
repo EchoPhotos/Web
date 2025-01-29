@@ -49,7 +49,7 @@ export default function AlbumPreview(props: {
 
   return (
     <AuthStateProvider>
-      <div className="bg-black p-1 h-screen">
+      <div className="h-screen bg-black p-1">
         {itemId && (
           <ImageOverlayContainer
             invite={data.invite}

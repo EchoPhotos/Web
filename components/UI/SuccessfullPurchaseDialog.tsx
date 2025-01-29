@@ -36,7 +36,7 @@ export function SuccessfullPurchaseDialog() {
 
           <DialogPanel
             transition
-            className="data-closed:transform-[scale(95%)] flex w-full max-w-md flex-col items-center rounded-xl bg-white bg-opacity-75 p-6 text-center backdrop-blur-xl duration-300 ease-out data-closed:opacity-0"
+            className="bg-opacity-75 flex w-full max-w-md flex-col items-center rounded-xl bg-white p-6 text-center backdrop-blur-xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
           >
             <DialogTitle className="m-2 text-2xl font-bold">
               <div className="flex flex-col items-center gap-4">

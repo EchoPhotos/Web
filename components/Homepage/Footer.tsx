@@ -49,7 +49,7 @@ export default async function Footer({ lang, dict }) {
           </li>
         </ul>
 
-        <p className="mb-8 mt-6 text-xs font-light leading-5 text-neutral-500">
+        <p className="mt-6 mb-8 text-xs leading-5 font-light text-neutral-500">
           {dict.footer.copyright['text-before']} &copy;{' '}
           <Link href="http://www.echolabs.ch" target="_blank" className="text-neutral-800">
             {' '}

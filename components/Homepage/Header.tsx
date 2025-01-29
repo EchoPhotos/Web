@@ -33,7 +33,7 @@ export default function HomepageHeader({ sections, lang }: HeaderSections) {
         </button>
 
         <div
-          className={`absolute left-0 top-20 px-6 pb-3 ${
+          className={`absolute top-20 left-0 px-6 pb-3 ${
             isOpen ? 'bg-white/70 backdrop-blur-md' : 'hidden'
           } w-full md:relative md:top-0 md:mr-2 md:block md:w-auto md:p-0`}
         >

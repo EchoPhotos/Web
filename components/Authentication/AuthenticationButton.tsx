@@ -78,12 +78,12 @@ export default function Page() {
               <div className="flex min-h-full items-center justify-center p-4">
                 <DialogBackdrop
                   transition
-                  className="fixed inset-0 bg-white bg-opacity-20 backdrop-blur-xs"
+                  className="bg-opacity-20 fixed inset-0 bg-white backdrop-blur-xs"
                 />
 
                 <DialogPanel
                   transition
-                  className="data-closed:transform-[scale(95%)] flex w-full max-w-md flex-col items-center rounded-xl bg-white p-6 text-center shadow-lg ring-1 ring-slate-300 backdrop-blur-xl duration-300 ease-out data-closed:opacity-0"
+                  className="flex w-full max-w-md flex-col items-center rounded-xl bg-white p-6 text-center ring-1 shadow-lg ring-slate-300 backdrop-blur-xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
                 >
                   <DialogTitle className="m-2 text-2xl font-bold"> Sign in</DialogTitle>
                   <SignInWidget />

@@ -49,7 +49,7 @@ export default function InvitePanel() {
       </div>
       {!pathname.endsWith('upload') && (
         <Link
-          className="rounded-md bg-white bg-opacity-20 p-1 px-2 hover:bg-slate-200 hover:text-slate-800"
+          className="bg-opacity-20 rounded-md bg-white p-1 px-2 hover:bg-slate-200 hover:text-slate-800"
           href={`/invites/${invite.id}/upload`}
         >
           Upload photos

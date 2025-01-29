@@ -49,14 +49,14 @@ export default async function WeddingPage({ params }) {
 
           <Link
             href="/albums/new"
-            className="flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md bg-red-400 px-1 py-1 text-sm font-semibold text-white shadow-md shadow-red-500/40 hover:bg-red-600 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
+            className="flex min-h-8 max-w-64 min-w-36 flex-row items-center justify-center space-x-1 rounded-md bg-red-400 px-1 py-1 text-sm font-semibold text-white shadow-md shadow-red-500/40 hover:bg-red-600 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
           >
             {dicts.general.createNewAlbumButton}
           </Link>
         </ContentBox>
       </FullScreenSection>
 
-      <section className="bg-red-300 pb-10 pt-10 md:pb-40 md:pt-24" id="features">
+      <section className="bg-red-300 pt-10 pb-10 md:pt-24 md:pb-40" id="features">
         <div
           className={`container m-auto flex max-w-6xl flex-col items-center px-4 text-center text-stone-50 md:text-left`}
         >

@@ -41,7 +41,7 @@ const PricingTab = ({ plan, onSelect, isSelected }) => (
           onClick={onSelect}
           className={`w-full rounded-md px-4 py-2 ${
             isSelected ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'
-          } transition duration-150 hover:bg-opacity-90`}
+          } hover:bg-opacity-90 transition duration-150`}
         >
           {isSelected ? 'Selected' : 'Select'}
         </button>

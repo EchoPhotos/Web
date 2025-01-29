@@ -29,7 +29,7 @@ export default async function HomePage({ params: { lang } }) {
 
           <Link
             href="/albums/new"
-            className="my-6 flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md bg-blue-500 px-1 py-1 text-sm font-semibold text-white shadow-md shadow-blue-500/40 hover:bg-blue-400 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
+            className="my-6 flex min-h-8 max-w-64 min-w-36 flex-row items-center justify-center space-x-1 rounded-md bg-blue-500 px-1 py-1 text-sm font-semibold text-white shadow-md shadow-blue-500/40 hover:bg-blue-400 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
           >
             {dicts.general.createNewAlbumButton}
           </Link>
@@ -49,7 +49,7 @@ export default async function HomePage({ params: { lang } }) {
         </ContentBox>
       </FullScreenSection>
 
-      <section className="bg-gray-100 pb-40 pt-24" id="features">
+      <section className="bg-gray-100 pt-24 pb-40" id="features">
         <div
           className={`container m-auto flex max-w-6xl flex-col items-center px-4 text-center md:text-left`}
         >
