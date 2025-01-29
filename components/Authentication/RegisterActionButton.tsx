@@ -23,6 +23,7 @@ import {
 import validator from 'validator';
 import { AuthStateContext } from 'provider/AuthStateProvider';
 import { ProfileContext } from 'provider/ProfileProvider';
+import Spinner from '@components/UI/Spinner';
 
 export default function RegisterActionButton({
   children,
@@ -33,10 +34,11 @@ export default function RegisterActionButton({
   children: React.ReactNode;
   name: string;
   phoneNumber: string;
-  action: () => {};
+  action: () => Promise<any>;
 }) {
   const [otp, setOtp] = useState('');
   const [verificationId, setVid] = useState<string | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
 
   var authState = useContext(AuthStateContext);
   var profile = useContext(ProfileContext);
@@ -46,14 +48,16 @@ export default function RegisterActionButton({
   };
 
   const triggerAction = async () => {
+    setLoading(true);
     if (profile) {
-      action();
+      await action();
     } else if (authState.userId !== undefined) {
       await getOrRegisterUser(name);
-      action();
+      await action();
     } else {
-      registerPhone();
+      await registerPhone();
     }
+    setLoading(false);
   };
 
   const registerPhone = async () => {
@@ -107,18 +111,16 @@ export default function RegisterActionButton({
     <div>
       <div id="recaptcha"></div>
 
-      <div id="file-and-profile-input">
-        <div className="flex w-full justify-center"></div>
-        {verificationId === undefined && (
-          <div>
-            <div className="mt-4 flex w-full justify-center">
-              <Button onClick={triggerAction} className="btn btn-primary">
-                {children}
-              </Button>
+      {verificationId === undefined && (
+        <Button onClick={triggerAction} className="btn btn-primary mt-4">
+          {loading && (
+            <div className="h-5">
+              <Spinner className="scale-50" />
             </div>
-          </div>
-        )}
-      </div>
+          )}
+          {!loading && children}
+        </Button>
+      )}
 
       <Dialog
         open={verificationId !== undefined}
