@@ -197,8 +197,7 @@ export default function UploadWidget() {
         <IoCheckmarkCircle size={128} className="" />
         Upload successful!
         <Button className="text-sm font-semibold text-slate-400" onClick={reset}>
-          {' '}
-          Upload more{' '}
+          Upload more
         </Button>
       </div>
     );
