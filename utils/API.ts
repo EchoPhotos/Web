@@ -11,6 +11,7 @@ import {
   User,
 } from '@Shared/Models';
 import { ImageFormat } from './ImageCache';
+import debugBeep from './Beep';
 
 export async function getDomain() {
   const config = process.env.FIREBASE_CONFIG;
@@ -52,6 +53,8 @@ export async function fetchInvite(inviteId: string): Promise<IdInvite> {
 export async function getOrRegisterUser(nameForRegistering: string) {
   const token = await getToken();
   try {
+    debugBeep();
+
     const response = await axios.get(getAPIHost() + '/users/current', {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -131,6 +134,7 @@ export async function createDownloadLink(albumId: string): Promise<IdDownload> {
 }
 
 export async function getUser(): Promise<User | undefined> {
+  debugBeep();
   const token = await getToken();
   const response = await axios.get(getAPIHost() + '/users/current', {
     headers: {
@@ -169,6 +173,7 @@ export function invitePreviewUrlForId(id: string): string {
 }
 
 async function get<T>(path: string): Promise<T> {
+  debugBeep();
   const response = await axios.get(getAPIHost() + path);
   return response.data as T;
 }
@@ -180,6 +185,7 @@ async function post<T>(path: string): Promise<T> {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function getAuthorized<T>(path: string, params?: any): Promise<T> {
+  debugBeep();
   const token = await getToken();
   const response = await axios.get(getAPIHost() + path, {
     headers: {
@@ -191,6 +197,8 @@ async function getAuthorized<T>(path: string, params?: any): Promise<T> {
 }
 
 async function putAuthorized<T>(path: string): Promise<T> {
+  debugBeep();
+
   const token = await getToken();
   const response = await axios.get(getAPIHost() + path, {
     headers: {
