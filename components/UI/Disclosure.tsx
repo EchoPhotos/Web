@@ -9,7 +9,7 @@ export default function Discolosure({ title, children }) {
 
         <IoChevronDown
           size={22}
-          className="transform transition-transform duration-200 group-data-[open]:rotate-180"
+          className="transform transition-transform duration-200 group-data-open:rotate-180"
         />
       </DisclosureButton>
 

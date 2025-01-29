@@ -105,7 +105,7 @@ export default function SignInWidget() {
           <input
             type="tel"
             placeholder="+1 (XXX) XXX XX XX"
-            className="mb-3 w-56 rounded px-2 py-1 text-center text-sm ring-1"
+            className="mb-3 w-56 rounded-xs px-2 py-1 text-center text-sm ring-1"
             onChange={handlePhoneChange}
           />
           <Button onClick={handlePhone} className="btn btn-primary">
@@ -121,7 +121,7 @@ export default function SignInWidget() {
             type="text"
             autoComplete="one-time-code"
             placeholder="123456"
-            className="mb-3 w-56 rounded px-2 py-1 text-center text-sm ring-1"
+            className="mb-3 w-56 rounded-xs px-2 py-1 text-center text-sm ring-1"
             onChange={handleOtpChange}
           />
 

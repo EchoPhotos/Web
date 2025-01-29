@@ -8,7 +8,7 @@ import { IoImages, IoPersonCircle } from 'react-icons/io5';
 
 export default function AlbumRow({ album }: { album: IdAlbum }) {
   return (
-    <div key={album.id} className="m-3 flex flex-row justify-between rounded bg-slate-100 p-2">
+    <div key={album.id} className="m-3 flex flex-row justify-between rounded-xs bg-slate-100 p-2">
       <div className="flex flex-row space-x-3">
         <div className="h-12 w-12 overflow-clip rounded-md">
           <CachedImage imageId={album.image} format={ImageFormat.Thumbnail} />

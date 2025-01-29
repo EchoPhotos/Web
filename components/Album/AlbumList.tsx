@@ -21,7 +21,7 @@ export default function AlbumList() {
       ))}
 
       {albums.length > 19 && (
-        <VStack className="m-3 items-center rounded px-12 py-2 text-center text-sm text-slate-400">
+        <VStack className="m-3 items-center rounded-xs px-12 py-2 text-center text-sm text-slate-400">
           <p>Only the 20 recent alubms are shown on the web.</p>
           <p>
             Use the{' '}

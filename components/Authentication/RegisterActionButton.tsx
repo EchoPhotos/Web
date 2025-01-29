@@ -145,16 +145,16 @@ const RegisterActionButton = ({
       <Dialog
         open={state == State.VerificationSent}
         as="div"
-        className="relative z-10 focus:outline-none"
+        className="relative z-10 focus:outline-hidden"
         onClose={() => setState(State.SignedOut)}
       >
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
-            <DialogBackdrop transition className="fixed inset-0 bg-black/5 backdrop-blur-sm" />
+            <DialogBackdrop transition className="fixed inset-0 bg-black/5 backdrop-blur-xs" />
 
             <DialogPanel
               transition
-              className="data-[closed]:transform-[scale(95%)] flex w-full max-w-md flex-col items-center rounded-xl bg-black bg-opacity-25 p-6 text-center backdrop-blur-xl duration-300 ease-out data-[closed]:opacity-0"
+              className="data-closed:transform-[scale(95%)] flex w-full max-w-md flex-col items-center rounded-xl bg-black bg-opacity-25 p-6 text-center backdrop-blur-xl duration-300 ease-out data-closed:opacity-0"
             >
               <DialogTitle className="m-2 text-2xl font-bold text-white">
                 {' '}

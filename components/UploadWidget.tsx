@@ -141,7 +141,7 @@ export default function UploadWidget() {
 
       <VStack className="w-full items-end justify-center">
         {pickedFiles.length > 0 && (
-          <button onClick={reset} className="rounded-sm text-sm text-slate-500 underline">
+          <button onClick={reset} className="rounded-xs text-sm text-slate-500 underline">
             Remove all
           </button>
         )}
@@ -162,7 +162,7 @@ export default function UploadWidget() {
             type="name"
             name="Test"
             placeholder="Your name"
-            className="w-56 rounded border border-gray-300 px-2 py-1 text-sm"
+            className="w-56 rounded-xs border border-gray-300 px-2 py-1 text-sm"
             onChange={handleNameChange}
           />
           <p className="mt-3 text-xs font-semibold text-slate-600">
@@ -171,7 +171,7 @@ export default function UploadWidget() {
           <input
             type="tel"
             placeholder="+1 (XXX) XXX XX XX"
-            className="w-56 rounded border border-gray-300 px-2 py-1 text-sm"
+            className="w-56 rounded-xs border border-gray-300 px-2 py-1 text-sm"
             onChange={handlePhoneChange}
           />
         </div>

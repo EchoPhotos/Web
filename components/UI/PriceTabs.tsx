@@ -61,7 +61,7 @@ const BillingToggle = ({ isMonthly, setIsMonthly }) => (
       <button
         onClick={() => setIsMonthly(true)}
         className={`rounded-md px-4 py-2 ${
-          isMonthly ? 'bg-white text-blue-600 shadow' : 'text-gray-600'
+          isMonthly ? 'bg-white text-blue-600 shadow-xs' : 'text-gray-600'
         }`}
       >
         Monthly
@@ -69,7 +69,7 @@ const BillingToggle = ({ isMonthly, setIsMonthly }) => (
       <button
         onClick={() => setIsMonthly(false)}
         className={`rounded-md px-4 py-2 ${
-          !isMonthly ? 'bg-white text-blue-600 shadow' : 'text-gray-600'
+          !isMonthly ? 'bg-white text-blue-600 shadow-xs' : 'text-gray-600'
         }`}
       >
         Annually (Save 20%)

@@ -42,13 +42,13 @@ export default function GridImage(props: GridImageProps) {
         // 25vw"
       /> */}
       {item.video ? (
-        <div className="absolute inset-0 flex items-center justify-center text-white opacity-60 drop-shadow-sm">
+        <div className="absolute inset-0 flex items-center justify-center text-white opacity-60 drop-shadow-xs">
           <IoIcons.IoPlay size={44} />
         </div>
       ) : (
         ''
       )}
-      <div className="justify-leading items-left absolute inset-0 m-3 flex text-white drop-shadow-sm">
+      <div className="justify-leading items-left absolute inset-0 m-3 flex text-white drop-shadow-xs">
         {item.pinned ? <IoIcons.IoRibbon size={14} className="mr-2" /> : ''}
         {item.likes && props.showLikes ? <IoIcons.IoHeart size={14} className="mr-2" /> : ''}
       </div>

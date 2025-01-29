@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header>
-      <nav className="fixed z-[1] flex h-20 w-full items-center justify-between bg-white/70 px-4 py-3 backdrop-blur-md">
+      <nav className="fixed z-1 flex h-20 w-full items-center justify-between bg-white/70 px-4 py-3 backdrop-blur-md">
         <Link href="/">
           <img src="/images/logo125.png" height="50" width="125" alt="EchoPhotos logo" />
         </Link>

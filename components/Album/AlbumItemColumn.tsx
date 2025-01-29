@@ -31,7 +31,7 @@ function Content() {
     return (
       <div className="flex flex-row md:flex-col">
         {items.map((item) => (
-          <div key={item.id} className="h-24 w-24 flex-shrink-0">
+          <div key={item.id} className="h-24 w-24 shrink-0">
             <CachedImage imageId={item.image} format={ImageFormat.Thumbnail} />
           </div>
         ))}

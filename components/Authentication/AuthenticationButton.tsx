@@ -37,19 +37,19 @@ export default function Page() {
         <Dialog
           open={state == State.SignedOut}
           as="div"
-          className="relative z-10 focus:outline-none"
+          className="relative z-10 focus:outline-hidden"
           onClose={() => setState(State.SignedIn)}
         >
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4">
               <DialogBackdrop
                 transition
-                className="fixed inset-0 bg-black/5 backdrop-blur-sm "
+                className="fixed inset-0 bg-black/5 backdrop-blur-xs "
               />
 
               <DialogPanel
                 transition
-                className="text-center flex flex-col items-center w-full max-w-md rounded-xl bg-black bg-opacity-25 p-6 backdrop-blur-xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+                className="text-center flex flex-col items-center w-full max-w-md rounded-xl bg-black bg-opacity-25 p-6 backdrop-blur-xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
               >
                 <DialogTitle className="text-2xl font-bold text-white m-2">
                   {" "}
@@ -71,19 +71,19 @@ export default function Page() {
           <Dialog
             open={!authState.userId}
             as="div"
-            className="relative z-10 focus:outline-none"
+            className="relative z-10 focus:outline-hidden"
             onClose={() => setIsSignInDialogPresented(false)}
           >
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
               <div className="flex min-h-full items-center justify-center p-4">
                 <DialogBackdrop
                   transition
-                  className="fixed inset-0 bg-white bg-opacity-20 backdrop-blur-sm"
+                  className="fixed inset-0 bg-white bg-opacity-20 backdrop-blur-xs"
                 />
 
                 <DialogPanel
                   transition
-                  className="data-[closed]:transform-[scale(95%)] flex w-full max-w-md flex-col items-center rounded-xl bg-white p-6 text-center shadow-lg ring-1 ring-slate-300 backdrop-blur-xl duration-300 ease-out data-[closed]:opacity-0"
+                  className="data-closed:transform-[scale(95%)] flex w-full max-w-md flex-col items-center rounded-xl bg-white p-6 text-center shadow-lg ring-1 ring-slate-300 backdrop-blur-xl duration-300 ease-out data-closed:opacity-0"
                 >
                   <DialogTitle className="m-2 text-2xl font-bold"> Sign in</DialogTitle>
                   <SignInWidget />
