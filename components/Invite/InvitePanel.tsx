@@ -1,22 +1,31 @@
 'use client';
 
-import { invitePreviewUrlForId } from '@utils/API';
+import { invitePreviewUrlForId, joinAlbum } from '@utils/API';
 import { IoCreate, IoImage, IoImages, IoPersonCircle } from 'react-icons/io5';
 import Link from 'next/link';
-
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { InviteContext } from 'provider/InviteProvider';
 import { useContext } from 'react';
+import { AuthStateContext } from 'provider/AuthStateProvider';
+import { Button } from '@headlessui/react';
 
 export default function InvitePanel() {
   const pathname = usePathname();
-  var invite = useContext(InviteContext);
+  const invite = useContext(InviteContext);
+  const authState = useContext(AuthStateContext);
+  const router = useRouter();
 
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
+
+  async function onClickJoin() {
+    await joinAlbum(invite.id);
+    router.push(`/albums/${invite.group}`);
+  }
+
   return (
     <div className="flex h-full w-full flex-col items-end justify-center space-y-3 px-12 pt-12">
       <div className="h-24 w-24 content-center rounded-xl bg-slate-700 text-slate-500">
@@ -47,11 +56,13 @@ export default function InvitePanel() {
           <IoCreate className="w-8" />
         </div>
       </div>
+      {authState.userId !== undefined && (
+        <Button className="btn btn-primary" onClick={onClickJoin}>
+          Join Album
+        </Button>
+      )}
       {!pathname.endsWith('upload') && (
-        <Link
-          className="bg-opacity-20 rounded-md bg-white p-1 px-2 hover:bg-slate-200 hover:text-slate-800"
-          href={`/invites/${invite.id}/upload`}
-        >
+        <Link className="btn btn-secondary" href={`/invites/${invite.id}/upload`}>
           Upload photos
         </Link>
       )}
