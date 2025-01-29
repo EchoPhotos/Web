@@ -7,7 +7,6 @@ import {
   IoWarning,
 } from 'react-icons/io5';
 import Link from 'next/link';
-import { ActionStyle, SecondaryStyle } from '@components/UI/ButtonStyles';
 import { Button } from '@headlessui/react';
 import { HStack, VStack } from '@components/UI/Components';
 import { getAPIHost } from '@utils/Environment';
@@ -71,25 +70,19 @@ export default function Panel() {
       {download.ready && (
         <div className="w-5/6">
           <HStack className="items-center justify-between space-x-2">
-            <Button onClick={shareLink}>
-              <SecondaryStyle>
-                <IoShareOutline size={22} />
-                <p className="pr-3">Share</p>
-              </SecondaryStyle>
+            <Button onClick={shareLink} className="btn btn-secondary hstack space-x-2">
+              <IoShareOutline size={22} />
+              <p className="pr-3">Share</p>
             </Button>
 
-            <Button onClick={copyLink}>
-              <SecondaryStyle>
-                <IoCopyOutline size={22} />
-                <p className="pr-3">Copy</p>
-              </SecondaryStyle>
+            <Button onClick={copyLink} className="btn btn-secondary hstack space-x-2">
+              <IoCopyOutline size={22} />
+              <p className="pr-3">Copy</p>
             </Button>
 
-            <Link href={link}>
-              <ActionStyle>
-                <IoArrowDownCircleOutline size={33} />
-                <p className="pr-3">Download</p>
-              </ActionStyle>
+            <Link href={link} className="btn btn-primary hstack space-x-2">
+              <IoArrowDownCircleOutline size={33} />
+              <p className="pr-3">Download</p>
             </Link>
           </HStack>
         </div>

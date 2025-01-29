@@ -12,7 +12,6 @@ import {
 } from 'firebase/auth';
 import { auth } from '@utils/FirebaseConfig';
 import SignOutButton from './SignOutButton';
-import { ActionStyle } from '@components/UI/ButtonStyles';
 import { Button } from '@headlessui/react';
 
 enum State {
@@ -109,9 +108,9 @@ export default function SignInWidget() {
             className="mb-3 w-56 rounded px-2 py-1 text-center text-sm ring-1"
             onChange={handlePhoneChange}
           />
-          <ActionStyle>
-            <Button onClick={handlePhone}>Sign In</Button>
-          </ActionStyle>
+          <Button onClick={handlePhone} className="btn btn-primary">
+            Sign In
+          </Button>
         </>
       )}
       {state == State.VerificationSent && (
@@ -126,8 +125,8 @@ export default function SignInWidget() {
             onChange={handleOtpChange}
           />
 
-          <Button onClick={handleOtp}>
-            <ActionStyle>Verify</ActionStyle>
+          <Button onClick={handleOtp} className="btn btn-primary">
+            Verify
           </Button>
         </>
       )}

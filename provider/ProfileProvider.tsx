@@ -4,7 +4,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getUser, registerUser } from '@utils/API';
 import { User } from '@Shared/Models';
 import { Button, Dialog, DialogBackdrop, DialogPanel, Input } from '@headlessui/react';
-import { ActionStyle } from '@components/UI/ButtonStyles';
 import { VStack } from '@components/UI/Components';
 import Logo from '@components/UI/Logo';
 import { AnimatePresence } from 'framer-motion';
@@ -89,8 +88,8 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
                     className="min-w-36 max-w-64 rounded-lg p-1 text-center ring-1 md:min-h-10 md:min-w-48 md:p-2"
                     onChange={handleNameChange}
                   />
-                  <Button onClick={registerName}>
-                    <ActionStyle>Save</ActionStyle>
+                  <Button onClick={registerName} className="btn btn-primary">
+                    Save
                   </Button>
                 </VStack>
               </DialogPanel>

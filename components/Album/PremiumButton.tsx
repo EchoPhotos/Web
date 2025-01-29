@@ -7,7 +7,6 @@ import { Button } from '@headlessui/react';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { ActionStyle } from '@components/UI/ButtonStyles';
 
 export function PremiumButton({ album }: { album: IdAlbum }) {
   const [loading, setLoading] = useState(false);
@@ -25,14 +24,12 @@ export function PremiumButton({ album }: { album: IdAlbum }) {
           router.push(checkoutURL);
         }}
       >
-        <ActionStyle>
-          {loading && (
-            <div className="h-4">
-              <Spinner />
-            </div>
-          )}
-          {!loading && <>Upgrade now</>}
-        </ActionStyle>
+        {loading && (
+          <div className="btn btn-primary h-4">
+            <Spinner />
+          </div>
+        )}
+        {!loading && <div className="btn btn-primary">Upgrade now</div>}
       </Button>
     );
   }

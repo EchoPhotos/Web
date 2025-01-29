@@ -1,13 +1,12 @@
 'use client';
 
-import { ActionStyle } from '@components/UI/ButtonStyles';
 import { getAPIHost } from '@utils/Environment';
 import { dateString, formatAsBytes } from '@utils/Formatting';
 import { IdDownload } from '@Shared/Models';
 import Link from 'next/link';
 import { IoArrowDownCircle, IoBan, IoWarning } from 'react-icons/io5';
 import Image from 'next/image';
-import { VCenter, VStack } from '@components/UI/Components';
+import { HStack, VCenter, VStack } from '@components/UI/Components';
 import Spinner from '@components/UI/Spinner';
 import Banner from '@components/Banner';
 import { Button } from '@headlessui/react';
@@ -52,11 +51,12 @@ export default function DownloadLinkPanel() {
 
   const link = (download: IdDownload) => {
     return (
-      <Link href={getAPIHost() + '/downloads/' + download.id}>
-        <ActionStyle>
-          <IoArrowDownCircle size={33} />
-          <p className="pr-3">Download</p>
-        </ActionStyle>
+      <Link
+        href={getAPIHost() + '/downloads/' + download.id}
+        className="btn btn-primary hstack space-x-2"
+      >
+        <IoArrowDownCircle size={33} />
+        <p className="pr-3">Download</p>
       </Link>
     );
   };

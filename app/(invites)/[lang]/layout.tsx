@@ -1,5 +1,6 @@
 import NoHeaderLayout from '@components/Homepage/NoHeaderLayout';
 import '@/styles/style.css';
+import '@/styles/globals.css';
 import { getDictionary } from '@utils//dictionary';
 
 export default async function RootLayout({

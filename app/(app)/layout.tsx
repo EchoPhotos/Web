@@ -1,4 +1,4 @@
-import './globals.css';
+import '@/styles/globals.css';
 import { Suspense } from 'react';
 import { VCenter } from '@components/UI/Components';
 import { SuccessfullPurchaseDialog } from '@components/UI/SuccessfullPurchaseDialog';

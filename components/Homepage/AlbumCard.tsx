@@ -2,7 +2,7 @@ import React from 'react';
 import QRCode from './QRCode';
 import Link from 'next/link';
 import { HStack, VStack } from '@components/UI/Components';
-import { ActionStyle, SecondaryActionStyle } from '@components/UI/ButtonStyles';
+import { Button } from '@headlessui/react';
 
 interface AlbumCardProps {
   albumName?: string;
@@ -70,14 +70,12 @@ export default function AlbumCard({
         </div>
 
         <VStack className="space-y-2">
-          <button onClick={getApp}>
-            <ActionStyle>{dict.app.installButton ?? 'Get the App'}</ActionStyle>
-          </button>
+          <Button onClick={getApp} className="btn btn-primary">
+            {dict.app.installButton ?? 'Get the App'}
+          </Button>
 
-          <Link href={`/invites/${inviteId}/upload`}>
-            <SecondaryActionStyle>
-              {dict.uploadPhotosButton ?? 'Upload photos'}
-            </SecondaryActionStyle>
+          <Link href={`/invites/${inviteId}/upload`} className="btn btn-primary-inverted">
+            {dict.uploadPhotosButton ?? 'Upload photos'}
           </Link>
         </VStack>
 

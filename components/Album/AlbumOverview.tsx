@@ -1,6 +1,5 @@
 'use client';
 
-import { getAPIHost } from '@utils/Environment';
 import { Button } from '@headlessui/react';
 import { getViewOnlyInvite } from '@utils/API';
 import Link from 'next/link';
@@ -9,7 +8,6 @@ import MemberLimitReachedView from './MemberLimitReachedView';
 import { AlbumContext } from 'provider/AlbumProvider';
 import { useContext, useState } from 'react';
 import InviteDetails from '@components/Invite/InviteDetails';
-import { SecondaryStyle } from '@components/UI/ButtonStyles';
 import { HStack, VStack } from '@components/UI/Components';
 import Spinner from '@components/UI/Spinner';
 
@@ -50,22 +48,20 @@ export default function AlbumOverview() {
 
           <HStack className="w-full justify-evenly space-x-2 p-2 text-white">
             {!pathname.includes('upload') && (
-              <Link href={`/albums/${album.id}/upload`}>
-                <SecondaryStyle>Upload photos</SecondaryStyle>
+              <Link href={`/albums/${album.id}/upload`} className="btn btn-secondary">
+                Upload photos
               </Link>
             )}
 
             {!pathname.includes('downloads') && (
-              <Link href={`/albums/${album.id}/downloads/current`}>
-                <SecondaryStyle>Download all</SecondaryStyle>
+              <Link href={`/albums/${album.id}/downloads/current`} className="btn btn-secondary">
+                Download all
               </Link>
             )}
 
-            <Button onClick={openPublicLink}>
-              <SecondaryStyle>
-                {!creatingLink && <>Public page</>}
-                {creatingLink && <Spinner className="h-2 scale-50" />}
-              </SecondaryStyle>
+            <Button onClick={openPublicLink} className="btn btn-secondary">
+              {!creatingLink && <>Public page</>}
+              {creatingLink && <Spinner className="h-2 scale-50" />}
             </Button>
           </HStack>
         </VStack>

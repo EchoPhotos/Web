@@ -6,7 +6,6 @@ import { IoArrowDownCircleOutline } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import DownloadLimit from '../../Warnings/DownloadLimit';
 import NoLinksAvailable from '../../Warnings/NoLinksAvailable';
-import { ActionStyle } from '@components/UI/ButtonStyles';
 import { Button } from '@headlessui/react';
 import { SizeAdapted, VStack } from '@components/UI/Components';
 import { PremiumButton } from '../PremiumButton';
@@ -43,15 +42,14 @@ export default function NoLink({ album }: { album: IdAlbum }) {
       </VStack>
 
       {linkAvailable && (
-        <ActionStyle>
-          <Button
-            onClick={() => {
-              createLink(album.id);
-            }}
-          >
-            Create Download Link
-          </Button>
-        </ActionStyle>
+        <Button
+          onClick={() => {
+            createLink(album.id);
+          }}
+          className="btn btn-primary"
+        >
+          Create Download Link
+        </Button>
       )}
       {!album.premium && !linkAvailable && <PremiumButton album={album} />}
       {!album.premium && !linkAvailable && <NoLinksAvailable />}

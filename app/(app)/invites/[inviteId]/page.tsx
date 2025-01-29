@@ -16,7 +16,6 @@ import {
   enableLikedOnlyPreview,
   enableViewOnly,
 } from '@utils/API';
-import { SecondaryStyle } from '@components/UI/ButtonStyles';
 import Code from '@components/UI/Code';
 
 export default function Page() {
@@ -78,9 +77,9 @@ function InviteDetails() {
         <Code code={invite.code ?? invite.id.substring(0, 8)} />
       </VStack>
 
-      <SecondaryStyle>
-        <Link href={`https://www.echophotos.io/invite/${invite.id}`}>View Invite</Link>
-      </SecondaryStyle>
+      <Link href={`https://www.echophotos.io/invite/${invite.id}`} className="btn btn-secondary">
+        View Invite
+      </Link>
 
       <VStack>
         <HStack className="w-full justify-center space-x-4">

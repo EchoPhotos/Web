@@ -1,6 +1,5 @@
 'use client';
 
-import { ActionStyle } from '@components/UI/ButtonStyles';
 import Code from '@components/UI/Code';
 import { VStack } from '@components/UI/Components';
 import { Button } from '@headlessui/react';
@@ -38,8 +37,9 @@ export default function InviteDetails() {
           onClick={() => {
             navigator.share({ url: inviteLink });
           }}
+          className="btn btn-primary"
         >
-          <ActionStyle>Share link</ActionStyle>
+          Share link
         </Button>
       </VStack>
     </VStack>

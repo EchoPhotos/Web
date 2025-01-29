@@ -4,7 +4,6 @@ import PanelView from '@components/UI/PanelView';
 import { SloganResolution } from '@components/UI/Slogans';
 import { HStack, SizeAdapted, VStack } from '@components/UI/Components';
 import { IoArrowDownCircle, IoPersonAdd, IoStar } from 'react-icons/io5';
-import { ActionStyle } from '@components/UI/ButtonStyles';
 import Link from 'next/link';
 
 export default function Page() {
@@ -45,9 +44,9 @@ export default function Page() {
         </VStack>
 
         <div className="mt-4 flex justify-end">
-          <ActionStyle>
-            <Link href="/albums/new">Create new album</Link>
-          </ActionStyle>
+          <Link className="btn btn-primary" href="/albums/new">
+            Create new album
+          </Link>
         </div>
       </VStack>
     </PanelView>

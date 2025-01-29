@@ -11,7 +11,6 @@ import {
   DialogTitle,
 } from '@headlessui/react';
 import { IoCheckmarkCircle } from 'react-icons/io5';
-import { SecondaryStyle } from './ButtonStyles';
 
 export function SuccessfullPurchaseDialog() {
   const [open, setOpen] = useState(false);
@@ -48,9 +47,9 @@ export function SuccessfullPurchaseDialog() {
             <Description className="my-2 w-1/2 text-sm text-gray-800">
               <p>This album is now a premium album!</p>
             </Description>
-            <p className="sm:justify-start" onClick={() => setOpen(false)}>
-              <SecondaryStyle>OK</SecondaryStyle>
-            </p>
+            <Button className="btn btn-secondary sm:justify-start" onClick={() => setOpen(false)}>
+              OK
+            </Button>
           </DialogPanel>
         </div>
       </div>

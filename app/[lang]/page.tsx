@@ -8,7 +8,6 @@ import FeatureSection from '@components/Homepage/FeatureSection';
 import FullScreenSection from '@components/Homepage/FullScreenSection';
 import { i18n } from '@utils/old/i18n-config';
 import { getDictionary } from '@utils//dictionary';
-import { ActionStyle } from '@components/UI/ButtonStyles';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -30,7 +29,8 @@ export default async function HomePage({ params: { lang } }) {
 
           <Link
             href="/albums/new"
-            className="my-6 flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md bg-blue-500 px-1 py-1 text-sm font-semibold text-white shadow-md shadow-blue-500/40 hover:bg-blue-400 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
+            // className="my-6 flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md bg-blue-500 px-1 py-1 text-sm font-semibold text-white shadow-md shadow-blue-500/40 hover:bg-blue-400 md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg"
+            className="btn btn-primary"
           >
             {dicts.general.createNewAlbumButton}
           </Link>
@@ -178,8 +178,8 @@ export default async function HomePage({ params: { lang } }) {
         >
           <p className="mb-4">{dict.desktop.sections[0].description}</p>
 
-          <Link href="https://web.echophotos.io" target="_blank">
-            <ActionStyle>{dict.desktop.sections[0]['open-web-app']}</ActionStyle>
+          <Link href="https://web.echophotos.io" target="_blank" className="btn btn-primary">
+            {dict.desktop.sections[0]['open-web-app']}
           </Link>
         </ContentBox>
 

@@ -21,7 +21,6 @@ import {
   DialogTitle,
 } from '@headlessui/react';
 import validator from 'validator';
-import { ActionStyle } from '@components/UI/ButtonStyles';
 
 enum State {
   SignedOut,
@@ -135,8 +134,8 @@ const RegisterActionButton = ({
         {state !== State.VerificationSent && state !== State.Error && (
           <div>
             <div className="mt-4 flex w-full justify-center">
-              <Button onClick={triggerAction}>
-                <ActionStyle>{children}</ActionStyle>
+              <Button onClick={triggerAction} className="btn btn-primary">
+                {children}
               </Button>
             </div>
           </div>

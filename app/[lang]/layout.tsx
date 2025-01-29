@@ -1,5 +1,6 @@
 import Clarity from '@components/Homepage/Clarity';
 import '@/styles/style.css';
+import '@/styles/globals.css';
 import DefaultLayout from '@components/Homepage/DefaultLayout';
 import { i18n } from '@utils/old/i18n-config';
 import { getDictionary } from '@utils//dictionary';
