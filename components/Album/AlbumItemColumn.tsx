@@ -1,7 +1,7 @@
 'use client';
 
 import CachedImage from '@components/UI/CachedImage';
-import AlbumItemListProvider, { AlbumItemListContext } from '../../provider/AlbumItemListProvider';
+import { AlbumItemListContext } from '../../provider/AlbumItemListProvider';
 import { useContext } from 'react';
 import Spinner from '@components/UI/Spinner';
 import { ImageFormat } from '@utils/ImageCache';
@@ -10,9 +10,7 @@ export default function AlbumItemColumn() {
   return (
     <div className="h-24 w-full bg-slate-200 md:h-full md:w-24">
       <div className="h-full w-full overflow-scroll overscroll-none">
-        <AlbumItemListProvider>
-          <Content />
-        </AlbumItemListProvider>
+        <Content />
       </div>
     </div>
   );
