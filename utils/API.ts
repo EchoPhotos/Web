@@ -122,6 +122,10 @@ export async function getUser(): Promise<User | undefined> {
   const token = await getToken();
   const response = await axios.get(getAPIHost() + '/users/current', {
     headers: {
+      // Do not cache as it returns cached 404 after registering.
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      Pragma: 'no-cache',
+      Expires: '0',
       Authorization: `Bearer ${token}`,
     },
   });
