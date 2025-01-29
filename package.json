@@ -1,4 +1,6 @@
 {
+  "name": "echo-photos-web",
+  "version": "0.0.1",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
@@ -13,7 +15,7 @@
     "axios": "^1.7.9",
     "date-fns": "^3.6.0",
     "eslint-config-next": "^15.1.4",
-    "firebase": "^10.12.5",
+    "firebase": "^11.2.0",
     "framer-motion": "^7.6.4",
     "heic-convert": "^2.1.0",
     "image-js": "^0.0.0-next-692b15513a",
