@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import QRCode from './QRCode';
 import Link from 'next/link';
 import { HStack, VStack } from '@components/UI/Components';
 import { Button } from '@headlessui/react';
+import RegisterActionButton from '@components/Authentication/RegisterActionButton';
+import Banner from '@components/UI/Banner';
 
 interface AlbumCardProps {
   albumName?: string;
@@ -19,6 +21,8 @@ export default function AlbumCard({
   inviteId,
   albumCardDict,
 }: AlbumCardProps) {
+  const [isOpen, setIsOpen] = useState(true);
+  
   const dict = albumCardDict;
 
   const copyToClipboard = async () => {
@@ -37,6 +41,10 @@ export default function AlbumCard({
       window.open(`https://web.echophotos.io/invite/${inviteCode}`, '_blank');
     }
   };
+
+  async function open() {
+    setIsOpen(true);
+  }
 
   return (
     <VStack className="h-full break-inside-avoid items-center justify-evenly space-y-5 rounded-lg bg-zinc-800 p-5 text-white">
@@ -59,9 +67,28 @@ export default function AlbumCard({
         </VStack>
       </HStack>
 
-      {/* <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch] text-sm">
-        {dict.description ?? "test description"}
-      </p> */}
+      <RegisterActionButton name={''} phoneNumber={''} action={open}>
+        Join Album
+      </RegisterActionButton>
+      <Banner
+        isVisible={isOpen}
+        onClose={function (value: boolean): void {
+          setIsOpen(false);
+        }}
+      >
+        <Button onClick={() => setIsOpen(false)} className="btn btn-primary">
+          Test
+        </Button>
+        <div className="bg-red-400">Lass</div>
+      </Banner>
+      {/* <ModalDialog
+        isOpen={isOpen}
+        onClose={function (value: boolean): void {
+          setIsOpen(false);
+        }}
+      >
+        <SignInWidget />
+      </ModalDialog> */}
 
       <VStack className="items-center space-y-2 text-center text-xs">
         <div className="w-52">
