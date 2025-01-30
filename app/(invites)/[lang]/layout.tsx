@@ -10,11 +10,12 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: any;
 }) {
+  const lang = params.lang;
   const dicts = await getDictionary(params.lang);
   return (
-    <html lang={params.lang}>
+    <html lang={lang}>
       <body>
-        <NoHeaderLayout lang={params.lang} dicts={dicts}>
+        <NoHeaderLayout lang={lang} dicts={dicts}>
           {children}
         </NoHeaderLayout>
       </body>

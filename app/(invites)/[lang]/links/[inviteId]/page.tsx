@@ -3,10 +3,11 @@ import { InviteProps, getData } from '../../../Shared';
 import { getDictionary } from '@utils//dictionary';
 
 export default async function Page(props: InviteProps) {
-  const fetchedData = await getData(props.params.inviteId);
-  const dicts = await getDictionary(props.params.lang);
+  const params = props.params;
+  const fetchedData = await getData(params.inviteId);
+  const dicts = await getDictionary(params.lang);
   return (
-    <AlbumPreview data={fetchedData} albumCardDict={dicts.albumCard} lang={props.params.lang} />
+    <AlbumPreview data={fetchedData} albumCardDict={dicts.albumCard} lang={params.lang} />
   );
 }
 
