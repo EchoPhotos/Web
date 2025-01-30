@@ -2,7 +2,7 @@ import { IoArrowDownCircleOutline } from 'react-icons/io5';
 import Link from 'next/link';
 import Section from '@components/Homepage/Section';
 import { i18n } from '@utils/old/i18n-config';
-import { getDictionary } from '@utils//dictionary';
+import { getDictionary } from '@utils/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {

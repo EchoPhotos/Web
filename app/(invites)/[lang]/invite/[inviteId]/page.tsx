@@ -1,6 +1,6 @@
 import AlbumPreview from '../../../AlbumPreview';
 import { InviteProps, getData } from '../../../Shared';
-import { getDictionary } from '@utils//dictionary';
+import { getDictionary } from '@utils/dictionary';
 
 export default async function Page(props: InviteProps) {
   const params = props.params;

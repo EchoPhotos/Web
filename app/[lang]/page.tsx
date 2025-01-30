@@ -7,7 +7,7 @@ import ContentBox from '@components/Homepage/ContentBox';
 import FeatureSection from '@components/Homepage/FeatureSection';
 import FullScreenSection from '@components/Homepage/FullScreenSection';
 import { i18n } from '@utils/old/i18n-config';
-import { getDictionary } from '@utils//dictionary';
+import { getDictionary } from '@utils/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {

@@ -10,7 +10,7 @@ import GooglePlay from '@components/Homepage/Badges/GooglePlay';
 import ContentBox from '@components/Homepage/ContentBox';
 import FullScreenSection from '@components/Homepage/FullScreenSection';
 import { i18n } from '@utils/old/i18n-config';
-import { getDictionary } from '@utils//dictionary';
+import { getDictionary } from '@utils/dictionary';
 import Link from 'next/link';
 
 const cinzelFont = Cinzel({ subsets: ['latin'] });
