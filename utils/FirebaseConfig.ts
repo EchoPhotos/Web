@@ -2,7 +2,7 @@
 
 import { FirebaseOptions, initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getStorage } from 'firebase/storage';
+import { connectStorageEmulator, getStorage } from 'firebase/storage';
 
 const firebaseConfigDev: FirebaseOptions = {
   apiKey: 'AIzaSyALJO67DnPTZr55_d9UspFkXAuwrNFP6eA',
@@ -34,6 +34,7 @@ function currentConfig() {
 const app = initializeApp(currentConfig());
 
 const storage = getStorage(app);
+connectStorageEmulator(storage, "localhost", 9199);
 const auth = getAuth(app);
 
 export { storage, auth, app };

@@ -16,6 +16,7 @@ import { notFound } from 'next/navigation';
 
 // Server-side
 export async function getDomain() {
+  return 'http://127.0.0.1:5001/echo-photos-dev/europe-west6/apiV1';
   const config = process.env.FIREBASE_CONFIG;
   if (!config) {
     throw Error(config);
