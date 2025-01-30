@@ -26,6 +26,11 @@ export default function CachedImage({
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (imageBlob) {
+      if (onLoad) {
+        onLoad();
+      }
+    }
     if (imageBlob || !isVisible || !imageId) return;
 
     getToken().then((token) => {
@@ -67,9 +72,6 @@ export default function CachedImage({
     }
 
     if (imageBlob) {
-      if (onLoad) {
-        onLoad();
-      }
       const objectURL = URL.createObjectURL(imageBlob);
       return (
         <img
