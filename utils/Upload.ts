@@ -79,14 +79,19 @@ export async function uploadFileWithPreview(
 
     // Track overall upload progress
     const uploadTasks = [originalUploadTask, thumbnailUploadTask, previewUploadTask];
-    let totalBytesTransferred = 0;
-    let totalBytes = uploadTasks.reduce((sum, task) => sum + task.snapshot.totalBytes, 0);
+
+    const totalBytes = uploadTasks.reduce((sum, task) => sum + task.snapshot.totalBytes, 0);
+    const uploadedBytes = new Map<string, number>();
 
     uploadTasks.forEach((task) => {
       task.on(
         'state_changed',
         (snapshot) => {
-          totalBytesTransferred += snapshot.bytesTransferred;
+          uploadedBytes.set(snapshot.ref.fullPath, snapshot.bytesTransferred);
+          const totalBytesTransferred = Array.from(uploadedBytes.values()).reduce(
+            (sum, value) => sum + value,
+            0,
+          );
           const progress = (totalBytesTransferred / totalBytes) * 100;
           onProgress(progress);
         },
