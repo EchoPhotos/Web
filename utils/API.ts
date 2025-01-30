@@ -98,10 +98,7 @@ export async function addUploadToAlbum(
   metadata: UploadMetadata,
   albumId: string,
 ): Promise<IdAlbumItem> {
-  const item: IdAlbumItem = await postAuthorized(
-    getAPIHost() + `/albums/${albumId}/items`,
-    metadata,
-  );
+  const item: IdAlbumItem = await postAuthorized(`/albums/${albumId}/items`, metadata);
   return item;
 }
 
