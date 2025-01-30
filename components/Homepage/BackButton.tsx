@@ -7,7 +7,7 @@ import { IoArrowBack } from 'react-icons/io5';
 export default function BackButton({ children }) {
   const router = useRouter();
   return (
-    <Button onClick={router.back} className="btn btn-primary mt-4">
+    <Button onClick={router.back} className="btn btn-primary hstack">
       <IoArrowBack />
       {children}
     </Button>

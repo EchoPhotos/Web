@@ -12,6 +12,7 @@ import {
 } from '@Shared/Models';
 import { ImageFormat } from './ImageCache';
 import debugBeep from './Beep';
+import { notFound } from 'next/navigation';
 
 // Server-side
 export async function getDomain() {
@@ -48,6 +49,7 @@ export async function fetchInvite(inviteId: string): Promise<IdInvite> {
   const inviteURL = `${domain}/api/v1/invites/${inviteId}`;
   const inviteResponse: Response = await fetch(inviteURL, { next: { revalidate: 60 } });
   if (!inviteResponse.ok) {
+    notFound();
     throw new Error('Failed to fetch invite data');
   }
   return await inviteResponse.json();
