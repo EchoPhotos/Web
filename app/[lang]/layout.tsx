@@ -11,11 +11,13 @@ export async function generateStaticParams() {
   });
 }
 export default async function Layout({ children, params }) {
-  const dicts = await getDictionary(params.lang);
+  const p = await params;
+
+  const dicts = await getDictionary(p.lang);
   return (
-    <html lang={params.lang}>
+    <html lang={p.lang}>
       <body>
-        <DefaultLayout lang={params.lang} dicts={dicts}>
+        <DefaultLayout lang={p.lang} dicts={dicts}>
           <Clarity />
           {children}
         </DefaultLayout>

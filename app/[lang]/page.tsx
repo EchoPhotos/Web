@@ -24,7 +24,9 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function HomePage({ params: { lang } }) {
+export default async function HomePage({ params }) {
+  const { lang } = await params;
+
   const dicts = await getDictionary(lang);
   const dict = dicts.home;
 

@@ -10,7 +10,9 @@ export async function generateStaticParams() {
     return lang;
   });
 }
-export default async function PrivacyPage({ params: { lang } }) {
+export default async function PrivacyPage(props) {
+  const { lang } = await props.params;
+
   const dicts = await getDictionary(lang);
   const dict = dicts.privacy;
 

@@ -55,15 +55,16 @@ function calculateCoordinateRegion(items: IdAlbumItem[]): CoordinateRegion | und
 }
 
 export type InviteProps = {
-  params: { inviteId: string; lang: string };
-  searchParams: {
+  params: Promise<{ inviteId: string; lang: string }>;
+  searchParams: Promise<{
     itemId: string | undefined;
     [key: string]: string | string[] | undefined;
-  };
+  }>;
 };
 
 export async function generateMetadata({ params }: InviteProps): Promise<Metadata> {
-  const id = params.inviteId;
+  const p = await params;
+  const id = p.inviteId;
   const product = await getData(id);
   const title = product.invite.groupName;
   const imageUrl = `${product.domain}/api/v1/invites/${id}/image`;

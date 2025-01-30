@@ -9,7 +9,8 @@ export async function generateStaticParams() {
     return lang;
   });
 }
-export default async function PressPage({ params }) {
+export default async function PressPage(props) {
+  const params = await props.params;
   const dicts = await getDictionary(params.lang);
   const dict = dicts.press;
 

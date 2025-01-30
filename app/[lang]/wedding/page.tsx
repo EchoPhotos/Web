@@ -26,7 +26,8 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function WeddingPage({ params }) {
+export default async function WeddingPage(props) {
+  const params = await props.params;
   const dicts = await getDictionary(params.lang);
   const dict = dicts.wedding;
 

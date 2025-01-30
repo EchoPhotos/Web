@@ -10,8 +10,8 @@ export default async function RootLayout({
   children: React.ReactNode;
   params;
 }) {
-  const lang = params.lang;
-  const dicts = await getDictionary(params.lang);
+  const { lang } = await params;
+  const dicts = await getDictionary(lang);
   return (
     <html lang={lang}>
       <body>

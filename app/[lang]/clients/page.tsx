@@ -11,7 +11,8 @@ export async function generateStaticParams() {
     return lang;
   });
 }
-export default async function HomePage({ params }) {
+export default async function HomePage(props) {
+  const params = await props.params;
   const dicts = await getDictionary(params.lang);
   const dict = dicts.home;
 
