@@ -3,8 +3,7 @@
 import { Dialog } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { useRef, useState } from 'react';
-import useKeypress from 'react-use-keypress';
+import { KeyboardEvent, useRef, useState } from 'react';
 import ImageOverlay from './ImageOverlay';
 import { IdAlbumItem, IdInvite } from '@Shared/Models';
 
@@ -63,15 +62,20 @@ export default function ImageOverlayContainer({
     }
   }
 
-  useKeypress('ArrowRight', goToNext);
-
-  useKeypress('ArrowLeft', goToPrevious);
+  function handleKey(event: KeyboardEvent) {
+    if (event.key == 'ArrowRight') {
+      goToNext();
+    } else if (event.key == 'ArrowLeft') {
+      goToPrevious();
+    }
+  };
 
   return (
     <Dialog
       static
       open={true}
       onClose={handleClose}
+      onKeyDown={handleKey}
       initialFocus={overlayRef}
       className="fixed inset-0 z-10 flex items-center justify-center"
     >
