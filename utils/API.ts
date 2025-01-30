@@ -13,6 +13,7 @@ import {
 import { ImageFormat } from './ImageCache';
 import debugBeep from './Beep';
 
+// Server-side
 export async function getDomain() {
   const config = process.env.FIREBASE_CONFIG;
   if (!config) {
@@ -26,6 +27,7 @@ export async function getDomain() {
   return domain;
 }
 
+// Server-side
 export async function fetchItemsForInvite(inviteId: string): Promise<IdAlbumItem[]> {
   const domain = await getDomain();
 
@@ -40,6 +42,7 @@ export async function fetchItemsForInvite(inviteId: string): Promise<IdAlbumItem
   return items;
 }
 
+// Server-side
 export async function fetchInvite(inviteId: string): Promise<IdInvite> {
   const domain = await getDomain();
   const inviteURL = `${domain}/api/v1/invites/${inviteId}`;
