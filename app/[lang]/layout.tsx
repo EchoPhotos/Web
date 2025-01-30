@@ -18,7 +18,6 @@ export default async function Layout({
   params: any;
 }) {
   const dicts = await getDictionary(params.lang);
-  const dict = dicts.privacy;
   return (
     <html lang={params.lang}>
       <body>
