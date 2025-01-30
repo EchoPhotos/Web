@@ -87,7 +87,7 @@ export default function UploadWidget() {
       await joinAlbum(inviteId);
     }
 
-    pickedFiles.forEach(async (upload) => {
+    for (const upload of pickedFiles) {
       let item = await addUploadToAlbum(
         {
           batch: batchId,
@@ -98,7 +98,7 @@ export default function UploadWidget() {
         },
         loadedAlbumId,
       );
-    });
+    }
 
     setState(State.UploadCompleted);
   };
