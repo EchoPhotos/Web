@@ -3,6 +3,7 @@
 import { Image } from 'image-js';
 import { useState, useEffect } from 'react';
 import { blob } from 'stream/consumers';
+import { getImage, getPreviewBuffer, getThumbnailBuffer } from './ImageTools';
 
 export enum ImageFormat {
   Thumbnail,
@@ -69,6 +70,14 @@ export async function getCachedImageFor(
   } catch (error) {
     console.error('Error fetching cached image:', error);
   }
+}
+
+export async function cacheOriginalImage(imageId: string, file: File) {
+  const image = await getImage(file);
+  const preview = getPreviewBuffer(image);
+  const thumbnail = getThumbnailBuffer(image);
+  cacheImageFor(imageId, ImageFormat.Preview, new Blob([preview]));
+  cacheImageFor(imageId, ImageFormat.Thumbnail, new Blob([thumbnail]));
 }
 
 export async function cacheImageFor(imageId: string, format: ImageFormat, blob: Blob) {

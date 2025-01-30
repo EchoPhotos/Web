@@ -2,6 +2,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage } from '@utils/FirebaseConfig';
 import { Image, InterpolationType, decode, encodeJpeg } from 'image-js';
 import { convert } from 'heic-convert';
+import { getImage, getPreviewBuffer, getThumbnailBuffer } from './ImageTools';
 
 export interface FileUpload {
   file: File;
@@ -35,49 +36,24 @@ export async function uploadFileWithPreview(
   onProgress: (progress: number) => void,
 ) {
   try {
-    // Read the uploaded file as a buffer
+    const image = await getImage(upload.file);
     const arrayBuffer = await upload.file.arrayBuffer();
-    const arrayBufferView = new Uint8Array(arrayBuffer);
+    const thumbnailBuffer = getThumbnailBuffer(image);
+    const previewBuffer = getPreviewBuffer(image);
 
-    let image = await decode(arrayBufferView);
-
-    if (upload.file.type === 'heic') {
-      image = await convert({
-        buffer: image, // the HEIC file buffer
-        format: 'JPEG', // output format
-        quality: 0.9, // the jpeg compression quality, between 0 and 1
-      });
-    }
-
-    // Generate thumbnail (200x200)
-    const thumbnail = image.resize({
-      width: 200,
-      height: 200,
-      preserveAspectRatio: false,
-      interpolationType: InterpolationType.BILINEAR,
-    });
-    const thumbnailBuffer = encodeJpeg(thumbnail);
-
-    const preview = image.resize(
-      image.width < image.height
-        ? { width: 720, preserveAspectRatio: true, interpolationType: InterpolationType.BILINEAR }
-        : { height: 720, preserveAspectRatio: true, interpolationType: InterpolationType.BILINEAR },
+    const originalUploadTask = uploadBytesResumable(
+      ref(storage, `uploads/${upload.uploadId}/original.jpg`),
+      arrayBuffer,
     );
-    const previewBuffer = encodeJpeg(preview);
+    const thumbnailUploadTask = uploadBytesResumable(
+      ref(storage, `uploads/${upload.uploadId}/thumbnail.jpg`),
+      thumbnailBuffer,
+    );
+    const previewUploadTask = uploadBytesResumable(
+      ref(storage, `uploads/${upload.uploadId}/preview.jpg`),
+      previewBuffer,
+    );
 
-    // Upload original file
-    const originalRef = ref(storage, `uploads/${upload.uploadId}/original.jpg`);
-    const originalUploadTask = uploadBytesResumable(originalRef, arrayBuffer);
-
-    // Upload thumbnail
-    const thumbnailRef = ref(storage, `uploads/${upload.uploadId}/thumbnail.jpg`);
-    const thumbnailUploadTask = uploadBytesResumable(thumbnailRef, thumbnailBuffer);
-
-    // Upload preview
-    const previewRef = ref(storage, `uploads/${upload.uploadId}/preview.jpg`);
-    const previewUploadTask = uploadBytesResumable(previewRef, previewBuffer);
-
-    // Track overall upload progress
     const uploadTasks = [originalUploadTask, thumbnailUploadTask, previewUploadTask];
 
     const totalBytes = uploadTasks.reduce((sum, task) => sum + task.snapshot.totalBytes, 0);

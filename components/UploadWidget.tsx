@@ -13,6 +13,7 @@ import { useParams } from 'next/navigation';
 import { AuthStateContext } from 'provider/AuthStateProvider';
 import NoVideoUploadAvailable from '@components/Warnings/NoVideoUpload';
 import { HStack, VStack } from '@components//UI/Components';
+import { cacheOriginalImage } from '@utils/ImageCache';
 
 enum State {
   Idle,
@@ -88,7 +89,7 @@ export default function UploadWidget() {
     }
 
     for (const upload of pickedFiles) {
-      let item = await addUploadToAlbum(
+      const item = await addUploadToAlbum(
         {
           batch: batchId,
           batchSize: pickedFiles.length,
@@ -98,6 +99,7 @@ export default function UploadWidget() {
         },
         loadedAlbumId,
       );
+      await cacheOriginalImage(item.image, upload.file);
     }
 
     setState(State.UploadCompleted);
