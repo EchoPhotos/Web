@@ -23,13 +23,16 @@ export function PremiumButton({ album }: { album: IdAlbum }) {
           const checkoutURL = await getCheckoutURL(album.id, promoCode, pathname);
           router.push(checkoutURL);
         }}
+        className="btn btn-primary"
       >
         {loading && (
-          <div className="btn btn-primary h-4">
-            <Spinner />
+          <div className="h-6">
+            <div className="h-6 scale-50">
+              <Spinner />
+            </div>
           </div>
         )}
-        {!loading && <div className="btn btn-primary">Upgrade now</div>}
+        {!loading && <div>Upgrade now</div>}
       </Button>
     );
   }

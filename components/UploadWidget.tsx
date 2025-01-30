@@ -200,7 +200,7 @@ export default function UploadWidget() {
 
   if (state == State.UploadCompleted) {
     return (
-      <div className="flex h-full flex-col items-center justify-center text-3xl text-green-500 transition">
+      <div className="flex h-full w-full flex-col items-center justify-center text-3xl text-green-500 transition">
         <IoCheckmarkCircle size={128} className="" />
         Upload successful!
         <Button className="text-sm font-semibold text-slate-400" onClick={reset}>
