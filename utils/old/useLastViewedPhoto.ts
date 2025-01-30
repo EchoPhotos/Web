@@ -1,12 +1,18 @@
-import { createGlobalState } from 'react-hooks-global-state';
+import { create } from 'zustand';
 
-interface State {
-  photoToScrollTo: string | null;
+interface PhotoStore {
+  lastViewedPhoto: string | undefined;
+  setLastViewedPhoto: (photo: string) => void;
 }
 
-const initialState: State = { photoToScrollTo: null };
-const { useGlobalState } = createGlobalState(initialState);
+const lastViewedPhotoStore = create<PhotoStore>((set) => ({
+  lastViewedPhoto: undefined,
+  setLastViewedPhoto: (photo: string) => set({ lastViewedPhoto: photo }),
+}));
 
-export const useLastViewedPhoto = () => {
-  return useGlobalState('photoToScrollTo');
+export const useLastViewedPhoto = (): [string | undefined, (photo: string) => void] => {
+  const lastViewedPhoto = lastViewedPhotoStore((state) => state.lastViewedPhoto);
+  const setLastViewedPhoto = lastViewedPhotoStore((state) => state.setLastViewedPhoto);
+
+  return [lastViewedPhoto, setLastViewedPhoto];
 };
