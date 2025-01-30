@@ -122,19 +122,9 @@ export async function createDownloadLink(albumId: string): Promise<IdDownload> {
   return response.data as IdDownload;
 }
 
-export async function getUser(): Promise<User | undefined> {
-  debugBeep();
-  const token = await getToken();
-  const response = await axios.get(getAPIHost() + '/users/current', {
-    headers: {
-      // Do not cache as it returns cached 404 after registering.
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      Pragma: 'no-cache',
-      Expires: '0',
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return response.data as User;
+export async function getUser(): Promise<User> {
+  // Do not cache as it returns cached 404 after registering.
+  return await getAuthorized<User>('/users/current?', { time: new Date().toISOString() });
 }
 
 export function imageURL(
