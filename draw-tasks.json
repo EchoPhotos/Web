@@ -1,0 +1,57 @@
+[
+  {
+    "outputDir": "public",
+    "inputFile": "./public/images/RainbowFavicon.svg",
+    "outputFilename": "favicon",
+    "scaledResolutions": [
+      {
+        "pixels": 48,
+        "outputFilenameOverride": "favicon"
+      },
+      {
+        "pixels": 32,
+        "outputFilenameOverride": "favicon-32x32"
+      },
+      {
+        "pixels": 96,
+        "outputFilenameOverride": "favicon-96x96"
+      },
+      {
+        "pixels": 16,
+        "outputFilenameOverride": "favicon-16x16"
+      },
+      {
+        "pixels": 180,
+        "outputFilenameOverride": "apple-touch-icon"
+      },
+      {
+        "pixels": 192,
+        "outputFilenameOverride": "android-chrome-192x192"
+      },
+      {
+        "pixels": 512,
+        "outputFilenameOverride": "android-chrome-512x512"
+      }
+    ]
+  },
+  {
+    "outputDir": "public/images",
+    "inputFile": "./public/images/AppIconRainbow.svg",
+    "outputFilename": "AppIcon",
+    "scaledResolutions": [
+      {
+        "pixels": 300
+      }
+    ]
+  },
+  {
+    "outputDir": "public/images",
+    "inputFile": "./public/images/logo.svg",
+    "outputFilename": "logo",
+    "scaledResolutions": [
+      {
+        "pixels": 125
+      }
+    ]
+  }
+]

@@ -1,0 +1,242 @@
+{
+  "wedding": {
+    "primarySection": {
+      "title": "Celebrate. Capture. Relive.",
+      "subtitle": "The best way to collect all photos of your big event.",
+      "availableOn": "Available on iPhone, Android, Web, Mac and Apple TV"
+    },
+    "features": [
+      {
+        "title": "An album for all guests",
+        "text": "Bring all your guests together in an album. Everyone has some special snaps you do not want to miss!"
+      },
+      {
+        "title": "The best in class",
+        "text": "No ads and a premium quality app makes everyone love to use it."
+      },
+      {
+        "title": "Relive the best moments",
+        "text": "Bring back the moment by recounting best story that lead to the snap in the comments. And don't forget to like your favs!"
+      },
+      {
+        "title": "Share the QR Code",
+        "text": "To get everyone on board, each album has a QR Code that guests can scan to get in."
+      },
+      {
+        "title": "Download all photos",
+        "text": "Save the photos into your phone's gallery or create a download link - everyone will get the photos they want."
+      },
+      {
+        "title": "Invite with a link",
+        "text": "An album invite link is all your guests need to upload their photos to your event's album."
+      }
+    ]
+  },
+  "privacy": {
+    "head": {
+      "title": "Echo Photos - Privacy"
+    },
+    "title": "Privacy Policy",
+    "sections": [
+      {
+        "paragraphs": [
+          "Echo Labs AG built the Echo Photos app as a Freemium app. This SERVICE is provided by Echo Labs AG at no cost and is intended for use as is.",
+          "This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.",
+          "If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.",
+          "The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Echo Photos unless otherwise defined in this Privacy Policy."
+        ]
+      },
+      {
+        "title": "Information Collection and Use",
+        "description": "Personal data includes any data that is relevant to you personally, e.g. name, address, phone number and location. We process your personal data whilst observing any applicable data protection regulations, with particular reference to the Swiss Data Protection Act and any other applicable international and national laws pertaining to the processing of personal data. We only collect data that is legally or contractually required, or that is necessary for the conclusion and promotion of a contract or required for us to be able to render our services and process contracts. Voluntary information is marked as such. There are no negative consequences of not providing this data. However, not providing data may in some cases make communication with you difficult or delayed. Specifically, we collect and upload your photo and text data when you post it to a group. Additionally, when you enables the app to use adress book data, limited information is uploaded to our server to identify the user's contacts. The thereby collected data is not used to track the user, analyze his behavior and neither sold nor shared to any third-party service."
+      },
+      {
+        "title": "Cookies",
+        "paragraphs": [
+          "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.",
+          "This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service."
+        ]
+      },
+      {
+        "title": "Security",
+        "description": "We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security."
+      },
+      {
+        "title": "Links to Other Sites",
+        "description": "This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services."
+      },
+      {
+        "title": "Children's Privacy",
+        "description": "These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. In the case we discover that a child under 13 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to do necessary actions."
+      },
+      {
+        "title": "Changes to This Privacy Policy",
+        "paragraphs": [
+          "We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.",
+          "This policy is effective as of 2021-02-01"
+        ]
+      },
+      {
+        "title": "Contact Us",
+        "description": "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at"
+      }
+    ]
+  },
+  "press": {
+    "head": {
+      "title": "Echo Photos - Press"
+    },
+    "title": "Press",
+    "description": "We have a collection of images in a press kit as well as a flyer containing the most important data of Echo Photos.",
+    "kit": "Download Press Kit",
+    "flyer": "Download Flyer"
+  },
+  "invite": {
+    "social-preview": {
+      "description": "Album Invite"
+    },
+    "copied": "Copied to clipboard!",
+    "title": "Album Invite Code",
+    "albumInvite": "Album Invite",
+    "description": "Join the album by entering the code in the Echo Photos app. You can also scan the QR code with your phone if you have the app installed.",
+    "copy-code": "Copy Code",
+    "download": {
+      "title": "Get Echo Photos",
+      "description": "The invite link you are trying to open can be opened with the Echo Photos App."
+    }
+  },
+  "home": {
+    "title": "Full-Res. Simple. Supreme Photo Albums",
+    "subtitle": "The prime solution for sharing photos: Create albums, add friends, upload full-resolution images and write comments - make everlasting memories!",
+    "donate": "Donate",
+    "featureOverviewSection": {
+      "title": "Unlimited Memories",
+      "features": [
+        {
+          "title": "Full resolution",
+          "description": "Share your photos in full resolution in their original quality."
+        },
+        {
+          "title": "Premium privacy",
+          "description": "No ads, no tracking and secure storage: the advantages of an independent company benefit everyone."
+        },
+        {
+          "title": "Free for the first year",
+          "description": "No subscriptions, no storage limits: Premium features are paid once and kept forever. During the first year of usage, all albums are Premium for free!"
+        },
+        {
+          "title": "AirDrop, but for groups",
+          "description": "Apart from Android support, Echo Photos has many advantages compared to AirDrop. With smart download tools, never accidentally download your photos again!"
+        },
+        {
+          "title": "Refined design",
+          "description": "A carefully crafted app: Simple and yet feature-rich, letting you focus on what you want to do."
+        },
+        {
+          "title": "Social sharing",
+          "description": "Comments and likes for your group images: Echo provides a private social network experience. For real friends only."
+        }
+      ]
+    },
+    "privacy": {
+      "subtitle": "Say no to Tracking!",
+      "title": "Premium Privacy",
+      "paragraphs": [
+        "Echo Photos does not monetize your private data. We do not track user data for ads or to sell them. For us, you are our customer - you deserve our best service!",
+        "Your memories are in a safe place. Using the highest security standards, we keep up with the newest safety features.",
+        "Our servers run with cutting-edge security features - we do not put anything at risk.",
+        "Privacy is our top concern. All your data is securely stored in Switzerland 🇨🇭. One should never worry about the protection of one's pictures."
+      ]
+    },
+    "climate": {
+      "subtitle": "Care for the Climate",
+      "title": "Carbon Neutral",
+      "paragraphs": [
+        "Our servers run entirely carbon-neutral.",
+        "Plus, we are committed to be completely carbon-free by 2030."
+      ]
+    },
+    "albums": {
+      "title": "Shared Albums",
+      "sections": [
+        {
+          "title": "Share Photos - Keep Forever",
+          "paragraphs": [
+            "With Echo Photos, you'll get fast, simple and eternal photo sharing. No subscription needed!",
+            "Echo Photos is the best way to share pictures of a memorable day with your friends.",
+            "Safely store your pictures with Echo Photos' eternal storage.",
+            "Like and comment your friends' pictures in your albums."
+          ]
+        },
+        {
+          "title": "Premium Photos For Unforgettable Moments",
+          "description": "Share pictures with hundreds of guests of events like weddings, parties and other festivities. 🥳"
+        }
+      ]
+    },
+    "desktop": {
+      "title": "Desktop",
+      "description": "Use Echo Photos wherever you want! Besides the main iOS and Android apps you can also view your albums on macOS and in the browser!",
+      "sections": [
+        {
+          "title": "Echo Photos In Your Browser",
+          "description": "Upload and download the photos directly from your computer through the Echo Photos browser plugin.",
+          "open-web-app": "Open Web App"
+        },
+        {
+          "title": "Client For MacOS",
+          "description": "Use Echo Photos through the macOS App on any Mac that uses the same iCloud account as your iOS device. Currently, log-in is only possible this way."
+        }
+      ]
+    }
+  },
+  "general": {
+    "createNewAlbumButton": "Create new album"
+  },
+  "common": {
+    "navbar": {
+      "weddings": "Weddings",
+      "features": "Features",
+      "albums": "Albums",
+      "desktop": "Desktop",
+      "download": "Download"
+    },
+    "footer": {
+      "home": "Home",
+      "webapp": "Web App",
+      "instagram": "Instagram",
+      "privacy": "Privacy",
+      "press": "Press",
+      "copyright": {
+        "text-before": "Copyright",
+        "rights": "All rights reserved."
+      },
+      "bottom-text": "Coded with ❤️ in 🇨🇭"
+    }
+  },
+  "albumCard": {
+    "copied": "Copied to clipboard!",
+    "enterCode": "Enter the code or scan the QR-Code to join via app.",
+    "getAppExplanation": "With the app, you can upload your photos and add likes and comments.",
+    "getFreeApp": "Get the Free App",
+    "hostedOn": "Hosted on",
+    "app": {
+      "installButton": "Get the App",
+      "description": "With the app, you can upload your photos and add likes and comments."
+    },
+    "uploadPhotosButton": "Upload photos"
+  },
+  "downloadPreview": {
+    "header": "Download Link",
+    "downloadButton": "Download",
+    "counts": "photos and videos",
+    "outdatedBanner": {
+      "title": "Link Outdated",
+      "message": "New items have been uploaded to the album since the download link was created. You can create a new link in the app!"
+    }
+  },
+  "404": {
+    "error-message": "Error 404: This page does not exist.",
+    "go-back": "Go back"
+  }
+}

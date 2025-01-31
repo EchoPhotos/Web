@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+@theme {
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 3rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.375rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+.hstack {
+  @apply flex flex-row items-center;
+}
+
+.vstack {
+  @apply flex flex-row items-center;
+}
+
+.btn {
+  @apply cursor-pointer rounded-md px-4 py-2 font-semibold transition focus:ring-2 focus:outline-hidden;
+}
+
+.btn-primary {
+  @apply bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500;
+}
+
+.btn-primary-inverted {
+  @apply bg-gray-200 text-blue-500 hover:bg-gray-100 focus:ring-gray-200;
+}
+/* flex min-h-8 min-w-36 max-w-64 flex-row items-center justify-center space-x-1 rounded-md px-1 py-1 text-sm font-semibold md:min-h-10 md:min-w-48 md:space-x-3 md:px-3 md:py-2 md:text-base md:shadow-lg*/
+.btn-secondary {
+  @apply bg-gray-500 text-white hover:bg-gray-600 focus:ring-gray-500;
+}
+
+.btn-danger {
+  @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+}

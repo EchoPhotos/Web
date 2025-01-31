@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.4",
+    "@headlessui/react": "^2.2.0",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.6",
+    "axios": "^1.7.9",
+    "firebase": "^11.2.0",
+    "framer-motion": "^12.0.6",
+    "heic-convert": "^2.1.0",
+    "image-js": "^0.0.0-next-692b15513a",
+    "mapkit-react": "^1.15.3",
+    "negotiator": "^1.0.0",
+    "next": "^15.1.2",
+    "ngeohash": "^0.6.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "react-microsoft-clarity": "^2.0.0",
+    "react-qr-code": "^2.0.11",
+    "react-swipeable": "^7.0.2",
+    "validator": "^13.12.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.1",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "20.10.8",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "9.19.0",
+    "eslint-config-next": "15.1.6",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.1",
+    "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "usehooks-ts": {
+      "react": "^19"
+    }
+  }
+}

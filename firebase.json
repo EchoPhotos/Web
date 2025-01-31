@@ -1,0 +1,37 @@
+{
+  "hosting": {
+    "source": ".",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "frameworksBackend": {
+      "region": "europe-west6",
+      "memory": "512MiB"
+    },
+    "rewrites": [
+      {
+        "source": "/api/v1{,/**}",
+        "function": "apiV1",
+        "region": "europe-west6"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/.well-known/apple-app-site-association",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    ],
+    "appAssociation": "NONE"
+  },
+  "emulators": {
+    "singleProjectMode": true,
+    "apphosting": {
+      "port": 5001,
+      "rootDirectory": "./",
+      "startCommand": "npm run dev"
+    }
+  }
+}

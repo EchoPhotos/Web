@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ch.echolabs.echo",
+      "sha256_cert_fingerprints": [
+        "C5:98:B3:9D:A7:C3:C2:1B:DB:A4:73:40:03:AF:B8:B1:2F:F2:98:04:69:5E:64:54:91:08:02:C0:B4:09:19:85",
+        "CF:86:71:79:B1:95:80:51:D9:EF:C2:9E:87:ED:1E:73:E4:79:DF:3F:03:0D:1F:0F:B0:A7:EF:7D:47:5E:77:3E"
+      ]
+    }
+  }
+]
