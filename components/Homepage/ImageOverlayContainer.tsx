@@ -68,7 +68,7 @@ export default function ImageOverlayContainer({
     } else if (event.key == 'ArrowLeft') {
       goToPrevious();
     }
-  };
+  }
 
   return (
     <Dialog
