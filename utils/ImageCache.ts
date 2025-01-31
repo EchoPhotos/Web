@@ -25,7 +25,6 @@ export function useImageCache(
 
   useEffect(() => {
     if (!imageId) {
-      console.warn('imageId is required for useImageCache');
       return;
     }
 

@@ -31,9 +31,11 @@ export default function InvitePanel() {
       <div className="h-24 w-24 content-center rounded-xl bg-slate-700 text-slate-500">
         {invite.groupImage && (
           <div className="relative h-24 w-24 overflow-hidden rounded-xl object-cover">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={invitePreviewUrlForId(invite.id)}
               className="absolute inset-0 h-full w-full object-cover object-center"
+              alt={invite.id}
             />
           </div>
         )}

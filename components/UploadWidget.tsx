@@ -54,6 +54,7 @@ export default function UploadWidget() {
 
   useEffect(() => {
     getAlbumId();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onFilePicked = (files: Array<File>) => {

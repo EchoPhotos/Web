@@ -46,6 +46,7 @@ export default function CachedImage({
           setImageBlob(blob);
         });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageUrl, isVisible, imageBlob, imageId]);
 
   useEffect(() => {
@@ -74,9 +75,11 @@ export default function CachedImage({
     if (imageBlob) {
       const objectURL = URL.createObjectURL(imageBlob);
       return (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={objectURL}
           className={`relative inset-0 h-full w-full object-contain object-center ${className}`}
+          alt={imageId}
         />
       );
     } else {
