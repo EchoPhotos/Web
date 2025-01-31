@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import SignInWidget from '@components/Authentication/SignInWidget';
 import AuthenticationButton from './Authentication/AuthenticationButton';
+import Image from 'next/image';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Header() {
     <header>
       <nav className="fixed z-1 flex h-20 w-full items-center justify-between bg-white/70 px-4 py-3 backdrop-blur-md">
         <Link href="/">
-          <img src="/images/logo125.png" height="50" width="125" alt="EchoPhotos logo" />
+          <Image src="/images/logo125.png" alt="Logo" width="150" height="50" />
         </Link>
 
         <button className="md:hidden" onClick={toggleOpen}>

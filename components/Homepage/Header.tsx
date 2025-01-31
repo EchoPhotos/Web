@@ -2,7 +2,9 @@
 
 import { IoMenu, IoClose } from 'react-icons/io5';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useCallback, useState } from 'react';
+import logo from '@images/logo125.png';
 
 interface HeaderSection {
   name: string;
@@ -25,7 +27,7 @@ export default function HomepageHeader({ sections, lang }: HeaderSections) {
     <header>
       <nav className="fixed z-1 flex h-20 w-full items-center justify-between bg-white/70 px-4 py-3 backdrop-blur-md">
         <Link href="/">
-          <img src="/images/logo125.png" height="50" width="125" alt="EchoPhotos logo" />
+          <Image src={logo} alt="Logo" width="150" height="50" />
         </Link>
 
         <button className="md:hidden" onClick={toggleOpen}>

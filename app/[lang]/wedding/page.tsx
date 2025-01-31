@@ -12,6 +12,9 @@ import FullScreenSection from '@components/Homepage/FullScreenSection';
 import { i18n } from '@utils/old/i18n-config';
 import { getDictionary } from '@utils/dictionary';
 import Link from 'next/link';
+import Image from 'next/image';
+import wedding from '@images/weddingSecondary.png';
+import main from '@images/weddingMain.png';
 
 const cinzelFont = Cinzel({ subsets: ['latin'] });
 const quickSandFont = Quicksand({ subsets: ['latin'] });
@@ -34,7 +37,7 @@ export default async function WeddingPage({ params }) {
   return (
     <>
       <FullScreenSection className="-mt-20 bg-rose-50">
-        <ContentBox left={false} imageURL="/images/weddingMain.png" title="">
+        <ContentBox left={false} image={main} title="">
           <h1 className={`${titleFont.className} mb-6 font-bold`}>{dict.primarySection.title}</h1>
 
           <h4 className="my-4">{dict.primarySection.subtitle}</h4>
@@ -91,7 +94,7 @@ export default async function WeddingPage({ params }) {
             </Featurette>
 
             <div className="row-span-3 mx-auto my-auto">
-              <img src="/images/weddingSecondary.png" />
+              <Image src={wedding} alt="wedding" />
             </div>
 
             <Featurette

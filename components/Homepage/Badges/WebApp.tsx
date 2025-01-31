@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface WebAppProps {
@@ -6,8 +7,8 @@ interface WebAppProps {
 
 export default function WebApp({ inviteId }: WebAppProps) {
   return (
-    <Link href="https://web.echophotos.io/invite/{inviteId}" target="_blank">
-      <img src="/images/WebApp.svg" height="40" alt="Open the Echo Web App" />
+    <Link href={`https://www.echophotos.io/invite/${inviteId}`} target="_blank">
+      <Image src="/images/WebApp.svg" alt="Web App" height="40" />
     </Link>
   );
 }

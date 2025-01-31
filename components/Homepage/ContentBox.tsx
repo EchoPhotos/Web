@@ -1,13 +1,14 @@
+import Image, { StaticImageData } from 'next/image';
 import { ReactNode } from 'react';
 
 interface ContentBoxProps {
   left: boolean;
-  imageURL: string;
+  image: StaticImageData;
   title: ReactNode;
   children: ReactNode;
 }
 
-export default function ContentBox({ left, imageURL, title, children }: ContentBoxProps) {
+export default function ContentBox({ left, image, title, children }: ContentBoxProps) {
   return (
     <div
       className={`flex ${
@@ -20,7 +21,7 @@ export default function ContentBox({ left, imageURL, title, children }: ContentB
       </div>
 
       <div className="max-w-lg p-6">
-        <img src={imageURL} />
+        <Image src={image} alt="Content image" />
       </div>
     </div>
   );

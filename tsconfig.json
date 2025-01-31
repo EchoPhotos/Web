@@ -24,6 +24,7 @@
       "@old-utils/*": ["utils-old/*"],
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
+      "@images/*": ["public/images/*"],
       "@Shared/*": ["Shared/*"],
       "@/styles/*": ["styles/*"]
     },

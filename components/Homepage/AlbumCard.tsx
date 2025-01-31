@@ -3,6 +3,7 @@ import QRCode from './QRCode';
 import Link from 'next/link';
 import { HStack, VStack } from '@components/UI/Components';
 import { Button } from '@headlessui/react';
+import Image from 'next/image';
 
 interface AlbumCardProps {
   albumName?: string;
@@ -81,7 +82,7 @@ export default function AlbumCard({
 
         <div className="flex flex-row items-center space-x-5">
           {dict.hostedOn}
-          <img src="/images/AppIcon300.png" height="50" width="50" alt="EchoPhotos logo" />
+          <Image src="/images/AppIcon300.png" alt="Logo" width="50" height="50" />
           Echo Photos
         </div>
       </VStack>

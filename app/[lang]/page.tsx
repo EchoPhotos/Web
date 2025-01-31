@@ -8,6 +8,15 @@ import FeatureSection from '@components/Homepage/FeatureSection';
 import FullScreenSection from '@components/Homepage/FullScreenSection';
 import { i18n } from '@utils/old/i18n-config';
 import { getDictionary } from '@utils/dictionary';
+import Image from 'next/image';
+import headerImage from '@images/iphone.png';
+import image from '@images/image.png';
+import group from '@images/group.png';
+import groups from '@images/groups.png';
+import wallis from '@images/wallis.jpg';
+import title from '@images/title.png';
+import browser from '@images/browser.jpg';
+import macOS from '@images/macOS.jpg';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
@@ -22,7 +31,7 @@ export default async function HomePage({ params: { lang } }) {
   return (
     <>
       <FullScreenSection className="-mt-20">
-        <ContentBox left={true} imageURL="/../images/title.png" title="">
+        <ContentBox left={true} image={title} title="">
           <h1 className="mb-6 font-bold">{dict.title}</h1>
 
           <p className="mb-6">{dict.subtitle}</p>
@@ -78,7 +87,7 @@ export default async function HomePage({ params: { lang } }) {
             </Featurette>
 
             <div className="row-span-3 mx-auto my-auto">
-              <img src="../images/iphone.png" />
+              <Image src={headerImage} alt="Echo Photos" />
             </div>
 
             <Featurette
@@ -106,7 +115,7 @@ export default async function HomePage({ params: { lang } }) {
       </section>
 
       <section className="bg-zinc-800 py-20 text-white">
-        <ContentBox left={true} imageURL="/../images/groups.png" title="">
+        <ContentBox left={true} image={groups} title="">
           <h3 className="">{dict.privacy.subtitle}</h3>
 
           <h2 className="mb-2.5 flex items-center justify-center gap-2 text-[2.25rem] font-bold md:justify-start">
@@ -125,7 +134,7 @@ export default async function HomePage({ params: { lang } }) {
       </section>
 
       <section className="py-24">
-        <ContentBox left={false} imageURL="/images/wallis.jpg" title="">
+        <ContentBox left={false} image={wallis} title="">
           <div className="text-right md:text-right">
             <h3 className="text-green-700">{dict.climate.subtitle}</h3>
 
@@ -142,11 +151,7 @@ export default async function HomePage({ params: { lang } }) {
       </section>
 
       <FeatureSection sectionId="albums" title={dict.albums.title} description="">
-        <ContentBox
-          left={true}
-          imageURL="/../images/group.png"
-          title={dict.albums.sections[0].title}
-        >
+        <ContentBox left={true} image={group} title={dict.albums.sections[0].title}>
           <p className="my-1">{(dict.albums.sections[0].paragraphs as string[])[0]}</p>
 
           <p className="my-1">{(dict.albums.sections[0].paragraphs as string[])[1]}</p>
@@ -156,11 +161,7 @@ export default async function HomePage({ params: { lang } }) {
           <p className="my-1">{(dict.albums.sections[0].paragraphs as string[])[3]}</p>
         </ContentBox>
 
-        <ContentBox
-          left={false}
-          imageURL="/../images/image.png"
-          title={dict.albums.sections[1].title}
-        >
+        <ContentBox left={false} image={image} title={dict.albums.sections[1].title}>
           <p className="my-1">{dict.albums.sections[1].description}</p>
         </ContentBox>
       </FeatureSection>
@@ -170,11 +171,7 @@ export default async function HomePage({ params: { lang } }) {
         title={dict.desktop.title}
         description={dict.desktop.description}
       >
-        <ContentBox
-          left={true}
-          imageURL="/../images/browser.jpg"
-          title={dict.desktop.sections[0].title}
-        >
+        <ContentBox left={true} image={browser} title={dict.desktop.sections[0].title}>
           <p className="mb-4">{dict.desktop.sections[0].description}</p>
 
           <Link href="https://web.echophotos.io" target="_blank" className="btn btn-primary">
@@ -182,11 +179,7 @@ export default async function HomePage({ params: { lang } }) {
           </Link>
         </ContentBox>
 
-        <ContentBox
-          left={false}
-          imageURL="/../images/macOS.jpg"
-          title={dict.desktop.sections[1].title}
-        >
+        <ContentBox left={false} image={macOS} title={dict.desktop.sections[1].title}>
           <p className="mb-4">{dict.desktop.sections[1].description}</p>
 
           <AppStore mac />
