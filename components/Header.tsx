@@ -3,8 +3,6 @@
 import { IoMenu, IoClose } from 'react-icons/io5';
 import Link from 'next/link';
 import { useCallback, useState } from 'react';
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
-import SignInWidget from '@components/Authentication/SignInWidget';
 import AuthenticationButton from './Authentication/AuthenticationButton';
 import Image from 'next/image';
 

@@ -8,7 +8,7 @@ import macOS from '@images/macOS.jpg';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
-    lang;
+    return lang;
   });
 }
 export default async function HomePage({ params }) {

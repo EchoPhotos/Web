@@ -1,16 +1,16 @@
 import 'server-only';
 
 interface Dictionary {
-  wedding: any;
-  privacy: any;
-  press: any;
-  home: any;
-  common: any;
-  footer: any;
-  albumCard: any;
-  downloadPreview: any;
-  general: any;
-  '404': any;
+  wedding;
+  privacy;
+  press;
+  home;
+  common;
+  footer;
+  albumCard;
+  downloadPreview;
+  general;
+  '404';
 }
 
 const dictionaries = {

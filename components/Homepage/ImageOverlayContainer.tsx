@@ -18,12 +18,12 @@ export default function ImageOverlayContainer({
   domain: string;
   onClose: (string) => void;
 }) {
-  let overlayRef: any = useRef();
+  const overlayRef: any = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  let albumItem = albumItems.find((item) => item.id == searchParams.get('itemId'));
+  const albumItem = albumItems.find((item) => item.id == searchParams.get('itemId'));
 
   let index = 0;
 

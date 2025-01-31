@@ -1,6 +1,5 @@
 'use client';
 
-import RequireAuthentication from '@components/Authentication/RequireAuthentication';
 import PanelView from '@components/UI/PanelView';
 import DownloadProvider from 'provider/DownloadProvider';
 import DownloadLinkPanel from '@components/Download/DownloadLinkPanel';

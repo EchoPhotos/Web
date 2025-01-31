@@ -5,7 +5,7 @@ import SignOutButton from './Authentication/SignOutButton';
 import { AuthStateContext } from 'provider/AuthStateProvider';
 
 export default function Footer() {
-  var authState = useContext(AuthStateContext);
+  const authState = useContext(AuthStateContext);
   return (
     <footer className="fixed right-0 bottom-0 left-0 bg-white p-2 text-xs text-slate-400 grayscale md:bg-transparent">
       {authState.userId && (

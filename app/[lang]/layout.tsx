@@ -7,16 +7,10 @@ import { getDictionary } from '@utils/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
-    lang;
+    return lang;
   });
 }
-export default async function Layout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: any;
-}) {
+export default async function Layout({ children, params }) {
   const dicts = await getDictionary(params.lang);
   return (
     <html lang={params.lang}>

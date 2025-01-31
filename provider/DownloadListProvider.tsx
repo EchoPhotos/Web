@@ -20,7 +20,7 @@ export default function DownloadListProvider({ children }) {
     getDownloads(albumId).then((downloads) => {
       setDownloads(downloads.sort((a, b) => b.timestamp - a.timestamp));
     });
-  }, []);
+  }, [albumId]);
 
   return (
     <>

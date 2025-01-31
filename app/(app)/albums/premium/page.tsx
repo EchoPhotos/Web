@@ -2,7 +2,7 @@
 
 import PanelView from '@components/UI/PanelView';
 import { SloganResolution } from '@components/UI/Slogans';
-import { HStack, SizeAdapted, VStack } from '@components/UI/Components';
+import { HStack, VStack } from '@components/UI/Components';
 import { IoArrowDownCircle, IoPersonAdd, IoStar } from 'react-icons/io5';
 import Link from 'next/link';
 

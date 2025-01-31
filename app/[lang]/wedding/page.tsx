@@ -1,8 +1,4 @@
 import * as Icons from 'react-icons/io5';
-import { Cinzel } from 'next/font/google';
-import { Montserrat } from 'next/font/google';
-import { Quicksand } from 'next/font/google';
-import { Josefin_Sans } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
 import AppStore from '@components/Homepage/Badges/AppStore';
 import Featurette from '@components/Homepage/Featurette';
@@ -16,17 +12,17 @@ import Image from 'next/image';
 import wedding from '@images/weddingSecondary.png';
 import main from '@images/weddingMain.png';
 
-const cinzelFont = Cinzel({ subsets: ['latin'] });
-const quickSandFont = Quicksand({ subsets: ['latin'] });
-const montserratSandFont = Montserrat({ subsets: ['latin'] });
-const josefinSansFont = Josefin_Sans({ subsets: ['latin'] });
+// const cinzelFont = Cinzel({ subsets: ['latin'] });
+// const quickSandFont = Quicksand({ subsets: ['latin'] });
+// const montserratSandFont = Montserrat({ subsets: ['latin'] });
+// const josefinSansFont = Josefin_Sans({ subsets: ['latin'] });
 const playfairFont = Playfair_Display({ subsets: ['latin'] });
 
 const titleFont = playfairFont;
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
-    lang;
+    return lang;
   });
 }
 

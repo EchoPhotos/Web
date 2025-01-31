@@ -47,7 +47,7 @@ export default function SignInWidget() {
     setOtp(event.target.value);
   };
 
-  const handlePhone = async (_) => {
+  const handlePhone = async () => {
     if (userPhone == '') {
       alert('Please enter a valid phone number');
     } else {
@@ -66,13 +66,13 @@ export default function SignInWidget() {
 
         setVid(confirmationResult.verificationId);
         setState(State.VerificationSent);
-      } catch (error: any) {
+      } catch (error) {
         alert(`${error}. Please try again!`);
       }
     }
   };
 
-  const handleOtp = async (_) => {
+  const handleOtp = async () => {
     if (otp == '') {
       alert('Please enter a valid code');
     } else {
@@ -83,7 +83,7 @@ export default function SignInWidget() {
         console.log(userCredentials.user.uid);
 
         setState(State.SignedIn);
-      } catch (error: any) {
+      } catch (error) {
         console.log(error);
         if (error.message == 'INVALID_CODE') {
           alert('Invalid code Check you are entering the correct code.');

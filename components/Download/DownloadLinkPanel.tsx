@@ -6,7 +6,7 @@ import { IdDownload } from '@Shared/Models';
 import Link from 'next/link';
 import { IoArrowDownCircle, IoBan, IoWarning } from 'react-icons/io5';
 import Image from 'next/image';
-import { HStack, VCenter, VStack } from '@components/UI/Components';
+import { VCenter, VStack } from '@components/UI/Components';
 import Spinner from '@components/UI/Spinner';
 import Banner from '@components/Banner';
 import { Button } from '@headlessui/react';

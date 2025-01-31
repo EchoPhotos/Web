@@ -7,7 +7,7 @@ import { PremiumButton } from './PremiumButton';
 import { AlbumContext } from 'provider/AlbumProvider';
 
 export default function MemberLimitReachedView() {
-  var album = useContext(AlbumContext);
+  const album = useContext(AlbumContext);
 
   return (
     <VStack className="h-full items-center justify-center p-4 text-center">

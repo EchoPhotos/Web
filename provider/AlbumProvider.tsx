@@ -20,7 +20,7 @@ export default function AlbumProvider({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     getAlbum(albumId).then(setAlbum).catch(setError);
-  }, []);
+  }, [albumId]);
 
   if (album) {
     return <AlbumContext.Provider value={album}>{children}</AlbumContext.Provider>;

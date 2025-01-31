@@ -23,8 +23,10 @@ export default function CurrentDownloadProvider({ children }) {
       .then(setDownload)
       .then(() => setLoading(false))
       .catch(setError);
-  }, []);
+  }, [albumId]);
 
+  const album = useContext(AlbumContext);
+  
   if (download) {
     return <DownloadContext.Provider value={download}>{children}</DownloadContext.Provider>;
   } else if (error) {
@@ -32,7 +34,6 @@ export default function CurrentDownloadProvider({ children }) {
   } else if (loading) {
     return <Spinner />;
   } else {
-    const album = useContext(AlbumContext);
     return <NoLink album={album} />;
   }
 }

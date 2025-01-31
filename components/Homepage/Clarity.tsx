@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { clarity } from 'react-microsoft-clarity';
 
 export default function Clarity() {

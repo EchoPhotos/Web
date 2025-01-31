@@ -17,7 +17,7 @@ export default function AlbumItemColumn() {
 }
 
 function Content() {
-  var items = useContext(AlbumItemListContext);
+  const items = useContext(AlbumItemListContext);
   if (items) {
     if (items.length === 0) {
       return (

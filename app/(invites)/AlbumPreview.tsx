@@ -22,7 +22,7 @@ export interface AlbumPreviewData {
 
 export default function AlbumPreview(props: {
   data: AlbumPreviewData;
-  albumCardDict: any;
+  albumCardDict;
   lang: string;
 }) {
   const searchParams = useSearchParams();

@@ -7,7 +7,7 @@ import { getDictionary } from '@utils/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
-    lang;
+    return lang;
   });
 }
 export default async function PrivacyPage({ params: { lang } }) {

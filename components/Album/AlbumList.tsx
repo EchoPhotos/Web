@@ -8,7 +8,7 @@ import { AlbumListContext } from 'provider/AlbumListProvider';
 import { useContext } from 'react';
 
 export default function AlbumList() {
-  var albums = useContext(AlbumListContext);
+  const albums = useContext(AlbumListContext);
   if (!albums) {
     return <Spinner />;
   }

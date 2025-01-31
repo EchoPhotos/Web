@@ -39,7 +39,7 @@ export async function fetchItemsForInvite(inviteId: string): Promise<IdAlbumItem
   if (!itemsResponse.ok) {
     throw new Error('Failed to fetch items data');
   }
-  let items: IdAlbumItem[] = await itemsResponse.json();
+  const items: IdAlbumItem[] = await itemsResponse.json();
   return items;
 }
 
@@ -161,7 +161,7 @@ async function get<T>(path: string): Promise<T> {
   return response.data as T;
 }
 
-async function postAuthorized<R, D>(path: string, data: D, params?: any): Promise<R> {
+async function postAuthorized<R, D>(path: string, data: D, params?): Promise<R> {
   const token = await getToken();
   const response = await axios.post(getAPIHost() + path, data, {
     headers: {
@@ -172,8 +172,7 @@ async function postAuthorized<R, D>(path: string, data: D, params?: any): Promis
   return response.data as R;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function getAuthorized<T>(path: string, params?: any): Promise<T> {
+async function getAuthorized<T>(path: string, params?): Promise<T> {
   debugBeep();
   const token = await getToken();
   const response = await axios.get(getAPIHost() + path, {
@@ -181,18 +180,6 @@ async function getAuthorized<T>(path: string, params?: any): Promise<T> {
       Authorization: `Bearer ${token}`,
     },
     params: params,
-  });
-  return response.data as T;
-}
-
-async function putAuthorized<T>(path: string): Promise<T> {
-  debugBeep();
-
-  const token = await getToken();
-  const response = await axios.get(getAPIHost() + path, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   });
   return response.data as T;
 }
@@ -220,7 +207,7 @@ export async function getNewestAlbum(): Promise<IdAlbum | undefined> {
   if (albums.length > 0) {
     return albums[0];
   } else {
-    undefined;
+    return;
   }
 }
 
@@ -269,7 +256,7 @@ export async function getAlbums(limit: number | undefined = undefined): Promise<
 }
 
 export async function getTokenForCode(code: string): Promise<string> {
-  const body = await get<any>(`/auth/codes/${code}/token`);
+  const body = await get<{token: string}>(`/auth/codes/${code}/token`);
   return body.token;
 }
 
@@ -310,18 +297,18 @@ export async function createAlbum(data: NewAlbum): Promise<IdAlbum> {
   }
 }
 
-export async function enableLikedOnlyPreview(inviteId: String): Promise<void> {
+export async function enableLikedOnlyPreview(inviteId: string): Promise<void> {
   return getAuthorized<void>(`/invites/${inviteId}/preview-only-liked`);
 }
 
-export async function disableLikedOnlyPreview(inviteId: String): Promise<void> {
+export async function disableLikedOnlyPreview(inviteId: string): Promise<void> {
   return deleteAuthorized<void>(`/invites/${inviteId}/preview-only-liked`);
 }
 
-export async function enableViewOnly(inviteId: String): Promise<void> {
+export async function enableViewOnly(inviteId: string): Promise<void> {
   return getAuthorized<void>(`/invites/${inviteId}/view-only`);
 }
 
-export async function disableViewOnly(inviteId: String): Promise<void> {
+export async function disableViewOnly(inviteId: string): Promise<void> {
   return deleteAuthorized<void>(`/invites/${inviteId}/view-only`);
 }

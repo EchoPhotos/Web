@@ -17,7 +17,7 @@ export default function AlbumItemListProvider({ children }) {
     getAlbumItems(albumId).then((albums) => {
       setAlbums(albums);
     });
-  }, []);
+  }, [albumId]);
 
   return <AlbumItemListContext.Provider value={albums}>{children}</AlbumItemListContext.Provider>;
 }

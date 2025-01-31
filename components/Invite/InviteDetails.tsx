@@ -10,7 +10,7 @@ import { useContext } from 'react';
 import * as ReactQRCode from 'react-qr-code';
 
 export default function InviteDetails() {
-  var invite = useContext(InviteContext);
+  const invite = useContext(InviteContext);
   const inviteLink = getInviteURL(invite.id);
 
   return (

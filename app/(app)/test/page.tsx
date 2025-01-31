@@ -1,16 +1,15 @@
 'use client';
 
 import PanelView from '@components/UI/PanelView';
-import { IdAlbum, IdInvite } from '@Shared/Models';
+import { IdAlbum, IdDownloadWithAlbum, IdInvite } from '@Shared/Models';
 import AlbumPanel from '@components/Album/AlbumPanel';
-import AlbumOverview from '@components/Album/AlbumOverview';
 import { AlbumContext } from 'provider/AlbumProvider';
 import { InviteContext } from 'provider/InviteProvider';
-import Panel from '@components/Album/CurrentDownload/Panel';
 import NoLink from '@components/Album/CurrentDownload/NoLink';
+import { DownloadContext } from 'provider/DownloadProvider';
 
 export default function TestPage() {
-  const download = {
+  const download: IdDownloadWithAlbum = {
     id: 'testdownload',
     album: 'Test Album',
     creator: 'me',
@@ -23,7 +22,12 @@ export default function TestPage() {
     itemCount: 12,
     albumData: {
       name: '324',
-      itemNumber: 234,
+      description: 'tets',
+      created: 0,
+      lastChange: 0,
+      creator: '',
+      members: [],
+      admins: [],
     },
   };
 
@@ -50,16 +54,18 @@ export default function TestPage() {
   return (
     <AlbumContext.Provider value={album}>
       <InviteContext.Provider value={invite}>
-        <PanelView panelConent={<AlbumPanel />}>
-          {/* <div className="flex h-full w-full flex-col md:flex-row">
-            <div className="flex h-full w-24 items-center bg-green-400">
-              {' '}
-              Env is: "{process.env.MESSAGE}"
-            </div>
-            <div className="h-full w-full">{<AlbumOverview />}</div>
-          </div> */}
-          <NoLink album={album} />
-        </PanelView>
+        <DownloadContext.Provider value={download}>
+          <PanelView panelConent={<AlbumPanel />}>
+            {/* <div className="flex h-full w-full flex-col md:flex-row">
+              <div className="flex h-full w-24 items-center bg-green-400">
+                {' '}
+                Env is: "{process.env.MESSAGE}"
+              </div>
+              <div className="h-full w-full">{<AlbumOverview />}</div>
+            </div> */}
+            <NoLink album={album} />
+          </PanelView>
+        </DownloadContext.Provider>
       </InviteContext.Provider>
     </AlbumContext.Provider>
   );

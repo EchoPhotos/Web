@@ -9,7 +9,7 @@ export default function AuthenticationStateSwitch({
   signedOutContent,
   showSpinner = true,
 }) {
-  var authState = useContext(AuthStateContext);
+  const authState = useContext(AuthStateContext);
   if (authState.loading) {
     return showSpinner ? <Spinner /> : <></>;
   } else {

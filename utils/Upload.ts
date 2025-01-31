@@ -1,7 +1,5 @@
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage } from '@utils/FirebaseConfig';
-import { Image, InterpolationType, decode, encodeJpeg } from 'image-js';
-import { convert } from 'heic-convert';
 import { getImage, getPreviewBuffer, getThumbnailBuffer } from './ImageTools';
 
 export interface FileUpload {
@@ -78,7 +76,7 @@ export async function uploadFileWithPreview(
     });
 
     // Wait for all uploads to complete
-    const [originalSnapshot, thumbnailSnapshot, previewSnapshot] = await Promise.all(
+    await Promise.all(
       uploadTasks.map((task) => task.then()),
     );
 

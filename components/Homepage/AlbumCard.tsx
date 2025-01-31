@@ -10,7 +10,7 @@ interface AlbumCardProps {
   inviteCode: string;
   qrCodeURL: string;
   inviteId: string;
-  albumCardDict: any;
+  albumCardDict;
 }
 
 export default function AlbumCard({

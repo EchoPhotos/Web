@@ -31,7 +31,7 @@ export default function Page() {
 }
 
 function InviteDetails() {
-  var invite = useContext(InviteContext);
+  const invite = useContext(InviteContext);
 
   function onLikedOnlyPreviewChanged(checked: boolean) {
     if (checked) {

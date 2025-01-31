@@ -34,14 +34,14 @@ export default function RegisterActionButton({
   children: React.ReactNode;
   name: string;
   phoneNumber: string;
-  action: () => Promise<any>;
+  action: () => Promise<void>;
 }) {
   const [otp, setOtp] = useState('');
   const [verificationId, setVid] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(false);
 
-  var authState = useContext(AuthStateContext);
-  var profile = useContext(ProfileContext);
+  const authState = useContext(AuthStateContext);
+  const profile = useContext(ProfileContext);
 
   const handleOtpChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setOtp(event.target.value);
@@ -94,7 +94,7 @@ export default function RegisterActionButton({
         const userCredentials: UserCredential = await signInWithCredential(auth, phoneCredential);
         console.log(userCredentials.user.uid);
 
-        const _ = await getOrRegisterUser(name);
+        await getOrRegisterUser(name);
         action();
       } catch (error: any) {
         console.log(error);

@@ -20,7 +20,7 @@ export default function InviteProvider({ children }) {
 
   useEffect(() => {
     getInvite(inviteId).then(setInvite).catch(setError);
-  }, []);
+  }, [inviteId]);
 
   if (invite) {
     return <InviteContext.Provider value={invite}>{children}</InviteContext.Provider>;

@@ -9,8 +9,8 @@ import { useContext } from 'react';
 import Spinner from '@components/UI/Spinner';
 
 export default function AlbumDownloadsPanel() {
-  var downloads = useContext(DownloadListContext);
-  var album = useContext(AlbumContext);
+  const downloads = useContext(DownloadListContext);
+  const album = useContext(AlbumContext);
 
   if (!album || !downloads) {
     return <Spinner />;

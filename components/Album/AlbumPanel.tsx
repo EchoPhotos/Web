@@ -12,7 +12,7 @@ import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
 
 export default function AlbumPanel() {
-  var album = useContext(AlbumContext);
+  const album = useContext(AlbumContext);
 
   return (
     <SizeAdapted

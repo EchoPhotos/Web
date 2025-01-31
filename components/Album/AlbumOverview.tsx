@@ -12,7 +12,7 @@ import { HStack, VStack } from '@components/UI/Components';
 import Spinner from '@components/UI/Spinner';
 
 export default function AlbumOverview() {
-  var album = useContext(AlbumContext);
+  const album = useContext(AlbumContext);
   const router = useRouter();
   const pathname = usePathname();
 

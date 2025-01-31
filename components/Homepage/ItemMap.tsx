@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ngeohash from 'ngeohash';
 import { Marker, Map, CoordinateRegion } from 'mapkit-react';
 import { current } from '@utils/ClientConfiguration';
+import { AlbumItem, IdAlbumItem } from '@Shared/Models';
 
 type Annotation = {
   latitude: number;
@@ -66,5 +67,3 @@ function ItemMap({
 }
 
 export default ItemMap;
-import { useRef } from 'react';
-import { AlbumItem, IdAlbumItem } from '@Shared/Models';

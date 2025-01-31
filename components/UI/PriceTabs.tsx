@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from './Card';
 
 const PlanFeature = ({ feature }) => (
@@ -55,28 +55,28 @@ const PricingTab = ({ plan, onSelect, isSelected }) => (
   </Card>
 );
 
-const BillingToggle = ({ isMonthly, setIsMonthly }) => (
-  <div className="mb-8 flex justify-center">
-    <div className="inline-flex rounded-lg bg-gray-200 p-0.5">
-      <button
-        onClick={() => setIsMonthly(true)}
-        className={`rounded-md px-4 py-2 ${
-          isMonthly ? 'bg-white text-blue-600 shadow-xs' : 'text-gray-600'
-        }`}
-      >
-        Monthly
-      </button>
-      <button
-        onClick={() => setIsMonthly(false)}
-        className={`rounded-md px-4 py-2 ${
-          !isMonthly ? 'bg-white text-blue-600 shadow-xs' : 'text-gray-600'
-        }`}
-      >
-        Annually (Save 20%)
-      </button>
-    </div>
-  </div>
-);
+// const BillingToggle = ({ isMonthly, setIsMonthly }) => (
+//   <div className="mb-8 flex justify-center">
+//     <div className="inline-flex rounded-lg bg-gray-200 p-0.5">
+//       <button
+//         onClick={() => setIsMonthly(true)}
+//         className={`rounded-md px-4 py-2 ${
+//           isMonthly ? 'bg-white text-blue-600 shadow-xs' : 'text-gray-600'
+//         }`}
+//       >
+//         Monthly
+//       </button>
+//       <button
+//         onClick={() => setIsMonthly(false)}
+//         className={`rounded-md px-4 py-2 ${
+//           !isMonthly ? 'bg-white text-blue-600 shadow-xs' : 'text-gray-600'
+//         }`}
+//       >
+//         Annually (Save 20%)
+//       </button>
+//     </div>
+//   </div>
+// );
 
 type Props = {
   onSelectPlan: (input: string) => void;

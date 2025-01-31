@@ -12,7 +12,7 @@ import { DownloadContext } from 'provider/DownloadProvider';
 import { useContext } from 'react';
 
 export default function InfoBox() {
-  var download = useContext(DownloadContext);
+  const download = useContext(DownloadContext);
 
   return (
     <VCenter>

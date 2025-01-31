@@ -16,14 +16,9 @@ export default function ActiveInviteProvider({ children }) {
   const [invite, setInvite] = useState<IdInvite | undefined>(undefined);
   const [error, setError] = useState<Error | undefined>(undefined);
 
-  const fetchInvite = async () => {
-    const invite = await getActiveAlbumInvite(albumId);
-    setInvite(invite);
-  };
-
   useEffect(() => {
-    fetchInvite().catch(setError);
-  }, []);
+    getActiveAlbumInvite(albumId).then(setInvite).catch(setError);
+  }, [albumId]);
 
   if (error) {
     return <div className="flex h-full flex-col items-center justify-center">{error.message}</div>;

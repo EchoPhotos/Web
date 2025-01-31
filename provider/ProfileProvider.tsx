@@ -38,7 +38,7 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
           setLoading(false);
         });
     }
-  }, [authState]);
+  }, [authState, profile]);
 
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setUserName(event.target.value);

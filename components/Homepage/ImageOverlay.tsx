@@ -36,7 +36,7 @@ export default function ImageOverlay({
 }: SharedModalProps) {
   const [loaded, setLoaded] = useState(false);
 
-  let filteredAlbumItems = albumItems.filter((img: IdAlbumItem) =>
+  const filteredAlbumItems = albumItems.filter((img: IdAlbumItem) =>
     range(index - 15, index + 15).includes(albumItems.indexOf(img)),
   );
 
@@ -50,7 +50,7 @@ export default function ImageOverlay({
     return;
   }
 
-  let item = albumItems[index];
+  const item = albumItems[index];
 
   if (item.video) {
     setLoaded(true);
@@ -185,7 +185,7 @@ export default function ImageOverlay({
             <motion.div initial={false} className="mx-auto mt-6 mb-6 flex aspect-1/1 h-14">
               <AnimatePresence initial={false}>
                 {filteredAlbumItems.map((thumbnailItem) => {
-                  let thumbnailIndex = albumItems.indexOf(thumbnailItem);
+                  const thumbnailIndex = albumItems.indexOf(thumbnailItem);
                   return (
                     <motion.button
                       initial={{

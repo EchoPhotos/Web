@@ -3,7 +3,7 @@ import { i18n } from '@utils/old/i18n-config';
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => {
-    lang;
+    return lang;
   });
 }
 export default function MdxLayout({ children }: { children: React.ReactNode }) {

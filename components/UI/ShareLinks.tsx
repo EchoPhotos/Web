@@ -72,7 +72,7 @@ export function ShareViaMail({ message }) {
 }
 
 export function ShareViaCopy({ message }) {
-  const onClick = (_) => {
+  const onClick = () => {
     navigator.clipboard.writeText(message).then(() => {
       alert(`Copied "${message}"!`);
     });
