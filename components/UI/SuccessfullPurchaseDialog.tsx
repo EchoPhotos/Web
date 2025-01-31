@@ -21,7 +21,7 @@ export function SuccessfullPurchaseDialog() {
     if (checkoutParam === 'purchased-premium') {
       setOpen(true);
     }
-  }, []);
+  }, [checkoutParam]);
 
   return (
     <Dialog

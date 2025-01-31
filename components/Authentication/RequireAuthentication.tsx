@@ -30,7 +30,7 @@ export default function RequireAuthentication({ children }) {
       params.delete('auth-code');
       router.replace(`?${params.toString()}`);
     }
-  }, [authState]);
+  }, [authState, authCodeQueryParameter, searchParams, router]);
 
   if (authState.userId) {
     return children;
