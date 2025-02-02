@@ -76,9 +76,7 @@ export async function uploadFileWithPreview(
     });
 
     // Wait for all uploads to complete
-    await Promise.all(
-      uploadTasks.map((task) => task.then()),
-    );
+    await Promise.all(uploadTasks.map((task) => task.then()));
 
     return;
   } catch (error) {

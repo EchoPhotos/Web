@@ -26,7 +26,7 @@ export default function CurrentDownloadProvider({ children }) {
   }, [albumId]);
 
   const album = useContext(AlbumContext);
-  
+
   if (download) {
     return <DownloadContext.Provider value={download}>{children}</DownloadContext.Provider>;
   } else if (error) {

@@ -256,7 +256,7 @@ export async function getAlbums(limit: number | undefined = undefined): Promise<
 }
 
 export async function getTokenForCode(code: string): Promise<string> {
-  const body = await get<{token: string}>(`/auth/codes/${code}/token`);
+  const body = await get<{ token: string }>(`/auth/codes/${code}/token`);
   return body.token;
 }
 
