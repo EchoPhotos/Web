@@ -27,7 +27,7 @@ export default function TestPage() {
       lastChange: 0,
       creator: '',
       members: [],
-      admins: [],
+      admins: []
     },
   };
 

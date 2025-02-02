@@ -1,6 +1,5 @@
 {
   "projects": {
-    "prod": "echo-photos",
-    "dev": "echo-photos-dev"
+    "default": "echo-photos-dev"
   }
 }
