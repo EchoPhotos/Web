@@ -9,7 +9,6 @@ import { IdAlbumItem, IdInvite } from '@Shared/Models';
 import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
 
-/* eslint-disable no-unused-vars */
 export interface SharedModalProps {
   index: number;
   domain: string;

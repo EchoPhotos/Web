@@ -77,7 +77,7 @@ export default function RegisterActionButton({
       );
 
       setVid(confirmationResult.verificationId);
-    } catch (error: any) {
+    } catch (error) {
       alert(`${error}. Please try again!`);
     }
   };
@@ -96,7 +96,7 @@ export default function RegisterActionButton({
 
         await getOrRegisterUser(name);
         action();
-      } catch (error: any) {
+      } catch (error) {
         console.log(error);
         if (error.message == 'INVALID_CODE') {
           alert('This code is invalid.  Check you are entering the correct code.');

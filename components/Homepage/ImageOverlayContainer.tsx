@@ -18,7 +18,7 @@ export default function ImageOverlayContainer({
   domain: string;
   onClose: (string) => void;
 }) {
-  const overlayRef: any = useRef(null);
+  const overlayRef = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
