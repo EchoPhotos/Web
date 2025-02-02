@@ -25,7 +25,7 @@ const firebaseConfigProd: FirebaseOptions = {
 };
 
 function currentConfig() {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV !== 'development') {
     return firebaseConfigDev;
   }
   return firebaseConfigProd;

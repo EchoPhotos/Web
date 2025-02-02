@@ -6,6 +6,7 @@ export async function generateStaticParams() {
     return lang;
   });
 }
+
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
   return <Section title="Test">{children}</Section>;

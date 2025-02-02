@@ -26,7 +26,7 @@ export default function AlbumPreview(props: {
   lang: string;
 }) {
   const searchParams = useSearchParams();
-  const selectedItemId = searchParams.get('itemId');
+  const selectedItemId = searchParams.get("itemId");
   const data = props.data;
   const fullInviteId = data.invite.id;
   const itemId = selectedItemId;
@@ -40,7 +40,7 @@ export default function AlbumPreview(props: {
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     const currentRef = lastViewedPhotoRef.current;
     if (lastViewedPhoto && !itemId && currentRef) {
-      currentRef.scrollIntoView({ block: 'center' });
+      currentRef.scrollIntoView({ block: "center" });
       // setLastViewedPhoto(null);
     }
   }, [itemId, lastViewedPhoto, setLastViewedPhoto]);
@@ -86,7 +86,9 @@ export default function AlbumPreview(props: {
                 items={data.items}
                 initialRegion={data.albumMapRegion}
                 onItemSelect={(item) => {
-                  router.push(`/${props.lang}/invite/${data.invite.id}?itemId=${item.id}`);
+                  router.push(
+                    `/${props.lang}/invite/${data.invite.id}?itemId=${item.id}`
+                  );
                 }}
               />
             </div>
@@ -95,7 +97,10 @@ export default function AlbumPreview(props: {
           {data.items.map((albumItem) => {
             const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
             return (
-              <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined} key={albumItem.id}>
+              <div
+                ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined}
+                key={albumItem.id}
+              >
                 <GridImage
                   lang={props.lang}
                   domain={data.domain}
