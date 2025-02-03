@@ -25,6 +25,12 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  console.info("Next.js request", {
+    method: request.method,
+    url: request.nextUrl.pathname,
+    headers: Object.fromEntries(request.headers),
+  });
+
   // TODO: this is maybe not needed as set in matcher (exported below)
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   if (['/manifest.json', 'webmanifest', '/images', '.png', '/favicon.ico'].includes(pathname)) {
