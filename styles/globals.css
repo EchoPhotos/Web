@@ -52,3 +52,19 @@
 .btn-danger {
   @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
 }
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+}

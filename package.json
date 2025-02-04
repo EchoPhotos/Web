@@ -1,8 +1,7 @@
 {
-  "name": "echo-photos-web",
-  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "format": "npx prettier . --write"
@@ -47,6 +46,7 @@
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "remark-gfm": "^4.0.0",
     "tailwindcss": "^4.0.2"
   },
   "overrides": {
