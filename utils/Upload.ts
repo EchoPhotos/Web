@@ -42,14 +42,25 @@ export async function uploadFileWithPreview(
     const originalUploadTask = uploadBytesResumable(
       ref(storage, `uploads/${upload.uploadId}/original.jpg`),
       arrayBuffer,
+      {
+        contentType: upload.file.type || 'image/jpeg' // Ensure the MIME type is set
+      },
     );
+
     const thumbnailUploadTask = uploadBytesResumable(
       ref(storage, `uploads/${upload.uploadId}/thumbnail.jpg`),
       thumbnailBuffer,
+      {
+        contentType: 'image/jpeg' // Ensure the MIME type is set
+      },
     );
+
     const previewUploadTask = uploadBytesResumable(
       ref(storage, `uploads/${upload.uploadId}/preview.jpg`),
       previewBuffer,
+      {
+        contentType: 'image/jpeg' // Ensure the MIME type is set
+      },
     );
 
     const uploadTasks = [originalUploadTask, thumbnailUploadTask, previewUploadTask];
