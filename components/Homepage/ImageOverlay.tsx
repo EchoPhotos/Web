@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { variants } from '@utils/old/animationVariants';
 import downloadPhoto from '@utils/old/downloadPhoto';
@@ -51,9 +51,11 @@ export default function ImageOverlay({
 
   const item = albumItems[index];
 
-  if (item.video) {
-    setLoaded(true);
-  }
+  useEffect(() => {
+    if (item.video) {
+      setLoaded(true);
+    }
+  }, [item.video]);
 
   return (
     <MotionConfig
