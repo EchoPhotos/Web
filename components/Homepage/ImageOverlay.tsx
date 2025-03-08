@@ -39,17 +39,17 @@ export default function ImageOverlay({
     range(index - 15, index + 15).includes(albumItems.indexOf(img)),
   );
 
-  const handlers = useSwipeable({
-    onSwipedLeft: goToNext,
-    onSwipedRight: goToPrevious,
-    trackMouse: true,
-  });
-
   if (albumItems.length <= index) {
     return;
   }
 
   const item = albumItems[index];
+
+  const handlers = useSwipeable({
+    onSwipedLeft: goToNext,
+    onSwipedRight: goToPrevious,
+    trackMouse: true,
+  });
 
   useEffect(() => {
     if (item.video) {
@@ -83,9 +83,8 @@ export default function ImageOverlay({
                 {item.video && (
                   <div className="flex h-full w-full items-center justify-center">
                     <video
-                      className="h-4/5"
-                      width="800"
-                      height="500"
+                      className="h-full z-50"
+           
                       controls
                       autoPlay
                       preload="auto"
