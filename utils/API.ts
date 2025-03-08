@@ -50,7 +50,6 @@ export async function fetchInvite(inviteId: string): Promise<IdInvite> {
   const inviteResponse: Response = await fetch(inviteURL, { next: { revalidate: 60 } });
   if (!inviteResponse.ok) {
     notFound();
-    throw new Error('Failed to fetch invite data');
   }
   return await inviteResponse.json();
 }
