@@ -33,7 +33,6 @@ export async function uploadFileWithPreview(
   upload: FileUpload,
   onProgress: (progress: number) => void,
 ) {
-  try {
     const image = await getImage(upload.file);
     const arrayBuffer = await upload.file.arrayBuffer();
     const thumbnailBuffer = getThumbnailBuffer(image);
