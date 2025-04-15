@@ -21,9 +21,7 @@ const playfairFont = Playfair_Display({ subsets: ['latin'] });
 const titleFont = playfairFont;
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => {
-    return lang;
-  });
+  return i18n.locales;
 }
 
 export default async function WeddingPage(props) {

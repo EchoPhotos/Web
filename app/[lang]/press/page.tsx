@@ -5,10 +5,9 @@ import { i18n } from '@utils/old/i18n-config';
 import { getDictionary } from '@utils/dictionary';
 
 export async function generateStaticParams() {
-  return i18n.locales.map((lang) => {
-    return lang;
-  });
+  return i18n.locales;
 }
+
 export default async function PressPage(props) {
   const params = await props.params;
   const dicts = await getDictionary(params.lang);

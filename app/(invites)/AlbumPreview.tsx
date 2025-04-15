@@ -29,7 +29,6 @@ export default function AlbumPreview(props: {
   const selectedItemId = searchParams.get('itemId');
   const data = props.data;
   const fullInviteId = data.invite.id;
-  const itemId = selectedItemId;
   const inviteCode = fullInviteId.substring(0, 8);
 
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
@@ -39,18 +38,18 @@ export default function AlbumPreview(props: {
   useEffect(() => {
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     const currentRef = lastViewedPhotoRef.current;
-    if (lastViewedPhoto && !itemId && currentRef) {
+    if (lastViewedPhoto && !selectedItemId && currentRef) {
       currentRef.scrollIntoView({ block: 'center' });
       // setLastViewedPhoto(null);
     }
-  }, [itemId, lastViewedPhoto, setLastViewedPhoto]);
+  }, [selectedItemId, lastViewedPhoto, setLastViewedPhoto]);
 
   const router = useRouter();
 
   return (
     <AuthStateProvider>
       <div className="min-h-screen bg-black p-1">
-        {itemId && (
+        {selectedItemId && (
           <ImageOverlayContainer
             invite={data.invite}
             domain={data.domain}
