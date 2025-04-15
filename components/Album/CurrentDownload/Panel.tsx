@@ -15,7 +15,7 @@ import InfoBox from '@components/Download/InfoBox';
 import Spinner from '@components/UI/Spinner';
 import { AlbumContext } from 'provider/AlbumProvider';
 import { DownloadContext } from 'provider/DownloadProvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 export default function Panel() {
   const download = useContext(DownloadContext);
@@ -37,6 +37,15 @@ export default function Panel() {
     alert('Copied to clipboard!');
   }
 
+  useEffect(() => {
+    if (!download.ready) {
+      const interval = setInterval(() => {
+        location.reload();
+      }, 10000);
+      return () => clearInterval(interval);
+    }
+  }, []);
+
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-3 overflow-scroll px-2 py-16">
       {download.isOutdated && (
@@ -57,11 +66,12 @@ export default function Panel() {
             <Spinner />
             <h5 className="text-lg font-bold">Creating link..</h5>
             <Button
+              className="cursor-pointer rounded bg-gray-300 px-1 text-sm hover:bg-gray-200 transition text-gray-500"
               onClick={() => {
                 location.reload();
               }}
             >
-              Check again
+              Check now
             </Button>
           </VStack>
         </div>

@@ -11,10 +11,19 @@ import Spinner from '@components/UI/Spinner';
 import Banner from '@components/Banner';
 import { Button } from '@headlessui/react';
 import { DownloadContext } from 'provider/DownloadProvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 export default function DownloadLinkPanel() {
   const download = useContext(DownloadContext);
+    
+  useEffect(() => {
+      if (!download.ready) {
+        const interval = setInterval(() => {
+          location.reload();
+        }, 10000);
+        return () => clearInterval(interval);
+      }
+    }, []);
 
   const disabledDownload = (
     <Banner
@@ -39,11 +48,12 @@ export default function DownloadLinkPanel() {
         <Spinner />
         <h5 className="text-lg font-bold">Creating link..</h5>
         <Button
+          className="cursor-pointer rounded bg-gray-300 px-1 text-sm text-gray-500 transition hover:bg-gray-200"
           onClick={() => {
             location.reload();
           }}
         >
-          Check again
+          Check now
         </Button>
       </VStack>
     </div>
