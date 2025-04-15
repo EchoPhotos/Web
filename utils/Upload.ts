@@ -43,7 +43,7 @@ export async function uploadFileWithPreview(
       ref(storage, `uploads/${upload.uploadId}/original.jpg`),
       arrayBuffer,
       {
-        contentType: upload.file.type || 'image/jpeg' // Ensure the MIME type is set
+        contentType: upload.file.type || 'image/jpeg', // Ensure the MIME type is set
       },
     );
 
@@ -51,7 +51,7 @@ export async function uploadFileWithPreview(
       ref(storage, `uploads/${upload.uploadId}/thumbnail.jpg`),
       thumbnailBuffer,
       {
-        contentType: 'image/jpeg' // Ensure the MIME type is set
+        contentType: 'image/jpeg', // Ensure the MIME type is set
       },
     );
 
@@ -59,7 +59,7 @@ export async function uploadFileWithPreview(
       ref(storage, `uploads/${upload.uploadId}/preview.jpg`),
       previewBuffer,
       {
-        contentType: 'image/jpeg' // Ensure the MIME type is set
+        contentType: 'image/jpeg', // Ensure the MIME type is set
       },
     );
 

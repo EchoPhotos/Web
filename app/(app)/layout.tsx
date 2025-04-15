@@ -14,7 +14,15 @@ export default function RootLayout({ children }) {
           <div className="justify-top flex h-screen flex-col items-center md:justify-center">
             <div className="min-h-3/4 w-full md:h-3/4 md:w-3/4">
               <div className="h-full w-full bg-white pb-7 shadow-md md:rounded-3xl md:pb-0">
-                <Suspense fallback={<VCenter><Spinner/></VCenter>}>{children}</Suspense>
+                <Suspense
+                  fallback={
+                    <VCenter>
+                      <Spinner />
+                    </VCenter>
+                  }
+                >
+                  {children}
+                </Suspense>
               </div>
             </div>
           </div>

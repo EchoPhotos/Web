@@ -6,8 +6,6 @@ export async function generateStaticParams() {
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-8 text-gray-800 md:px-12">
-      {children}
-    </article>
+    <article className="mx-auto max-w-3xl px-6 py-8 text-gray-800 md:px-12">{children}</article>
   );
 }

@@ -83,8 +83,7 @@ export default function ImageOverlay({
                 {item.video && (
                   <div className="flex h-full w-full items-center justify-center">
                     <video
-                      className="h-full z-50"
-           
+                      className="z-50 h-full"
                       controls
                       autoPlay
                       preload="auto"

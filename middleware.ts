@@ -25,7 +25,7 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  console.info("Next.js request", {
+  console.info('Next.js request', {
     method: request.method,
     url: request.nextUrl.pathname,
     headers: Object.fromEntries(request.headers),

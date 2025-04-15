@@ -16,15 +16,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <VStack className="w-full h-full items-center justify-center space-y-3">
+    <VStack className="h-full w-full items-center justify-center space-y-3">
       <h1 className="text-4xl font-black">Oops 😵‍💫</h1>
       <h2 className="text-lg">Something went wrong!</h2>
-      <button
-        className="btn btn-primary"
-        onClick={
-          () => reset()
-        }
-      >
+      <button className="btn btn-primary" onClick={() => reset()}>
         Try again
       </button>
     </VStack>

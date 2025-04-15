@@ -6,7 +6,9 @@ import { i18n } from '@utils/old/i18n-config';
 import browser from '@images/browser.jpg';
 import macOS from '@images/macOS.jpg';
 
-export async function generateStaticParams() { return i18n.locales; }
+export async function generateStaticParams() {
+  return i18n.locales;
+}
 
 export default async function HomePage(props) {
   const params = await props.params;
