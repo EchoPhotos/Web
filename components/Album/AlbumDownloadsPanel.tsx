@@ -22,7 +22,7 @@ export default function AlbumDownloadsPanel() {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-3 bg-slate-300 px-12 pt-12">
-      <h1 className="text-2xl font-semibold">Download Links</h1>
+      <h1 className="text-2xl font-semibold">Download links</h1>
       <Button onClick={undefined}>Test</Button>
       <DownloadList downloads={downloads} />
     </div>

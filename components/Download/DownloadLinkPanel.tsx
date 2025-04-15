@@ -79,7 +79,7 @@ export default function DownloadLinkPanel() {
 
       <div className="max-w-lg p-6">
         <h3 className="text-3xl font-bold">{download.albumData?.name ?? 'Album'}</h3>
-        <h5 className="pt-5 font-semibold">Download Link</h5>
+        <h5 className="pt-5 font-semibold">Download link</h5>
         {download.byteSize && <p className="pb-4">{formatAsBytes(download.byteSize ?? 0)}</p>}
         {download.itemCount && (
           <p className="pb-1">
