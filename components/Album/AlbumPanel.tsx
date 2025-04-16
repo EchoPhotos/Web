@@ -1,7 +1,7 @@
 'use client';
 
 import { IdAlbum } from '@Shared/Models';
-import { IoCalendar, IoCreate, IoImages, IoPersonCircle } from 'react-icons/io5';
+import { IoCalendar, IoCreate, IoImages, IoPersonCircle, IoScan } from 'react-icons/io5';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PremiumButton } from './PremiumButton';
@@ -116,26 +116,58 @@ export function DesktopAlbumPanel({ album }: { album: IdAlbum }) {
           <IoCreate className="w-8" />
         </div>
 
-        {(album.eventStart && album.eventEnd) ||
-          (album.cachedEarliestTimestamp && album.cachedLatestTimestamp && (
-            <div className="flex items-center text-xs">
-              <VStack>
-                <p>
-                  {new Date(
-                    album.eventStart ?? album.cachedEarliestTimestamp ?? album.created,
-                  ).toLocaleString(undefined, options)}{' '}
-                  -
-                </p>
-                {new Date(
-                  album.eventEnd ?? album.cachedLatestTimestamp ?? album.created,
-                ).toLocaleString(undefined, options)}
-              </VStack>
-              <IoCalendar className="w-8" />
-            </div>
-          ))}
+        <AlbumEventRange album={album} />
       </div>
 
       <PremiumButton album={album} />
     </div>
   );
+}
+
+interface DateRange {
+  start: Date;
+  end: Date;
+}
+
+function DateRange({ dateRange }: { dateRange: DateRange }) {
+  return (
+    <VStack>
+      <p>{new Date(dateRange.start).toLocaleString(undefined, options)} -</p>
+      {new Date(dateRange.end).toLocaleString(undefined, options)}
+    </VStack>
+  );
+}
+
+function EventDateRange({ dateRange }: { dateRange: DateRange }) {
+  return (
+    <div className="flex items-center text-xs">
+      <DateRange dateRange={dateRange} />
+      <IoCalendar className="w-8" />
+    </div>
+  );
+}
+
+function ContentDateRange({ dateRange }: { dateRange: DateRange }) {
+  return (
+    <div className="flex items-center text-xs">
+      <DateRange dateRange={dateRange} />
+      <IoScan className="w-8" />
+    </div>
+  );
+}
+
+function AlbumEventRange({ album }: { album: IdAlbum }) {
+  if (album.eventStart && album.eventEnd) {
+    const dateRange: DateRange = {
+      start: new Date(album.eventStart),
+      end: new Date(album.eventEnd),
+    };
+    return <EventDateRange dateRange={dateRange}/>;
+  } else if (album.cachedEarliestTimestamp && album.cachedLatestTimestamp) {
+    const dateRange: DateRange = {
+      start: new Date(album.cachedEarliestTimestamp),
+      end: new Date(album.cachedLatestTimestamp),
+    };
+    return <ContentDateRange dateRange={dateRange} />;
+  }
 }
