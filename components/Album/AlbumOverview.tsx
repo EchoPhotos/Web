@@ -24,10 +24,7 @@ export default function AlbumOverview() {
       .then((invite) => {
         const link = `/links/${invite.code ?? invite.id}`;
 
-        setTimeout(() => {
-          router.push(link);
-          setCrreatingLink(false);
-        }, 0);
+        router.push(link);
       })
       .catch(() => {
         setCrreatingLink(false);
