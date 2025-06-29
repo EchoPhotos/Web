@@ -3,7 +3,7 @@
 import CachedImage from '@components/UI/CachedImage';
 import { dateString } from '@utils/Formatting';
 import { ImageFormat } from '@utils/ImageCache';
-import { IdAlbum } from '@Shared/Models';
+import { IdAlbum } from 'app/Models';
 import { IoImages, IoPersonCircle } from 'react-icons/io5';
 
 export default function AlbumRow({ album }: { album: IdAlbum }) {

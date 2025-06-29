@@ -1,7 +1,7 @@
 'use client';
 
 import { createDownloadLink } from '@utils/API';
-import { IdAlbum } from '@Shared/Models';
+import { IdAlbum } from 'app/Models';
 import { IoArrowDownCircleOutline } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import DownloadLimit from '../../Warnings/DownloadLimit';

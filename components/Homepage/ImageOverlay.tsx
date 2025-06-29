@@ -5,7 +5,7 @@ import { variants } from '@utils/old/animationVariants';
 import downloadPhoto from '@utils/old/downloadPhoto';
 import { range } from '@utils/old/range';
 import * as IoIcons from 'react-icons/io5';
-import { IdAlbumItem, IdInvite } from '@Shared/Models';
+import { IdAlbumItem, IdInvite } from 'app/Models';
 import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
 

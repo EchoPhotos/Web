@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { getUser, registerUser } from '@utils/API';
-import { User } from '@Shared/Models';
+import { User } from 'app/Models';
 import { Button, Dialog, DialogBackdrop, DialogPanel, Input } from '@headlessui/react';
 import { VStack } from '@components/UI/Components';
 import Logo from '@components/UI/Logo';

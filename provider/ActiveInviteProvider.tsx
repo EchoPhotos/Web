@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { InviteContext } from './InviteProvider';
-import { IdInvite } from '@Shared/Models';
+import { IdInvite } from 'app/Models';
 
 export default function ActiveInviteProvider({ children }) {
   const params = useParams();

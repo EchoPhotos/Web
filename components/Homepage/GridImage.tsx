@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import * as IoIcons from 'react-icons/io5';
-import { IdAlbumItem } from '@Shared/Models';
+import { IdAlbumItem } from 'app/Models';
 import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
 

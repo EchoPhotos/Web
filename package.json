@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack --port 3006",
     "build": "next build",
     "start": "next start",
     "format": "npx prettier . --write"

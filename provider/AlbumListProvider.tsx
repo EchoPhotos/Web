@@ -1,7 +1,7 @@
 'use client';
 
 import { getAlbums } from '@utils/API';
-import { IdAlbum } from '@Shared/Models';
+import { IdAlbum } from 'app/Models';
 import React from 'react';
 import { useEffect, useState } from 'react';
 

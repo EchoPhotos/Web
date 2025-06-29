@@ -2,7 +2,7 @@
 
 import Spinner from '@components/UI/Spinner';
 import { getCurrentAlbumDownload } from '@utils/API';
-import { IdDownload } from '@Shared/Models';
+import { IdDownload } from 'app/Models';
 import { useParams } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 import { DownloadContext } from './DownloadProvider';

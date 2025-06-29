@@ -1,7 +1,7 @@
 'use client';
 
 import { formatAsBytes, dateString } from '@utils/Formatting';
-import { IdDownload } from '@Shared/Models';
+import { IdDownload } from 'app/Models';
 import * as Icons from 'react-icons/io5';
 
 export default function DownloadRow({ download }: { download: IdDownload }) {

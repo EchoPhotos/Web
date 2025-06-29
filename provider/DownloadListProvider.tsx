@@ -2,7 +2,7 @@
 
 import Spinner from '@components/UI/Spinner';
 import { getDownloads } from '@utils/API';
-import { IdDownload } from '@Shared/Models';
+import { IdDownload } from 'app/Models';
 
 import { useParams } from 'next/navigation';
 import React from 'react';
