@@ -25,10 +25,8 @@ const nextConfig = {
 };
 
 const withMDX = createMDX({
-  options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
-  },
+  remarkPlugins: [remarkGfm],
+  rehypePlugins: [],
 });
 
 // Merge MDX config with Next.js config
