@@ -2,7 +2,7 @@
 
 import { getAPIHost } from '@utils/Environment';
 import { dateString, formatAsBytes } from '@utils/Formatting';
-import { IdDownload } from '@Shared/Models';
+import { IdDownload } from 'app/Models';
 import Link from 'next/link';
 import { IoArrowDownCircle, IoBan, IoWarning } from 'react-icons/io5';
 import Image from 'next/image';

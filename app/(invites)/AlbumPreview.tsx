@@ -9,7 +9,7 @@ import { useLastViewedPhoto } from '@utils/old/useLastViewedPhoto';
 import ItemMap from '@components/Homepage/ItemMap';
 import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { IdAlbumItem, IdInvite } from '@Shared/Models';
+import { IdAlbumItem, IdInvite } from 'app/Models';
 import AuthStateProvider from 'provider/AuthStateProvider';
 import { HStack } from '@components/UI/Components';
 

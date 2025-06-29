@@ -3,7 +3,7 @@
 import ErrorBox from '@components/UI/ErrorBox';
 import Spinner from '@components/UI/Spinner';
 import { getInvite } from '@utils/API';
-import { IdInvite } from '@Shared/Models';
+import { IdInvite } from 'app/Models';
 
 import { useParams } from 'next/navigation';
 import React from 'react';

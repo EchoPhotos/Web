@@ -1,7 +1,7 @@
 'use client';
 
 import PanelView from '@components/UI/PanelView';
-import { IdAlbum, IdDownloadWithAlbum, IdInvite } from '@Shared/Models';
+import { IdAlbum, IdDownloadWithAlbum, IdInvite } from 'app/Models';
 import AlbumPanel from '@components/Album/AlbumPanel';
 import { AlbumContext } from 'provider/AlbumProvider';
 import { InviteContext } from 'provider/InviteProvider';

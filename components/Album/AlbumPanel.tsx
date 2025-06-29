@@ -1,6 +1,6 @@
 'use client';
 
-import { IdAlbum } from '@Shared/Models';
+import { IdAlbum } from 'app/Models';
 import { IoCalendar, IoCreate, IoImages, IoPersonCircle, IoScan } from 'react-icons/io5';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

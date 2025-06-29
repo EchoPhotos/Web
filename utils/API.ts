@@ -9,7 +9,7 @@ import {
   NewAlbum,
   UploadMetadata,
   User,
-} from '@Shared/Models';
+} from 'app/Models';
 import { ImageFormat } from './ImageCache';
 import debugBeep from './Beep';
 import { notFound } from 'next/navigation';

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { KeyboardEvent, useRef, useState } from 'react';
 import ImageOverlay from './ImageOverlay';
-import { IdAlbumItem, IdInvite } from '@Shared/Models';
+import { IdAlbumItem, IdInvite } from 'app/Models';
 
 export default function ImageOverlayContainer({
   items: albumItems,
