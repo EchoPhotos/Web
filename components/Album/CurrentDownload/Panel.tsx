@@ -66,7 +66,7 @@ export default function Panel() {
             <Spinner />
             <h5 className="text-lg font-bold">Creating link..</h5>
             <Button
-              className="cursor-pointer rounded bg-gray-300 px-1 text-sm hover:bg-gray-200 transition text-gray-500"
+              className="cursor-pointer rounded bg-gray-300 px-1 text-sm text-gray-500 transition hover:bg-gray-200"
               onClick={() => {
                 location.reload();
               }}

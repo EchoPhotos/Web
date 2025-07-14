@@ -3,7 +3,6 @@ import '@/styles/style.css';
 import '@/styles/globals.css';
 import { getDictionary } from '@utils/dictionary';
 
-
 import { Metadata } from 'next';
 import { getAlbum, getInvite } from '@utils/API';
 
@@ -12,9 +11,11 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
   try {
     const invite = await getInvite(inviteId);
-    
+
     const title = `${invite.groupName} - Echo Photos`;
-    const description = invite.groupDescription || `Join ${invite.groupName} on Echo Photos to view and share photos together.`;
+    const description =
+      invite.groupDescription ||
+      `Join ${invite.groupName} on Echo Photos to view and share photos together.`;
     const absoluteUrl = `https://www.echophotos.io/${lang}/invites/${inviteId}`;
     const imageURL = `https://www.echophotos.io/api/v1/images/${invite.groupImage}`;
 
@@ -75,7 +76,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             width: 300,
             height: 300,
             alt: 'Echo Photos',
-          }
+          },
         ],
       },
       robots: {

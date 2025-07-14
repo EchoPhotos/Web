@@ -15,15 +15,15 @@ import { useContext, useEffect } from 'react';
 
 export default function DownloadLinkPanel() {
   const download = useContext(DownloadContext);
-    
+
   useEffect(() => {
-      if (!download.ready) {
-        const interval = setInterval(() => {
-          location.reload();
-        }, 10000);
-        return () => clearInterval(interval);
-      }
-    }, []);
+    if (!download.ready) {
+      const interval = setInterval(() => {
+        location.reload();
+      }, 10000);
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   const disabledDownload = (
     <Banner

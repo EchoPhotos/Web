@@ -162,7 +162,7 @@ function AlbumEventRange({ album }: { album: IdAlbum }) {
       start: new Date(album.eventStart),
       end: new Date(album.eventEnd),
     };
-    return <EventDateRange dateRange={dateRange}/>;
+    return <EventDateRange dateRange={dateRange} />;
   } else if (album.cachedEarliestTimestamp && album.cachedLatestTimestamp) {
     const dateRange: DateRange = {
       start: new Date(album.cachedEarliestTimestamp),
