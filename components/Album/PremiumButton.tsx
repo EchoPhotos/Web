@@ -2,13 +2,13 @@
 
 import Spinner from '@components/UI/Spinner';
 import { getCheckoutURL } from '@utils/API';
-import { IdAlbum } from 'app/Models';
+import { Album } from 'app/Models';
 import { Button } from '@headlessui/react';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
-export function PremiumButton({ album }: { album: IdAlbum }) {
+export function PremiumButton({ album }: { album: Album }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();

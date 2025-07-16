@@ -2,10 +2,10 @@ import axios from 'axios';
 import { getToken } from './Auth';
 import { getAPIHost } from './Environment';
 import {
-  IdAlbum,
-  IdAlbumItem,
+  Album,
+  AlbumItem,
   IdDownload,
-  IdInvite,
+  Invite,
   NewAlbum,
   UploadMetadata,
   User,
@@ -29,7 +29,7 @@ export async function getDomain() {
 }
 
 // Server-side
-export async function fetchItemsForInvite(inviteId: string): Promise<IdAlbumItem[]> {
+export async function fetchItemsForInvite(inviteId: string): Promise<AlbumItem[]> {
   const domain = await getDomain();
 
   const itemsURL = `${domain}/api/v1/invites/${inviteId}/items`;
@@ -39,12 +39,12 @@ export async function fetchItemsForInvite(inviteId: string): Promise<IdAlbumItem
   if (!itemsResponse.ok) {
     throw new Error('Failed to fetch items data');
   }
-  const items: IdAlbumItem[] = await itemsResponse.json();
+  const items: AlbumItem[] = await itemsResponse.json();
   return items;
 }
 
 // Server-side
-export async function fetchInvite(inviteId: string): Promise<IdInvite> {
+export async function fetchInvite(inviteId: string): Promise<Invite> {
   const domain = await getDomain();
   const inviteURL = `${domain}/api/v1/invites/${inviteId}`;
   const inviteResponse: Response = await fetch(inviteURL, { next: { revalidate: 60 } });
@@ -98,8 +98,8 @@ export async function registerUser(data: { name: string }): Promise<User> {
 export async function addUploadToAlbum(
   metadata: UploadMetadata,
   albumId: string,
-): Promise<IdAlbumItem> {
-  const item: IdAlbumItem = await postAuthorized(`/albums/${albumId}/items`, metadata);
+): Promise<AlbumItem> {
+  const item: AlbumItem = await postAuthorized(`/albums/${albumId}/items`, metadata);
   return item;
 }
 
@@ -197,12 +197,12 @@ async function deleteAuthorized<T>(path: string): Promise<T> {
   return response.data as T;
 }
 
-export async function getAlbum(id: string): Promise<IdAlbum> {
-  return getAuthorized<IdAlbum>(`/albums/${id}`);
+export async function getAlbum(id: string): Promise<Album> {
+  return getAuthorized<Album>(`/albums/${id}`);
 }
 
-export async function getNewestAlbum(): Promise<IdAlbum | undefined> {
-  const albums: IdAlbum[] = await getAuthorized<IdAlbum[]>(`/albums?limit=1`);
+export async function getNewestAlbum(): Promise<Album | undefined> {
+  const albums: Album[] = await getAuthorized<Album[]>(`/albums?limit=1`);
   if (albums.length > 0) {
     return albums[0];
   } else {
@@ -237,12 +237,12 @@ export async function getDownloads(albumId: string): Promise<IdDownload[]> {
   return getAuthorized<IdDownload[]>(`/albums/${albumId}/downloads`);
 }
 
-export async function getAlbumItems(albumId: string): Promise<IdAlbumItem[]> {
-  return getAuthorized<IdAlbumItem[]>(`/albums/${albumId}/items`);
+export async function getAlbumItems(albumId: string): Promise<AlbumItem[]> {
+  return getAuthorized<AlbumItem[]>(`/albums/${albumId}/items`);
 }
 
-export async function getAlbums(limit: number | undefined = undefined): Promise<IdAlbum[]> {
-  const albums = await getAuthorized<IdAlbum[]>('/albums', limit ? { limit: limit } : undefined);
+export async function getAlbums(limit: number | undefined = undefined): Promise<Album[]> {
+  const albums = await getAuthorized<Album[]>('/albums', limit ? { limit: limit } : undefined);
 
   return albums.sort((a, b) => {
     if (a.lastChange < b.lastChange) {
@@ -259,23 +259,23 @@ export async function getTokenForCode(code: string): Promise<string> {
   return body.token;
 }
 
-export async function joinAlbum(inviteId: string): Promise<IdAlbum> {
+export async function joinAlbum(inviteId: string): Promise<Album> {
   return postAuthorized(`/invites/${inviteId}/join`, undefined);
 }
 
-export async function getActiveAlbumInvite(id: string): Promise<IdInvite> {
-  return getAuthorized<IdInvite>(`/albums/${id}/invites/active`);
+export async function getActiveAlbumInvite(id: string): Promise<Invite> {
+  return getAuthorized<Invite>(`/albums/${id}/invites/active`);
 }
 
-export async function getViewOnlyInvite(id: string): Promise<IdInvite> {
-  return getAuthorized<IdInvite>(`/albums/${id}/invites/public-code`);
+export async function getViewOnlyInvite(id: string): Promise<Invite> {
+  return getAuthorized<Invite>(`/albums/${id}/invites/public-code`);
 }
 
-export async function getInvite(id: string): Promise<IdInvite> {
-  return get<IdInvite>(`/invites/${id}`);
+export async function getInvite(id: string): Promise<Invite> {
+  return get<Invite>(`/invites/${id}`);
 }
 
-export async function createAlbum(data: NewAlbum): Promise<IdAlbum> {
+export async function createAlbum(data: NewAlbum): Promise<Album> {
   const token = await getToken();
   if (!token) {
     console.warn('User not authenticated');
@@ -289,7 +289,7 @@ export async function createAlbum(data: NewAlbum): Promise<IdAlbum> {
     if (response.status > 299) {
       throw Error('Creating Album failed');
     }
-    return response.data as IdAlbum;
+    return response.data as Album;
   } catch (error) {
     console.error('Failed to fetch current user!', error);
     throw error;

@@ -1,6 +1,6 @@
 'use client';
 
-import { IdAlbum } from 'app/Models';
+import { Album } from 'app/Models';
 import { IoCalendar, IoCreate, IoImages, IoPersonCircle, IoScan } from 'react-icons/io5';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -28,7 +28,7 @@ const options: Intl.DateTimeFormatOptions = {
   day: 'numeric',
 };
 
-export function MobileAlbumHeader({ album }: { album: IdAlbum }) {
+export function MobileAlbumHeader({ album }: { album: Album }) {
   const pathname = usePathname();
   return (
     <VStack>
@@ -81,7 +81,7 @@ export function MobileAlbumHeader({ album }: { album: IdAlbum }) {
   );
 }
 
-export function DesktopAlbumPanel({ album }: { album: IdAlbum }) {
+export function DesktopAlbumPanel({ album }: { album: Album }) {
   const pathname = usePathname();
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-3 px-12 pt-12 md:items-end">
@@ -156,7 +156,7 @@ function ContentDateRange({ dateRange }: { dateRange: DateRange }) {
   );
 }
 
-function AlbumEventRange({ album }: { album: IdAlbum }) {
+function AlbumEventRange({ album }: { album: Album }) {
   if (album.eventStart && album.eventEnd) {
     const dateRange: DateRange = {
       start: new Date(album.eventStart),

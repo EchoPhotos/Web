@@ -7,13 +7,13 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { InviteContext } from './InviteProvider';
-import { IdInvite } from 'app/Models';
+import { Invite } from 'app/Models';
 
 export default function ActiveInviteProvider({ children }) {
   const params = useParams();
   const albumId: string = params.albumId as string;
 
-  const [invite, setInvite] = useState<IdInvite | undefined>(undefined);
+  const [invite, setInvite] = useState<Invite | undefined>(undefined);
   const [error, setError] = useState<Error | undefined>(undefined);
 
   useEffect(() => {

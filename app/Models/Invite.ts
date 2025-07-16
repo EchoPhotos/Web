@@ -1,4 +1,4 @@
-export interface IdInvite {
+export interface Invite {
   id: string;
   group: string;
   timestamp: number;

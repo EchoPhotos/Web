@@ -3,7 +3,7 @@ import { AlbumPreviewData } from './AlbumPreview';
 import { CoordinateRegion } from 'mapkit-react';
 import ngeohash from 'ngeohash';
 import * as API from '@utils/API';
-import { IdAlbumItem } from 'app/Models';
+import { AlbumItem } from 'app/Models';
 
 export async function getData(inviteId: string): Promise<AlbumPreviewData> {
   const invite = await API.fetchInvite(inviteId);
@@ -20,7 +20,7 @@ export async function getData(inviteId: string): Promise<AlbumPreviewData> {
   };
 }
 
-function calculateCoordinateRegion(items: IdAlbumItem[]): CoordinateRegion | undefined {
+function calculateCoordinateRegion(items: AlbumItem[]): CoordinateRegion | undefined {
   if (items.length === 0) {
     return undefined;
   }

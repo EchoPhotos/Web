@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { KeyboardEvent, useRef, useState } from 'react';
 import ImageOverlay from './ImageOverlay';
-import { IdAlbumItem, IdInvite } from 'app/Models';
+import { AlbumItem, Invite } from 'app/Models';
 
 export default function ImageOverlayContainer({
   items: albumItems,
@@ -13,8 +13,8 @@ export default function ImageOverlayContainer({
   domain,
   onClose,
 }: {
-  items: IdAlbumItem[];
-  invite: IdInvite;
+  items: AlbumItem[];
+  invite: Invite;
   domain: string;
   onClose: (string) => void;
 }) {

@@ -1,7 +1,7 @@
 'use client';
 
 import PanelView from '@components/UI/PanelView';
-import { IdAlbum, IdDownloadWithAlbum, IdInvite } from 'app/Models';
+import { Album, IdDownloadWithAlbum, Invite } from 'app/Models';
 import AlbumPanel from '@components/Album/AlbumPanel';
 import { AlbumContext } from 'provider/AlbumProvider';
 import { InviteContext } from 'provider/InviteProvider';
@@ -31,7 +31,7 @@ export default function TestPage() {
     },
   };
 
-  const album: IdAlbum = {
+  const album: Album = {
     id: 'testAlbum',
     name: 'Test Album',
     creator: 'me',
@@ -45,7 +45,7 @@ export default function TestPage() {
     memberLimit: 1,
   };
 
-  const invite: IdInvite = {
+  const invite: Invite = {
     id: 'testdownload',
     group: 'testAlbum',
     timestamp: 0,

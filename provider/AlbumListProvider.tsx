@@ -1,19 +1,19 @@
 'use client';
 
 import { getAlbums } from '@utils/API';
-import { IdAlbum } from 'app/Models';
+import { Album } from 'app/Models';
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-export const AlbumListContext = React.createContext<IdAlbum[] | undefined>(undefined);
+export const AlbumListContext = React.createContext<Album[] | undefined>(undefined);
 
 export default function AlbumListProvider({ children }) {
-  const [albums, setAlbums] = useState<IdAlbum[] | undefined>(undefined);
+  const [albums, setAlbums] = useState<Album[] | undefined>(undefined);
 
   useEffect(() => {
     const cachedAlbumsString = localStorage.getItem('cached-albums');
     if (cachedAlbumsString) {
-      const cachedAlbums = JSON.parse(cachedAlbumsString) as IdAlbum[];
+      const cachedAlbums = JSON.parse(cachedAlbumsString) as Album[];
       setAlbums(cachedAlbums);
     }
     getAlbums(20).then((albums) => {

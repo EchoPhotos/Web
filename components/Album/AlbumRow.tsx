@@ -3,10 +3,10 @@
 import CachedImage from '@components/UI/CachedImage';
 import { dateString } from '@utils/Formatting';
 import { ImageFormat } from '@utils/ImageCache';
-import { IdAlbum } from 'app/Models';
+import { Album } from 'app/Models';
 import { IoImages, IoPersonCircle } from 'react-icons/io5';
 
-export default function AlbumRow({ album }: { album: IdAlbum }) {
+export default function AlbumRow({ album }: { album: Album }) {
   return (
     <div key={album.id} className="m-3 flex flex-row justify-between rounded-xs bg-slate-100 p-2">
       <div className="flex flex-row space-x-3">

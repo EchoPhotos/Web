@@ -5,15 +5,15 @@ import { variants } from '@utils/old/animationVariants';
 import downloadPhoto from '@utils/old/downloadPhoto';
 import { range } from '@utils/old/range';
 import * as IoIcons from 'react-icons/io5';
-import { IdAlbumItem, IdInvite } from 'app/Models';
+import { AlbumItem, Invite } from 'app/Models';
 import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
 
 export interface SharedModalProps {
   index: number;
   domain: string;
-  invite: IdInvite;
-  albumItems: IdAlbumItem[];
+  invite: Invite;
+  albumItems: AlbumItem[];
   currentPhoto?: string;
   goTo: (itemIdx: number) => void;
   closeModal: () => void;
@@ -35,7 +35,7 @@ export default function ImageOverlay({
 }: SharedModalProps) {
   const [loaded, setLoaded] = useState(false);
 
-  const filteredAlbumItems = albumItems.filter((img: IdAlbumItem) =>
+  const filteredAlbumItems = albumItems.filter((img: AlbumItem) =>
     range(index - 15, index + 15).includes(albumItems.indexOf(img)),
   );
 

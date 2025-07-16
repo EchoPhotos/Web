@@ -1,7 +1,7 @@
 'use client';
 
 import { createDownloadLink } from '@utils/API';
-import { IdAlbum } from 'app/Models';
+import { Album } from 'app/Models';
 import { IoArrowDownCircleOutline } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import DownloadLimit from '../../Warnings/DownloadLimit';
@@ -10,7 +10,7 @@ import { Button } from '@headlessui/react';
 import { SizeAdapted, VStack } from '@components/UI/Components';
 import { PremiumButton } from '../PremiumButton';
 
-export default function NoLink({ album }: { album: IdAlbum }) {
+export default function NoLink({ album }: { album: Album }) {
   const router = useRouter();
 
   async function createLink(albumId: string) {

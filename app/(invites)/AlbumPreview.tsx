@@ -9,13 +9,13 @@ import { useLastViewedPhoto } from '@utils/old/useLastViewedPhoto';
 import ItemMap from '@components/Homepage/ItemMap';
 import { CoordinateRegion } from 'mapkit-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { IdAlbumItem, IdInvite } from 'app/Models';
+import { AlbumItem, Invite } from 'app/Models';
 import AuthStateProvider from 'provider/AuthStateProvider';
 import { HStack } from '@components/UI/Components';
 
 export interface AlbumPreviewData {
-  invite: IdInvite;
-  items: IdAlbumItem[];
+  invite: Invite;
+  items: AlbumItem[];
   domain: string;
   albumMapRegion?: CoordinateRegion;
 }

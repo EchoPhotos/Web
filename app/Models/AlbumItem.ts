@@ -1,4 +1,4 @@
-export interface IdAlbumItem {
+export interface AlbumItem {
   id: string;
   uploader: string;
   group: string;

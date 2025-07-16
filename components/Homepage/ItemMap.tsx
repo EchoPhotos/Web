@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import ngeohash from 'ngeohash';
 import { Marker, Map, CoordinateRegion } from 'mapkit-react';
 import { current } from '@utils/ClientConfiguration';
-import { IdAlbumItem } from 'app/Models';
+import { AlbumItem } from 'app/Models';
 
 type Annotation = {
   latitude: number;
   longitude: number;
-  item: IdAlbumItem;
+  item: AlbumItem;
 };
 
 function ItemMap({
@@ -17,9 +17,9 @@ function ItemMap({
   initialRegion,
   onItemSelect,
 }: {
-  items: Omit<IdAlbumItem, 'id'>[];
+  items: Omit<AlbumItem, 'id'>[];
   initialRegion: CoordinateRegion;
-  onItemSelect?: (item: IdAlbumItem) => void;
+  onItemSelect?: (item: AlbumItem) => void;
 }) {
   const [annotations, setAnnotations] = useState<Annotation[]>([]);
 

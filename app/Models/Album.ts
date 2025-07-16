@@ -1,4 +1,4 @@
-export interface IdAlbum {
+export interface Album {
   id: string;
   name: string;
   description: string;
@@ -54,11 +54,11 @@ export interface IdAlbum {
   createdDownloadLinkCount?: number;
 }
 
-export function hasAvailableDownloadLink(album: Omit<IdAlbum, 'id'>): boolean {
+export function hasAvailableDownloadLink(album: Omit<Album, 'id'>): boolean {
   return (album.createdDownloadLinkCount ?? 0) < (album.downloadLinkLimit ?? 100);
 }
 
-export function getUsersNotifiedOnItemUpload(album: Omit<IdAlbum, 'id'>, eventAuthor: string) {
+export function getUsersNotifiedOnItemUpload(album: Omit<Album, 'id'>, eventAuthor: string) {
   const members = album.members;
   const muted = album.muted ?? [];
   return members.filter((member: string) => {

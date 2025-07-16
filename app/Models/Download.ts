@@ -1,4 +1,4 @@
-import { IdAlbum } from './Album';
+import { Album } from './Album';
 
 export interface Download {
   album: string;
@@ -17,5 +17,5 @@ export interface IdDownload extends Download {
 }
 
 export interface IdDownloadWithAlbum extends IdDownload {
-  albumData?: Omit<IdAlbum, 'id'>;
+  albumData?: Omit<Album, 'id'>;
 }
