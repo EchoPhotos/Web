@@ -2,11 +2,16 @@
 
 import { AlbumItemListContext } from 'provider/AlbumItemListProvider';
 import { useContext } from 'react';
+import { useSearchParams } from 'next/navigation';
 import AlbumItemGrid from '@components/Album/AlbumItemGrid';
 import Spinner from '@components/UI/Spinner';
+import AlbumImageOverlay from '@components/Album/AlbumImageOverlay';
 
 export default function Page() {
   const items = useContext(AlbumItemListContext);
+  const searchParams = useSearchParams();
+  const selectedItemId = searchParams.get('item');
+
   if (items) {
     if (items.length === 0) {
       return (
@@ -16,9 +21,17 @@ export default function Page() {
       );
     }
     return (
-      <div className='p-4 h-full w-full rounded-2xl '>
-        <AlbumItemGrid items={items} />
-      </div>
+      <>
+        <div className='p-4 h-full w-full rounded-2xl '>
+          <AlbumItemGrid items={items} />
+        </div>
+        {selectedItemId && (
+          <AlbumImageOverlay
+            items={items}
+            selectedItemId={selectedItemId}
+          />
+        )}
+      </>
     );
   }
   return <Spinner />;
