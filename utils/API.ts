@@ -311,3 +311,13 @@ export async function enableViewOnly(inviteId: string): Promise<void> {
 export async function disableViewOnly(inviteId: string): Promise<void> {
   return deleteAuthorized<void>(`/invites/${inviteId}/view-only`);
 }
+
+export async function getImagePublicUrl(imageId: string): Promise<string> {
+  const response = await getAuthorized<{ url: string }>(`/images/${imageId}/public-url`);
+  return response.url;
+}
+
+export async function getImageOriginalUrl(imageId: string, isVideo: boolean = false): Promise<string> {
+  const endpoint = isVideo ? 'video' : 'original';
+  return getAPIHost() + `/images/${imageId}/${endpoint}`;
+}

@@ -7,6 +7,7 @@ import * as IoIcons from 'react-icons/io5';
 import { AlbumItem } from 'app/Models';
 import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
+import ImageActionButtons from './ImageActionButtons';
 
 export interface AlbumImageOverlayProps {
   index: number;
@@ -128,24 +129,8 @@ export default function AlbumImageOverlayContent({
                 )}
               </>
 
-              <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
-                <a
-                  href={`/api/v1/images/${item.image}/${item.video ? 'video' : 'original'}`}
-                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-                  target="_blank"
-                  title="Open fullsize version"
-                  rel="noreferrer"
-                >
-                  <IoIcons.IoShareOutline className="h-5 w-5" />
-                </a>
-                <a
-                  href={`/api/v1/images/${item.image}/${item.video ? 'video' : 'original'}`}
-                  download
-                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-                  title="Download fullsize version"
-                >
-                  <IoIcons.IoArrowDownCircleOutline className="h-5 w-5" />
-                </a>
+              <div className="absolute top-0 right-0 p-3 text-white">
+                <ImageActionButtons item={item} index={index} />
               </div>
 
               <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
