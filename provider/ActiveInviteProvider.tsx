@@ -9,7 +9,7 @@ import React from 'react';
 import { InviteContext } from './InviteProvider';
 import { Invite } from 'app/Models';
 
-export default function ActiveInviteProvider({ children }) {
+export default function ActiveInviteProvider({ children }: { children: React.ReactNode }) {
   const params = useParams();
   const albumId: string = params.albumId as string;
 

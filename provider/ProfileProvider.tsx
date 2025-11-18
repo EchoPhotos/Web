@@ -22,23 +22,26 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
       const userId = authState.userId;
       const cachedProfileString = localStorage.getItem(userId);
       if (cachedProfileString) {
-        const cachedProfile = JSON.parse(cachedProfileString) as User;
-        setProfile(cachedProfile);
-        setLoading(false);
+        try {
+          const cachedProfile = JSON.parse(cachedProfileString) as User;
+          setProfile(cachedProfile);
+          setLoading(false);
+        } catch {
+          localStorage.removeItem(userId);
+        }
       }
 
       getUser()
-        .then((profile) => {
-          localStorage.setItem(userId, JSON.stringify(profile));
-          setProfile(profile);
+        .then((userProfile) => {
+          localStorage.setItem(userId, JSON.stringify(userProfile));
+          setProfile(userProfile);
           setLoading(false);
         })
-        .catch((error) => {
-          console.error(error);
+        .catch(() => {
           setLoading(false);
         });
     }
-  }, [authState, profile]);
+  }, [authState.userId, profile]);
 
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setUserName(event.target.value);

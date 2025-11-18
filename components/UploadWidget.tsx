@@ -81,6 +81,9 @@ export default function UploadWidget() {
       alert('Fatal Error: Album could not be determined!');
       return;
     }
+    if (pickedFiles.length === 0) {
+      return;
+    }
     const last = pickedFiles[pickedFiles.length - 1];
 
     const inviteId: string = params.inviteId as string;
@@ -95,7 +98,7 @@ export default function UploadWidget() {
           batch: batchId,
           batchSize: pickedFiles.length,
           id: upload.uploadId,
-          lastOfBatch: upload.uploadId == last.uploadId,
+          lastOfBatch: upload.uploadId === last.uploadId,
           originalFileName: upload.file.name,
         },
         loadedAlbumId,
@@ -113,19 +116,25 @@ export default function UploadWidget() {
   }
 
   async function uploadFiles(pickedFiles: FileUpload[]) {
-    if (!pickedFiles[0]) {
+    if (pickedFiles.length === 0) {
       alert('You must select at least one photo!');
-    } else {
-      setState(State.Uploading);
-      pickedFiles.forEach(async (upload, index) => {
-        await uploadFileWithPreview(upload, (progress) => {
-          const newFiles = [...pickedFiles];
-          newFiles[index].progress = progress;
-          const allComplete = newFiles.find((upload) => upload.progress >= 100);
+      return;
+    }
+
+    setState(State.Uploading);
+    setPickedFiles(pickedFiles);
+
+    for (let index = 0; index < pickedFiles.length; index++) {
+      const upload = pickedFiles[index];
+      await uploadFileWithPreview(upload, (progress) => {
+        setPickedFiles((prevFiles) => {
+          const newFiles = [...prevFiles];
+          newFiles[index] = { ...newFiles[index], progress };
+          const allComplete = newFiles.every((file) => file.progress >= 100);
           if (allComplete) {
             setState(State.AllUploaded);
           }
-          setPickedFiles(newFiles);
+          return newFiles;
         });
       });
     }
@@ -147,7 +156,7 @@ export default function UploadWidget() {
 
       <p className="py-5 text-3xl font-semibold">Upload photos</p>
 
-      {pickedFiles.length == 0 && <ImagePicker onFilePicked={onFilePicked} />}
+      {pickedFiles.length === 0 && <ImagePicker onFilePicked={onFilePicked} />}
 
       <VStack className="w-full items-end justify-center">
         {pickedFiles.length > 0 && (
@@ -158,14 +167,14 @@ export default function UploadWidget() {
         {fileList}
       </VStack>
 
-      {state == State.Uploading && (
+      {state === State.Uploading && (
         <HStack className="my-4 items-center rounded-lg bg-slate-500 p-2 px-4 text-white">
           <Spinner />
           Uploading..
         </HStack>
       )}
 
-      {!authState.userId && state != State.Idle && (
+      {!authState.userId && state !== State.Idle && (
         <div className="my-3 flex flex-col">
           <p className="mt-3 text-xs font-semibold text-slate-600">{strings.uploaderName}</p>
           <input
@@ -186,12 +195,12 @@ export default function UploadWidget() {
           />
         </div>
       )}
-      {state == State.AllUploaded && (
+      {state === State.AllUploaded && (
         <RegisterActionButton name={userName} phoneNumber={userPhone} action={completeUpload}>
           {strings.finishButton}
         </RegisterActionButton>
       )}
-      {state == State.UploadCompleted && (
+      {state === State.UploadCompleted && (
         <div className="w-full space-y-2" id="success">
           <div className="flex w-full justify-center">
             <p>{strings.uploadSuccessfulMessage}</p>
@@ -201,7 +210,7 @@ export default function UploadWidget() {
     </VStack>
   );
 
-  if (state == State.UploadCompleted) {
+  if (state === State.UploadCompleted) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center text-3xl text-green-500 transition">
         <IoCheckmarkCircle size={128} className="" />

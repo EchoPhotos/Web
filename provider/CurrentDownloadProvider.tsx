@@ -10,7 +10,7 @@ import ErrorBox from '@components/UI/ErrorBox';
 import NoLink from '@components/Album/CurrentDownload/NoLink';
 import { AlbumContext } from './AlbumProvider';
 
-export default function CurrentDownloadProvider({ children }) {
+export default function CurrentDownloadProvider({ children }: { children: React.ReactNode }) {
   const params = useParams();
   const albumId: string = params.albumId as string;
 
@@ -20,8 +20,10 @@ export default function CurrentDownloadProvider({ children }) {
 
   useEffect(() => {
     getCurrentAlbumDownload(albumId)
-      .then(setDownload)
-      .then(() => setLoading(false))
+      .then((result) => {
+        setDownload(result);
+        setLoading(false);
+      })
       .catch(setError);
   }, [albumId]);
 

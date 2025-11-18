@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 
 export const InviteContext = React.createContext<Invite>({} as Invite);
 
-export default function InviteProvider({ children }) {
+export default function InviteProvider({ children }: { children: React.ReactNode }) {
   const params = useParams();
   const inviteId: string = params.inviteId as string;
 

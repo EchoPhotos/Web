@@ -73,7 +73,7 @@ export default function NewAlbumForm() {
               name="name"
               autoComplete="name"
               placeholder="Your name"
-              className="w -42 rounded-lg border border-gray-300 px-1 py-1 text-start text-sm"
+              className="w-42 rounded-lg border border-gray-300 px-1 py-1 text-start text-sm"
               onChange={handleCreatorNameChange}
             />
           </div>

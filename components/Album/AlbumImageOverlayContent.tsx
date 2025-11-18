@@ -2,7 +2,6 @@ import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { variants } from '@utils/old/animationVariants';
-import { range } from '@utils/old/range';
 import * as IoIcons from 'react-icons/io5';
 import { AlbumItem } from 'app/Models';
 import CachedImage from '@components/UI/CachedImage';
@@ -30,27 +29,27 @@ export default function AlbumImageOverlayContent({
 }: AlbumImageOverlayProps) {
   const [loaded, setLoaded] = useState(false);
 
-  const filteredAlbumItems = albumItems.filter((img: AlbumItem) =>
-    range(index - 15, index + 15).includes(albumItems.indexOf(img)),
-  );
-
-  if (albumItems.length <= index) {
-    return null;
-  }
-
-  const item = albumItems[index];
-
   const handlers = useSwipeable({
     onSwipedLeft: goToNext,
     onSwipedRight: goToPrevious,
     trackMouse: true,
   });
 
+  const item = albumItems[index];
+
   useEffect(() => {
-    if (item.video) {
+    if (item?.video) {
       setLoaded(true);
     }
-  }, [item.video]);
+  }, [item?.video]);
+
+  if (albumItems.length <= index || !item) {
+    return null;
+  }
+
+  const start = Math.max(0, index - 15);
+  const end = Math.min(albumItems.length, index + 16);
+  const filteredAlbumItems = albumItems.slice(start, end);
 
   return (
     <MotionConfig
@@ -114,6 +113,7 @@ export default function AlbumImageOverlayContent({
                     className="absolute top-[calc(50%-16px)] left-3 rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-hidden"
                     style={{ transform: 'translate3d(0, 0, 0)' }}
                     onClick={goToPrevious}
+                    aria-label="Previous image"
                   >
                     <IoIcons.IoChevronBack className="h-6 w-6" />
                   </button>
@@ -123,6 +123,7 @@ export default function AlbumImageOverlayContent({
                     className="absolute top-[calc(50%-16px)] right-3 rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-hidden"
                     style={{ transform: 'translate3d(0, 0, 0)' }}
                     onClick={goToNext}
+                    aria-label="Next image"
                   >
                     <IoIcons.IoChevronForward className="h-6 w-6" />
                   </button>

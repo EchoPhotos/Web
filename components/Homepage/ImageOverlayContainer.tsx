@@ -16,14 +16,14 @@ export default function ImageOverlayContainer({
   items: AlbumItem[];
   invite: Invite;
   domain: string;
-  onClose: (string) => void;
+  onClose: (id: string) => void;
 }) {
   const overlayRef = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const albumItem = albumItems.find((item) => item.id == searchParams.get('itemId'));
+  const albumItem = albumItems.find((item) => item.id === searchParams.get('itemId'));
 
   let index = 0;
 
@@ -63,9 +63,9 @@ export default function ImageOverlayContainer({
   }
 
   function handleKey(event: KeyboardEvent) {
-    if (event.key == 'ArrowRight') {
+    if (event.key === 'ArrowRight') {
       goToNext();
-    } else if (event.key == 'ArrowLeft') {
+    } else if (event.key === 'ArrowLeft') {
       goToPrevious();
     }
   }

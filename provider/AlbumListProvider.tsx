@@ -7,14 +7,18 @@ import { useEffect, useState } from 'react';
 
 export const AlbumListContext = React.createContext<Album[] | undefined>(undefined);
 
-export default function AlbumListProvider({ children }) {
+export default function AlbumListProvider({ children }: { children: React.ReactNode }) {
   const [albums, setAlbums] = useState<Album[] | undefined>(undefined);
 
   useEffect(() => {
     const cachedAlbumsString = localStorage.getItem('cached-albums');
     if (cachedAlbumsString) {
-      const cachedAlbums = JSON.parse(cachedAlbumsString) as Album[];
-      setAlbums(cachedAlbums);
+      try {
+        const cachedAlbums = JSON.parse(cachedAlbumsString) as Album[];
+        setAlbums(cachedAlbums);
+      } catch {
+        localStorage.removeItem('cached-albums');
+      }
     }
     getAlbums(20).then((albums) => {
       setAlbums(albums);
