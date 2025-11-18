@@ -25,7 +25,9 @@
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
       "@images/*": ["public/images/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@stores": ["stores"],
+      "@stores/*": ["stores/*"]
     },
     "strictNullChecks": true
   },

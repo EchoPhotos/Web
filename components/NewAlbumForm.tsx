@@ -1,12 +1,12 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { createAlbum } from '@utils/API';
 import RegisterActionButton from '@components/Authentication/RegisterActionButton';
 import PhoneExplanationPopover from '@components/PhoneExplanationPopover';
 import Link from 'next/link';
-import { AuthStateContext } from 'provider/AuthStateProvider';
+import { useAuthStore } from '@stores';
 
 export default function NewAlbumForm() {
   const [albumName, setAlbumName] = useState('');
@@ -14,7 +14,7 @@ export default function NewAlbumForm() {
   const [creatorName, setCreatorName] = useState('');
   const router = useRouter();
 
-  const authState = useContext(AuthStateContext);
+  const authState = useAuthStore();
 
   const handlePhoneNumberChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setPhoneNumber(event.target.value);

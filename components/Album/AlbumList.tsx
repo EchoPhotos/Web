@@ -4,11 +4,10 @@ import AlbumRow from '@components/Album/AlbumRow';
 import { VStack } from '@components/UI/Components';
 import Spinner from '@components/UI/Spinner';
 import Link from 'next/link';
-import { AlbumListContext } from 'provider/AlbumListProvider';
-import { useContext } from 'react';
+import { useAlbumListStore } from '@stores';
 
 export default function AlbumList() {
-  const albums = useContext(AlbumListContext);
+  const albums = useAlbumListStore((state) => state.albums);
   if (!albums) {
     return <Spinner />;
   }
