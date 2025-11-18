@@ -18,14 +18,18 @@ import { notFound } from 'next/navigation';
 export async function getDomain() {
   const config = process.env.FIREBASE_CONFIG;
   if (!config) {
-    throw Error(config);
+    throw Error('FIREBASE_CONFIG is not set');
   }
-  const projectId = JSON.parse(config).projectId;
-  let domain = `https://${projectId}.web.app`;
-  if (projectId === 'echo-photos') {
-    domain = 'https://www.echophotos.io';
+  try {
+    const projectId = JSON.parse(config).projectId;
+    let domain = `https://${projectId}.web.app`;
+    if (projectId === 'echo-photos') {
+      domain = 'https://www.echophotos.io';
+    }
+    return domain;
+  } catch {
+    throw Error('Failed to parse FIREBASE_CONFIG');
   }
-  return domain;
 }
 
 // Server-side
@@ -66,8 +70,8 @@ export async function getOrRegisterUser(nameForRegistering: string) {
     });
     return response.data as User;
   } catch (error) {
-    if (error.response.status === 404) {
-      await registerUser({ name: nameForRegistering });
+    if (axios.isAxiosError(error) && error.response?.status === 404) {
+      return await registerUser({ name: nameForRegistering });
     } else {
       throw Error('Could not fetch user');
     }

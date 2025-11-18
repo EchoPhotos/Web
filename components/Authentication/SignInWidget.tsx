@@ -7,7 +7,6 @@ import {
   PhoneAuthProvider,
   signInWithCredential,
   ConfirmationResult,
-  UserCredential,
   onAuthStateChanged,
 } from 'firebase/auth';
 import { auth } from '@utils/FirebaseConfig';
@@ -48,7 +47,7 @@ export default function SignInWidget() {
   };
 
   const handlePhone = async () => {
-    if (userPhone == '') {
+    if (userPhone === '') {
       alert('Please enter a valid phone number');
     } else {
       const phoneNumber = userPhone;
@@ -73,22 +72,20 @@ export default function SignInWidget() {
   };
 
   const handleOtp = async () => {
-    if (otp == '') {
+    if (otp === '') {
       alert('Please enter a valid code');
     } else {
       const phoneCredential = PhoneAuthProvider.credential(verificationId, otp);
 
       try {
-        const userCredentials: UserCredential = await signInWithCredential(auth, phoneCredential);
-        console.log(userCredentials.user.uid);
-
+        await signInWithCredential(auth, phoneCredential);
         setState(State.SignedIn);
       } catch (error) {
-        console.log(error);
-        if (error.message == 'INVALID_CODE') {
-          alert('Invalid code Check you are entering the correct code.');
+        if (error instanceof Error && error.message === 'INVALID_CODE') {
+          alert('Invalid code. Check you are entering the correct code.');
         } else {
-          alert('(error.message) - Please try again later.');
+          const message = error instanceof Error ? error.message : 'Unknown error';
+          alert(`${message} - Please try again later.`);
         }
       }
     }
@@ -98,8 +95,8 @@ export default function SignInWidget() {
     <div className="flex flex-col items-start justify-center rounded-lg">
       <div id="recaptcha"></div>
 
-      {state == State.Loading && <div>Loading..</div>}
-      {state == State.SignedOut && (
+      {state === State.Loading && <div>Loading..</div>}
+      {state === State.SignedOut && (
         <>
           <p className="py-1 text-xs">Phone number</p>
           <input
@@ -113,7 +110,7 @@ export default function SignInWidget() {
           </Button>
         </>
       )}
-      {state == State.VerificationSent && (
+      {state === State.VerificationSent && (
         <>
           <p className="py-1 text-xs">SMS code</p>
 
@@ -131,7 +128,7 @@ export default function SignInWidget() {
         </>
       )}
 
-      {state == State.SignedIn && (
+      {state === State.SignedIn && (
         <div className="w-full space-y-2" id="success">
           <div className="flex w-full justify-center">
             <p>Signed in successfully!</p>

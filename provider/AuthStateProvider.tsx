@@ -15,6 +15,8 @@ export const AuthStateContext = React.createContext<AuthState>({
 });
 
 export default function AuthStateProvider({ children }: { children: React.ReactNode }) {
+  const [authState, setAuthState] = useState<AuthState>({ userId: undefined, loading: true });
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setAuthState({ userId: user?.uid, loading: false });
@@ -22,8 +24,6 @@ export default function AuthStateProvider({ children }: { children: React.ReactN
 
     return () => unsubscribe();
   }, []);
-
-  const [authState, setAuthState] = useState<AuthState>({ userId: undefined, loading: true });
 
   return <AuthStateContext.Provider value={authState}>{children}</AuthStateContext.Provider>;
 }

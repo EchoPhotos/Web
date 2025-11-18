@@ -1,4 +1,4 @@
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytesResumable } from 'firebase/storage';
 import { storage } from '@utils/FirebaseConfig';
 import { getImage, getPreviewBuffer, getThumbnailBuffer } from './ImageTools';
 
@@ -19,12 +19,7 @@ export async function uploadFile(upload: FileUpload, onProgress: (progress: numb
       onProgress(progress);
     },
     (error) => {
-      console.error('Upload error: ', error);
-    },
-    () => {
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        console.log('File available at', downloadURL);
-      });
+      throw error;
     },
   );
 }

@@ -9,7 +9,9 @@ import { useParams } from 'next/navigation';
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-function delay(ms) {
+const DOWNLOAD_POLL_INTERVAL_MS = 5000;
+
+function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -26,10 +28,12 @@ export default function DownloadProvider({ children }: { children: React.ReactNo
     function handleDownload(download: IdDownload) {
       setDownload(download);
       if (!download.ready) {
-        delay(5000).then(() => {
-          getDownload(downloadId).then((download) => {
-            setDownload(download);
-          });
+        delay(DOWNLOAD_POLL_INTERVAL_MS).then(() => {
+          getDownload(downloadId)
+            .then((updatedDownload) => {
+              setDownload(updatedDownload);
+            })
+            .catch(setError);
         });
       }
     }

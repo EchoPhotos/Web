@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 
 export const AlbumItemListContext = React.createContext<AlbumItem[] | undefined>(undefined);
 
-export default function AlbumItemListProvider({ children }) {
+export default function AlbumItemListProvider({ children }: { children: React.ReactNode }) {
   const params = useParams();
   const albumId: string = params.albumId as string;
   const [albums, setAlbums] = useState<AlbumItem[] | undefined>(undefined);

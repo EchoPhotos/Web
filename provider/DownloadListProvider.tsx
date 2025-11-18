@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 export const DownloadListContext = React.createContext<IdDownload[] | undefined>(undefined);
 
-export default function DownloadListProvider({ children }) {
+export default function DownloadListProvider({ children }: { children: React.ReactNode }) {
   const params = useParams();
   const albumId: string = params.albumId as string;
 

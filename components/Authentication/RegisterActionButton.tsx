@@ -7,7 +7,6 @@ import {
   PhoneAuthProvider,
   signInWithCredential,
   ConfirmationResult,
-  UserCredential,
 } from 'firebase/auth';
 import { auth } from '@utils/FirebaseConfig';
 import { getOrRegisterUser } from '@utils/API';
@@ -83,7 +82,7 @@ export default function RegisterActionButton({
   };
 
   const verifyOTP = async () => {
-    if (otp == '' || otp.length !== 6) {
+    if (otp === '' || otp.length !== 6) {
       alert('Please enter a valid verification code!');
     } else if (!verificationId) {
       alert('Error.. Please try again!');
@@ -91,17 +90,15 @@ export default function RegisterActionButton({
       const phoneCredential = PhoneAuthProvider.credential(verificationId, otp);
 
       try {
-        const userCredentials: UserCredential = await signInWithCredential(auth, phoneCredential);
-        console.log(userCredentials.user.uid);
-
+        await signInWithCredential(auth, phoneCredential);
         await getOrRegisterUser(name);
-        action();
+        await action();
       } catch (error) {
-        console.log(error);
-        if (error.message == 'INVALID_CODE') {
-          alert('This code is invalid.  Check you are entering the correct code.');
+        if (error instanceof Error && error.message === 'INVALID_CODE') {
+          alert('This code is invalid. Check you are entering the correct code.');
         } else {
-          alert(error.message);
+          const message = error instanceof Error ? error.message : 'Unknown error';
+          alert(message);
         }
       }
     }
