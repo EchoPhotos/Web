@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
@@ -20,8 +20,7 @@ import {
   Input,
 } from '@headlessui/react';
 import validator from 'validator';
-import { AuthStateContext } from 'provider/AuthStateProvider';
-import { ProfileContext } from 'provider/ProfileProvider';
+import { useAuthStore, useProfileStore } from '@stores';
 import Spinner from '@components/UI/Spinner';
 
 export default function RegisterActionButton({
@@ -39,8 +38,8 @@ export default function RegisterActionButton({
   const [verificationId, setVid] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(false);
 
-  const authState = useContext(AuthStateContext);
-  const profile = useContext(ProfileContext);
+  const authState = useAuthStore();
+  const profile = useProfileStore((state) => state.profile);
 
   const handleOtpChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setOtp(event.target.value);

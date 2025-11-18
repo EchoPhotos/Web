@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { auth } from '@utils/FirebaseConfig';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import { Button } from '@headlessui/react';
 import SignInWidget from './SignInWidget';
-import { AuthStateContext } from 'provider/AuthStateProvider';
+import { useAuthStore } from '@stores';
 
 export default function Page() {
   const [isSignInDialogPresented, setIsSignInDialogPresented] = useState(false);
-  const authState = useContext(AuthStateContext);
+  const authState = useAuthStore();
 
   return (
     <>

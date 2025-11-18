@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProgressView from '@components/Upload/ProgressView';
 import { uploadFileWithPreview, FileUpload } from '@utils/Upload';
 import RegisterActionButton from '@components/Authentication/RegisterActionButton';
@@ -10,7 +10,7 @@ import Spinner from '@components/UI/Spinner';
 import { Button } from '@headlessui/react';
 import { IoCheckmarkCircle } from 'react-icons/io5';
 import { useParams } from 'next/navigation';
-import { AuthStateContext } from 'provider/AuthStateProvider';
+import { useAuthStore } from '@stores';
 import NoVideoUploadAvailable from '@components/Warnings/NoVideoUpload';
 import { HStack, VStack } from '@components//UI/Components';
 import { cacheOriginalImage } from '@utils/ImageCache';
@@ -35,7 +35,7 @@ export default function UploadWidget() {
   const [userName, setUserName] = useState('');
   const [userPhone, setUserPhone] = useState('');
   const [state, setState] = useState(State.Idle);
-  const authState = useContext(AuthStateContext);
+  const authState = useAuthStore();
 
   const [albumId, setAlbumId] = useState<string | undefined>(undefined);
   const [batchId, setBatchId] = useState(crypto.randomUUID().toString().toUpperCase());

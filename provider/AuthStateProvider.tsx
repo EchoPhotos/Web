@@ -1,29 +1,15 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '@utils/FirebaseConfig';
-
-export interface AuthState {
-  loading: boolean;
-  userId?: string;
-}
-
-export const AuthStateContext = React.createContext<AuthState>({
-  userId: undefined,
-  loading: true,
-});
+import { useEffect } from 'react';
+import { useAuthStore } from '@stores';
 
 export default function AuthStateProvider({ children }: { children: React.ReactNode }) {
-  const [authState, setAuthState] = useState<AuthState>({ userId: undefined, loading: true });
+  const initialize = useAuthStore((state) => state.initialize);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setAuthState({ userId: user?.uid, loading: false });
-    });
-
+    const unsubscribe = initialize();
     return () => unsubscribe();
-  }, []);
+  }, [initialize]);
 
-  return <AuthStateContext.Provider value={authState}>{children}</AuthStateContext.Provider>;
+  return <>{children}</>;
 }

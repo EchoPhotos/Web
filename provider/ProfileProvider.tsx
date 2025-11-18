@@ -1,72 +1,46 @@
 'use client';
 
-import React, { useContext, useEffect, useState } from 'react';
-import { getUser, registerUser } from '@utils/API';
-import { User } from 'app/Models';
+import React, { useEffect, useState } from 'react';
 import { Button, Dialog, DialogBackdrop, DialogPanel, Input } from '@headlessui/react';
 import { VStack } from '@components/UI/Components';
 import Logo from '@components/UI/Logo';
 import { AnimatePresence } from 'framer-motion';
-import { AuthStateContext } from 'provider/AuthStateProvider';
-
-export const ProfileContext = React.createContext<User | undefined>(undefined);
+import { useAuthStore, useProfileStore } from '@stores';
 
 export default function ProfileProvider({ children }: { children: React.ReactNode }) {
-  const [profile, setProfile] = useState<User | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
-  const authState = useContext(AuthStateContext);
   const [userName, setUserName] = useState('');
 
-  useEffect(() => {
-    if (!profile && authState.userId) {
-      const userId = authState.userId;
-      const cachedProfileString = localStorage.getItem(userId);
-      if (cachedProfileString) {
-        try {
-          const cachedProfile = JSON.parse(cachedProfileString) as User;
-          setProfile(cachedProfile);
-          setLoading(false);
-        } catch {
-          localStorage.removeItem(userId);
-        }
-      }
+  const authState = useAuthStore();
+  const { profile, loading, showRegistration, fetchProfile, registerProfile } = useProfileStore();
 
-      getUser()
-        .then((userProfile) => {
-          localStorage.setItem(userId, JSON.stringify(userProfile));
-          setProfile(userProfile);
-          setLoading(false);
-        })
-        .catch(() => {
-          setLoading(false);
-        });
+  useEffect(() => {
+    if (authState.userId && !authState.loading) {
+      fetchProfile();
     }
-  }, [authState.userId, profile]);
+  }, [authState.userId, authState.loading, fetchProfile]);
 
   const handleNameChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setUserName(event.target.value);
   };
 
-  function registerName() {
-    registerUser({ name: userName })
-      .then((user) => {
-        setProfile(user);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+  async function handleRegister() {
+    try {
+      await registerProfile(userName);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Registration failed';
+      alert(message);
+    }
   }
 
-  function showRegistrationPanel(): boolean {
-    return !loading && !authState.loading && authState.userId !== undefined && !profile;
-  }
+  const shouldShowRegistration =
+    !loading && !authState.loading && authState.userId !== undefined && !profile && showRegistration;
 
   return (
-    <ProfileContext.Provider value={profile}>
+    <>
       <AnimatePresence>
-        {showRegistrationPanel() && (
+        {shouldShowRegistration && (
           <Dialog
-            open={showRegistrationPanel()}
+            open={shouldShowRegistration}
             onClose={() => {}}
             as="div"
             className="relative z-10 focus:outline-none"
@@ -91,7 +65,7 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
                     className="max-w-64 min-w-36 rounded-lg p-1 text-center ring-1 md:min-h-10 md:min-w-48 md:p-2"
                     onChange={handleNameChange}
                   />
-                  <Button onClick={registerName} className="btn btn-primary">
+                  <Button onClick={handleRegister} className="btn btn-primary">
                     Save
                   </Button>
                 </VStack>
@@ -102,6 +76,6 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
       </AnimatePresence>
 
       {children}
-    </ProfileContext.Provider>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { auth } from '@utils/FirebaseConfig';
 import Spinner from '@components/UI/Spinner';
 import SignInWidget from './SignInWidget';
@@ -9,14 +9,14 @@ import PanelView from '@components/UI/PanelView';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { getTokenForCode } from '@utils/API';
 import { signInWithCustomToken } from 'firebase/auth';
-import { AuthStateContext } from 'provider/AuthStateProvider';
+import { useAuthStore } from '@stores';
 
-export default function RequireAuthentication({ children }) {
+export default function RequireAuthentication({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const authCodeQueryParameter = searchParams.get('auth-code');
 
-  const authState = useContext(AuthStateContext);
+  const authState = useAuthStore();
 
   useEffect(() => {
     if (!authState.userId && authCodeQueryParameter) {

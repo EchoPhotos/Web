@@ -6,13 +6,13 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { InviteContext } from 'provider/InviteProvider';
 import { useContext } from 'react';
-import { AuthStateContext } from 'provider/AuthStateProvider';
+import { useAuthStore } from '@stores';
 import { Button } from '@headlessui/react';
 
 export default function InvitePanel() {
   const pathname = usePathname();
   const invite = useContext(InviteContext);
-  const authState = useContext(AuthStateContext);
+  const authState = useAuthStore();
   const router = useRouter();
 
   const options: Intl.DateTimeFormatOptions = {
