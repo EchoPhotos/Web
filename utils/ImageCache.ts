@@ -73,8 +73,8 @@ export async function cacheOriginalImage(imageId: string, file: File) {
   const image = await getImage(file);
   const preview = getPreviewBuffer(image);
   const thumbnail = getThumbnailBuffer(image);
-  cacheImageFor(imageId, ImageFormat.Preview, new Blob([preview]));
-  cacheImageFor(imageId, ImageFormat.Thumbnail, new Blob([thumbnail]));
+  cacheImageFor(imageId, ImageFormat.Preview, toBlob(preview));
+  cacheImageFor(imageId, ImageFormat.Thumbnail, toBlob(thumbnail));
 }
 
 export async function cacheImageFor(imageId: string, format: ImageFormat, blob: Blob) {
@@ -88,4 +88,9 @@ export async function cacheImageFor(imageId: string, format: ImageFormat, blob: 
     console.error('Error setting value in Cache API:', error);
     throw error;
   }
+}
+
+function toBlob(buffer: Uint8Array<ArrayBufferLike>): Blob {
+  // Normalize to an ArrayBuffer-backed typed array so BlobPart typing is stable.
+  return new Blob([Uint8Array.from(buffer)]);
 }
