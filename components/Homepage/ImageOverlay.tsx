@@ -39,10 +39,6 @@ export default function ImageOverlay({
     range(index - 15, index + 15).includes(albumItems.indexOf(img)),
   );
 
-  if (albumItems.length <= index) {
-    return;
-  }
-
   const item = albumItems[index];
 
   const handlers = useSwipeable({
@@ -52,10 +48,14 @@ export default function ImageOverlay({
   });
 
   useEffect(() => {
-    if (item.video) {
+    if (item?.video) {
       setLoaded(true);
     }
-  }, [item.video]);
+  }, [item?.video]);
+
+  if (!item) {
+    return null;
+  }
 
   return (
     <MotionConfig

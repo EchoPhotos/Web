@@ -23,7 +23,7 @@ export default function DownloadLinkPanel() {
       }, 10000);
       return () => clearInterval(interval);
     }
-  }, []);
+  }, [download.ready]);
 
   const disabledDownload = (
     <Banner

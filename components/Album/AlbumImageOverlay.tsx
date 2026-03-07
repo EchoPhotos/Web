@@ -2,7 +2,7 @@
 
 import { Dialog } from '@headlessui/react';
 import { motion } from 'framer-motion';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { KeyboardEvent, useRef, useState } from 'react';
 import { AlbumItem } from 'app/Models';
 import AlbumImageOverlayContent from './AlbumImageOverlayContent';
@@ -17,7 +17,6 @@ export default function AlbumImageOverlay({
   const overlayRef = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const albumItem = items.find((item) => item.id === selectedItemId);
 

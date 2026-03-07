@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 import { getDictionary } from '@utils/dictionary';
 
 import { Metadata } from 'next';
-import { getAlbum, getInvite } from '@utils/API';
+import { getInvite } from '@utils/API';
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   const { inviteId, lang } = await params;

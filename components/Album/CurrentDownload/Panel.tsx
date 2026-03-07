@@ -44,7 +44,7 @@ export default function Panel() {
       }, 10000);
       return () => clearInterval(interval);
     }
-  }, []);
+  }, [download.ready]);
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-3 overflow-scroll px-2 py-16">
