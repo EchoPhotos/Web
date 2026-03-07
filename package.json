@@ -5,7 +5,10 @@
     "dev": "next dev --turbopack --port 3006",
     "build": "next build",
     "start": "next start",
-    "format": "npx prettier . --write"
+    "lint": "eslint app components provider stores utils middleware.ts --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.10",
