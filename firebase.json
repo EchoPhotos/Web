@@ -27,11 +27,6 @@
     "appAssociation": "NONE"
   },
   "emulators": {
-    "singleProjectMode": true,
-    "apphosting": {
-      "port": 5001,
-      "rootDirectory": "./",
-      "startCommand": "pnpm dev"
-    }
+    "singleProjectMode": true
   }
 }
