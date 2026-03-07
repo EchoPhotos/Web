@@ -1,8 +1,4 @@
-export default function ImagePicker({
-  onFilePicked,
-}: {
-  onFilePicked: (files: File[]) => void;
-}) {
+export default function ImagePicker({ onFilePicked }: { onFilePicked: (files: File[]) => void }) {
   const validFileTypes = ['image/jpeg', 'image/png', 'image/heic', 'image/heif'];
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

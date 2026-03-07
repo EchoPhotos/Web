@@ -20,7 +20,7 @@ export default function AlbumImageOverlay({
   const searchParams = useSearchParams();
 
   const albumItem = items.find((item) => item.id === selectedItemId);
-  
+
   let index = 0;
   if (albumItem) {
     index = items.indexOf(albumItem);

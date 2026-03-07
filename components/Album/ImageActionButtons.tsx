@@ -14,13 +14,13 @@ export default function ImageActionButtons({ item, index }: ImageActionButtonsPr
 
   const handleDownload = async (item: AlbumItem) => {
     if (downloading) return;
-    
+
     setDownloading(true);
     try {
       // Get public URL from API
       const url = await getImagePublicUrl(item.image);
       const filename = `image-${index + 1}.${item.video ? 'mp4' : 'jpg'}`;
-      
+
       // Download the file
       downloadPhoto(url, filename);
     } catch (error) {

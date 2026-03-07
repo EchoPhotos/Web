@@ -22,15 +22,10 @@ export default function Page() {
     }
     return (
       <>
-        <div className='p-4 h-full w-full rounded-2xl '>
+        <div className="h-full w-full rounded-2xl p-4">
           <AlbumItemGrid items={items} />
         </div>
-        {selectedItemId && (
-          <AlbumImageOverlay
-            items={items}
-            selectedItemId={selectedItemId}
-          />
-        )}
+        {selectedItemId && <AlbumImageOverlay items={items} selectedItemId={selectedItemId} />}
       </>
     );
   }

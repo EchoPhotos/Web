@@ -33,7 +33,11 @@ export default function ProfileProvider({ children }: { children: React.ReactNod
   }
 
   const shouldShowRegistration =
-    !loading && !authState.loading && authState.userId !== undefined && !profile && showRegistration;
+    !loading &&
+    !authState.loading &&
+    authState.userId !== undefined &&
+    !profile &&
+    showRegistration;
 
   return (
     <>

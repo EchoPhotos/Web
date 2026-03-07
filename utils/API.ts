@@ -1,15 +1,7 @@
 import axios from 'axios';
 import { getToken } from './Auth';
 import { getAPIHost } from './Environment';
-import {
-  Album,
-  AlbumItem,
-  IdDownload,
-  Invite,
-  NewAlbum,
-  UploadMetadata,
-  User,
-} from 'app/Models';
+import { Album, AlbumItem, IdDownload, Invite, NewAlbum, UploadMetadata, User } from 'app/Models';
 import { ImageFormat } from './ImageCache';
 import debugBeep from './Beep';
 import { notFound } from 'next/navigation';
@@ -321,7 +313,10 @@ export async function getImagePublicUrl(imageId: string): Promise<string> {
   return response.url;
 }
 
-export async function getImageOriginalUrl(imageId: string, isVideo: boolean = false): Promise<string> {
+export async function getImageOriginalUrl(
+  imageId: string,
+  isVideo: boolean = false,
+): Promise<string> {
   const endpoint = isVideo ? 'video' : 'original';
   return getAPIHost() + `/images/${imageId}/${endpoint}`;
 }
