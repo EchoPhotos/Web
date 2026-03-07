@@ -31,7 +31,7 @@
     "apphosting": {
       "port": 5001,
       "rootDirectory": "./",
-      "startCommand": "npm run dev"
+      "startCommand": "pnpm dev"
     }
   }
 }

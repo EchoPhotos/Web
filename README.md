@@ -4,9 +4,9 @@ Codebase for [echophotos.io]
 
 ## Dev Setup
 
-1. `pnpm i` or `npm i`
+1. `pnpm install`
 
-2. `pnpm dev` or `npm run dev`
+2. `pnpm dev`
 
 
 ## Deploy
