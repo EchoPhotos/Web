@@ -6,7 +6,9 @@ const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   eslint: {
-    dirs: ['pages', 'utils', 'components', 'provider', 'Shared'],
+    dirs: ['app', 'utils', 'components', 'provider', 'stores'],
+    // Keep lint as a hard gate for production builds.
+    ignoreDuringBuilds: false,
   },
   experimental: {
     mdxRs: false,
@@ -16,11 +18,6 @@ const nextConfig = {
   },
   rewrites: () => {
     return [];
-  },
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: false,
   },
 };
 
