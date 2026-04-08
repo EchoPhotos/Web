@@ -7,26 +7,14 @@ import debugBeep from './Beep';
 import { notFound } from 'next/navigation';
 
 // Server-side
-export async function getDomain() {
-  const config = process.env.FIREBASE_CONFIG;
-  if (!config) {
-    throw Error('FIREBASE_CONFIG is not set');
-  }
-  try {
-    const projectId = JSON.parse(config).projectId;
-    let domain = `https://${projectId}.web.app`;
-    if (projectId === 'echo-photos') {
-      domain = 'https://www.echophotos.io';
-    }
-    return domain;
-  } catch {
-    throw Error('Failed to parse FIREBASE_CONFIG');
-  }
+export function getDomain() {
+  const apiHost = getAPIHost();
+  return apiHost.replace(/\/api\/v1\/?$/, '');
 }
 
 // Server-side
 export async function fetchItemsForInvite(inviteId: string): Promise<AlbumItem[]> {
-  const domain = await getDomain();
+  const domain = getDomain();
 
   const itemsURL = `${domain}/api/v1/invites/${inviteId}/items`;
   const itemsResponse: Response = await fetch(itemsURL, {
@@ -41,7 +29,7 @@ export async function fetchItemsForInvite(inviteId: string): Promise<AlbumItem[]
 
 // Server-side
 export async function fetchInvite(inviteId: string): Promise<Invite> {
-  const domain = await getDomain();
+  const domain = getDomain();
   const inviteURL = `${domain}/api/v1/invites/${inviteId}`;
   const inviteResponse: Response = await fetch(inviteURL, { next: { revalidate: 60 } });
   if (!inviteResponse.ok) {

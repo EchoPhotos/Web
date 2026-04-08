@@ -24,11 +24,9 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  console.info('Next.js request', {
-    method: request.method,
-    url: request.nextUrl.pathname,
-    headers: Object.fromEntries(request.headers),
-  });
+  if (process.env.NODE_ENV === 'development') {
+    console.info('Next.js request', { method: request.method, url: request.nextUrl.pathname });
+  }
 
   // TODO: this is maybe not needed as set in matcher (exported below)
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
