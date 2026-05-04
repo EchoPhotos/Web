@@ -16,7 +16,7 @@ export default function AlbumItemGrid({ items }: { items: AlbumItem[] }) {
             gridAutoRows: 'minmax(120px, 1fr)',
           }}
         >
-          {items.map((item) => (
+          {items.map((item, index) => (
             <Link
               href={`?item=${item.id}`}
               key={item.id}
@@ -25,6 +25,8 @@ export default function AlbumItemGrid({ items }: { items: AlbumItem[] }) {
               <CachedImage
                 imageId={item.image}
                 format={ImageFormat.Thumbnail}
+                eager={index < 24}
+                rootMargin="600px"
                 className="h-full w-full object-cover"
               />
             </Link>

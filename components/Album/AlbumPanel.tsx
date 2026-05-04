@@ -35,7 +35,7 @@ export function MobileAlbumHeader({ album }: { album: Album }) {
       <HStack className="justify-center space-x-2">
         <div className="mt-8 h-16 w-16 content-center rounded-xl bg-slate-700 text-slate-500">
           <div className="relative h-16 w-16 overflow-hidden rounded-xl object-cover">
-            <CachedImage imageId={album.image} format={ImageFormat.Thumbnail} />
+            <CachedImage imageId={album.image} format={ImageFormat.Thumbnail} eager />
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export function DesktopAlbumPanel({ album }: { album: Album }) {
       )}
       <div className="h-24 w-24 content-center rounded-xl bg-slate-700 text-slate-500">
         <div className="relative h-24 w-24 overflow-hidden rounded-xl object-cover">
-          <CachedImage imageId={album.image} format={ImageFormat.Thumbnail} />
+          <CachedImage imageId={album.image} format={ImageFormat.Thumbnail} eager />
         </div>
       </div>
 

@@ -91,7 +91,7 @@ export default function AlbumPreview(props: {
             </div>
           )}
 
-          {data.items.map((albumItem) => {
+          {data.items.map((albumItem, index) => {
             const isLastViewedPhoto = albumItem.id === lastViewedPhoto;
             return (
               <div ref={isLastViewedPhoto ? lastViewedPhotoRef : undefined} key={albumItem.id}>
@@ -101,6 +101,7 @@ export default function AlbumPreview(props: {
                   inviteId={data.invite.id}
                   showLikes={!data.invite.viewOnly}
                   albumItem={albumItem}
+                  eager={index < 28}
                 />
               </div>
             );

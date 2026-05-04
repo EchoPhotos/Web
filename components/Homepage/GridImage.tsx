@@ -10,6 +10,7 @@ interface GridImageProps {
   inviteId: string;
   showLikes: boolean;
   albumItem: AlbumItem;
+  eager?: boolean;
 }
 
 export default function GridImage(props: GridImageProps) {
@@ -27,6 +28,8 @@ export default function GridImage(props: GridImageProps) {
         format={ImageFormat.Thumbnail}
         inviteId={props.inviteId}
         nobackground
+        eager={props.eager}
+        rootMargin="600px"
       />
       {/* <Image
         alt="Album Image"

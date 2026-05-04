@@ -6,6 +6,7 @@ import * as IoIcons from 'react-icons/io5';
 import { AlbumItem } from 'app/Models';
 import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
+import { prefetchImage } from '@utils/ImageLoader';
 import ImageActionButtons from './ImageActionButtons';
 
 export interface AlbumImageOverlayProps {
@@ -42,6 +43,22 @@ export default function AlbumImageOverlayContent({
       setLoaded(true);
     }
   }, [item?.video]);
+
+  useEffect(() => {
+    const nextItems = [
+      albumItems[index - 2],
+      albumItems[index - 1],
+      albumItems[index + 1],
+      albumItems[index + 2],
+    ].filter((candidate): candidate is AlbumItem => Boolean(candidate && !candidate.video));
+
+    nextItems.forEach((candidate) => {
+      prefetchImage({
+        imageId: candidate.image,
+        format: ImageFormat.Preview,
+      });
+    });
+  }, [albumItems, index]);
 
   if (albumItems.length <= index || !item) {
     return null;
@@ -94,6 +111,7 @@ export default function AlbumImageOverlayContent({
                     format={ImageFormat.Preview}
                     onLoad={() => setLoaded(true)}
                     nobackground
+                    eager
                     className="h-full w-full"
                   />
                 )}

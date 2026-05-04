@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getImage, getPreviewBuffer, getThumbnailBuffer } from './ImageTools';
 
 export enum ImageFormat {
@@ -15,38 +15,79 @@ const generateKey = (imageId: string, format: ImageFormat) =>
 
 // Cache name for the Cache API
 const CACHE_NAME = 'image-cache';
+const MEMORY_CACHE_LIMIT = 150;
+const memoryCache = new Map<string, Blob>();
+const pendingCacheReads = new Map<string, Promise<Blob | undefined>>();
+
+function rememberBlob(cacheKey: string, blob: Blob) {
+  if (memoryCache.has(cacheKey)) {
+    memoryCache.delete(cacheKey);
+  }
+
+  memoryCache.set(cacheKey, blob);
+
+  if (memoryCache.size > MEMORY_CACHE_LIMIT) {
+    const oldestKey = memoryCache.keys().next().value;
+    if (oldestKey) {
+      memoryCache.delete(oldestKey);
+    }
+  }
+}
 
 // Properly typed hook with error handling and validation
 export function useImageCache(
   imageId: string | undefined,
   format: ImageFormat,
 ): [Blob | undefined, (value: Blob) => Promise<void>] {
-  const [storedValue, setStoredValue] = useState<Blob | undefined>(undefined);
+  const [storedValue, setStoredValue] = useState<Blob | undefined>(() => {
+    if (!imageId) {
+      return undefined;
+    }
+
+    return memoryCache.get(generateKey(imageId, format));
+  });
 
   useEffect(() => {
     if (!imageId) {
+      setStoredValue(undefined);
       return;
     }
 
+    let isCancelled = false;
+    const cachedBlob = memoryCache.get(generateKey(imageId, format));
+    if (cachedBlob) {
+      setStoredValue(cachedBlob);
+      return;
+    }
+
+    setStoredValue(undefined);
+
     const fetchCachedImage = async () => {
       const blob = await getCachedImageFor(imageId, format);
-      if (blob) {
+      if (blob && !isCancelled) {
         setStoredValue(blob);
       }
     };
 
     fetchCachedImage();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [imageId, format]);
 
   // Update Cache API when state changes
-  async function setValue(value: Blob) {
-    if (!imageId) {
-      return;
-    }
+  const setValue = useCallback(
+    async (value: Blob) => {
+      if (!imageId) {
+        return;
+      }
 
-    cacheImageFor(imageId, format, value);
-    setStoredValue(value);
-  }
+      void cacheImageFor(imageId, format, value);
+      setStoredValue(value);
+    },
+    [format, imageId],
+  );
 
   return [storedValue, setValue];
 }
@@ -55,17 +96,42 @@ export async function getCachedImageFor(
   imageId: string,
   format: ImageFormat,
 ): Promise<Blob | undefined> {
-  try {
-    const cache = await caches.open(CACHE_NAME);
-    const cacheKey = generateKey(imageId, format);
+  const cacheKey = generateKey(imageId, format);
+  const cachedBlob = memoryCache.get(cacheKey);
+  if (cachedBlob) {
+    rememberBlob(cacheKey, cachedBlob);
+    return cachedBlob;
+  }
 
-    // Check if the image is already cached
-    const cachedResponse = await cache.match(cacheKey);
-    if (cachedResponse) {
-      return await cachedResponse.blob();
+  const pendingRead = pendingCacheReads.get(cacheKey);
+  if (pendingRead) {
+    return pendingRead;
+  }
+
+  const readPromise = (async () => {
+    try {
+      const cache = await caches.open(CACHE_NAME);
+
+      // Check if the image is already cached
+      const cachedResponse = await cache.match(cacheKey);
+      if (cachedResponse) {
+        const blob = await cachedResponse.blob();
+        rememberBlob(cacheKey, blob);
+        return blob;
+      }
+    } catch (error) {
+      console.error('Error fetching cached image:', error);
+    } finally {
+      pendingCacheReads.delete(cacheKey);
     }
-  } catch (error) {
-    console.error('Error fetching cached image:', error);
+  })();
+
+  pendingCacheReads.set(cacheKey, readPromise);
+
+  try {
+    return await readPromise;
+  } catch {
+    return undefined;
   }
 }
 
@@ -78,9 +144,11 @@ export async function cacheOriginalImage(imageId: string, file: File) {
 }
 
 export async function cacheImageFor(imageId: string, format: ImageFormat, blob: Blob) {
+  const cacheKey = generateKey(imageId, format);
+  rememberBlob(cacheKey, blob);
+
   try {
     const cache = await caches.open(CACHE_NAME);
-    const cacheKey = generateKey(imageId, format);
 
     // Store the new Blob in the Cache API
     await cache.put(cacheKey, new Response(blob));

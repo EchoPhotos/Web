@@ -8,6 +8,7 @@ import * as IoIcons from 'react-icons/io5';
 import { AlbumItem, Invite } from 'app/Models';
 import CachedImage from '@components/UI/CachedImage';
 import { ImageFormat } from '@utils/ImageCache';
+import { prefetchImage } from '@utils/ImageLoader';
 
 export interface SharedModalProps {
   index: number;
@@ -52,6 +53,23 @@ export default function ImageOverlay({
       setLoaded(true);
     }
   }, [item?.video]);
+
+  useEffect(() => {
+    const nextItems = [
+      albumItems[index - 2],
+      albumItems[index - 1],
+      albumItems[index + 1],
+      albumItems[index + 2],
+    ].filter((candidate): candidate is AlbumItem => Boolean(candidate && !candidate.video));
+
+    nextItems.forEach((candidate) => {
+      prefetchImage({
+        imageId: candidate.image,
+        inviteId: invite.id,
+        format: ImageFormat.Preview,
+      });
+    });
+  }, [albumItems, index, invite.id]);
 
   if (!item) {
     return null;
@@ -101,6 +119,7 @@ export default function ImageOverlay({
                     format={ImageFormat.Preview}
                     onLoad={() => setLoaded(true)}
                     nobackground
+                    eager
                     className="h-full w-full"
                   />
                 )}
