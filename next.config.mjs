@@ -5,11 +5,6 @@ import remarkGfm from 'remark-gfm';
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  eslint: {
-    dirs: ['app', 'utils', 'components', 'provider', 'stores'],
-    // Keep lint as a hard gate for production builds.
-    ignoreDuringBuilds: false,
-  },
   experimental: {
     mdxRs: false,
   },

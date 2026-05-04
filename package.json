@@ -1,29 +1,32 @@
 {
   "private": true,
   "packageManager": "pnpm@10.29.3",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "next dev --turbopack --port 3006",
-    "build": "next build",
+    "build": "pnpm lint && next build",
     "start": "next start",
-    "lint": "eslint app components provider stores utils middleware.ts --max-warnings=0",
+    "lint": "eslint app components provider stores utils proxy.ts --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "format": "prettier . --write",
     "format:check": "prettier . --check"
   },
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.5.10",
+    "@formatjs/intl-localematcher": "^0.8.1",
     "@headlessui/react": "^2.2.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.1.6",
+    "@next/mdx": "^16.1.6",
     "axios": "^1.7.9",
-    "firebase": "^11.2.0",
-    "framer-motion": "^12.0.6",
+    "firebase": "^12.10.0",
+    "framer-motion": "^12.35.1",
     "heic-convert": "^2.1.0",
-    "image-js": "^0.0.0-next-692b15513a",
+    "image-js": "0.0.0-next-f597aeac6c",
     "mapkit-react": "^1.15.3",
     "negotiator": "^1.0.0",
-    "next": "^15.1.2",
+    "next": "^16.1.6",
     "ngeohash": "^0.6.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -37,22 +40,23 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.5",
     "@tailwindcss/postcss": "^4.0.2",
     "@types/apple-mapkit-js-browser": "^5.78.1",
     "@types/mdx": "^2.0.13",
     "@types/negotiator": "^0.6.3",
-    "@types/node": "20.10.8",
+    "@types/node": "25.3.5",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.0",
-    "eslint-config-next": "15.1.6",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "16.1.6",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "remark-gfm": "^4.0.0",
-    "tailwindcss": "^4.0.2"
+    "tailwindcss": "^4.0.2",
+    "typescript": "^5.9.3"
   },
   "overrides": {
     "usehooks-ts": {

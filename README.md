@@ -4,9 +4,11 @@ Codebase for [echophotos.io]
 
 ## Dev Setup
 
-1. `pnpm install`
+1. Use Node `20.19.0` or newer.
 
-2. `pnpm dev`
+2. `pnpm install`
+
+3. `pnpm dev`
 
 
 ## Deploy
