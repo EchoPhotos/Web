@@ -14,9 +14,9 @@ export default function AlbumList() {
   return (
     <div className="h-full w-full overflow-scroll">
       {albums.map((album) => (
-        <a key={album.id} href={`/albums/${album.id}`}>
+        <Link key={album.id} href={`/albums/${album.id}`}>
           <AlbumRow album={album} />
-        </a>
+        </Link>
       ))}
 
       {albums.length > 19 && (

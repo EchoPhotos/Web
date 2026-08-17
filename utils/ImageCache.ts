@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getImage, getPreviewBuffer, getThumbnailBuffer } from './ImageTools';
 
 export enum ImageFormat {
@@ -9,46 +9,68 @@ export enum ImageFormat {
   Original,
 }
 
-// Key generator function for consistent storage keys
-const generateKey = (imageId: string, format: ImageFormat) =>
-  `image_${imageId}_${ImageFormat[format]}`;
+const CACHE_NAME = 'image-cache-v2';
 
-// Cache name for the Cache API
-const CACHE_NAME = 'image-cache';
+type ImageCacheState = 'checking' | 'miss' | 'ready';
+
+// Cache entries must not depend on the page URL the component was mounted under.
+const generateKey = (imageId: string, format: ImageFormat) =>
+  new URL(
+    `/__echo-image-cache__/v2/${encodeURIComponent(imageId)}/${ImageFormat[format]}`,
+    window.location.origin,
+  ).toString();
 
 // Properly typed hook with error handling and validation
 export function useImageCache(
   imageId: string | undefined,
   format: ImageFormat,
-): [Blob | undefined, (value: Blob) => Promise<void>] {
+): {
+  imageBlob: Blob | undefined;
+  cacheState: ImageCacheState;
+  setImageBlob: (value: Blob) => Promise<void>;
+} {
   const [storedValue, setStoredValue] = useState<Blob | undefined>(undefined);
+  const [cacheState, setCacheState] = useState<ImageCacheState>(imageId ? 'checking' : 'miss');
 
   useEffect(() => {
+    let cancelled = false;
+    setStoredValue(undefined);
+
     if (!imageId) {
+      setCacheState('miss');
       return;
     }
 
+    setCacheState('checking');
     const fetchCachedImage = async () => {
       const blob = await getCachedImageFor(imageId, format);
-      if (blob) {
+      if (!cancelled) {
         setStoredValue(blob);
+        setCacheState(blob ? 'ready' : 'miss');
       }
     };
 
-    fetchCachedImage();
+    void fetchCachedImage();
+
+    return () => {
+      cancelled = true;
+    };
   }, [imageId, format]);
 
-  // Update Cache API when state changes
-  async function setValue(value: Blob) {
-    if (!imageId) {
-      return;
-    }
+  const setValue = useCallback(
+    async (value: Blob) => {
+      if (!imageId) {
+        return;
+      }
 
-    cacheImageFor(imageId, format, value);
-    setStoredValue(value);
-  }
+      setStoredValue(value);
+      setCacheState('ready');
+      await cacheImageFor(imageId, format, value);
+    },
+    [imageId, format],
+  );
 
-  return [storedValue, setValue];
+  return { imageBlob: storedValue, cacheState, setImageBlob: setValue };
 }
 
 export async function getCachedImageFor(
@@ -73,8 +95,10 @@ export async function cacheOriginalImage(imageId: string, file: File) {
   const image = await getImage(file);
   const preview = getPreviewBuffer(image);
   const thumbnail = getThumbnailBuffer(image);
-  cacheImageFor(imageId, ImageFormat.Preview, toBlob(preview));
-  cacheImageFor(imageId, ImageFormat.Thumbnail, toBlob(thumbnail));
+  await Promise.all([
+    cacheImageFor(imageId, ImageFormat.Preview, toBlob(preview)),
+    cacheImageFor(imageId, ImageFormat.Thumbnail, toBlob(thumbnail)),
+  ]);
 }
 
 export async function cacheImageFor(imageId: string, format: ImageFormat, blob: Blob) {
@@ -86,7 +110,6 @@ export async function cacheImageFor(imageId: string, format: ImageFormat, blob: 
     await cache.put(cacheKey, new Response(blob));
   } catch (error) {
     console.error('Error setting value in Cache API:', error);
-    throw error;
   }
 }
 

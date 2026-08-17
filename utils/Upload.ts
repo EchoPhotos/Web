@@ -43,7 +43,7 @@ export async function uploadFileWithPreview(
     );
 
     const thumbnailUploadTask = uploadBytesResumable(
-      ref(storage, `uploads/${upload.uploadId}/thumbnail.jpg`),
+      ref(storage, `uploads/${upload.uploadId}/thumbnail_squared.jpg`),
       thumbnailBuffer,
       {
         contentType: 'image/jpeg', // Ensure the MIME type is set
